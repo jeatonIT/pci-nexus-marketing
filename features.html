@@ -352,6 +352,7 @@
   <a href="index.html" class="nav-logo">PCI <span>Nexus</span></a>
   <div class="nav-links">
     <a href="features.html" class="active">Features</a>
+    <a href="comparison.html" style="color:#1ABFCC;font-weight:700;">vs. Vanta &amp; Drata →</a>
     <a href="index.html#who">Who It's For</a>
     <a href="index.html#pricing">Pricing</a>
     <a href="https://pci-nexus.vercel.app/Demo" target="_blank">Live Demo</a>
@@ -526,85 +527,229 @@
       <p style="font-size:0.92rem;color:#1e293b;line-height:1.65;max-width:800px;"><strong>PCI DSS does not require expensive tools — it requires effective controls.</strong> Every integration in PCINexus was selected because it satisfies a specific PCI DSS requirement at the lowest possible cost. Open-source and free tools are always recommended first. Mid-market and enterprise tools are listed for organizations that already have them — never pushed as the default.</p>
     </div>
 
-    <div class="integration-grid reveal" style="margin-top:32px; transition-delay:0.1s;">
-
-      <div class="int-card">
-        <div class="int-card-top">
-          <h4>Microsoft Defender</h4>
-          <span class="int-tier tier-builtin">Built-In / Free</span>
-        </div>
-        <p>Endpoint protection already in Windows. Pulls AV status, threat detections, and policy compliance for Req 5 evidence automatically.</p>
+    <!-- PULL → REVIEW → APPROVE WORKFLOW -->
+    <div class="reveal" style="margin-top:40px; display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px;text-align:center;">
+        <div style="font-size:1.8rem;margin-bottom:10px;">🔌</div>
+        <div style="font-weight:800;color:var(--navy);font-size:0.9rem;margin-bottom:6px;">1 — Pull</div>
+        <p style="font-size:0.78rem;color:#64748b;line-height:1.55;">PCINexus connects to your security tools via API, agent, or syslog and pulls raw data on demand or on a schedule you control.</p>
       </div>
-
-      <div class="int-card">
-        <div class="int-card-top">
-          <h4>Wazuh</h4>
-          <span class="int-tier tier-free">Free / Open Source</span>
-        </div>
-        <p>Self-hosted SIEM and log management. Covers Req 10 (log monitoring) and Req 11 (intrusion detection) with zero licensing cost.</p>
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px;text-align:center;">
+        <div style="font-size:1.8rem;margin-bottom:10px;">🔍</div>
+        <div style="font-weight:800;color:var(--navy);font-size:0.9rem;margin-bottom:6px;">2 — Review</div>
+        <p style="font-size:0.78rem;color:#64748b;line-height:1.55;">Every data pull is presented for human review — mapped to its specific PCI DSS requirement with a plain-English summary of what was found.</p>
       </div>
-
-      <div class="int-card">
-        <div class="int-card-top">
-          <h4>OpenVAS / Greenbone</h4>
-          <span class="int-tier tier-free">Free / Open Source</span>
-        </div>
-        <p>Full-featured vulnerability scanner. Satisfies Req 6 and Req 11 internal scan requirements. No per-scan fees, no subscription.</p>
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px;text-align:center;">
+        <div style="font-size:1.8rem;margin-bottom:10px;">✅</div>
+        <div style="font-weight:800;color:var(--navy);font-size:0.9rem;margin-bottom:6px;">3 — Approve</div>
+        <p style="font-size:0.78rem;color:#64748b;line-height:1.55;">Only after explicit approval does data enter your compliance record. Nothing is auto-accepted. Your evidence trail stays clean and auditable.</p>
       </div>
-
-      <div class="int-card">
-        <div class="int-card-top">
-          <h4>pfSense / OPNsense</h4>
-          <span class="int-tier tier-free">Free / Open Source</span>
-        </div>
-        <p>Enterprise-grade firewall and network segmentation at no cost. Pulls firewall rules and log data for Req 1 and Req 10 evidence.</p>
-      </div>
-
-      <div class="int-card">
-        <div class="int-card-top">
-          <h4>Duo Security</h4>
-          <span class="int-tier tier-free">Free ≤ 10 Users</span>
-        </div>
-        <p>Multi-factor authentication for all CDE access — mandatory under PCI DSS v4.0. Free tier covers most small single-location operators.</p>
-      </div>
-
-      <div class="int-card">
-        <div class="int-card-top">
-          <h4>Syslog / Generic Push</h4>
-          <span class="int-tier tier-free">Free / Universal</span>
-        </div>
-        <p>Any device or system that can push syslog feeds directly into PCINexus for Req 10 log collection. No additional tool required.</p>
-      </div>
-
-      <div class="int-card">
-        <div class="int-card-top">
-          <h4>Qualys VMDR</h4>
-          <span class="int-tier tier-mid">Mid-Market</span>
-        </div>
-        <p>Cloud-based vulnerability management for organizations that need managed scanning without maintaining their own infrastructure.</p>
-      </div>
-
-      <div class="int-card">
-        <div class="int-card-top">
-          <h4>Fortinet FortiGate</h4>
-          <span class="int-tier tier-mid">Mid-Market</span>
-        </div>
-        <p>If you already have FortiGate hardware, PCINexus pulls firewall policy and log data directly for Req 1 and Req 10 documentation.</p>
-      </div>
-
-      <div class="int-card">
-        <div class="int-card-top">
-          <h4>CrowdStrike Falcon</h4>
-          <span class="int-tier tier-mid">Enterprise</span>
-        </div>
-        <p>For larger organizations already running CrowdStrike. Pulls endpoint telemetry and threat data for Req 5 and Req 11 evidence.</p>
-      </div>
-
     </div>
 
-    <div class="reveal" style="margin-top:24px;padding:20px 24px;background:#f1f5f9;border-radius:14px;display:flex;align-items:center;gap:16px;">
-      <span style="font-size:1.4rem;">🔄</span>
-      <p style="font-size:0.83rem;color:#475569;line-height:1.6;"><strong style="color:#1e293b;">Pull → Review → Approve.</strong> Every integration follows the same workflow. Data is pulled from your tools, presented for human review, and only imported into your compliance record after explicit approval. Nothing is auto-accepted. Your evidence trail stays clean and auditable.</p>
+    <!-- REQUIREMENT GROUPS -->
+
+    <!-- REQ 1 — NETWORK SECURITY -->
+    <div class="reveal" style="margin-top:52px; transition-delay:0.05s;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <span style="background:rgba(30,111,217,0.1);color:var(--blue);font-size:0.68rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:999px;border:1px solid rgba(30,111,217,0.2);">Req 1 &amp; 2 — Network Security &amp; Configuration</span>
+        <div style="flex:1;height:1px;background:#e2e8f0;"></div>
+        <span style="font-size:0.72rem;color:#94a3b8;white-space:nowrap;">Data pulled: firewall rules, config files, network topology, deny-all defaults</span>
+      </div>
+      <div class="integration-grid">
+        <div class="int-card">
+          <div class="int-card-top"><h4>pfSense / OPNsense</h4><span class="int-tier tier-free">Free / Open Source</span></div>
+          <p>Pulls firewall ruleset, interface config, and traffic logs. PCINexus maps rules against Req 1.2 requirements and flags missing deny-all defaults or undocumented rules.</p>
+        </div>
+        <div class="int-card">
+          <div class="int-card-top"><h4>Fortinet FortiGate</h4><span class="int-tier tier-mid">Mid-Market</span></div>
+          <p>Pulls firewall policy, FortiGuard threat logs, and configuration backup. Full Req 1 evidence package generated automatically from the API connection.</p>
+        </div>
+        <div class="int-card">
+          <div class="int-card-top"><h4>Syslog / Generic Push</h4><span class="int-tier tier-free">Free / Universal</span></div>
+          <p>Any network device — router, switch, firewall — that supports syslog can feed PCINexus directly. Covers Req 1 and Req 10 simultaneously with zero additional tooling.</p>
+        </div>
+        <div class="int-card">
+          <div class="int-card-top"><h4>Cloudflare Gateway</h4><span class="int-tier tier-free">Free Tier</span></div>
+          <p>DNS filtering and zero-trust network access. Pulls DNS query logs and blocked domain records for Req 1 perimeter evidence. Free tier covers most small merchant environments.</p>
+        </div>
+        <div class="int-card">
+          <div class="int-card-top"><h4>Pi-hole</h4><span class="int-tier tier-free">Free / Open Source</span></div>
+          <p>Self-hosted DNS blocker. Pulls query logs and blocklist status to demonstrate DNS-level malware protection for Req 1 network defense evidence.</p>
+        </div>
+        <div class="int-card">
+          <div class="int-card-top"><h4>WireGuard / OpenVPN</h4><span class="int-tier tier-free">Free / Open Source</span></div>
+          <p>VPN access logs pulled for Req 8 remote access evidence. Demonstrates encrypted tunnels for all remote administrative access to the CDE.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- REQ 5 — ENDPOINT PROTECTION -->
+    <div class="reveal" style="margin-top:44px; transition-delay:0.05s;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <span style="background:rgba(16,185,129,0.1);color:#059669;font-size:0.68rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:999px;border:1px solid rgba(16,185,129,0.2);">Req 5 — Anti-Malware &amp; Endpoint Protection</span>
+        <div style="flex:1;height:1px;background:#e2e8f0;"></div>
+        <span style="font-size:0.72rem;color:#94a3b8;white-space:nowrap;">Data pulled: AV status, threat detections, last scan time, policy compliance</span>
+      </div>
+      <div class="integration-grid">
+        <div class="int-card">
+          <div class="int-card-top"><h4>Microsoft Defender</h4><span class="int-tier tier-builtin">Built-In / Free</span></div>
+          <p>Already on every Windows machine. Pulls real-time protection status, last scan timestamp, threat detection history, and policy settings for Req 5 evidence with zero additional cost.</p>
+        </div>
+        <div class="int-card">
+          <div class="int-card-top"><h4>ClamAV</h4><span class="int-tier tier-free">Free / Open Source</span></div>
+          <p>Antivirus for Linux-based POS systems, servers, and appliances. Pulls scan results and definition update status for Req 5 evidence on non-Windows endpoints.</p>
+        </div>
+        <div class="int-card">
+          <div class="int-card-top"><h4>CrowdStrike Falcon</h4><span class="int-tier tier-mid">Enterprise</span></div>
+          <p>For organizations already running Falcon. Pulls endpoint telemetry, threat intelligence, and detection events directly into Req 5 and Req 11 evidence records.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- REQ 6 — VULNERABILITY MANAGEMENT -->
+    <div class="reveal" style="margin-top:44px; transition-delay:0.05s;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <span style="background:rgba(245,158,11,0.1);color:#d97706;font-size:0.68rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:999px;border:1px solid rgba(245,158,11,0.2);">Req 6 — Vulnerability Management</span>
+        <div style="flex:1;height:1px;background:#e2e8f0;"></div>
+        <span style="font-size:0.72rem;color:#94a3b8;white-space:nowrap;">Data pulled: scan results, CVE findings, severity ratings, patch status</span>
+      </div>
+      <div class="integration-grid">
+        <div class="int-card">
+          <div class="int-card-top"><h4>OpenVAS / Greenbone</h4><span class="int-tier tier-free">Free / Open Source</span></div>
+          <p>Full internal vulnerability scanner with no per-scan fees. PCINexus pulls scan reports, CVE findings, and remediation status directly into Req 6 and Req 11.3 evidence records.</p>
+        </div>
+        <div class="int-card">
+          <div class="int-card-top"><h4>Nessus Essentials</h4><span class="int-tier tier-free">Free ≤ 16 IPs</span></div>
+          <p>Industry gold-standard scanner, free for up to 16 IPs. Covers the entire CDE for most small merchants. Auditors know the name immediately — high-credibility evidence source.</p>
+        </div>
+        <div class="int-card">
+          <div class="int-card-top"><h4>Qualys VMDR</h4><span class="int-tier tier-mid">Mid-Market</span></div>
+          <p>Cloud-managed scanning for organizations that prefer not to run their own scanner. Pulls scan reports, asset inventory, and patch status directly into PCINexus compliance records.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- REQ 8 — ACCESS CONTROL / MFA -->
+    <div class="reveal" style="margin-top:44px; transition-delay:0.05s;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <span style="background:rgba(139,92,246,0.1);color:#7c3aed;font-size:0.68rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:999px;border:1px solid rgba(139,92,246,0.2);">Req 7 &amp; 8 — Access Control &amp; Authentication</span>
+        <div style="flex:1;height:1px;background:#e2e8f0;"></div>
+        <span style="font-size:0.72rem;color:#94a3b8;white-space:nowrap;">Data pulled: MFA status, user accounts, access logs, password policy, auth events</span>
+      </div>
+      <div class="integration-grid">
+        <div class="int-card">
+          <div class="int-card-top"><h4>Active Directory / LDAP</h4><span class="int-tier tier-builtin">Built-In / Free</span></div>
+          <p>Pulls user accounts, groups, stale accounts, password policy, and OU structure. Full Req 7 and Req 8 evidence package — account inventory, access groups, and policy compliance in one pull.</p>
+        </div>
+        <div class="int-card">
+          <div class="int-card-top"><h4>Duo Security</h4><span class="int-tier tier-free">Free ≤ 10 Users</span></div>
+          <p>Pulls MFA enrollment status, authentication logs, and policy configuration. Req 8.4 requires MFA for all CDE access — Duo provides the evidence automatically.</p>
+        </div>
+        <div class="int-card">
+          <div class="int-card-top"><h4>Authelia</h4><span class="int-tier tier-free">Free / Open Source</span></div>
+          <p>Self-hosted SSO and MFA gateway — no per-user fees. Pulls authentication events and policy config for Req 8 evidence. Best option for businesses with more than 10 users who can't afford Duo.</p>
+        </div>
+        <div class="int-card">
+          <div class="int-card-top"><h4>Bitwarden</h4><span class="int-tier tier-free">Free / $3/mo Teams</span></div>
+          <p>Password manager with auditable vault. Pulls policy enforcement status and shared credential records to demonstrate Req 8.3 password management controls.</p>
+        </div>
+        <div class="int-card">
+          <div class="int-card-top"><h4>FreeRADIUS</h4><span class="int-tier tier-free">Free / Open Source</span></div>
+          <p>RADIUS authentication server for network access control. Pulls authentication logs and policy data — demonstrates MFA enforcement for network device and VPN access under Req 8.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- REQ 10 — LOG MANAGEMENT -->
+    <div class="reveal" style="margin-top:44px; transition-delay:0.05s;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <span style="background:rgba(14,165,170,0.1);color:var(--teal2);font-size:0.68rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:999px;border:1px solid rgba(14,165,170,0.2);">Req 10 — Logging &amp; Monitoring</span>
+        <div style="flex:1;height:1px;background:#e2e8f0;"></div>
+        <span style="font-size:0.72rem;color:#94a3b8;white-space:nowrap;">Data pulled: system logs, access events, admin actions, alert records, review confirmation</span>
+      </div>
+      <div class="integration-grid">
+        <div class="int-card">
+          <div class="int-card-top"><h4>Wazuh</h4><span class="int-tier tier-free">Free / Open Source</span></div>
+          <p>Central SIEM platform. Aggregates logs from every system, correlates events, and generates alerts. PCINexus pulls daily log review summaries and alert records directly for Req 10 evidence.</p>
+        </div>
+        <div class="int-card">
+          <div class="int-card-top"><h4>Security Onion</h4><span class="int-tier tier-free">Free / Open Source</span></div>
+          <p>Bundles Wazuh + Suricata + Zeek into a single deployable stack. One install covers Req 10 and Req 11 completely. PCINexus pulls consolidated event data from the Security Onion API.</p>
+        </div>
+        <div class="int-card">
+          <div class="int-card-top"><h4>Zabbix</h4><span class="int-tier tier-free">Free / Open Source</span></div>
+          <p>Network and system monitoring with alerting. Pulls uptime records, threshold alerts, and device availability logs for Req 10 continuity-of-monitoring evidence.</p>
+        </div>
+        <div class="int-card">
+          <div class="int-card-top"><h4>PRTG Network Monitor</h4><span class="int-tier tier-free">Free ≤ 100 Sensors</span></div>
+          <p>Easiest-to-configure monitor on the list. Free tier covers most small environments. Pulls device status, bandwidth data, and alert history for Req 10 network monitoring evidence.</p>
+        </div>
+        <div class="int-card">
+          <div class="int-card-top"><h4>LibreNMS</h4><span class="int-tier tier-free">Free / Open Source</span></div>
+          <p>Auto-discovers your network and monitors every device on it. Pulls network device logs, SNMP traps, and alert history into PCINexus for Req 10 continuous monitoring evidence.</p>
+        </div>
+        <div class="int-card">
+          <div class="int-card-top"><h4>Syslog / Generic Push</h4><span class="int-tier tier-free">Free / Universal</span></div>
+          <p>Any device that can push syslog feeds directly into PCINexus. Zero additional tooling — if it logs, it connects. Covers any gap in your environment the dedicated tools don't reach.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- REQ 11 — INTRUSION DETECTION / FIM -->
+    <div class="reveal" style="margin-top:44px; transition-delay:0.05s;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <span style="background:rgba(239,68,68,0.1);color:#dc2626;font-size:0.68rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:999px;border:1px solid rgba(239,68,68,0.2);">Req 11 — Intrusion Detection &amp; File Integrity</span>
+        <div style="flex:1;height:1px;background:#e2e8f0;"></div>
+        <span style="font-size:0.72rem;color:#94a3b8;white-space:nowrap;">Data pulled: IDS alerts, FIM change records, scan results, anomaly events</span>
+      </div>
+      <div class="integration-grid">
+        <div class="int-card">
+          <div class="int-card-top"><h4>Suricata</h4><span class="int-tier tier-free">Free / Open Source</span></div>
+          <p>High-performance IDS/IPS. Pulls network intrusion alerts, signature matches, and anomaly events directly into Req 11.4 evidence records. Runs inline or passive — no disruption to operations.</p>
+        </div>
+        <div class="int-card">
+          <div class="int-card-top"><h4>Snort</h4><span class="int-tier tier-free">Free / Open Source</span></div>
+          <p>The original network IDS — massive rule library, auditor-recognized name. Pulls detection events and rule match logs for Req 11.4 intrusion detection evidence.</p>
+        </div>
+        <div class="int-card">
+          <div class="int-card-top"><h4>Zeek (formerly Bro)</h4><span class="int-tier tier-free">Free / Open Source</span></div>
+          <p>Network traffic analysis framework. Produces detailed connection logs, protocol summaries, and behavioral baselines that feed directly into Req 11 anomaly detection evidence.</p>
+        </div>
+        <div class="int-card">
+          <div class="int-card-top"><h4>Wazuh FIM</h4><span class="int-tier tier-free">Free / Open Source</span></div>
+          <p>File Integrity Monitoring built into Wazuh. Detects unauthorized changes to critical system files — required under Req 11.5. If you're already running Wazuh, FIM is already active.</p>
+        </div>
+        <div class="int-card">
+          <div class="int-card-top"><h4>AIDE</h4><span class="int-tier tier-free">Free / Open Source</span></div>
+          <p>Dedicated Linux file integrity monitor. Tracks changes to system binaries, config files, and CDE-relevant directories. Pulls change reports into Req 11.5 FIM evidence records.</p>
+        </div>
+        <div class="int-card">
+          <div class="int-card-top"><h4>Security Onion</h4><span class="int-tier tier-free">Free / Open Source</span></div>
+          <p>Bundles Suricata + Zeek + Wazuh together. One deployment covers Req 10 log management and Req 11 intrusion detection simultaneously — the most efficient single tool for full coverage.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOTAL COUNT CALLOUT -->
+    <div class="reveal" style="margin-top:44px;transition-delay:0.1s;">
+      <div style="background:var(--grad);border-radius:20px;padding:36px 40px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;position:relative;overflow:hidden;">
+        <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;"></div>
+        <div style="position:relative;z-index:1;">
+          <div style="font-size:3rem;font-weight:800;color:#fff;line-height:1;">25+</div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,0.5);margin-top:4px;">integrated security tools</div>
+        </div>
+        <div style="position:relative;z-index:1;">
+          <div style="font-size:3rem;font-weight:800;color:#fff;line-height:1;">18</div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,0.5);margin-top:4px;">free or open source</div>
+        </div>
+        <div style="position:relative;z-index:1;">
+          <div style="font-size:3rem;font-weight:800;color:#fff;line-height:1;">$0</div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,0.5);margin-top:4px;">required tooling cost for full coverage</div>
+        </div>
+        <div style="position:relative;z-index:1;max-width:320px;">
+          <p style="font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.6;">A complete PCI DSS v4.0.1 security stack is achievable at zero additional tooling cost. PCINexus connects to all of it — pulling data directly into your compliance record.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
