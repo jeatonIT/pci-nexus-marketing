@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PCINexus — Get Started</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy:#0F2447;--navy2:#162E5A;--blue:#1E6FD9;--teal:#1ABFCC;--teal2:#0EA5B0;
+    --grad:linear-gradient(135deg,#0F2447 0%,#162E5A 55%,#0A7985 100%);
+    --grad-b:linear-gradient(135deg,#1E6FD9,#0EA5B0);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'DM Sans',sans-serif;background:#f1f5f9;color:#1e293b;min-height:100vh;}
+  .page{display:grid;grid-template-columns:300px 1fr;min-height:100vh;}
+
+  /* SIDEBAR */
+  .sidebar{background:var(--grad);padding:40px 28px;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow:hidden;}
+  .sidebar::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;}
+  .sb-logo{font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fff;letter-spacing:-0.5px;margin-bottom:44px;position:relative;z-index:1;}
+  .sb-logo span{color:var(--teal);}
+  .steps{display:flex;flex-direction:column;position:relative;z-index:1;flex:1;}
+  .si{display:flex;align-items:flex-start;gap:14px;padding:10px 12px;border-radius:12px;transition:background 0.2s;}
+  .si.active{background:rgba(255,255,255,0.1);}
+  .si.done{opacity:0.65;}
+  .si.future{opacity:0.3;}
+  .sc{width:1px;height:16px;background:rgba(255,255,255,0.1);margin-left:25px;}
+  .sn{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:800;flex-shrink:0;margin-top:1px;}
+  .si.done .sn{background:var(--teal);color:#fff;}
+  .si.active .sn{background:#fff;color:var(--navy);}
+  .si.future .sn{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.35);border:1px solid rgba(255,255,255,0.1);}
+  .st{font-size:0.82rem;font-weight:700;color:#fff;line-height:1.3;}
+  .sd{font-size:0.7rem;color:rgba(255,255,255,0.4);margin-top:2px;}
+  .sb-plan{position:relative;z-index:1;margin-top:auto;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:16px 18px;}
+  .spl{font-size:0.63rem;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:5px;}
+  .spn{font-size:0.92rem;font-weight:700;color:#fff;}
+  .spp{font-size:0.8rem;color:var(--teal);font-weight:600;margin-top:2px;}
+  .spc{font-size:0.7rem;color:rgba(255,255,255,0.3);margin-top:8px;cursor:pointer;text-decoration:underline;}
+  .spc:hover{color:rgba(255,255,255,0.6);}
+
+  /* MAIN */
+  .main{padding:56px 64px;max-width:680px;}
+  .step-panel{display:none;animation:fadeIn 0.3s ease;}
+  .step-panel.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+  .ey{font-size:0.7rem;font-weight:700;color:var(--blue);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;}
+  .ph{font-family:'DM Serif Display',serif;font-size:1.9rem;color:var(--navy);line-height:1.15;letter-spacing:-0.5px;margin-bottom:8px;}
+  .ph em{font-style:italic;color:var(--blue);}
+  .ps{font-size:0.875rem;color:#64748b;line-height:1.65;margin-bottom:32px;max-width:480px;}
+
+  /* FORMS */
+  .fg{display:flex;flex-direction:column;gap:5px;margin-bottom:16px;}
+  .fg label{font-size:0.7rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.08em;}
+  .fg input,.fg select{background:#fff;border:1.5px solid #e2e8f0;border-radius:11px;padding:11px 13px;font-size:0.875rem;font-family:'DM Sans',sans-serif;color:#1e293b;outline:none;transition:border-color 0.2s,box-shadow 0.2s;width:100%;}
+  .fg input:focus,.fg select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(30,111,217,0.08);}
+  .fg input::placeholder{color:#cbd5e1;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .grid1{display:grid;grid-template-columns:1fr;gap:16px;}
+  .pw-bar-wrap{height:3px;border-radius:99px;background:#e2e8f0;overflow:hidden;margin-top:6px;}
+  .pw-bar{height:100%;border-radius:99px;transition:width 0.3s,background 0.3s;width:0%;}
+  .pw-hint{font-size:0.68rem;color:#94a3b8;margin-top:4px;}
+
+  /* PLAN CARDS */
+  .plan-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:28px;}
+  .pc{border:2px solid #e2e8f0;border-radius:18px;padding:20px 18px;cursor:pointer;transition:all 0.2s;position:relative;background:#fff;}
+  .pc:hover{border-color:#93c5fd;}
+  .pc.sel{border-color:var(--blue);background:rgba(30,111,217,0.03);box-shadow:0 0 0 4px rgba(30,111,217,0.08);}
+  .pc-pop{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--grad-b);color:#fff;font-size:0.62rem;font-weight:800;padding:3px 12px;border-radius:999px;white-space:nowrap;letter-spacing:0.06em;text-transform:uppercase;}
+  .pc-tier{font-size:0.62rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:5px;}
+  .pc-name{font-weight:800;font-size:0.95rem;color:var(--navy);margin-bottom:5px;}
+  .pc-price{font-size:1.35rem;font-weight:800;color:var(--navy);}
+  .pc-price span{font-size:0.78rem;font-weight:500;color:#94a3b8;}
+  .pc-min{font-size:0.7rem;color:#94a3b8;margin-top:3px;}
+  .pc-total{font-size:0.72rem;font-weight:700;color:var(--teal2);margin-top:5px;}
+  .pc-feats{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:5px;}
+  .pc-feats li{font-size:0.73rem;color:#64748b;display:flex;align-items:flex-start;gap:5px;line-height:1.35;}
+  .pc-feats li::before{content:'✓';color:var(--teal2);font-weight:700;font-size:0.68rem;flex-shrink:0;margin-top:1px;}
+
+  /* SAQ */
+  .saq-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;}
+  .sq{border:1.5px solid #e2e8f0;border-radius:13px;padding:14px 16px;cursor:pointer;transition:all 0.2s;background:#fff;}
+  .sq:hover{border-color:#93c5fd;}
+  .sq.sel{border-color:var(--blue);background:rgba(30,111,217,0.03);}
+  .sq-type{font-size:0.82rem;font-weight:800;color:var(--navy);margin-bottom:3px;}
+  .sq-desc{font-size:0.73rem;color:#64748b;line-height:1.4;}
+  .sq-hint{font-size:0.68rem;color:var(--teal2);font-weight:600;margin-top:5px;}
+  .saq-help{background:rgba(30,111,217,0.05);border:1px solid rgba(30,111,217,0.12);border-radius:12px;padding:12px 16px;margin-bottom:16px;font-size:0.78rem;color:#1e40af;line-height:1.55;}
+
+  /* LOCATIONS */
+  .loc-row{background:#fff;border:1.5px solid #e2e8f0;border-radius:13px;padding:14px 16px;display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:center;margin-bottom:10px;}
+  .loc-row input{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:9px;padding:9px 11px;font-size:0.82rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s;width:100%;}
+  .loc-row input:focus{border-color:var(--blue);}
+  .loc-row input::placeholder{color:#cbd5e1;}
+  .btn-rm{width:30px;height:30px;border-radius:8px;background:#fee2e2;color:#dc2626;border:none;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .btn-add{background:#f8fafc;border:1.5px dashed #cbd5e1;border-radius:13px;padding:12px;width:100%;font-size:0.82rem;font-weight:600;color:#64748b;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:4px;}
+  .btn-add:hover{border-color:var(--blue);color:var(--blue);}
+
+  /* TEAM */
+  .team-row{background:#fff;border:1.5px solid #e2e8f0;border-radius:13px;padding:14px 16px;display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px;align-items:center;margin-bottom:10px;}
+  .team-row input,.team-row select{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:9px;padding:9px 11px;font-size:0.82rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s;width:100%;}
+  .team-row input:focus,.team-row select:focus{border-color:var(--blue);}
+  .invite-note{background:rgba(26,191,204,0.06);border:1px solid rgba(26,191,204,0.15);border-radius:11px;padding:11px 15px;font-size:0.76rem;color:#0f766e;line-height:1.55;margin-bottom:20px;}
+
+  /* PAYMENT */
+  .pay-summary{background:var(--navy);border-radius:18px;padding:22px 26px;margin-bottom:24px;}
+  .pr{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.07);font-size:0.83rem;}
+  .pr:last-child{border-bottom:none;}
+  .pr .l{color:rgba(255,255,255,0.5);}
+  .pr .v{color:#fff;font-weight:600;}
+  .pr.tot .l{color:rgba(255,255,255,0.8);font-weight:700;}
+  .pr.tot .v{color:var(--teal);font-size:1.05rem;font-weight:800;}
+  .stripe-box{background:#fff;border:1.5px solid #e2e8f0;border-radius:16px;padding:22px 24px;margin-bottom:16px;}
+  .stripe-box h4{font-size:0.72rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;}
+  .sf{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px 14px;font-size:0.875rem;color:#94a3b8;margin-bottom:12px;font-family:'DM Mono',monospace;display:flex;align-items:center;justify-content:space-between;}
+  .sf:last-child{margin-bottom:0;}
+  .sg{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .sec-note{display:flex;align-items:center;gap:6px;font-size:0.72rem;color:#94a3b8;margin-bottom:14px;}
+  .sec-note span{color:#10b981;}
+  .tc{display:flex;align-items:flex-start;gap:10px;font-size:0.78rem;color:#64748b;line-height:1.5;margin-bottom:24px;}
+  .tc input{margin-top:2px;accent-color:var(--blue);flex-shrink:0;}
+  .tc a{color:var(--blue);}
+
+  /* BUTTONS */
+  .btn-next{background:var(--grad-b);color:#fff;border:none;padding:14px 36px;border-radius:13px;font-size:0.9rem;font-weight:800;font-family:'DM Sans',sans-serif;cursor:pointer;box-shadow:0 4px 20px rgba(30,111,217,0.3);transition:transform 0.15s,box-shadow 0.15s;display:inline-flex;align-items:center;gap:8px;}
+  .btn-next:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(30,111,217,0.4);}
+  .btn-next:disabled{opacity:0.4;cursor:not-allowed;transform:none;box-shadow:none;}
+  .btn-back{background:transparent;color:#94a3b8;border:1.5px solid #e2e8f0;padding:14px 24px;border-radius:13px;font-size:0.88rem;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all 0.2s;margin-right:12px;}
+  .btn-back:hover{border-color:#94a3b8;color:#475569;}
+  .btn-skip{background:none;border:none;color:#94a3b8;font-size:0.8rem;cursor:pointer;margin-left:16px;font-family:'DM Sans',sans-serif;text-decoration:underline;}
+  .btn-row{display:flex;align-items:center;margin-top:32px;}
+
+  /* SUCCESS */
+  .success-wrap{display:none;flex-direction:column;align-items:center;text-align:center;padding:48px 0;}
+  .success-wrap.visible{display:flex;}
+  .success-icon{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,rgba(16,185,129,0.12),rgba(26,191,204,0.12));border:2px solid rgba(16,185,129,0.25);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin-bottom:24px;animation:popIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both;}
+  @keyframes popIn{from{transform:scale(0.5);opacity:0;}to{transform:scale(1);opacity:1;}}
+  .success-wrap h2{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--navy);letter-spacing:-0.5px;margin-bottom:12px;}
+  .success-wrap p{font-size:0.9rem;color:#64748b;line-height:1.65;max-width:420px;margin-bottom:32px;}
+  .sn-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:480px;}
+  .sn-card{background:#fff;border:1.5px solid #e2e8f0;border-radius:14px;padding:18px 16px;text-align:left;}
+  .sn-icon{font-size:1.2rem;margin-bottom:8px;}
+  .sn-card h4{font-size:0.82rem;font-weight:700;color:var(--navy);margin-bottom:4px;}
+  .sn-card p{font-size:0.73rem;color:#94a3b8;line-height:1.4;}
+
+  /* PROGRESS BAR */
+  .prog{height:3px;background:#e2e8f0;position:fixed;top:0;left:300px;right:0;z-index:100;}
+  .prog-fill{height:100%;background:var(--grad-b);transition:width 0.4s ease;}
+
+  .sec-label{font-size:0.7rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <aside class="sidebar">
+    <div class="sb-logo">PCI<span>Nexus</span></div>
+    <div class="steps" id="steps-nav"></div>
+    <div class="sb-plan" id="sb-plan" style="display:none;">
+      <div class="spl">Selected Plan</div>
+      <div class="spn" id="sp-name">—</div>
+      <div class="spp" id="sp-price">—</div>
+      <div class="spc" onclick="goTo(0)">← Change plan</div>
+    </div>
+  </aside>
+
+  <div class="prog"><div class="prog-fill" id="prog-fill"></div></div>
+
+  <main class="main">
+
+    <!-- STEP 0: PLAN -->
+    <div class="step-panel active" id="panel-0">
+      <div class="ey">Step 1 of 6</div>
+      <h1 class="ph">Choose your <em>plan.</em></h1>
+      <p class="ps">Setup is completely free — configure your organization, locations, and team at no cost. Your 6-month plan starts only when you decide to go live. PCI DSS requires recurring quarterly scans, daily log reviews, and annual training. You need sustained tooling, not a one-time fix.</p>
+      <div class="plan-cards">
+        <div class="pc" id="pc-starter" onclick="selPlan('starter')">
+          <div class="pc-tier">Starter</div>
+          <div class="pc-name">Single Location</div>
+          <div class="pc-price">$125<span>/mo</span></div>
+          <div class="pc-min">Free setup · 6-month plan</div>
+          <div class="pc-total">$750 due when you go live</div>
+          <ul class="pc-feats">
+            <li>1 location</li><li>Up to 10 users</li><li>All SAQ types</li>
+            <li>AI evidence review</li><li>AI compliance chat</li><li>Vendor catalog</li>
+          </ul>
+        </div>
+        <div class="pc" id="pc-growth" onclick="selPlan('growth')">
+          <div class="pc-pop">Most Popular</div>
+          <div class="pc-tier">Growth</div>
+          <div class="pc-name">Multi-Location</div>
+          <div class="pc-price">$249<span>/mo</span></div>
+          <div class="pc-min">Free setup · 6-month plan</div>
+          <div class="pc-total">$1,494 due when you go live</div>
+          <ul class="pc-feats">
+            <li>Up to 10 locations</li><li>Unlimited users</li><li>All SAQ types</li>
+            <li>AI evidence review</li><li>Directory sync</li><li>Security integrations</li>
+          </ul>
+        </div>
+        <div class="pc" id="pc-enterprise" onclick="selPlan('enterprise')">
+          <div class="pc-tier">Enterprise</div>
+          <div class="pc-name">Unlimited</div>
+          <div class="pc-price">Custom</div>
+          <div class="pc-min">Free setup · 12-month plan</div>
+          <div class="pc-total">Pricing on request</div>
+          <ul class="pc-feats">
+            <li>Unlimited locations</li><li>Unlimited users</li><li>White-label option</li>
+            <li>Dedicated onboarding</li><li>QSA partner program</li><li>SLA &amp; priority support</li>
+          </ul>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-next" id="btn-p0" onclick="nextStep()" disabled>Continue →</button>
+      </div>
+    </div>
+
+    <!-- STEP 1: ACCOUNT -->
+    <div class="step-panel" id="panel-1">
+      <div class="ey">Step 2 of 6</div>
+      <h1 class="ph">Create your <em>account.</em></h1>
+      <p class="ps">This is your admin account — the L1 Executive role with full access to the entire platform.</p>
+      <div class="grid2">
+        <div class="fg"><label>First Name</label><input type="text" id="a-first" placeholder="Sandra"/></div>
+        <div class="fg"><label>Last Name</label><input type="text" id="a-last" placeholder="Kowalski"/></div>
+      </div>
+      <div class="fg"><label>Work Email</label><input type="email" id="a-email" placeholder="sandra@yourcompany.com"/></div>
+      <div class="grid2">
+        <div class="fg">
+          <label>Password</label>
+          <input type="password" id="a-pw" placeholder="Min 12 characters" oninput="chkPw(this.value)"/>
+          <div class="pw-bar-wrap"><div class="pw-bar" id="pw-bar"></div></div>
+          <div class="pw-hint" id="pw-hint">Use 12+ characters with uppercase, numbers &amp; symbols</div>
+        </div>
+        <div class="fg"><label>Confirm Password</label><input type="password" id="a-pw2" placeholder="Re-enter password"/></div>
+      </div>
+      <div class="grid2">
+        <div class="fg"><label>Job Title</label><input type="text" id="a-title" placeholder="IT Director / Compliance Officer"/></div>
+        <div class="fg"><label>Phone (optional)</label><input type="tel" id="a-phone" placeholder="(555) 555-0100"/></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="prevStep()">← Back</button>
+        <button class="btn-next" onclick="nextStep()">Continue →</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: ORGANIZATION -->
+    <div class="step-panel" id="panel-2">
+      <div class="ey">Step 3 of 6</div>
+      <h1 class="ph">Your <em>organization.</em></h1>
+      <p class="ps">This becomes your tenant profile in PCINexus. Everything here can be updated later from the Organization Settings page.</p>
+      <div class="fg"><label>Organization / Business Name</label><input type="text" id="o-name" placeholder="Coastal Restaurant Group"/></div>
+      <div class="grid2">
+        <div class="fg"><label>Industry</label>
+          <select id="o-ind">
+            <option value="" disabled selected>Select…</option>
+            <option>Restaurant / QSR</option><option>Retail</option>
+            <option>Hospitality / Hotel</option><option>Grocery / Convenience</option>
+            <option>Healthcare / Medical</option><option>Franchise Group</option>
+            <option>IT Consultant / MSP</option><option>Other</option>
+          </select>
+        </div>
+        <div class="fg"><label>Number of Locations</label>
+          <select id="o-locs">
+            <option value="" disabled selected>Select…</option>
+            <option>1</option><option>2–5</option><option>6–15</option><option>16–50</option><option>50+</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="fg"><label>Primary Phone</label><input type="tel" id="o-phone" placeholder="(555) 555-0100"/></div>
+        <div class="fg"><label>Website (optional)</label><input type="text" id="o-web" placeholder="yourcompany.com"/></div>
+      </div>
+      <div class="grid2">
+        <div class="fg"><label>State / Province</label><input type="text" id="o-state" placeholder="California"/></div>
+        <div class="fg"><label>Country</label>
+          <select id="o-country">
+            <option>United States</option><option>Canada</option><option>United Kingdom</option><option>Australia</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="prevStep()">← Back</button>
+        <button class="btn-next" onclick="nextStep()">Continue →</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: LOCATIONS + SAQ -->
+    <div class="step-panel" id="panel-3">
+      <div class="ey">Step 4 of 6</div>
+      <h1 class="ph">Locations &amp; <em>SAQ type.</em></h1>
+      <p class="ps">Add your locations and select your primary SAQ type. You can assign different SAQ types per location after setup.</p>
+      <div class="sec-label">Primary SAQ Type</div>
+      <div class="saq-help">💡 Not sure which SAQ applies? The built-in SAQ Wizard will identify your exact type in about 2 minutes after setup — select "Not Sure Yet" to skip for now.</div>
+      <div class="saq-grid">
+        <div class="sq" onclick="selSAQ(this,'SAQ-A')"><div class="sq-type">SAQ-A</div><div class="sq-desc">Card-not-present merchants. All payment functions outsourced to a PCI-compliant provider.</div><div class="sq-hint">Lowest complexity · 22 requirements</div></div>
+        <div class="sq" onclick="selSAQ(this,'SAQ-B')"><div class="sq-type">SAQ-B</div><div class="sq-desc">Imprint-only or standalone dial-out terminals. No electronic cardholder data storage.</div><div class="sq-hint">41 requirements</div></div>
+        <div class="sq" onclick="selSAQ(this,'SAQ-B-IP')"><div class="sq-type">SAQ-B-IP</div><div class="sq-desc">Standalone IP-connected payment terminals isolated from other systems.</div><div class="sq-hint">83 requirements</div></div>
+        <div class="sq" onclick="selSAQ(this,'SAQ-C-VT')"><div class="sq-type">SAQ-C-VT</div><div class="sq-desc">Virtual terminals accessed via isolated web browser. No electronic storage.</div><div class="sq-hint">65 requirements</div></div>
+        <div class="sq" onclick="selSAQ(this,'SAQ-C')"><div class="sq-type">SAQ-C</div><div class="sq-desc">Payment application systems connected to the internet. Most restaurants &amp; retail.</div><div class="sq-hint">Most common for restaurants · 160 requirements</div></div>
+        <div class="sq" onclick="selSAQ(this,'SAQ-P2PE')"><div class="sq-type">SAQ-P2PE</div><div class="sq-desc">Hardware terminals on a PCI-listed P2PE solution. Significantly reduced scope.</div><div class="sq-hint">35 requirements</div></div>
+        <div class="sq" onclick="selSAQ(this,'SAQ-D')"><div class="sq-type">SAQ-D Merchant</div><div class="sq-desc">All other merchants not covered by the above types. Full scope assessment.</div><div class="sq-hint">Full scope · 286 requirements</div></div>
+        <div class="sq" onclick="selSAQ(this,'Not Sure')"><div class="sq-type">Not Sure Yet</div><div class="sq-desc">Use the PCINexus SAQ Wizard after setup to identify the correct type for your environment.</div><div class="sq-hint">Recommended if unsure</div></div>
+      </div>
+      <div class="sec-label" style="margin-top:8px;">Your Locations</div>
+      <div id="loc-list"></div>
+      <button class="btn-add" onclick="addLoc()">＋ Add Another Location</button>
+      <div class="btn-row">
+        <button class="btn-back" onclick="prevStep()">← Back</button>
+        <button class="btn-next" onclick="nextStep()">Continue →</button>
+      </div>
+    </div>
+
+    <!-- STEP 4: TEAM -->
+    <div class="step-panel" id="panel-4">
+      <div class="ey">Step 5 of 6</div>
+      <h1 class="ph">Invite your <em>team.</em></h1>
+      <p class="ps">Add team members and they'll receive a secure email invitation the moment your account goes live. You can always add more from the Contacts page.</p>
+      <div class="invite-note">📧 Invitations are sent automatically on account activation. Each person receives a secure setup link to create their own password and complete their profile.</div>
+      <div id="team-list"></div>
+      <button class="btn-add" onclick="addTeam()">＋ Add Team Member</button>
+      <div class="btn-row">
+        <button class="btn-back" onclick="prevStep()">← Back</button>
+        <button class="btn-next" onclick="nextStep()">Continue →</button>
+        <button class="btn-skip" onclick="nextStep()">Skip for now</button>
+      </div>
+    </div>
+
+    <!-- STEP 5: PAYMENT -->
+    <div class="step-panel" id="panel-5">
+      <div class="ey">Step 6 of 6</div>
+      <h1 class="ph">Save your card. <em>Setup is free.</em></h1>
+      <p class="ps">Enter your payment details now — your card will not be charged until you choose to go live. Once you activate, your 6-month commitment begins and we start building your compliance record together.</p>
+
+      <div class="pay-summary">
+        <div class="pr"><span class="l">Plan</span><span class="v" id="ps-plan">—</span></div>
+        <div class="pr"><span class="l">Monthly rate</span><span class="v" id="ps-mo">—</span></div>
+        <div class="pr"><span class="l">Minimum term</span><span class="v" id="ps-term">—</span></div>
+        <div class="pr"><span class="l">Due at go-live</span><span class="v" id="ps-today">—</span></div>
+        <div class="pr"><span class="l">After minimum term</span><span class="v" id="ps-after">—</span></div>
+        <div class="pr tot"><span class="l">Due today</span><span class="v" style="color:#10b981;">$0 — Free setup</span></div>
+      </div>
+
+      <div class="stripe-box">
+        <h4>💳 Payment — Secured by Stripe</h4>
+        <div class="sec-note"><span>🔒</span> 256-bit SSL encryption. Card data is processed directly by Stripe and never touches our servers.</div>
+        <div class="fg"><label>Name on Card</label><input type="text" id="p-name" placeholder="Sandra Kowalski"/></div>
+        <!-- In production: mount Stripe Elements here with stripe.elements() -->
+        <div class="sf"><span>Card number</span><span style="opacity:0.4;">•••• •••• •••• ••••</span></div>
+        <div class="sg">
+          <div class="sf"><span>Expiry</span><span style="opacity:0.4;">MM / YY</span></div>
+          <div class="sf"><span>CVC</span><span style="opacity:0.4;">•••</span></div>
+        </div>
+        <div style="font-size:0.68rem;color:#94a3b8;margin-top:8px;">⚙ Developer note: replace mocked card fields above with <code>stripe.elements()</code> card mount in production.</div>
+      </div>
+      <div class="fg"><label>Billing Address</label><input type="text" id="p-addr" placeholder="123 Main St, City, State, ZIP"/></div>
+      <div class="tc">
+        <input type="checkbox" id="p-terms"/>
+        <label for="p-terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. I understand my card will not be charged until I choose to activate my plan. Upon activation, my <strong id="tc-term">6-month</strong> commitment begins and <strong id="tc-amt">—</strong> will be charged. After the minimum period, the subscription renews monthly and may be cancelled with 30 days written notice.</label>
+      </div>
+      <div class="btn-row" style="flex-direction:column;align-items:flex-start;gap:10px;">
+        <div>
+          <button class="btn-back" onclick="prevStep()">← Back</button>
+          <button class="btn-next" id="btn-activate" onclick="activate()">🔒 Save Card &amp; Start Setup</button>
+        </div>
+        <div style="font-size:0.71rem;color:#94a3b8;">Powered by Stripe. Your card is saved securely but <strong>not charged until you go live</strong>. Cancel anytime after your minimum commitment period with 30 days written notice.</div>
+      </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="success-wrap" id="success-wrap">
+      <div class="success-icon">✓</div>
+      <h2>Setup complete!</h2>
+      <p>Your PCINexus account is configured and your team invitations are on their way. Explore the platform at your own pace — your card won't be charged until you decide to go live.</p>
+      <div class="sn-grid">
+        <div class="sn-card"><div class="sn-icon">🧙</div><h4>Run the SAQ Wizard</h4><p>Confirm your SAQ type and see your full requirement list in 2 minutes.</p></div>
+        <div class="sn-card"><div class="sn-icon">📁</div><h4>Upload First Evidence</h4><p>Start with your firewall config or AV scan report — AI reviews it instantly.</p></div>
+        <div class="sn-card"><div class="sn-icon">🔌</div><h4>Connect an Integration</h4><p>Hook up Microsoft Defender or pfSense — both free, both take 5 minutes.</p></div>
+        <div class="sn-card"><div class="sn-icon">💬</div><h4>Ask the AI</h4><p>Ask any PCI DSS question in plain English. Your compliance guide is always on.</p></div>
+      </div>
+      <button class="btn-next" style="margin-top:32px;" onclick="alert('In production: redirect to /dashboard')">Explore My Dashboard →</button>
+      <p style="font-size:0.75rem;color:#94a3b8;margin-top:12px;">When you're ready to go live, click <strong>Activate Plan</strong> inside the dashboard. Your 6-month compliance clock starts then.</p>
+    </div>
+
+  </main>
+</div>
+
+<script>
+let cur=0, plan=null, saq=null, locN=1, teamN=0;
+const STEPS=[
+  {t:"Choose Plan",      d:"Starter, Growth, or Enterprise"},
+  {t:"Create Account",   d:"Admin login and profile"},
+  {t:"Organization",     d:"Your company details"},
+  {t:"Locations & SAQ",  d:"Sites and compliance type"},
+  {t:"Invite Team",      d:"Add users before launch"},
+  {t:"Payment",          d:"Activate your account"},
+];
+const PLANS={
+  starter:   {name:"Starter — Single Location", mo:125, term:6,  total:750,   tl:"6 months"},
+  growth:    {name:"Growth — Multi-Location",   mo:249, term:6,  total:1494,  tl:"6 months"},
+  enterprise:{name:"Enterprise — Unlimited",    mo:null,term:12, total:null,  tl:"12 months"},
+};
+
+function renderNav(){
+  const el=document.getElementById('steps-nav');
+  el.innerHTML=STEPS.map((s,i)=>{
+    const state=i<cur?'done':i===cur?'active':'future';
+    const num=i<cur?'✓':(i+1);
+    return`<div class="si ${state}"><div class="sn">${num}</div><div><div class="st">${s.t}</div><div class="sd">${s.d}</div></div></div>${i<STEPS.length-1?'<div class="sc"></div>':''}`;
+  }).join('');
+  document.getElementById('prog-fill').style.width=(cur/(STEPS.length-1)*100)+'%';
+}
+
+function show(n){
+  document.querySelectorAll('.step-panel').forEach(p=>p.classList.remove('active'));
+  const p=document.getElementById('panel-'+n);
+  if(p)p.classList.add('active');
+  document.getElementById('success-wrap').classList.remove('visible');
+  cur=n; renderNav(); window.scrollTo(0,0);
+}
+function nextStep(){if(cur<5)show(cur+1);}
+function prevStep(){if(cur>0)show(cur-1);}
+function goTo(n){show(n);}
+
+function selPlan(p){
+  plan=p;
+  document.querySelectorAll('.pc').forEach(c=>c.classList.remove('sel'));
+  document.getElementById('pc-'+p).classList.add('sel');
+  document.getElementById('btn-p0').disabled=false;
+  const d=PLANS[p];
+  document.getElementById('sb-plan').style.display='block';
+  document.getElementById('sp-name').textContent=d.name;
+  document.getElementById('sp-price').textContent=d.mo?`$${d.mo}/mo · ${d.tl} min · $${d.total.toLocaleString()} today`:`Custom · ${d.tl} min`;
+  // payment step
+  document.getElementById('ps-plan').textContent=d.name;
+  document.getElementById('ps-mo').textContent=d.mo?`$${d.mo}/mo`:'Custom';
+  document.getElementById('ps-term').textContent=d.tl;
+  document.getElementById('ps-today').textContent=d.total?`$${d.total.toLocaleString()} (${d.term} × $${d.mo})`:'Contact us';
+  document.getElementById('ps-after').textContent=d.mo?`$${d.mo}/mo, cancel with 30 days notice`:'Annual custom';
+  document.getElementById('ps-total').textContent=d.total?`$${d.total.toLocaleString()}`:'Custom';
+  const amt=d.total?`$${d.total.toLocaleString()}`:'custom amount';
+  document.getElementById('btn-amt').textContent=amt;
+  document.getElementById('tc-amt').textContent=amt;
+  document.getElementById('tc-term').textContent=d.tl;
+}
+
+function selSAQ(el,type){
+  document.querySelectorAll('.sq').forEach(c=>c.classList.remove('sel'));
+  el.classList.add('sel'); saq=type;
+}
+
+function renderLocs(){
+  const l=document.getElementById('loc-list');
+  l.innerHTML='';
+  for(let i=0;i<locN;i++){
+    l.innerHTML+=`<div class="loc-row"><input type="text" placeholder="Location name (e.g. Downtown — Main St.)" id="ln-${i}"/><input type="text" placeholder="City, State" id="lc-${i}"/>${i>0?`<button class="btn-rm" onclick="rmLoc(${i})">✕</button>`:'<div style="width:30px;"></div>'}</div>`;
+  }
+}
+function addLoc(){locN++;renderLocs();}
+function rmLoc(i){
+  const ns=[],cs=[];
+  for(let j=0;j<locN;j++){if(j!==i){ns.push(document.getElementById('ln-'+j)?.value||'');cs.push(document.getElementById('lc-'+j)?.value||'');}}
+  locN--;renderLocs();
+  ns.forEach((n,j)=>{document.getElementById('ln-'+j).value=n;});
+  cs.forEach((c,j)=>{document.getElementById('lc-'+j).value=c;});
+}
+
+function renderTeam(){
+  const l=document.getElementById('team-list');
+  l.innerHTML='';
+  for(let i=0;i<teamN;i++){
+    l.innerHTML+=`<div class="team-row"><input type="text" placeholder="Full name" id="tn-${i}"/><input type="email" placeholder="Email" id="te-${i}"/><select id="tr-${i}"><option value="" disabled selected>Role</option><option>L2 Manager</option><option>L3 Location Manager</option><option>L4 Staff</option></select><button class="btn-rm" onclick="rmTeam(${i})">✕</button></div>`;
+  }
+}
+function addTeam(){teamN++;renderTeam();}
+function rmTeam(i){
+  const ns=[],es=[],rs=[];
+  for(let j=0;j<teamN;j++){if(j!==i){ns.push(document.getElementById('tn-'+j)?.value||'');es.push(document.getElementById('te-'+j)?.value||'');rs.push(document.getElementById('tr-'+j)?.value||'');}}
+  teamN--;renderTeam();
+  ns.forEach((n,j)=>{document.getElementById('tn-'+j).value=n;});
+  es.forEach((e,j)=>{document.getElementById('te-'+j).value=e;});
+  rs.forEach((r,j)=>{document.getElementById('tr-'+j).value=r;});
+}
+
+function chkPw(v){
+  const bar=document.getElementById('pw-bar'),hint=document.getElementById('pw-hint');
+  let s=0;
+  if(v.length>=12)s++;if(/[A-Z]/.test(v))s++;if(/[0-9]/.test(v))s++;if(/[^A-Za-z0-9]/.test(v))s++;
+  const cfg=[
+    {w:'0%',  bg:'transparent',m:'Use 12+ characters with uppercase, numbers & symbols'},
+    {w:'25%', bg:'#ef4444',    m:'Weak — add uppercase letters, numbers & symbols'},
+    {w:'50%', bg:'#f59e0b',    m:'Fair — add a symbol or increase length'},
+    {w:'75%', bg:'#3b82f6',    m:'Good — one more character type will make it strong'},
+    {w:'100%',bg:'#10b981',    m:'Strong password ✓'},
+  ];
+  bar.style.width=cfg[s].w; bar.style.background=cfg[s].bg; hint.textContent=cfg[s].m;
+}
+
+function activate(){
+  if(!document.getElementById('p-terms').checked){alert('Please agree to the Terms of Service to continue.');return;}
+  const btn=document.getElementById('btn-activate');
+  btn.textContent='⏳ Processing payment…'; btn.disabled=true;
+  setTimeout(()=>{
+    document.querySelectorAll('.step-panel').forEach(p=>p.classList.remove('active'));
+    document.getElementById('success-wrap').classList.add('visible');
+    cur=6; renderNav(); window.scrollTo(0,0);
+  },2200);
+}
+
+renderNav(); renderLocs();
+</script>
+</body>
+</html>
