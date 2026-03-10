@@ -44,6 +44,7 @@
     font-size: 1.15rem;
     color: #fff;
     letter-spacing: 0.5px;
+    text-decoration: none;
   }
   .nav-logo span { color: var(--teal); }
   .nav-links { display: flex; align-items: center; gap: 36px; }
@@ -661,11 +662,13 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">PCI <span>Nexus</span></div>
+  <a href="index.html" class="nav-logo">PCI <span>Nexus</span></a>
   <div class="nav-links">
     <a href="features.html">Features</a>
+    <a href="security.html">Cybersecurity</a>
     <a href="#who">Who It's For</a>
     <a href="#pricing">Pricing</a>
+    <a href="comparison.html" style="color:#1ABFCC;font-weight:700;">vs. Vanta &amp; Drata →</a>
     <a href="https://pci-nexus.vercel.app/Demo" target="_blank">Live Demo</a>
     <a href="onboarding.html" class="nav-cta">Start Free Setup →</a>
   </div>
@@ -1001,6 +1004,53 @@
       <div class="integration-pill">🗂 Active Directory / LDAP</div>
       <div class="integration-pill">🔐 Azure AD / Entra ID</div>
       <div class="integration-pill">➕ More coming</div>
+    </div>
+  </div>
+</section>
+
+<!-- CYBERSECURITY POSTURE BAND -->
+<section style="background:#fff; padding:80px 24px; border-top:1px solid #f1f5f9;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="reveal" style="display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center;">
+      <div>
+        <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;">Beyond Compliance</div>
+        <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);color:var(--navy);line-height:1.1;letter-spacing:-0.5px;margin-bottom:16px;">PCI DSS compliance <em style="font-style:italic;color:var(--blue);">is</em> your cybersecurity program.</h2>
+        <p style="color:#64748b;font-size:0.92rem;line-height:1.75;margin-bottom:20px;">Most small businesses think they have two separate problems — satisfying their payment processor and securing their business. They're actually the same problem. Every one of the 12 PCI DSS requirements maps directly to a core cybersecurity control: network security, endpoint protection, access management, threat detection, incident response.</p>
+        <p style="color:#64748b;font-size:0.92rem;line-height:1.75;margin-bottom:28px;">A business that completes PCI DSS compliance through PCINexus doesn't just satisfy a bank requirement. They have a <strong style="color:#1e293b;">functioning, documented, continuously maintained cybersecurity posture</strong> — monitored endpoints, managed access, patched systems, tested defenses, and a written incident response plan. That's genuinely rare among small businesses — and genuinely valuable.</p>
+        <a href="security.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--grad-b);color:#fff;padding:12px 24px;border-radius:12px;font-size:0.85rem;font-weight:700;text-decoration:none;box-shadow:0 4px 20px rgba(30,111,217,0.3);transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(30,111,217,0.4)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(30,111,217,0.3)'">See the full cybersecurity story →</a>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:18px;">
+          <div style="font-size:1.2rem;margin-bottom:8px;">🔥</div>
+          <div style="font-size:0.78rem;font-weight:700;color:var(--navy);margin-bottom:4px;">Threat Detection</div>
+          <div style="font-size:0.72rem;color:#94a3b8;line-height:1.5;">IDS, SIEM, FIM — Req 10 &amp; 11</div>
+        </div>
+        <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:18px;">
+          <div style="font-size:1.2rem;margin-bottom:8px;">🔐</div>
+          <div style="font-size:0.78rem;font-weight:700;color:var(--navy);margin-bottom:4px;">Access Control</div>
+          <div style="font-size:0.72rem;color:#94a3b8;line-height:1.5;">MFA, least privilege — Req 7 &amp; 8</div>
+        </div>
+        <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:18px;">
+          <div style="font-size:1.2rem;margin-bottom:8px;">🛡️</div>
+          <div style="font-size:0.78rem;font-weight:700;color:var(--navy);margin-bottom:4px;">Endpoint Security</div>
+          <div style="font-size:0.72rem;color:#94a3b8;line-height:1.5;">AV, patching, hardening — Req 5 &amp; 6</div>
+        </div>
+        <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:18px;">
+          <div style="font-size:1.2rem;margin-bottom:8px;">📋</div>
+          <div style="font-size:0.78rem;font-weight:700;color:var(--navy);margin-bottom:4px;">Incident Response</div>
+          <div style="font-size:0.72rem;color:#94a3b8;line-height:1.5;">Written plan, tested — Req 12</div>
+        </div>
+        <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:18px;">
+          <div style="font-size:1.2rem;margin-bottom:8px;">🌐</div>
+          <div style="font-size:0.78rem;font-weight:700;color:var(--navy);margin-bottom:4px;">Network Security</div>
+          <div style="font-size:0.72rem;color:#94a3b8;line-height:1.5;">Firewall, segmentation — Req 1 &amp; 2</div>
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(26,191,204,0.08),rgba(30,111,217,0.08));border:1px solid rgba(26,191,204,0.25);border-radius:14px;padding:18px;">
+          <div style="font-size:1.2rem;margin-bottom:8px;">📄</div>
+          <div style="font-size:0.78rem;font-weight:700;color:var(--navy);margin-bottom:4px;">Cyber Insurance Ready</div>
+          <div style="font-size:0.72rem;color:var(--teal2);line-height:1.5;">Documented controls insurers require</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
