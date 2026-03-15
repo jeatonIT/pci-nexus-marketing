@@ -666,11 +666,11 @@
   <div class="nav-links">
     <a href="features.html">Features</a>
     <a href="security.html">Cybersecurity</a>
+    <a href="consultants.html">For Consultants</a>
     <a href="#who">Who It's For</a>
     <a href="#pricing">Pricing</a>
     <a href="comparison.html" style="color:#1ABFCC;font-weight:700;">vs. Vanta &amp; Drata →</a>
     <a href="https://pci-nexus.vercel.app/Demo" target="_blank">Live Demo</a>
-    <a href="#" onclick="openContact();return false;" style="color:#1ABFCC;font-weight:700;">Contact Us</a>
     <a href="onboarding.html" class="nav-cta">Start Free Setup →</a>
   </div>
 </nav>
@@ -1239,7 +1239,7 @@
     <a href="#features">Features</a>
     <a href="#pricing">Pricing</a>
     <a href="https://pci-nexus.vercel.app/Demo" target="_blank">Demo</a>
-    <a href="#" onclick="openContact();return false;">Contact</a>
+    <a href="/cdn-cgi/l/email-protection#d29897b3a6bdbc9b8692bda7a6bebdbdb9fcb1bdbf">Contact</a>
   </div>
   <p>© 2026 J.Eaton Consulting. All rights reserved.</p>
 </footer>
@@ -1276,111 +1276,3 @@
     s.classList.add('visible');
 
     // In production: POST to 
-  }
-</script>
-<!-- ── CONTACT MODAL ─────────────────────────────────────────────── -->
-<div id="contactModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(10,20,40,0.7);backdrop-filter:blur(4px);align-items:center;justify-content:center;">
-  <div style="background:#fff;border-radius:20px;padding:48px;max-width:520px;width:90%;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.3);">
-    <button onclick="closeContact()" style="position:absolute;top:16px;right:20px;background:none;border:none;font-size:22px;color:#94a3b8;cursor:pointer;">×</button>
-    <div style="font-size:13px;font-weight:700;color:#1ABFCC;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Get In Touch</div>
-    <h2 style="font-size:26px;font-weight:800;color:#0F2447;margin:0 0 8px;line-height:1.2;">Let's talk PCI compliance</h2>
-    <p style="color:#64748b;font-size:14px;margin:0 0 28px;line-height:1.6;">Whether you have questions about pricing, need a live demo, or want to discuss your specific compliance situation — we're here to help.</p>
-    <form id="contactForm" onsubmit="submitContact(event)">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
-        <div>
-          <label style="display:block;font-size:12px;font-weight:700;color:#475569;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">First Name</label>
-          <input id="cf-first" type="text" required placeholder="Joe"
-            style="width:100%;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;outline:none;box-sizing:border-box;transition:border-color 0.2s;"
-            onfocus="this.style.borderColor='#1e6fd9'" onblur="this.style.borderColor='#e2e8f0'">
-        </div>
-        <div>
-          <label style="display:block;font-size:12px;font-weight:700;color:#475569;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">Last Name</label>
-          <input id="cf-last" type="text" required placeholder="Smith"
-            style="width:100%;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;outline:none;box-sizing:border-box;transition:border-color 0.2s;"
-            onfocus="this.style.borderColor='#1e6fd9'" onblur="this.style.borderColor='#e2e8f0'">
-        </div>
-      </div>
-      <div style="margin-bottom:14px;">
-        <label style="display:block;font-size:12px;font-weight:700;color:#475569;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">Business Email</label>
-        <input id="cf-email" type="email" required placeholder="you@yourcompany.com"
-          style="width:100%;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;outline:none;box-sizing:border-box;transition:border-color 0.2s;"
-          onfocus="this.style.borderColor='#1e6fd9'" onblur="this.style.borderColor='#e2e8f0'">
-      </div>
-      <div style="margin-bottom:14px;">
-        <label style="display:block;font-size:12px;font-weight:700;color:#475569;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">How can we help?</label>
-        <select id="cf-reason" required
-          style="width:100%;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;outline:none;box-sizing:border-box;background:#fff;color:#334155;appearance:none;cursor:pointer;">
-          <option value="">Select a topic...</option>
-          <option>I want to see a live demo</option>
-          <option>I have questions about pricing</option>
-          <option>I need help understanding my SAQ type</option>
-          <option>I'm a consultant managing multiple clients</option>
-          <option>I'm a QSA interested in the platform</option>
-          <option>I want to discuss enterprise options</option>
-          <option>Something else</option>
-        </select>
-      </div>
-      <div style="margin-bottom:24px;">
-        <label style="display:block;font-size:12px;font-weight:700;color:#475569;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">Message <span style="font-weight:400;text-transform:none;color:#94a3b8;">(optional)</span></label>
-        <textarea id="cf-message" rows="3" placeholder="Tell us a bit about your situation..."
-          style="width:100%;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;outline:none;box-sizing:border-box;resize:vertical;font-family:inherit;transition:border-color 0.2s;"
-          onfocus="this.style.borderColor='#1e6fd9'" onblur="this.style.borderColor='#e2e8f0'"></textarea>
-      </div>
-      <button type="submit" id="cf-submit"
-        style="width:100%;padding:14px;background:linear-gradient(135deg,#1e6fd9,#0EA5B0);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;transition:opacity 0.2s;">
-        Send Message →
-      </button>
-      <div id="cf-success" style="display:none;margin-top:16px;padding:14px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;text-align:center;">
-        <div style="font-weight:700;color:#15803d;font-size:14px;">✓ Message sent!</div>
-        <div style="color:#16a34a;font-size:13px;margin-top:4px;">We'll get back to you at <span id="cf-confirm-email"></span> within 1 business day.</div>
-      </div>
-      <div id="cf-error" style="display:none;margin-top:16px;padding:14px;background:#fef2f2;border:1px solid #fecaca;border-radius:10px;text-align:center;">
-        <div style="color:#dc2626;font-size:13px;">Something went wrong. Please email us directly at <a href="/cdn-cgi/l/email-protection#2b414e4a5f44456b5b4842454e535e5805484446" style="color:#dc2626;font-weight:700;"><span class="__cf_email__" data-cfemail="345e5155405b5a7444575d5a514c41471a575b59">[email&#160;protected]</span></a></div>
-      </div>
-    </form>
-    <p style="text-align:center;color:#94a3b8;font-size:12px;margin:16px 0 0;">Or email us directly: <a href="/cdn-cgi/l/email-protection#c7ada2a6b3a8a987b7a4aea9a2bfb2b4e9a4a8aa" style="color:#1e6fd9;font-weight:600;"><span class="__cf_email__" data-cfemail="78121d190c171638081b11161d000d0b561b1715">[email&#160;protected]</span></a></p>
-  </div>
-</div>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function openContact(){
-  const m=document.getElementById('contactModal');
-  m.style.display='flex';
-  document.body.style.overflow='hidden';
-}
-function closeContact(){
-  const m=document.getElementById('contactModal');
-  m.style.display='none';
-  document.body.style.overflow='';
-}
-document.getElementById('contactModal').addEventListener('click',function(e){
-  if(e.target===this)closeContact();
-});
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeContact();});
-
-async function submitContact(e){
-  e.preventDefault();
-  const btn=document.getElementById('cf-submit');
-  btn.textContent='Sending...';
-  btn.disabled=true;
-
-  const email=document.getElementById('cf-email').value;
-  const body={
-    first: document.getElementById('cf-first').value,
-    last:  document.getElementById('cf-last').value,
-    email,
-    reason: document.getElementById('cf-reason').value,
-    message: document.getElementById('cf-message').value,
-  };
-
-  try {
-    const res = await fetch('https://pci-nexus.vercel.app/api/contact', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify(body),
-    });
-    if(res.ok){
-      document.getElementById('cf-confirm-email').textContent=email;
-      document.getElementById('cf-success').style.display='block';
-      document.getElementById('contactForm').style.opacity='0.4';
-      document.getElem
