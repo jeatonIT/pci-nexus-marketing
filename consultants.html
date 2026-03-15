@@ -294,6 +294,45 @@
     .footer-links { flex-wrap: wrap; justify-content: center; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "name": "PCI-Nexus for Consultants and QSAs",
+      "url": "https://pcinexus.com/consultants.html",
+      "description": "PCI-Nexus partner pricing for IT consultants and QSAs managing PCI DSS compliance for multiple small business clients. White-label options and reseller pricing available.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "PCI-Nexus",
+        "url": "https://pcinexus.com"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can I manage multiple clients in PCI-Nexus?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. PCI-Nexus is a multi-tenant platform designed for consultants and QSAs managing PCI DSS compliance across multiple small business clients from a single dashboard."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there white-label pricing for consultants?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. PCI-Nexus offers partner and white-label pricing for IT consultants and QSAs. Contact jeaton@pcinexus.com for details on reseller and partner arrangements."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -662,12 +701,12 @@
     <a href="consultants.html">For Consultants</a>
     <a href="index.html#pricing">Pricing</a>
     <a href="https://pci-nexus.vercel.app/Demo" target="_blank">Demo</a>
-    <a href="mailto:jeaton@pcinexus.com">Contact</a>
+    <a href="/cdn-cgi/l/email-protection#7b111e1a0f14153b0b1812151e030e0855181416">Contact</a>
   </div>
   <p>© 2026 J.Eaton Consulting. All rights reserved.</p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Scroll reveal
   const revealEls = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
@@ -695,9 +734,4 @@
     const mode = isAnnual ? 'annual' : 'monthly';
     const suffix = isAnnual ? '<span>/mo, billed annually</span>' : '<span>/mo</span>';
     document.getElementById('price-starter').innerHTML = prices.starter[mode] + suffix;
-    document.getElementById('price-pro').innerHTML     = prices.pro[mode]     + suffix;
-    document.getElementById('price-elite').innerHTML   = prices.elite[mode]   + suffix;
-  }
-</script>
-</body>
-</html>
+    document.getElementById('price-pro').innerHTML     =

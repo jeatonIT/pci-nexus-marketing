@@ -665,6 +665,98 @@
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://pcinexus.com/#organization",
+      "name": "PCI-Nexus",
+      "url": "https://pcinexus.com",
+      "logo": "https://pcinexus.com/logo.png",
+      "description": "PCI DSS compliance management platform built for small and mid-sized businesses that accept credit cards.",
+      "founder": { "@type": "Person", "name": "Joe Eaton" },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "jeaton@pcinexus.com",
+        "contactType": "customer support"
+      },
+      "sameAs": []
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://pcinexus.com/#software",
+      "name": "PCI-Nexus",
+      "url": "https://pcinexus.com",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "PCI DSS compliance management software for small and mid-sized businesses. Includes SAQ wizard, AI evidence review, compliance calendar, findings tracker, and annual cycle management.",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Free Plan",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "name": "Pro Plan",
+          "price": "49",
+          "priceCurrency": "USD",
+          "billingIncrement": "month"
+        }
+      ],
+      "publisher": { "@id": "https://pcinexus.com/#organization" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is PCI compliance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PCI compliance means following the Payment Card Industry Data Security Standard (PCI DSS) — a set of security requirements for any business that accepts, stores, or processes credit card payments. Compliance protects cardholders and reduces the risk of data breaches."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need PCI compliance if I use Square or Stripe?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Even if you use a third-party payment processor like Square or Stripe, you are still required to complete an annual Self-Assessment Questionnaire (SAQ) and meet basic PCI DSS requirements. The SAQ type depends on how you accept payments."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does PCI compliance cost for a small business?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For most small businesses, PCI compliance costs include an annual SAQ, quarterly network scans (if required), and any remediation work. PCI-Nexus offers a free plan to get started and Pro plans starting at $49/month to manage compliance year-round."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is an SAQ and how do I fill one out?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An SAQ (Self-Assessment Questionnaire) is an annual checklist used to validate PCI DSS compliance for small merchants. PCI-Nexus includes a step-by-step SAQ wizard that walks you through every question with plain-English explanations and tips."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I fail PCI compliance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non-compliance can result in monthly fines from your payment processor, increased transaction fees, or loss of the ability to accept credit cards. In the event of a data breach, fines can be significant. PCI-Nexus helps you stay compliant year-round to avoid these penalties."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
