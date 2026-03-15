@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PCI Nexus for Consultants & QSAs — Partner Pricing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy:   #0F2447;
+    --navy2:  #162E5A;
+    --blue:   #1E6FD9;
+    --teal:   #1ABFCC;
+    --teal2:  #0EA5B0;
+    --white:  #ffffff;
+    --slate:  #94a3b8;
+    --grad:   linear-gradient(135deg, #0F2447 0%, #162E5A 55%, #0A7985 100%);
+    --grad-b: linear-gradient(135deg, #1E6FD9, #0EA5B0);
+    --gold:   #F59E0B;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: #f8fafc; color: #1e293b; overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 60px;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+  }
+  .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: #fff; text-decoration: none; }
+  .nav-logo span { color: var(--teal); }
+  .nav-links { display: flex; align-items: center; gap: 36px; }
+  .nav-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-links a.active { color: var(--teal); font-weight: 700; }
+  .nav-cta { background: var(--grad-b); padding: 8px 18px; border-radius: 8px; color: #fff !important; font-weight: 600 !important; font-size: 0.75rem !important; letter-spacing: 0.04em; transition: opacity 0.2s; }
+  .nav-cta:hover { opacity: 0.88; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--grad);
+    padding: 100px 48px 80px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(26,191,204,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(26,191,204,0.12); border: 1px solid rgba(26,191,204,0.25);
+    border-radius: 100px; padding: 6px 16px;
+    font-size: 0.72rem; font-weight: 700; color: var(--teal);
+    text-transform: uppercase; letter-spacing: 0.12em;
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    color: #fff; line-height: 1.1; margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: italic; color: var(--teal); }
+  .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.72); max-width: 580px; margin: 0 auto 40px; line-height: 1.65; }
+  .hero-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 48px; }
+  .hero-badge {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.13);
+    border-radius: 10px; padding: 8px 16px;
+    font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.85);
+    display: flex; align-items: center; gap: 7px;
+  }
+  .hero-badge span { color: var(--teal); }
+
+  /* ── SECTION COMMONS ── */
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.72rem; font-weight: 700; color: var(--blue);
+    text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 12px;
+  }
+  .section-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--navy); line-height: 1.2; margin-bottom: 16px;
+  }
+  .section-heading em { font-style: italic; color: var(--blue); }
+
+  /* ── HOW IT WORKS ── */
+  .how-section { padding: 100px 48px; background: #fff; }
+  .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-top: 56px; }
+  .step-card {
+    background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 20px;
+    padding: 32px 28px; position: relative; transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .step-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(15,36,71,0.1); }
+  .step-num {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: var(--grad-b); color: #fff;
+    font-size: 0.85rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+  }
+  .step-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+  .step-card p { font-size: 0.82rem; color: #64748b; line-height: 1.6; }
+
+  /* ── PRICING ── */
+  .pricing-section { padding: 100px 48px; background: #f8fafc; }
+  .billing-toggle {
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    margin: 40px 0 56px;
+  }
+  .toggle-label { font-size: 0.85rem; font-weight: 600; color: #64748b; }
+  .toggle-label.active { color: var(--navy); }
+  .toggle-track {
+    width: 52px; height: 28px; border-radius: 100px;
+    background: var(--grad-b); cursor: pointer; position: relative;
+    transition: background 0.2s;
+  }
+  .toggle-thumb {
+    width: 22px; height: 22px; border-radius: 50%; background: #fff;
+    position: absolute; top: 3px; left: 3px;
+    transition: transform 0.2s; box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+  .toggle-track.annual .toggle-thumb { transform: translateX(24px); }
+  .save-badge {
+    background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3);
+    border-radius: 100px; padding: 4px 12px;
+    font-size: 0.72rem; font-weight: 700; color: var(--gold);
+  }
+
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+  .pricing-card {
+    background: #fff; border: 1.5px solid #e2e8f0; border-radius: 24px;
+    padding: 36px 32px; position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(15,36,71,0.1); }
+  .pricing-card.featured {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 1px var(--blue), 0 16px 48px rgba(30,111,217,0.15);
+  }
+  .pricing-badge {
+    display: inline-block; background: var(--grad-b); color: #fff;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 100px; margin-bottom: 20px;
+  }
+  .price-tier { font-size: 0.72rem; font-weight: 700; color: var(--slate); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+  .price-name { font-family: 'DM Serif Display', serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 8px; }
+  .price-amount { font-size: 2.4rem; font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 4px; }
+  .price-amount span { font-size: 1rem; font-weight: 500; color: var(--slate); }
+  .price-clients { font-size: 0.78rem; font-weight: 600; color: var(--teal2); margin-bottom: 6px; }
+  .price-desc { font-size: 0.8rem; color: #64748b; margin-bottom: 24px; line-height: 1.55; }
+  .price-features { list-style: none; margin-bottom: 32px; display: flex; flex-direction: column; gap: 10px; }
+  .price-features li { font-size: 0.82rem; color: #334155; display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
+  .price-features li::before { content: '✓'; color: var(--teal2); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .price-features li.dim { color: #94a3b8; }
+  .price-features li.dim::before { content: '–'; color: #cbd5e1; }
+
+  .btn-price {
+    width: 100%; padding: 13px; border-radius: 12px;
+    font-size: 0.85rem; font-weight: 700; cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+    letter-spacing: 0.02em; border: 2px solid transparent;
+  }
+  .btn-price.solid { background: var(--grad-b); color: #fff; border-color: transparent; }
+  .btn-price.solid:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(30,111,217,0.4); }
+  .btn-price.outline { background: transparent; color: var(--blue); border-color: var(--blue); }
+  .btn-price.outline:hover { background: rgba(30,111,217,0.06); }
+  .btn-price.dark { background: var(--navy); color: #fff; border-color: transparent; }
+  .btn-price.dark:hover { background: var(--navy2); transform: translateY(-2px); }
+
+  /* SAQ surcharge table */
+  .surcharge-section { padding: 80px 48px; background: #fff; }
+  .surcharge-table { width: 100%; border-collapse: collapse; margin-top: 40px; font-size: 0.85rem; }
+  .surcharge-table th {
+    background: var(--navy); color: #fff; font-weight: 700; font-size: 0.75rem;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    padding: 14px 20px; text-align: left;
+  }
+  .surcharge-table th:first-child { border-radius: 12px 0 0 0; }
+  .surcharge-table th:last-child { border-radius: 0 12px 0 0; }
+  .surcharge-table td { padding: 14px 20px; border-bottom: 1px solid #f1f5f9; color: #334155; }
+  .surcharge-table tr:last-child td { border-bottom: none; }
+  .surcharge-table tr:nth-child(even) td { background: #f8fafc; }
+  .surcharge-table tr:hover td { background: rgba(26,191,204,0.04); }
+  .saq-type { font-family: 'DM Mono', monospace; font-weight: 600; color: var(--navy); font-size: 0.82rem; }
+  .surcharge-amt { font-weight: 700; color: var(--blue); }
+  .surcharge-amt.free { color: #16a34a; }
+
+  /* ── COMPARISON ── */
+  .compare-section { padding: 100px 48px; background: var(--grad); position: relative; overflow: hidden; }
+  .compare-section::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(26,191,204,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .compare-section .section-label { color: var(--teal); }
+  .compare-section .section-heading { color: #fff; }
+  .compare-section .section-heading em { color: var(--teal); }
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 56px; }
+  .compare-card {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 24px; padding: 36px;
+  }
+  .compare-card.highlight { background: rgba(30,111,217,0.15); border-color: rgba(30,111,217,0.4); }
+  .compare-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: #fff; margin-bottom: 8px; }
+  .compare-card .sub { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-bottom: 28px; line-height: 1.5; }
+  .compare-items { display: flex; flex-direction: column; gap: 14px; }
+  .compare-item { display: flex; align-items: flex-start; gap: 10px; }
+  .compare-item .icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+  .compare-item p { font-size: 0.82rem; color: rgba(255,255,255,0.75); line-height: 1.5; }
+  .compare-item p strong { color: #fff; }
+
+  /* ── ROI ── */
+  .roi-section { padding: 100px 48px; background: #f8fafc; }
+  .roi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-top: 56px; }
+  .roi-card {
+    background: #fff; border: 1.5px solid #e2e8f0; border-radius: 20px;
+    padding: 32px 28px; text-align: center;
+  }
+  .roi-number { font-family: 'DM Serif Display', serif; font-size: 2.8rem; color: var(--blue); margin-bottom: 8px; }
+  .roi-number em { font-style: italic; color: var(--teal); }
+  .roi-label { font-size: 0.82rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .roi-desc { font-size: 0.78rem; color: #64748b; line-height: 1.55; }
+
+  /* ── CTA ── */
+  .cta-section { padding: 100px 48px; background: #fff; text-align: center; }
+  .cta-box {
+    max-width: 640px; margin: 0 auto;
+    background: var(--grad); border-radius: 32px; padding: 64px 48px;
+    position: relative; overflow: hidden;
+  }
+  .cta-box::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(26,191,204,0.2), transparent 70%);
+  }
+  .cta-box h2 { font-family: 'DM Serif Display', serif; font-size: 2rem; color: #fff; margin-bottom: 16px; line-height: 1.2; position: relative; }
+  .cta-box h2 em { font-style: italic; color: var(--teal); }
+  .cta-box p { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 36px; line-height: 1.6; position: relative; }
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
+  .btn-cta-primary {
+    background: #fff; color: var(--navy);
+    padding: 14px 28px; border-radius: 12px;
+    font-weight: 700; font-size: 0.88rem; text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn-cta-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
+  .btn-cta-secondary {
+    background: rgba(255,255,255,0.1); color: #fff; border: 1.5px solid rgba(255,255,255,0.25);
+    padding: 14px 28px; border-radius: 12px;
+    font-weight: 600; font-size: 0.88rem; text-decoration: none;
+    transition: background 0.15s;
+  }
+  .btn-cta-secondary:hover { background: rgba(255,255,255,0.18); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy); padding: 48px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-logo { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: #fff; }
+  .footer-logo span { color: var(--teal); }
+  footer p { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .hero, .how-section, .pricing-section, .surcharge-section,
+    .compare-section, .roi-section, .cta-section { padding-left: 20px; padding-right: 20px; }
+    .compare-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 24px; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">PCI <span>Nexus</span></a>
+  <div class="nav-links">
+    <a href="features.html">Features</a>
+    <a href="security.html">Cybersecurity</a>
+    <a href="consultants.html" class="active">For Consultants</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="comparison.html" style="color:#1ABFCC;font-weight:700;">vs. Vanta &amp; Drata →</a>
+    <a href="https://pci-nexus.vercel.app/Demo" target="_blank">Live Demo</a>
+    <a href="onboarding.html" class="nav-cta">Start Free Setup →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="reveal">
+    <div class="hero-eyebrow"><span>✦</span> Built for Consultants &amp; QSAs</div>
+    <h1>Manage every client.<br><em>From one dashboard.</em></h1>
+    <p class="hero-sub">PCI-Nexus gives consultants and QSAs a single platform to manage PCI DSS compliance across all your clients — with white-label options, billable time tracking, and per-client portals.</p>
+    <div class="hero-badges">
+      <div class="hero-badge"><span>✦</span> Multi-client dashboard</div>
+      <div class="hero-badge"><span>✦</span> SAQ-based surcharge pricing</div>
+      <div class="hero-badge"><span>✦</span> White-label ready</div>
+      <div class="hero-badge"><span>✦</span> QSA assessment tools</div>
+      <div class="hero-badge"><span>✦</span> Client portal access</div>
+    </div>
+    <a href="https://pci-nexus.vercel.app/Demo?p=consultant" target="_blank"
+       style="display:inline-flex;align-items:center;gap:8px;background:var(--grad-b);color:#fff;padding:14px 28px;border-radius:12px;font-size:0.88rem;font-weight:700;text-decoration:none;box-shadow:0 4px 24px rgba(30,111,217,0.4);transition:transform 0.15s,box-shadow 0.15s;"
+       onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 32px rgba(30,111,217,0.5)'"
+       onmouseout="this.style.transform='';this.style.boxShadow='0 4px 24px rgba(30,111,217,0.4)'">
+      See Consultant Demo →
+    </a>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-heading">From onboarding to <em>audit-ready</em> — for every client.</h2>
+      <p style="color:#64748b;font-size:0.9rem;max-width:560px;line-height:1.65;margin-top:4px;">Add clients, assign SAQ types, and let PCI-Nexus do the heavy lifting. Your clients get guided compliance workflows. You get full visibility and control.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal" style="transition-delay:0.05s;">
+        <div class="step-num">1</div>
+        <h3>Create your consultant account</h3>
+        <p>Sign up for a consultant plan. You get a centralized dashboard showing all your clients' compliance posture at a glance.</p>
+      </div>
+      <div class="step-card reveal" style="transition-delay:0.1s;">
+        <div class="step-num">2</div>
+        <h3>Add client organizations</h3>
+        <p>Invite clients by email or create their tenant directly. Set access levels — full access, read-only, or assessment-only.</p>
+      </div>
+      <div class="step-card reveal" style="transition-delay:0.15s;">
+        <div class="step-num">3</div>
+        <h3>Assign SAQ types &amp; scope</h3>
+        <p>Walk each client through the SAQ Wizard. PCI-Nexus loads the correct requirements and evidence templates automatically.</p>
+      </div>
+      <div class="step-card reveal" style="transition-delay:0.2s;">
+        <div class="step-num">4</div>
+        <h3>Track &amp; remediate findings</h3>
+        <p>Use the Findings &amp; Remediation Kanban to assign tasks, track progress, and generate gap analysis reports for each client.</p>
+      </div>
+      <div class="step-card reveal" style="transition-delay:0.25s;">
+        <div class="step-num">5</div>
+        <h3>Generate QSA-ready packages</h3>
+        <p>Export a complete evidence package, gap analysis, and compliance report for each client — formatted for QSA submission.</p>
+      </div>
+      <div class="step-card reveal" style="transition-delay:0.3s;">
+        <div class="step-num">6</div>
+        <h3>Bill clients your way</h3>
+        <p>Choose per-client billing (tenant pays directly) or aggregate billing (you pay, you charge). Flexible for any engagement model.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-label" style="text-align:center;">Consultant Pricing</div>
+      <h2 class="section-heading" style="max-width:100%;text-align:center;">Scale your practice. <em>Not your overhead.</em></h2>
+      <p style="color:#64748b;font-size:0.9rem;margin-top:12px;max-width:540px;margin-left:auto;margin-right:auto;line-height:1.6;text-align:center;">All consultant plans include multi-client dashboard access. Client SAQ surcharges apply per client based on their SAQ type.</p>
+    </div>
+
+    <!-- Billing toggle -->
+    <div class="billing-toggle reveal" style="transition-delay:0.1s;">
+      <span class="toggle-label active" id="lbl-monthly">Monthly</span>
+      <div class="toggle-track" id="toggle" onclick="toggleBilling()" title="Toggle billing period">
+        <div class="toggle-thumb"></div>
+      </div>
+      <span class="toggle-label" id="lbl-annual">Annual</span>
+      <span class="save-badge">Save 17%</span>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- Starter -->
+      <div class="pricing-card reveal" style="transition-delay:0.05s;">
+        <div class="price-tier">Starter</div>
+        <div class="price-name">Consultant</div>
+        <div class="price-amount" id="price-starter">$299<span>/mo</span></div>
+        <div class="price-clients">Up to 5 client organizations</div>
+        <div class="price-desc">Free setup period. Ideal for solo consultants and independent security advisors just getting started.</div>
+        <ul class="price-features">
+          <li>5 client organizations</li>
+          <li>Multi-client dashboard</li>
+          <li>Per-client SAQ wizard</li>
+          <li>Evidence portal access</li>
+          <li>AI compliance chat</li>
+          <li>Gap analysis reports</li>
+          <li>Client portal (read-only access for clients)</li>
+          <li class="dim">White-label branding</li>
+          <li class="dim">Priority support</li>
+        </ul>
+        <button class="btn-price outline" onclick="window.location.href='onboarding.html'">Start Free Setup</button>
+      </div>
+
+      <!-- Pro -->
+      <div class="pricing-card featured reveal" style="transition-delay:0.1s;">
+        <div class="pricing-badge">Most Popular</div>
+        <div class="price-tier">Pro</div>
+        <div class="price-name">Consultant</div>
+        <div class="price-amount" id="price-pro">$599<span>/mo</span></div>
+        <div class="price-clients">Up to 15 client organizations</div>
+        <div class="price-desc">Free setup period. For growing consulting practices managing a portfolio of clients year-round.</div>
+        <ul class="price-features">
+          <li>15 client organizations</li>
+          <li>Multi-client dashboard</li>
+          <li>Per-client SAQ wizard</li>
+          <li>Evidence portal access</li>
+          <li>AI compliance chat</li>
+          <li>Gap analysis reports</li>
+          <li>Client portal (full access)</li>
+          <li>QSA-ready export packages</li>
+          <li>Priority email support</li>
+        </ul>
+        <button class="btn-price solid" onclick="window.location.href='onboarding.html'">Start Free Setup</button>
+      </div>
+
+      <!-- Elite -->
+      <div class="pricing-card reveal" style="transition-delay:0.15s;">
+        <div class="price-tier">Elite</div>
+        <div class="price-name">Consultant</div>
+        <div class="price-amount" id="price-elite">$999<span>/mo</span></div>
+        <div class="price-clients">Up to 30 client organizations</div>
+        <div class="price-desc">Free setup period. For established practices and ISAs managing large client portfolios with advanced reporting needs.</div>
+        <ul class="price-features">
+          <li>30 client organizations</li>
+          <li>Multi-client dashboard</li>
+          <li>Per-client SAQ wizard</li>
+          <li>Evidence portal access</li>
+          <li>AI compliance chat</li>
+          <li>Gap analysis reports</li>
+          <li>Client portal (full access)</li>
+          <li>QSA-ready export packages</li>
+          <li>White-label branding</li>
+          <li>Priority phone + email support</li>
+        </ul>
+        <button class="btn-price outline" onclick="window.location.href='onboarding.html'">Start Free Setup</button>
+      </div>
+
+      <!-- QSA Enterprise -->
+      <div class="pricing-card reveal" style="transition-delay:0.2s;">
+        <div class="price-tier">Enterprise</div>
+        <div class="price-name">QSA</div>
+        <div class="price-amount">Custom<span></span></div>
+        <div class="price-clients">Unlimited client organizations</div>
+        <div class="price-desc">12-month minimum. For QSA companies and large MSPs managing compliance at scale with full white-label and SLA requirements.</div>
+        <ul class="price-features">
+          <li>Unlimited client organizations</li>
+          <li>Full white-label platform</li>
+          <li>Custom domain support</li>
+          <li>Dedicated onboarding</li>
+          <li>SLA &amp; uptime guarantee</li>
+          <li>Custom integrations</li>
+          <li>API access</li>
+          <li>Named account manager</li>
+        </ul>
+        <button class="btn-price dark" onclick="window.location.href='mailto:jeaton@pcinexus.com?subject=QSA Enterprise Inquiry'">Contact Sales</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SAQ SURCHARGES -->
+<section class="surcharge-section">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Per-Client SAQ Surcharges</div>
+      <h2 class="section-heading">Pricing scales with <em>client complexity.</em></h2>
+      <p style="color:#64748b;font-size:0.9rem;max-width:580px;line-height:1.65;margin-top:4px;">
+        Each client added to your consultant account carries a monthly surcharge based on their SAQ type. More complex SAQs require more platform capability — so we price accordingly. Surcharges are per-client, per-month, in addition to your base plan.
+      </p>
+    </div>
+    <div class="reveal" style="transition-delay:0.1s;overflow-x:auto;">
+      <table class="surcharge-table">
+        <thead>
+          <tr>
+            <th>SAQ Type</th>
+            <th>Description</th>
+            <th>Typical Merchant</th>
+            <th>Monthly Surcharge</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="saq-type">SAQ-A</span></td>
+            <td>Card-not-present, fully outsourced</td>
+            <td>E-commerce, no stored data</td>
+            <td><span class="surcharge-amt free">Included</span></td>
+          </tr>
+          <tr>
+            <td><span class="saq-type">SAQ-A-EP</span></td>
+            <td>E-commerce, partial redirect</td>
+            <td>Hosted checkout with redirect</td>
+            <td><span class="surcharge-amt">+$15/mo</span></td>
+          </tr>
+          <tr>
+            <td><span class="saq-type">SAQ-B</span></td>
+            <td>Imprint or standalone terminals</td>
+            <td>Restaurants, retail terminals</td>
+            <td><span class="surcharge-amt">+$15/mo</span></td>
+          </tr>
+          <tr>
+            <td><span class="saq-type">SAQ-B-IP</span></td>
+            <td>IP-connected terminals</td>
+            <td>Modern POS systems</td>
+            <td><span class="surcharge-amt">+$25/mo</span></td>
+          </tr>
+          <tr>
+            <td><span class="saq-type">SAQ-C-VT</span></td>
+            <td>Virtual terminals, no storage</td>
+            <td>Phone order processing</td>
+            <td><span class="surcharge-amt">+$25/mo</span></td>
+          </tr>
+          <tr>
+            <td><span class="saq-type">SAQ-C</span></td>
+            <td>Connected POS, no storage</td>
+            <td>Retail with network POS</td>
+            <td><span class="surcharge-amt">+$35/mo</span></td>
+          </tr>
+          <tr>
+            <td><span class="saq-type">SAQ-D Merchant</span></td>
+            <td>All other merchants</td>
+            <td>High complexity, data storage possible</td>
+            <td><span class="surcharge-amt">+$75/mo</span></td>
+          </tr>
+          <tr>
+            <td><span class="saq-type">SAQ-D Service Provider</span></td>
+            <td>Service providers handling cardholder data</td>
+            <td>Processors, gateways, SaaS</td>
+            <td><span class="surcharge-amt">+$125/mo</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="reveal" style="transition-delay:0.15s;margin-top:24px;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:16px;padding:20px 24px;display:flex;align-items:flex-start;gap:14px;">
+      <div style="font-size:1.2rem;flex-shrink:0;">💡</div>
+      <div>
+        <div style="font-size:0.85rem;font-weight:700;color:var(--navy);margin-bottom:6px;">Example: Pro plan with 8 clients</div>
+        <p style="font-size:0.82rem;color:#64748b;line-height:1.6;">
+          5× SAQ-A ($0) + 2× SAQ-B ($30) + 1× SAQ-D Merchant ($75) = <strong style="color:var(--navy);">$105 in surcharges</strong>.
+          Pro base plan $599 + $105 = <strong style="color:var(--blue);">$704/mo total</strong> for 8 clients — less than $90 per client.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VS DOING IT MANUALLY -->
+<section class="compare-section">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Why PCI-Nexus</div>
+      <h2 class="section-heading">Stop managing compliance <em>in spreadsheets.</em></h2>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-card reveal" style="transition-delay:0.05s;">
+        <h3>Without PCI-Nexus</h3>
+        <p class="sub">The old way — juggling clients across spreadsheets, emails, and shared folders.</p>
+        <div class="compare-items">
+          <div class="compare-item"><div class="icon">❌</div><p>Separate spreadsheet or folder per client — no unified view</p></div>
+          <div class="compare-item"><div class="icon">❌</div><p>Evidence collection via email — impossible to track status</p></div>
+          <div class="compare-item"><div class="icon">❌</div><p>Manual SAQ mapping — easy to miss updated v4.0.1 requirements</p></div>
+          <div class="compare-item"><div class="icon">❌</div><p>No audit trail — hard to prove what was done when</p></div>
+          <div class="compare-item"><div class="icon">❌</div><p>Client reporting takes hours to compile per engagement</p></div>
+          <div class="compare-item"><div class="icon">❌</div><p>Compliance gaps discovered late — remediation is rushed</p></div>
+        </div>
+      </div>
+      <div class="compare-card highlight reveal" style="transition-delay:0.1s;">
+        <h3>With PCI-Nexus</h3>
+        <p class="sub">One platform, every client — real-time compliance visibility across your entire practice.</p>
+        <div class="compare-items">
+          <div class="compare-item"><div class="icon">✅</div><p><strong>Unified dashboard</strong> — all clients, all SAQ types, all statuses</p></div>
+          <div class="compare-item"><div class="icon">✅</div><p><strong>Client portal</strong> — clients upload evidence directly, you review &amp; approve</p></div>
+          <div class="compare-item"><div class="icon">✅</div><p><strong>Auto-mapped requirements</strong> — always current PCI DSS v4.0.1</p></div>
+          <div class="compare-item"><div class="icon">✅</div><p><strong>Full audit log</strong> — timestamped record of every action per client</p></div>
+          <div class="compare-item"><div class="icon">✅</div><p><strong>One-click reports</strong> — QSA packages, gap analysis, executive summaries</p></div>
+          <div class="compare-item"><div class="icon">✅</div><p><strong>Proactive gap alerts</strong> — catch issues months before audit deadlines</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROI -->
+<section class="roi-section">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-label" style="text-align:center;">The Numbers</div>
+      <h2 class="section-heading" style="text-align:center;max-width:100%;">What consultants gain with <em>PCI-Nexus.</em></h2>
+    </div>
+    <div class="roi-grid">
+      <div class="roi-card reveal" style="transition-delay:0.05s;">
+        <div class="roi-number">3×</div>
+        <div class="roi-label">More clients per consultant</div>
+        <div class="roi-desc">Centralized workflows and automated evidence collection let one consultant manage what previously required a team.</div>
+      </div>
+      <div class="roi-card reveal" style="transition-delay:0.1s;">
+        <div class="roi-number"><em>~8hrs</em></div>
+        <div class="roi-label">Saved per client per month</div>
+        <div class="roi-desc">No more chasing evidence by email. Clients upload directly. You review and approve in the portal.</div>
+      </div>
+      <div class="roi-card reveal" style="transition-delay:0.15s;">
+        <div class="roi-number">100%</div>
+        <div class="roi-label">PCI DSS v4.0.1 current</div>
+        <div class="roi-desc">Every requirement, sub-requirement, and evidence template stays current. No manual updates when the standard changes.</div>
+      </div>
+      <div class="roi-card reveal" style="transition-delay:0.2s;">
+        <div class="roi-number"><em>&lt;5min</em></div>
+        <div class="roi-label">To generate a client report</div>
+        <div class="roi-desc">Gap analysis, executive summary, and QSA-ready evidence package — generated in one click, formatted for submission.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-box reveal">
+    <h2>Ready to scale your<br><em>compliance practice?</em></h2>
+    <p>Start your free setup today. No credit card required until you go live. Add your first client in under 10 minutes.</p>
+    <div class="cta-buttons">
+      <a href="https://pci-nexus.vercel.app/Demo?p=consultant" target="_blank" class="btn-cta-primary">See Live Consultant Demo</a>
+      <a href="onboarding.html" class="btn-cta-secondary">Start Free Setup →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">PCI <span>Nexus</span></div>
+    <p style="margin-top:6px;">PCI DSS v4.0.1 compliance for the real world.</p>
+  </div>
+  <div class="footer-links">
+    <a href="index.html#features">Features</a>
+    <a href="consultants.html">For Consultants</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="https://pci-nexus.vercel.app/Demo" target="_blank">Demo</a>
+    <a href="mailto:jeaton@pcinexus.com">Contact</a>
+  </div>
+  <p>© 2026 J.Eaton Consulting. All rights reserved.</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Billing toggle
+  const prices = {
+    starter: { monthly: '$299', annual: '$248' },
+    pro:     { monthly: '$599', annual: '$497' },
+    elite:   { monthly: '$999', annual: '$829' },
+  };
+  let isAnnual = false;
+  function toggleBilling() {
+    isAnnual = !isAnnual;
+    const track = document.getElementById('toggle');
+    const lblM = document.getElementById('lbl-monthly');
+    const lblA = document.getElementById('lbl-annual');
+    track.classList.toggle('annual', isAnnual);
+    lblM.classList.toggle('active', !isAnnual);
+    lblA.classList.toggle('active', isAnnual);
+    const mode = isAnnual ? 'annual' : 'monthly';
+    const suffix = isAnnual ? '<span>/mo, billed annually</span>' : '<span>/mo</span>';
+    document.getElementById('price-starter').innerHTML = prices.starter[mode] + suffix;
+    document.getElementById('price-pro').innerHTML     = prices.pro[mode]     + suffix;
+    document.getElementById('price-elite').innerHTML   = prices.elite[mode]   + suffix;
+  }
+</script>
+</body>
+</html>
