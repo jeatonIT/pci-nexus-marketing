@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F2447"/>
+      <stop offset="100%" stop-color="#162E5A"/>
+    </linearGradient>
+    <linearGradient id="teal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E6FD9"/>
+      <stop offset="100%" stop-color="#1ABFCC"/>
+    </linearGradient>
+    <clipPath id="round">
+      <rect width="32" height="32" rx="7"/>
+    </clipPath>
+  </defs>
+  <!-- Navy background -->
+  <rect width="32" height="32" rx="7" fill="url(#bg)"/>
+  <!-- Teal bottom stripe (clipped to rounded rect) -->
+  <rect x="0" y="27" width="32" height="5" fill="url(#teal)" clip-path="url(#round)"/>
+  <!-- P in white, serif to match logo -->
+  <text x="3.5" y="23.5" font-family="Georgia,'Times New Roman',serif" font-size="19" font-weight="700" fill="#FFFFFF" letter-spacing="-0.5">P</text>
+  <!-- N in teal -->
+  <text x="15.5" y="23.5" font-family="Georgia,'Times New Roman',serif" font-size="19" font-weight="700" fill="#1ABFCC" letter-spacing="-0.5">N</text>
+</svg>
