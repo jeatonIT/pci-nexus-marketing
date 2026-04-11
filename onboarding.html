@@ -192,6 +192,17 @@
 
   <main class="main">
 
+    <!-- STEP 0: PRIOR SAQ CHECK -->
+    <div class="step-panel active" id="panel-prior">
+      <div class="ey">Before we begin</div>
+      <div class="sh">Have you completed a PCI DSS assessment before?</div>
+      <p style="color:#64748b;font-size:0.88rem;line-height:1.65;margin-bottom:28px;">If you have a prior SAQ or ROC, we can import your organization, locations, and compliance history automatically.</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <button class="btn-next" onclick="goTo(0)">? Yes — I have a prior SAQ or ROC</button>
+        <button class="btn-next" style="background:rgba(15,36,71,0.08);color:#0F2447;box-shadow:none;border:1.5px solid #e2e8f0;" onclick="goTo(0)">No — this is my first time</button>
+      </div>
+    </div>
+
     <!-- STEP 0: PLAN -->
     <div class="step-panel active" id="panel-0">
       <div class="ey">Step 1 of 6</div>
