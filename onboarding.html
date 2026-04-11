@@ -193,26 +193,26 @@
   <main class="main">
 
     <!-- STEP 0: PRIOR SAQ CHECK -->
-    <div class="step-panel active" id="panel-prior">
+    <div class="step-panel active" id="panel-0">
       <div class="ey">Before we begin</div>
       <div class="sh">Have you completed a PCI DSS assessment before?</div>
       <p style="color:#64748b;font-size:0.88rem;line-height:1.65;margin-bottom:28px;">If you have a prior SAQ or ROC, we can import your organization, locations, and compliance history automatically.</p>
       <div style="display:flex;flex-direction:column;gap:12px;">
         <button class="btn-next" onclick="goTo(0)">? Yes — I have a prior SAQ or ROC</button>
-        <button class="btn-next" style="background:rgba(15,36,71,0.08);color:#0F2447;box-shadow:none;border:1.5px solid #e2e8f0;" onclick="goTo(0)">No — this is my first time</button>
+        <button class="btn-next" style="background:rgba(15,36,71,0.08);color:#0F2447;box-shadow:none;border:1.5px solid #e2e8f0;" onclick="goTo(1)">No — this is my first time</button>
       </div>
       <div id="prior-upload" style="display:none;margin-top:20px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:20px;">
         <div style="font-size:0.75rem;font-weight:700;color:#1E6FD9;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;">Great — we will import your data</div>
         <p style="font-size:0.82rem;color:#64748b;line-height:1.6;margin-bottom:14px;">After you create your account, our AI will extract your organization name, locations, contacts, and prior compliance status from your SAQ or ROC automatically.</p>
         <div style="background:#fff;border:2px dashed #e2e8f0;border-radius:10px;padding:16px;text-align:center;color:#94a3b8;font-size:0.82rem;margin-bottom:16px;">?? You will upload your document on the next screen after account creation</div>
-        <button class="btn-next" style="width:100%;" onclick="goTo(0)">Continue to plan selection ?</button>
+        <button class="btn-next" style="width:100%;" onclick="goTo(1)">Continue to plan selection ?</button>
       </div>
       <div style="display:none">
       </div>
     </div>
 
     <!-- STEP 0: PLAN -->
-    <div class="step-panel active" id="panel-0">
+    <div class="step-panel" id="panel-1">
       <div class="ey">Step 1 of 6</div>
       <h1 class="ph">Choose your <em>plan.</em></h1>
       <p class="ps">Setup is completely free â€” configure your organization, locations, and team at no cost. Your 6-month plan starts only when you decide to go live. PCI DSS requires recurring quarterly scans, daily log reviews, and annual training. You need sustained tooling, not a one-time fix.</p>
@@ -258,7 +258,7 @@
     </div>
 
     <!-- STEP 1: ACCOUNT -->
-    <div class="step-panel" id="panel-1">
+    <div class="step-panel" id="panel-2">
       <div class="ey">Step 2 of 6</div>
       <h1 class="ph">Create your <em>account.</em></h1>
       <p class="ps">This is your admin account â€” the L1 Executive role with full access to the entire platform.</p>
@@ -287,7 +287,7 @@
     </div>
 
     <!-- STEP 2: ORGANIZATION -->
-    <div class="step-panel" id="panel-2">
+    <div class="step-panel" id="panel-3">
       <div class="ey">Step 3 of 6</div>
       <h1 class="ph">Your <em>organization.</em></h1>
       <p class="ps">This becomes your tenant profile in PCINexus. Everything here can be updated later from the Organization Settings page.</p>
@@ -328,7 +328,7 @@
     </div>
 
     <!-- STEP 3: LOCATIONS + SAQ -->
-    <div class="step-panel" id="panel-3">
+    <div class="step-panel" id="panel-4">
       <div class="ey">Step 4 of 6</div>
       <h1 class="ph">Locations &amp; <em>SAQ type.</em></h1>
       <p class="ps">Add your locations and select your primary SAQ type. You can assign different SAQ types per location after setup.</p>
@@ -354,7 +354,7 @@
     </div>
 
     <!-- STEP 4: TEAM -->
-    <div class="step-panel" id="panel-4">
+    <div class="step-panel" id="panel-5">
       <div class="ey">Step 5 of 6</div>
       <h1 class="ph">Invite your <em>team.</em></h1>
       <p class="ps">Add team members and they'll receive a secure email invitation the moment your account goes live. You can always add more from the Contacts page.</p>
@@ -369,7 +369,7 @@
     </div>
 
     <!-- STEP 5: PAYMENT -->
-    <div class="step-panel" id="panel-5">
+    <div class="step-panel" id="panel-6">
       <div class="ey">Step 6 of 6</div>
       <h1 class="ph">Save your card. <em>Setup is free.</em></h1>
       <p class="ps">Enter your payment details now â€” your card will not be charged until you choose to go live. Once you activate, your 6-month commitment begins and we start building your compliance record together.</p>
@@ -460,7 +460,7 @@ function show(n){
   document.getElementById('success-wrap').classList.remove('visible');
   cur=n; renderNav(); window.scrollTo(0,0);
 }
-function nextStep(){if(cur<5)show(cur+1);}
+function nextStep(){if(cur<6)show(cur+1);}
 function prevStep(){if(cur>0)show(cur-1);}
 function goTo(n){show(n);}
 
