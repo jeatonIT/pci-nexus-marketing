@@ -198,7 +198,7 @@
       <div class="sh">Have you completed a PCI DSS assessment before?</div>
       <p style="color:#64748b;font-size:0.88rem;line-height:1.65;margin-bottom:28px;">If you have a prior SAQ or ROC, we can import your organization, locations, and compliance history automatically.</p>
       <div style="display:flex;flex-direction:column;gap:12px;">
-        <button class="btn-next" onclick="goTo(0)">? Yes — I have a prior SAQ or ROC</button>
+        <button class="btn-next" onclick="document.getElementById('prior-upload').style.display='block';this.style.display='none'">? Yes — I have a prior SAQ or ROC</button>
         <button class="btn-next" style="background:rgba(15,36,71,0.08);color:#0F2447;box-shadow:none;border:1.5px solid #e2e8f0;" onclick="goTo(1)">No — this is my first time</button>
       </div>
       <div id="prior-upload" style="display:none;margin-top:20px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:20px;">
