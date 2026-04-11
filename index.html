@@ -1381,4 +1381,7 @@
     const s = document.getElementById('success-state');
     s.classList.add('visible');
 
-    // In production: POST to 
+    // Send to signup
+    window.location.href = 'https://pci-nexus.vercel.app/signup?email=' + encodeURIComponent(email) + '&company=' + encodeURIComponent(company);
+  }
+</script>
