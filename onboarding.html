@@ -221,7 +221,7 @@
           <div class="pc-tier">Starter</div>
           <div class="pc-name">Single Location</div>
           <div class="pc-price">$125<span>/mo</span></div>
-          <div class="pc-min">Free setup · 6-month plan</div>
+          <div class="pc-min">Free setup &middot; 6-month plan</div>
           <div class="pc-total">$750 due when you go live</div>
           <ul class="pc-feats">
             <li>1 location</li><li>Up to 10 users</li><li>All SAQ types</li>
@@ -233,7 +233,7 @@
           <div class="pc-tier">Growth</div>
           <div class="pc-name">Multi-Location</div>
           <div class="pc-price">$249<span>/mo</span></div>
-          <div class="pc-min">Free setup · 6-month plan</div>
+          <div class="pc-min">Free setup &middot; 6-month plan</div>
           <div class="pc-total">$1,494 due when you go live</div>
           <ul class="pc-feats">
             <li>Up to 10 locations</li><li>Unlimited users</li><li>All SAQ types</li>
@@ -244,7 +244,7 @@
           <div class="pc-tier">Enterprise</div>
           <div class="pc-name">Unlimited</div>
           <div class="pc-price">Custom</div>
-          <div class="pc-min">Free setup · 12-month plan</div>
+          <div class="pc-min">Free setup &middot; 12-month plan</div>
           <div class="pc-total">Pricing on request</div>
           <ul class="pc-feats">
             <li>Unlimited locations</li><li>Unlimited users</li><li>White-label option</li>
@@ -335,13 +335,13 @@
       <div class="sec-label">Primary SAQ Type</div>
       <div class="saq-help">💡 Not sure which SAQ applies? The built-in SAQ Wizard will identify your exact type in about 2 minutes after setup  -  select "Not Sure Yet" to skip for now.</div>
       <div class="saq-grid">
-        <div class="sq" onclick="selSAQ(this,'SAQ-A')"><div class="sq-type">SAQ-A</div><div class="sq-desc">Card-not-present merchants. All payment functions outsourced to a PCI-compliant provider.</div><div class="sq-hint">Lowest complexity · 22 requirements</div></div>
+        <div class="sq" onclick="selSAQ(this,'SAQ-A')"><div class="sq-type">SAQ-A</div><div class="sq-desc">Card-not-present merchants. All payment functions outsourced to a PCI-compliant provider.</div><div class="sq-hint">Lowest complexity &middot; 22 requirements</div></div>
         <div class="sq" onclick="selSAQ(this,'SAQ-B')"><div class="sq-type">SAQ-B</div><div class="sq-desc">Imprint-only or standalone dial-out terminals. No electronic cardholder data storage.</div><div class="sq-hint">41 requirements</div></div>
         <div class="sq" onclick="selSAQ(this,'SAQ-B-IP')"><div class="sq-type">SAQ-B-IP</div><div class="sq-desc">Standalone IP-connected payment terminals isolated from other systems.</div><div class="sq-hint">83 requirements</div></div>
         <div class="sq" onclick="selSAQ(this,'SAQ-C-VT')"><div class="sq-type">SAQ-C-VT</div><div class="sq-desc">Virtual terminals accessed via isolated web browser. No electronic storage.</div><div class="sq-hint">65 requirements</div></div>
-        <div class="sq" onclick="selSAQ(this,'SAQ-C')"><div class="sq-type">SAQ-C</div><div class="sq-desc">Payment application systems connected to the internet. Most restaurants &amp; retail.</div><div class="sq-hint">Most common for restaurants · 160 requirements</div></div>
+        <div class="sq" onclick="selSAQ(this,'SAQ-C')"><div class="sq-type">SAQ-C</div><div class="sq-desc">Payment application systems connected to the internet. Most restaurants &amp; retail.</div><div class="sq-hint">Most common for restaurants &middot; 160 requirements</div></div>
         <div class="sq" onclick="selSAQ(this,'SAQ-P2PE')"><div class="sq-type">SAQ-P2PE</div><div class="sq-desc">Hardware terminals on a PCI-listed P2PE solution. Significantly reduced scope.</div><div class="sq-hint">35 requirements</div></div>
-        <div class="sq" onclick="selSAQ(this,'SAQ-D')"><div class="sq-type">SAQ-D Merchant</div><div class="sq-desc">All other merchants not covered by the above types. Full scope assessment.</div><div class="sq-hint">Full scope · 286 requirements</div></div>
+        <div class="sq" onclick="selSAQ(this,'SAQ-D')"><div class="sq-type">SAQ-D Merchant</div><div class="sq-desc">All other merchants not covered by the above types. Full scope assessment.</div><div class="sq-hint">Full scope &middot; 286 requirements</div></div>
         <div class="sq" onclick="selSAQ(this,'Not Sure')"><div class="sq-type">Not Sure Yet</div><div class="sq-desc">Use the PCINexus SAQ Wizard after setup to identify the correct type for your environment.</div><div class="sq-hint">Recommended if unsure</div></div>
       </div>
       <div class="sec-label" style="margin-top:8px;">Your Locations</div>
@@ -472,7 +472,7 @@ function selPlan(p){
   const d=PLANS[p];
   document.getElementById('sb-plan').style.display='block';
   document.getElementById('sp-name').textContent=d.name;
-  document.getElementById('sp-price').textContent=d.mo?`$${d.mo}/mo · ${d.tl} min · $${d.total.toLocaleString()} today`:`Custom · ${d.tl} min`;
+  document.getElementById('sp-price').textContent=d.mo?`$${d.mo}/mo &middot; ${d.tl} min &middot; $${d.total.toLocaleString()} today`:`Custom &middot; ${d.tl} min`;
   // payment step
   document.getElementById('ps-plan').textContent=d.name;
   document.getElementById('ps-mo').textContent=d.mo?`$${d.mo}/mo`:'Custom';
