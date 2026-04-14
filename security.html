@@ -1,4 +1,4 @@
-﻿﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -372,7 +372,7 @@
   <h1>PCI DSS <span>Cybersecurity</span> Requirements</h1>
   <p>All 12 requirement areas of PCI DSS v4.0.1 — explained in plain English. Click any card to expand the full sub-requirements and individual controls.</p>
   <div class="hero-note">
-    <strong>Reference guide</strong> &middot; Applies to all merchants regardless of SAQ type &middot; v4.0.1 current as of 2025
+    <strong>Reference guide</strong> · Applies to all merchants regardless of SAQ type · v4.0.1 current as of 2025
   </div>
 </div>
 
@@ -397,7 +397,7 @@ const REQUIREMENTS = [
   {
     id: 1,
     tag: "NETWORK SECURITY",
-    tagIcon: "ðŸŒ",
+    tagIcon: "🌐",
     title: "Network Security Controls",
     desc: "Firewall management, network segmentation, and documented traffic rules. Prevents unauthorized access to every system in your environment — not just card data.",
     purpose: "Your firewall is the first line of defense. Without network controls, any device on a public network can reach your payment systems. Attackers actively scan for unprotected networks.",
@@ -437,7 +437,7 @@ const REQUIREMENTS = [
   {
     id: 2,
     tag: "HARDENING",
-    tagIcon: "ðŸ”’",
+    tagIcon: "🔒",
     title: "Secure System Configurations",
     desc: "Default credentials removed, unnecessary services disabled, hardened configurations documented. Eliminates the easiest attack vector for every device on your network.",
     purpose: "Vendor defaults are publicly known. Every system shipped with defaults in place is a trivial target. Attackers run automated tools specifically looking for default credentials and unnecessary services.",
@@ -465,7 +465,7 @@ const REQUIREMENTS = [
   {
     id: 3,
     tag: "DATA SECURITY",
-    tagIcon: "ðŸ”",
+    tagIcon: "🔐",
     title: "Data Protection at Rest",
     desc: "Encryption and tokenization of sensitive data at rest. Protects your business from the consequences of a breach — encrypted data that's stolen is worthless to an attacker.",
     purpose: "If an attacker can't read stored card data, they can't monetize a breach. Most breaches involve stored data that should never have been kept. Minimize storage, protect what you must keep.",
@@ -512,7 +512,7 @@ const REQUIREMENTS = [
   {
     id: 4,
     tag: "ENCRYPTION",
-    tagIcon: "ðŸ”’",
+    tagIcon: "🔒",
     title: "Data Protection in Transit",
     desc: "TLS encryption for all data transmission. Prevents interception of sensitive data in transit across your network or over the internet.",
     purpose: "Unencrypted PANs traveling over public networks can be intercepted by anyone with packet-sniffing tools. A single capture of card data in transit can compromise thousands of accounts.",
@@ -533,7 +533,7 @@ const REQUIREMENTS = [
   {
     id: 5,
     tag: "ENDPOINT SECURITY",
-    tagIcon: "ðŸ›¡",
+    tagIcon: "🛡",
     title: "Anti-Malware Protection",
     desc: "Active antivirus, anti-ransomware, and endpoint protection on every system. Documented status, current definitions, and threat detection history — for every location.",
     purpose: "Malware — ransomware, spyware, keyloggers — can capture card data as it's being processed. All CDE systems must be protected even if you believe they're not directly exposed.",
@@ -565,7 +565,7 @@ const REQUIREMENTS = [
   {
     id: 6,
     tag: "VULNERABILITY MGMT",
-    tagIcon: "ðŸ”",
+    tagIcon: "🔍",
     title: "Secure Software & Systems",
     desc: "Vulnerability scanning, patch management cadence, and secure development practices. Closes the gaps attackers look for first — unpatched systems and known CVEs.",
     purpose: "Unpatched software is the #1 attack vector. Attackers actively scan for known CVEs within hours of publication. If you haven't patched, you're exposed — often exploited before you even know the patch exists.",
@@ -605,7 +605,7 @@ const REQUIREMENTS = [
   {
     id: 7,
     tag: "ACCESS CONTROL",
-    tagIcon: "ðŸ”‘",
+    tagIcon: "🔑",
     title: "Restrict Access by Role",
     desc: "Least-privilege access controls — employees can only access systems relevant to their job. Limits the blast radius of any compromised account or insider threat.",
     purpose: "Not everyone needs access to cardholder data. Restricting access to the minimum required per job function reduces risk from compromised credentials, insider threats, and accidental exposure.",
@@ -634,7 +634,7 @@ const REQUIREMENTS = [
   {
     id: 8,
     tag: "IDENTITY SECURITY",
-    tagIcon: "ðŸ‘¤",
+    tagIcon: "👤",
     title: "Identity & Authentication",
     desc: "MFA on all CDE access, strong password policies, account lifecycle management, stale account removal. Identity is the #1 attack vector in modern breaches — this requirement addresses it directly.",
     purpose: "Shared accounts eliminate accountability. Weak passwords are guessed in seconds. Without MFA, a single phished credential can compromise your entire CDE. Req 8 is where most breaches begin.",
@@ -682,7 +682,7 @@ const REQUIREMENTS = [
   {
     id: 9,
     tag: "PHYSICAL SECURITY",
-    tagIcon: "ðŸ¢",
+    tagIcon: "🏢",
     title: "Physical Access Controls",
     desc: "Documented physical access to servers, POS terminals, and network equipment. Often overlooked — physical access to hardware is frequently how breaches begin in retail environments.",
     purpose: "Skimmers attached to payment terminals, stolen hard drives, and unshredded receipts are real attack vectors. Physical access to your CDE is just as dangerous as electronic access.",
@@ -730,7 +730,7 @@ const REQUIREMENTS = [
   {
     id: 10,
     tag: "DETECTION",
-    tagIcon: "ðŸ“¡",
+    tagIcon: "📡",
     title: "Logging & Monitoring",
     desc: "Centralized log management, daily log review, and alert-based monitoring across all systems. You cannot detect an incident — or prove you weren't breached — without this.",
     purpose: "Logs are the primary forensic tool after a breach and daily evidence that controls are working. Without logging, you have no way to detect unauthorized access or prove compliance to a QSA.",
@@ -781,7 +781,7 @@ const REQUIREMENTS = [
   {
     id: 11,
     tag: "THREAT DETECTION",
-    tagIcon: "ðŸŽ¯",
+    tagIcon: "🎯",
     title: "Security Testing",
     desc: "Quarterly vulnerability scans, annual penetration tests, intrusion detection, and file integrity monitoring. Continuous testing finds what attackers would find — before they do.",
     purpose: "Static controls degrade over time. New vulnerabilities emerge daily. Regular testing verifies that controls are actually working — not just documented. A QSA will ask for scan results, not just policies.",
@@ -825,7 +825,7 @@ const REQUIREMENTS = [
   {
     id: 12,
     tag: "GOVERNANCE & IR",
-    tagIcon: "ðŸ“‹",
+    tagIcon: "📋",
     title: "Security Policies & Governance",
     desc: "Written security policy, annual risk assessment, vendor risk management, security awareness training, and a documented incident response plan. The governance layer that ties everything together.",
     purpose: "Without written policies and trained staff, every technical control is undermined by human behavior. Governance is what ensures compliance persists through staff turnover, system changes, and audit cycles.",
@@ -920,7 +920,7 @@ REQUIREMENTS.forEach(req => {
                 <div class="sub-title">${sub.title}</div>
                 ${sub.summary ? `<div class="sub-summary">${sub.summary}</div>` : ''}
               </div>
-              ${sub.controls && sub.controls.length ? '<span class="sub-arrow">â€º</span>' : ''}
+              ${sub.controls && sub.controls.length ? '<span class="sub-arrow">›</span>' : ''}
             </div>
             ${sub.controls && sub.controls.length ? `
               <div class="controls-list">
