@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -29,7 +29,7 @@
     line-height: 1.5;
   }
 
-  /* ── NAV (matching existing site) ── */
+  /* â”€â”€ NAV (matching existing site) â”€â”€ */
   nav {
     background: var(--navy);
     position: sticky;
@@ -70,7 +70,7 @@
   }
   nav .live-demo:hover { opacity: 0.9; }
 
-  /* ── HERO ── */
+  /* â”€â”€ HERO â”€â”€ */
   .hero {
     background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, #0a4f58 100%);
     padding: 4rem 2rem 3rem;
@@ -104,7 +104,7 @@
   }
   .hero-note strong { color: var(--teal-light); }
 
-  /* ── GRID ── */
+  /* â”€â”€ GRID â”€â”€ */
   .grid-section {
     max-width: 1280px;
     margin: 0 auto;
@@ -133,7 +133,7 @@
   @media (max-width: 1100px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 640px)  { .cards-grid { grid-template-columns: 1fr; } }
 
-  /* ── CARD ── */
+  /* â”€â”€ CARD â”€â”€ */
   .card {
     background: var(--white);
     border: 1px solid var(--border);
@@ -208,7 +208,7 @@
     transform: rotate(45deg);
   }
 
-  /* ── EXPANDED PANEL ── */
+  /* â”€â”€ EXPANDED PANEL â”€â”€ */
   .card-expanded {
     display: none;
     border-top: 1px solid var(--border);
@@ -332,7 +332,7 @@
   }
   .go-btn:hover { opacity: 0.88; }
 
-  /* ── FOOTER CTA ── */
+  /* â”€â”€ FOOTER CTA â”€â”€ */
   .footer-cta {
     background: linear-gradient(135deg, var(--navy), var(--navy-light));
     text-align: center;
@@ -363,16 +363,16 @@
   <a href="consultants.html">For Consultants</a>
   <a href="#who">Who It's For</a>
   <a href="#pricing">Pricing</a>
-  <a href="#" class="cta">vs. Vanta &amp; Drata →</a>
+  <a href="#" class="cta">vs. Vanta &amp; Drata â†’</a>
   <a href="/Demo" class="live-demo">Live Demo</a>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
   <h1>PCI DSS <span>Cybersecurity</span> Requirements</h1>
-  <p>All 12 requirement areas of PCI DSS v4.0.1 — explained in plain English. Click any card to expand the full sub-requirements and individual controls.</p>
+  <p>All 12 requirement areas of PCI DSS v4.0.1 â€” explained in plain English. Click any card to expand the full sub-requirements and individual controls.</p>
   <div class="hero-note">
-    <strong>Reference guide</strong> · Applies to all merchants regardless of SAQ type · v4.0.1 current as of 2025
+    <strong>Reference guide</strong> Â· Applies to all merchants regardless of SAQ type Â· v4.0.1 current as of 2025
   </div>
 </div>
 
@@ -388,20 +388,20 @@
 <div class="footer-cta">
   <h2>Ready to manage all 12 requirements in one place?</h2>
   <p>PCI-Nexus maps every control to your specific SAQ type so you only see what applies to your business.</p>
-  <a href="/Demo" class="btn">Start Free Trial →</a>
+  <a href="/Demo" class="btn">Start Free Trial â†’</a>
 </div>
 
 <script>
-// ── DATA ─────────────────────────────────────────────────────────────────────
+// â”€â”€ DATA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const REQUIREMENTS = [
   {
     id: 1,
     tag: "NETWORK SECURITY",
-    tagIcon: "🌐",
+    tagIcon: "ðŸŒ",
     title: "Network Security Controls",
-    desc: "Firewall management, network segmentation, and documented traffic rules. Prevents unauthorized access to every system in your environment — not just card data.",
+    desc: "Firewall management, network segmentation, and documented traffic rules. Prevents unauthorized access to every system in your environment â€” not just card data.",
     purpose: "Your firewall is the first line of defense. Without network controls, any device on a public network can reach your payment systems. Attackers actively scan for unprotected networks.",
-    saqNote: "Required for all SAQ types. SAQ-A: applies to any web server delivering a payment page. SAQ-B: simplified — terminal is isolated by default.",
+    saqNote: "Required for all SAQ types. SAQ-A: applies to any web server delivering a payment page. SAQ-B: simplified â€” terminal is isolated by default.",
     subReqs: [
       { id: "1.1", title: "Define roles and responsibilities for network security controls", summary: "Document who is responsible for managing and maintaining all network controls.", status: "compliant", controls: [
         { id: "1.1.1", title: "All security policies and operational procedures are documented, in use, and known to all affected parties", status: "compliant" },
@@ -437,11 +437,11 @@ const REQUIREMENTS = [
   {
     id: 2,
     tag: "HARDENING",
-    tagIcon: "🔒",
+    tagIcon: "ðŸ”’",
     title: "Secure System Configurations",
     desc: "Default credentials removed, unnecessary services disabled, hardened configurations documented. Eliminates the easiest attack vector for every device on your network.",
     purpose: "Vendor defaults are publicly known. Every system shipped with defaults in place is a trivial target. Attackers run automated tools specifically looking for default credentials and unnecessary services.",
-    saqNote: "Applies to all in-scope systems. SAQ P2PE: very limited scope — only terminal hardening per the P2PE Instruction Manual (PIM).",
+    saqNote: "Applies to all in-scope systems. SAQ P2PE: very limited scope â€” only terminal hardening per the P2PE Instruction Manual (PIM).",
     subReqs: [
       { id: "2.1", title: "Define roles and responsibilities for configuration management", summary: "Assign clear ownership for maintaining secure configurations across all system components.", status: "compliant", controls: [
         { id: "2.1.1", title: "All security policies and operational procedures are documented, in use, and known to all affected parties", status: "compliant" },
@@ -449,14 +449,14 @@ const REQUIREMENTS = [
       ]},
       { id: "2.2", title: "System components are configured and managed securely", summary: "Change all vendor defaults, disable unnecessary services, and document hardening standards for every system type.", status: "compliant", controls: [
         { id: "2.2.1", title: "Configuration standards are developed, implemented, and maintained for all system components", status: "compliant" },
-        { id: "2.2.2", title: "Vendor default accounts are managed — either disabled or have passwords changed before deployment", status: "compliant" },
+        { id: "2.2.2", title: "Vendor default accounts are managed â€” either disabled or have passwords changed before deployment", status: "compliant" },
         { id: "2.2.3", title: "Primary functions with differing security levels are managed on separate system components or hardened to the higher level", status: "compliant" },
         { id: "2.2.4", title: "Only necessary services, protocols, daemons, and functions are enabled, and all unnecessary functionality is removed", status: "compliant" },
         { id: "2.2.5", title: "If insecure services, protocols, or daemons are present, business need is documented and additional security features implemented", status: "compliant" },
         { id: "2.2.6", title: "System security parameters are configured to prevent misuse", status: "compliant" },
         { id: "2.2.7", title: "All non-console administrative access is encrypted using strong cryptography", status: "compliant" },
       ]},
-      { id: "2.3", title: "Wireless environments are configured and managed securely", summary: "All wireless connections to or from the CDE require hardening — no default SSIDs, strong encryption, no rogue APs.", status: "compliant", controls: [
+      { id: "2.3", title: "Wireless environments are configured and managed securely", summary: "All wireless connections to or from the CDE require hardening â€” no default SSIDs, strong encryption, no rogue APs.", status: "compliant", controls: [
         { id: "2.3.1", title: "For wireless environments connected to the CDE, all wireless vendor defaults are changed at installation", status: "compliant" },
         { id: "2.3.2", title: "For wireless environments connected to the CDE, wireless encryption keys are changed when personnel with key knowledge leave", status: "compliant", new: true },
       ]},
@@ -465,11 +465,11 @@ const REQUIREMENTS = [
   {
     id: 3,
     tag: "DATA SECURITY",
-    tagIcon: "🔐",
+    tagIcon: "ðŸ”",
     title: "Data Protection at Rest",
-    desc: "Encryption and tokenization of sensitive data at rest. Protects your business from the consequences of a breach — encrypted data that's stolen is worthless to an attacker.",
+    desc: "Encryption and tokenization of sensitive data at rest. Protects your business from the consequences of a breach â€” encrypted data that's stolen is worthless to an attacker.",
     purpose: "If an attacker can't read stored card data, they can't monetize a breach. Most breaches involve stored data that should never have been kept. Minimize storage, protect what you must keep.",
-    saqNote: "SAQ A, B, P2PE: Req 3 applies only to paper records — no electronic CHD storage. SAQ C, D: full requirement applies including encryption and key management.",
+    saqNote: "SAQ A, B, P2PE: Req 3 applies only to paper records â€” no electronic CHD storage. SAQ C, D: full requirement applies including encryption and key management.",
     subReqs: [
       { id: "3.1", title: "Define roles and responsibilities for protecting stored account data", summary: "Assign accountability for all data storage decisions and protection controls.", status: "compliant", controls: [
         { id: "3.1.1", title: "All security policies are documented, in use, and known", status: "compliant" },
@@ -479,14 +479,14 @@ const REQUIREMENTS = [
         { id: "3.2.1", title: "Account data storage is minimized through data retention and disposal policies and processes that include at least one defined retention period and processes to securely delete data when no longer needed", status: "compliant" },
       ]},
       { id: "3.3", title: "Sensitive authentication data (SAD) is not retained after authorization", summary: "Never store CVV/CVC, PIN blocks, or full magnetic stripe data after the transaction is authorized.", status: "compliant", controls: [
-        { id: "3.3.1", title: "SAD is not retained after authorization, even if encrypted — all sensitive authentication data received is rendered unrecoverable upon completion of the authorization process", status: "compliant" },
+        { id: "3.3.1", title: "SAD is not retained after authorization, even if encrypted â€” all sensitive authentication data received is rendered unrecoverable upon completion of the authorization process", status: "compliant" },
         { id: "3.3.2", title: "SAD that is stored electronically prior to completion of authorization is encrypted using strong cryptography", status: "compliant", new: true },
       ]},
       { id: "3.4", title: "Primary Account Number (PAN) is secured wherever it is stored", summary: "PAN must be masked on displays, encrypted in storage, or tokenized. Never stored in plaintext.", status: "compliant", controls: [
-        { id: "3.4.1", title: "PAN is masked when displayed — the first six and last four digits are the maximum number displayed", status: "compliant" },
+        { id: "3.4.1", title: "PAN is masked when displayed â€” the first six and last four digits are the maximum number displayed", status: "compliant" },
         { id: "3.4.2", title: "When used in remote-access technologies, technical controls prevent copying and/or relocating of PAN", status: "compliant", new: true },
       ]},
-      { id: "3.5", title: "PAN is secured with cryptography wherever it is transmitted", summary: "Any transmission of PAN — including within the CDE — must use strong cryptography.", status: "compliant", controls: [
+      { id: "3.5", title: "PAN is secured with cryptography wherever it is transmitted", summary: "Any transmission of PAN â€” including within the CDE â€” must use strong cryptography.", status: "compliant", controls: [
         { id: "3.5.1", title: "PAN is secured with strong cryptography wherever it is stored", status: "compliant" },
       ]},
       { id: "3.6", title: "Cryptographic keys used to protect stored account data are secured", summary: "Encryption is only as strong as key management. Keys must be protected, rotated, and managed with dual control.", status: "partial", controls: [
@@ -512,18 +512,18 @@ const REQUIREMENTS = [
   {
     id: 4,
     tag: "ENCRYPTION",
-    tagIcon: "🔒",
+    tagIcon: "ðŸ”’",
     title: "Data Protection in Transit",
     desc: "TLS encryption for all data transmission. Prevents interception of sensitive data in transit across your network or over the internet.",
     purpose: "Unencrypted PANs traveling over public networks can be intercepted by anyone with packet-sniffing tools. A single capture of card data in transit can compromise thousands of accounts.",
-    saqNote: "Universal requirement. P2PE merchants: terminals encrypt at swipe — verify your P2PE solution is on the PCI SSC validated list.",
+    saqNote: "Universal requirement. P2PE merchants: terminals encrypt at swipe â€” verify your P2PE solution is on the PCI SSC validated list.",
     subReqs: [
       { id: "4.1", title: "Define roles and responsibilities for protecting PAN in transmission", summary: "Assign accountability for all encryption controls and transmission security procedures.", status: "compliant", controls: [
         { id: "4.1.1", title: "All security policies are documented, in use, and known", status: "compliant" },
         { id: "4.1.2", title: "Roles and responsibilities are documented, assigned, and understood", status: "compliant" },
       ]},
       { id: "4.2", title: "PAN is protected with strong cryptography during transmission over open, public networks", summary: "Use TLS 1.2+ for all transmission of cardholder data. Never send PANs over email, chat, or unencrypted channels.", status: "compliant", controls: [
-        { id: "4.2.1", title: "Strong cryptography is used to safeguard PAN during transmission over open, public networks — only trusted keys/certificates are accepted", status: "compliant" },
+        { id: "4.2.1", title: "Strong cryptography is used to safeguard PAN during transmission over open, public networks â€” only trusted keys/certificates are accepted", status: "compliant" },
         { id: "4.2.1.1", title: "An inventory of the entity's trusted keys and certificates used to protect PAN during transmission is maintained", status: "compliant", new: true },
         { id: "4.2.1.2", title: "Wireless networks transmitting PAN or connected to the CDE use industry best practices to implement strong cryptography for authentication and transmission", status: "compliant" },
         { id: "4.2.2", title: "PAN is secured with strong cryptography whenever it is sent via end-user messaging technologies", status: "compliant" },
@@ -533,17 +533,17 @@ const REQUIREMENTS = [
   {
     id: 5,
     tag: "ENDPOINT SECURITY",
-    tagIcon: "🛡",
+    tagIcon: "ðŸ›¡",
     title: "Anti-Malware Protection",
-    desc: "Active antivirus, anti-ransomware, and endpoint protection on every system. Documented status, current definitions, and threat detection history — for every location.",
-    purpose: "Malware — ransomware, spyware, keyloggers — can capture card data as it's being processed. All CDE systems must be protected even if you believe they're not directly exposed.",
-    saqNote: "Required for all in-scope systems. Req 5.4 (anti-phishing) was best practice until March 31 2025 — now fully required.",
+    desc: "Active antivirus, anti-ransomware, and endpoint protection on every system. Documented status, current definitions, and threat detection history â€” for every location.",
+    purpose: "Malware â€” ransomware, spyware, keyloggers â€” can capture card data as it's being processed. All CDE systems must be protected even if you believe they're not directly exposed.",
+    saqNote: "Required for all in-scope systems. Req 5.4 (anti-phishing) was best practice until March 31 2025 â€” now fully required.",
     subReqs: [
       { id: "5.1", title: "Define roles and responsibilities for anti-malware protection", summary: "Assign accountability for malware protection deployment and maintenance.", status: "compliant", controls: [
         { id: "5.1.1", title: "All security policies are documented, in use, and known", status: "compliant" },
         { id: "5.1.2", title: "Roles and responsibilities are documented, assigned, and understood", status: "compliant" },
       ]},
-      { id: "5.2", title: "Malware is prevented, detected, and addressed", summary: "Deploy anti-malware covering all types — not just viruses. Includes ransomware, spyware, adware, and rootkits.", status: "compliant", controls: [
+      { id: "5.2", title: "Malware is prevented, detected, and addressed", summary: "Deploy anti-malware covering all types â€” not just viruses. Includes ransomware, spyware, adware, and rootkits.", status: "compliant", controls: [
         { id: "5.2.1", title: "An anti-malware solution is deployed on all system components, except where the entity has documented evidence that those system components are not at risk", status: "compliant" },
         { id: "5.2.2", title: "The deployed anti-malware solution detects all known types of malware and addresses phishing, spyware, adware, and ransomware", status: "compliant" },
         { id: "5.2.3", title: "System components not covered by anti-malware are evaluated periodically to confirm that they continue to not require anti-malware", status: "compliant" },
@@ -565,11 +565,11 @@ const REQUIREMENTS = [
   {
     id: 6,
     tag: "VULNERABILITY MGMT",
-    tagIcon: "🔍",
+    tagIcon: "ðŸ”",
     title: "Secure Software & Systems",
-    desc: "Vulnerability scanning, patch management cadence, and secure development practices. Closes the gaps attackers look for first — unpatched systems and known CVEs.",
-    purpose: "Unpatched software is the #1 attack vector. Attackers actively scan for known CVEs within hours of publication. If you haven't patched, you're exposed — often exploited before you even know the patch exists.",
-    saqNote: "SAQ A: Reqs 6.4.3 and 11.6.1 apply to the web server delivering the payment page. SAQ P2PE: minimal scope — not applicable beyond terminal.",
+    desc: "Vulnerability scanning, patch management cadence, and secure development practices. Closes the gaps attackers look for first â€” unpatched systems and known CVEs.",
+    purpose: "Unpatched software is the #1 attack vector. Attackers actively scan for known CVEs within hours of publication. If you haven't patched, you're exposed â€” often exploited before you even know the patch exists.",
+    saqNote: "SAQ A: Reqs 6.4.3 and 11.6.1 apply to the web server delivering the payment page. SAQ P2PE: minimal scope â€” not applicable beyond terminal.",
     subReqs: [
       { id: "6.1", title: "Define roles and responsibilities for security vulnerabilities management", summary: "Assign clear ownership for the patching process, vulnerability identification, and developer security.", status: "compliant", controls: [
         { id: "6.1.1", title: "All security policies are documented, in use, and known", status: "compliant" },
@@ -605,9 +605,9 @@ const REQUIREMENTS = [
   {
     id: 7,
     tag: "ACCESS CONTROL",
-    tagIcon: "🔑",
+    tagIcon: "ðŸ”‘",
     title: "Restrict Access by Role",
-    desc: "Least-privilege access controls — employees can only access systems relevant to their job. Limits the blast radius of any compromised account or insider threat.",
+    desc: "Least-privilege access controls â€” employees can only access systems relevant to their job. Limits the blast radius of any compromised account or insider threat.",
     purpose: "Not everyone needs access to cardholder data. Restricting access to the minimum required per job function reduces risk from compromised credentials, insider threats, and accidental exposure.",
     saqNote: "Universal requirement. For small merchants: a document listing who has access to POS systems and why satisfies this for basic SAQ types.",
     subReqs: [
@@ -634,11 +634,11 @@ const REQUIREMENTS = [
   {
     id: 8,
     tag: "IDENTITY SECURITY",
-    tagIcon: "👤",
+    tagIcon: "ðŸ‘¤",
     title: "Identity & Authentication",
-    desc: "MFA on all CDE access, strong password policies, account lifecycle management, stale account removal. Identity is the #1 attack vector in modern breaches — this requirement addresses it directly.",
+    desc: "MFA on all CDE access, strong password policies, account lifecycle management, stale account removal. Identity is the #1 attack vector in modern breaches â€” this requirement addresses it directly.",
     purpose: "Shared accounts eliminate accountability. Weak passwords are guessed in seconds. Without MFA, a single phished credential can compromise your entire CDE. Req 8 is where most breaches begin.",
-    saqNote: "MFA (Req 8.4.2) is now mandatory for all non-consumer access to CDE systems — this is the biggest change in v4.0. No exceptions without a compensating control.",
+    saqNote: "MFA (Req 8.4.2) is now mandatory for all non-consumer access to CDE systems â€” this is the biggest change in v4.0. No exceptions without a compensating control.",
     subReqs: [
       { id: "8.1", title: "Define roles and responsibilities for identification and authentication", summary: "Assign accountability for account management, password policies, and authentication infrastructure.", status: "partial", controls: [
         { id: "8.1.1", title: "All security policies are documented, in use, and known", status: "compliant" },
@@ -664,13 +664,13 @@ const REQUIREMENTS = [
         { id: "8.3.10", title: "Additional guidance for service providers only", status: "compliant" },
         { id: "8.3.11", title: "Where authentication factors such as physical or logical security tokens, smart cards, or certificates are used, the factors are assigned to an individual user", status: "compliant" },
       ]},
-      { id: "8.4", title: "Multi-factor authentication is implemented to secure access into the CDE", summary: "MFA required for ALL access to the CDE — not just remote access. No exceptions without compensating controls.", status: "noncompliant", controls: [
+      { id: "8.4", title: "Multi-factor authentication is implemented to secure access into the CDE", summary: "MFA required for ALL access to the CDE â€” not just remote access. No exceptions without compensating controls.", status: "noncompliant", controls: [
         { id: "8.4.1", title: "MFA is implemented for all non-console access into the CDE for personnel with administrative access", status: "noncompliant" },
         { id: "8.4.2", title: "MFA is implemented for all access into the CDE", status: "noncompliant", new: true },
         { id: "8.4.3", title: "MFA is implemented for all remote network access originating from outside the entity's network that could access or impact the CDE", status: "partial" },
       ]},
-      { id: "8.5", title: "Multi-factor authentication systems are configured to prevent misuse", summary: "MFA must be implemented properly — no weak TOTP, SIM-swap vectors, or bypass mechanisms.", status: "partial", controls: [
-        { id: "8.5.1", title: "MFA systems are implemented as follows — individual factors must use at least two of the approved authentication factor types", status: "partial", new: true },
+      { id: "8.5", title: "Multi-factor authentication systems are configured to prevent misuse", summary: "MFA must be implemented properly â€” no weak TOTP, SIM-swap vectors, or bypass mechanisms.", status: "partial", controls: [
+        { id: "8.5.1", title: "MFA systems are implemented as follows â€” individual factors must use at least two of the approved authentication factor types", status: "partial", new: true },
       ]},
       { id: "8.6", title: "Application and system account use is strictly managed", summary: "Service accounts, application credentials, and API keys must be inventoried, rotated, and managed.", status: "compliant", controls: [
         { id: "8.6.1", title: "If accounts used by systems or applications can be used for interactive login, they are managed per the requirements of the account-management policy", status: "compliant", new: true },
@@ -682,11 +682,11 @@ const REQUIREMENTS = [
   {
     id: 9,
     tag: "PHYSICAL SECURITY",
-    tagIcon: "🏢",
+    tagIcon: "ðŸ¢",
     title: "Physical Access Controls",
-    desc: "Documented physical access to servers, POS terminals, and network equipment. Often overlooked — physical access to hardware is frequently how breaches begin in retail environments.",
+    desc: "Documented physical access to servers, POS terminals, and network equipment. Often overlooked â€” physical access to hardware is frequently how breaches begin in retail environments.",
     purpose: "Skimmers attached to payment terminals, stolen hard drives, and unshredded receipts are real attack vectors. Physical access to your CDE is just as dangerous as electronic access.",
-    saqNote: "SAQ B has significant Req 9 obligations around terminal management. SAQ P2PE: Req 9 is the primary focus — PIM compliance. SAQ A MOTO: Req 9 applies to paper receipts only.",
+    saqNote: "SAQ B has significant Req 9 obligations around terminal management. SAQ P2PE: Req 9 is the primary focus â€” PIM compliance. SAQ A MOTO: Req 9 applies to paper receipts only.",
     subReqs: [
       { id: "9.1", title: "Define roles and responsibilities for physical access controls", summary: "Assign accountability for physical access management across all CDE locations.", status: "compliant", controls: [
         { id: "9.1.1", title: "All security policies are documented, in use, and known", status: "compliant" },
@@ -702,17 +702,17 @@ const REQUIREMENTS = [
       { id: "9.3", title: "Physical access for personnel and visitors is authorized and managed", summary: "Visitor badges, logs, and escorted access. Personnel badges clearly distinguish employees from visitors.", status: "compliant", controls: [
         { id: "9.3.1", title: "Procedures are implemented for authorizing and managing physical access of personnel to the CDE", status: "compliant" },
         { id: "9.3.1.1", title: "Access to the CDE is controlled with individual physical access-control mechanisms", status: "compliant", new: true },
-        { id: "9.3.2", title: "Procedures are implemented for authorizing and managing visitor access to the CDE — badges, logs, escort requirements", status: "compliant" },
+        { id: "9.3.2", title: "Procedures are implemented for authorizing and managing visitor access to the CDE â€” badges, logs, escort requirements", status: "compliant" },
         { id: "9.3.3", title: "Visitor badges or identification are surrendered or deactivated upon departure", status: "compliant" },
         { id: "9.3.4", title: "A visitor log is used to maintain a physical audit trail of visitor activity in the CDE and sensitive areas", status: "compliant" },
       ]},
-      { id: "9.4", title: "Media with cardholder data is securely stored, accessed, distributed, and destroyed", summary: "All physical media — paper, drives, USBs — must be classified, secured, and destroyed when no longer needed.", status: "compliant", controls: [
+      { id: "9.4", title: "Media with cardholder data is securely stored, accessed, distributed, and destroyed", summary: "All physical media â€” paper, drives, USBs â€” must be classified, secured, and destroyed when no longer needed.", status: "compliant", controls: [
         { id: "9.4.1", title: "All media with cardholder data is physically secured", status: "compliant" },
         { id: "9.4.1.1", title: "Offline media backups with cardholder data are stored in a secure location", status: "compliant" },
         { id: "9.4.1.2", title: "The security of offline media backups with cardholder data is reviewed at least once every 12 months", status: "compliant", new: true },
         { id: "9.4.2", title: "All media with cardholder data is classified in accordance with the sensitivity of the data", status: "compliant" },
         { id: "9.4.3", title: "Media with cardholder data sent outside the facility is secured and logged", status: "compliant" },
-        { id: "9.4.4", title: "Management approves all media with cardholder data that is moved from a secured area — especially when distributed to individuals", status: "compliant" },
+        { id: "9.4.4", title: "Management approves all media with cardholder data that is moved from a secured area â€” especially when distributed to individuals", status: "compliant" },
         { id: "9.4.5", title: "Inventory logs of all electronic media with cardholder data are maintained", status: "compliant" },
         { id: "9.4.5.1", title: "Inventories of electronic media with cardholder data are conducted at least once every 12 months", status: "compliant", new: true },
         { id: "9.4.6", title: "Hard-copy materials with cardholder data are destroyed when no longer needed via cross-cut shredding, incineration, or pulping", status: "compliant" },
@@ -730,11 +730,11 @@ const REQUIREMENTS = [
   {
     id: 10,
     tag: "DETECTION",
-    tagIcon: "📡",
+    tagIcon: "ðŸ“¡",
     title: "Logging & Monitoring",
-    desc: "Centralized log management, daily log review, and alert-based monitoring across all systems. You cannot detect an incident — or prove you weren't breached — without this.",
+    desc: "Centralized log management, daily log review, and alert-based monitoring across all systems. You cannot detect an incident â€” or prove you weren't breached â€” without this.",
     purpose: "Logs are the primary forensic tool after a breach and daily evidence that controls are working. Without logging, you have no way to detect unauthorized access or prove compliance to a QSA.",
-    saqNote: "Req 10.4.1.1 (automated log review mechanism) became mandatory March 31 2025. No exceptions — all merchants must have an automated mechanism for daily log analysis.",
+    saqNote: "Req 10.4.1.1 (automated log review mechanism) became mandatory March 31 2025. No exceptions â€” all merchants must have an automated mechanism for daily log analysis.",
     subReqs: [
       { id: "10.1", title: "Define roles and responsibilities for logging and monitoring", summary: "Assign accountability for log management, retention, and daily review processes.", status: "partial", controls: [
         { id: "10.1.1", title: "All security policies are documented, in use, and known", status: "compliant" },
@@ -764,7 +764,7 @@ const REQUIREMENTS = [
         { id: "10.4.2.1", title: "The frequency of periodic log reviews for all other system components is defined in the entity's targeted risk analysis", status: "partial", new: true },
         { id: "10.4.3", title: "Exceptions and anomalies identified during the review process are addressed", status: "partial" },
       ]},
-      { id: "10.5", title: "Audit log history is retained and available for analysis", summary: "12 months total retention — 3 months immediately available for analysis. 9 months may be archived.", status: "partial", controls: [
+      { id: "10.5", title: "Audit log history is retained and available for analysis", summary: "12 months total retention â€” 3 months immediately available for analysis. 9 months may be archived.", status: "partial", controls: [
         { id: "10.5.1", title: "Retain audit log history for at least 12 months, with at least the most recent three months available for immediate analysis", status: "partial" },
       ]},
       { id: "10.6", title: "Time synchronization mechanisms support consistent time settings", summary: "NTP synchronization across all in-scope systems. Critical for correlating log events.", status: "partial", controls: [
@@ -774,18 +774,18 @@ const REQUIREMENTS = [
       ]},
       { id: "10.7", title: "Failures of critical security controls are detected, reported, and responded to promptly", summary: "Critical security control failures must generate alerts and be tracked to resolution.", status: "partial", controls: [
         { id: "10.7.1", title: "Additional requirement for service providers only", status: "compliant" },
-        { id: "10.7.2", title: "Failures of critical security controls are detected, alerted, and addressed promptly, including — but not limited to — NSC failures, IDS/IPS failures, FIM failures, and anti-malware failures", status: "partial", new: true },
+        { id: "10.7.2", title: "Failures of critical security controls are detected, alerted, and addressed promptly, including â€” but not limited to â€” NSC failures, IDS/IPS failures, FIM failures, and anti-malware failures", status: "partial", new: true },
       ]},
     ]
   },
   {
     id: 11,
     tag: "THREAT DETECTION",
-    tagIcon: "🎯",
+    tagIcon: "ðŸŽ¯",
     title: "Security Testing",
-    desc: "Quarterly vulnerability scans, annual penetration tests, intrusion detection, and file integrity monitoring. Continuous testing finds what attackers would find — before they do.",
-    purpose: "Static controls degrade over time. New vulnerabilities emerge daily. Regular testing verifies that controls are actually working — not just documented. A QSA will ask for scan results, not just policies.",
-    saqNote: "External ASV scans CANNOT be replaced by PCI-Nexus or any other internal tool — must be performed by a PCI SSC Approved Scanning Vendor. Internal scans can be self-performed.",
+    desc: "Quarterly vulnerability scans, annual penetration tests, intrusion detection, and file integrity monitoring. Continuous testing finds what attackers would find â€” before they do.",
+    purpose: "Static controls degrade over time. New vulnerabilities emerge daily. Regular testing verifies that controls are actually working â€” not just documented. A QSA will ask for scan results, not just policies.",
+    saqNote: "External ASV scans CANNOT be replaced by PCI-Nexus or any other internal tool â€” must be performed by a PCI SSC Approved Scanning Vendor. Internal scans can be self-performed.",
     subReqs: [
       { id: "11.1", title: "Define roles and responsibilities for security testing", summary: "Assign accountability for all vulnerability scanning, penetration testing, and wireless monitoring programs.", status: "noncompliant", controls: [
         { id: "11.1.1", title: "All security policies are documented, in use, and known", status: "noncompliant" },
@@ -818,18 +818,18 @@ const REQUIREMENTS = [
         { id: "11.5.2", title: "A change-detection mechanism (for example, file-integrity monitoring tools) is deployed to alert personnel to unauthorized modification of critical files", status: "noncompliant" },
       ]},
       { id: "11.6", title: "Unauthorized changes on payment pages are detected and responded to", summary: "For e-commerce: detect script tampering and HTTP header changes on payment pages within 7 days.", status: "noncompliant", controls: [
-        { id: "11.6.1", title: "A change- and tamper-detection mechanism is deployed to alert personnel to unauthorized modification — including indicators of compromise — to the HTTP headers and the contents of payment pages as received by the consumer browser", status: "noncompliant", new: true },
+        { id: "11.6.1", title: "A change- and tamper-detection mechanism is deployed to alert personnel to unauthorized modification â€” including indicators of compromise â€” to the HTTP headers and the contents of payment pages as received by the consumer browser", status: "noncompliant", new: true },
       ]},
     ]
   },
   {
     id: 12,
     tag: "GOVERNANCE & IR",
-    tagIcon: "📋",
+    tagIcon: "ðŸ“‹",
     title: "Security Policies & Governance",
     desc: "Written security policy, annual risk assessment, vendor risk management, security awareness training, and a documented incident response plan. The governance layer that ties everything together.",
     purpose: "Without written policies and trained staff, every technical control is undermined by human behavior. Governance is what ensures compliance persists through staff turnover, system changes, and audit cycles.",
-    saqNote: "Req 12 applies to ALL SAQ types — no simplification exists. Policies and procedures are required regardless of how small the business is.",
+    saqNote: "Req 12 applies to ALL SAQ types â€” no simplification exists. Policies and procedures are required regardless of how small the business is.",
     subReqs: [
       { id: "12.1", title: "An information security policy is established, published, maintained, and disseminated", summary: "Written policy approved by management, reviewed annually, communicated to all personnel.", status: "compliant", controls: [
         { id: "12.1.1", title: "An overall information security policy is established, published, maintained, and disseminated to all relevant personnel", status: "compliant" },
@@ -891,7 +891,7 @@ const REQUIREMENTS = [
   },
 ];
 
-// ── RENDER ────────────────────────────────────────────────────────────────────
+// â”€â”€ RENDER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const grid = document.getElementById('cardsGrid');
 
 REQUIREMENTS.forEach(req => {
@@ -920,7 +920,7 @@ REQUIREMENTS.forEach(req => {
                 <div class="sub-title">${sub.title}</div>
                 ${sub.summary ? `<div class="sub-summary">${sub.summary}</div>` : ''}
               </div>
-              ${sub.controls && sub.controls.length ? '<span class="sub-arrow">›</span>' : ''}
+              ${sub.controls && sub.controls.length ? '<span class="sub-arrow">â€º</span>' : ''}
             </div>
             ${sub.controls && sub.controls.length ? `
               <div class="controls-list">
@@ -928,7 +928,7 @@ REQUIREMENTS.forEach(req => {
                   <div class="control-item">
                     <span class="ctrl-id ${ctrl.status}">${ctrl.id}</span>
                     <span class="ctrl-text">${ctrl.title}</span>
-                    ${ctrl.new ? '<span class="badge-new">★ v4.0</span>' : ''}
+                    ${ctrl.new ? '<span class="badge-new">â˜… v4.0</span>' : ''}
                   </div>
                 `).join('')}
               </div>
@@ -940,7 +940,7 @@ REQUIREMENTS.forEach(req => {
           <p>${req.saqNote}</p>
         </div>
         <a href="https://pci-nexus.vercel.app/Demo" class="go-btn">
-          Manage Req ${req.id} in PCI-Nexus →
+          Manage Req ${req.id} in PCI-Nexus â†’
         </a>
       </div>
     </div>

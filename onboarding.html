@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <!-- Google tag (gtag.js) -->
@@ -85,7 +85,7 @@
   .pc-total{font-size:0.72rem;font-weight:700;color:var(--teal2);margin-top:5px;}
   .pc-feats{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:5px;}
   .pc-feats li{font-size:0.73rem;color:#64748b;display:flex;align-items:flex-start;gap:5px;line-height:1.35;}
-  .pc-feats li::before{content:'✓';color:var(--teal2);font-weight:700;font-size:0.68rem;flex-shrink:0;margin-top:1px;}
+  .pc-feats li::before{content:'âœ“';color:var(--teal2);font-weight:700;font-size:0.68rem;flex-shrink:0;margin-top:1px;}
 
   /* SAQ */
   .saq-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;}
@@ -184,7 +184,7 @@
       <div class="spl">Selected Plan</div>
       <div class="spn" id="sp-name"> - </div>
       <div class="spp" id="sp-price"> - </div>
-      <div class="spc" onclick="goTo(0)">← Change plan</div>
+      <div class="spc" onclick="goTo(0)">â† Change plan</div>
     </div>
   </aside>
 
@@ -253,7 +253,7 @@
         </div>
       </div>
       <div class="btn-row">
-        <button class="btn-next" id="btn-p0" onclick="nextStep()" disabled>Continue →</button>
+        <button class="btn-next" id="btn-p0" onclick="nextStep()" disabled>Continue â†’</button>
       </div>
     </div>
 
@@ -281,8 +281,8 @@
         <div class="fg"><label>Phone (optional)</label><input type="tel" id="a-phone" placeholder="(555) 555-0100"/></div>
       </div>
       <div class="btn-row">
-        <button class="btn-back" onclick="prevStep()">← Back</button>
-        <button class="btn-next" onclick="nextStep()">Continue →</button>
+        <button class="btn-back" onclick="prevStep()">â† Back</button>
+        <button class="btn-next" onclick="nextStep()">Continue â†’</button>
       </div>
     </div>
 
@@ -322,8 +322,8 @@
         </div>
       </div>
       <div class="btn-row">
-        <button class="btn-back" onclick="prevStep()">← Back</button>
-        <button class="btn-next" onclick="nextStep()">Continue →</button>
+        <button class="btn-back" onclick="prevStep()">â† Back</button>
+        <button class="btn-next" onclick="nextStep()">Continue â†’</button>
       </div>
     </div>
 
@@ -333,7 +333,7 @@
       <h1 class="ph">Locations &amp; <em>SAQ type.</em></h1>
       <p class="ps">Add your locations and select your primary SAQ type. You can assign different SAQ types per location after setup.</p>
       <div class="sec-label">Primary SAQ Type</div>
-      <div class="saq-help">💡 Not sure which SAQ applies? The built-in SAQ Wizard will identify your exact type in about 2 minutes after setup  -  select "Not Sure Yet" to skip for now.</div>
+      <div class="saq-help">ðŸ’¡ Not sure which SAQ applies? The built-in SAQ Wizard will identify your exact type in about 2 minutes after setup  -  select "Not Sure Yet" to skip for now.</div>
       <div class="saq-grid">
         <div class="sq" onclick="selSAQ(this,'SAQ-A')"><div class="sq-type">SAQ-A</div><div class="sq-desc">Card-not-present merchants. All payment functions outsourced to a PCI-compliant provider.</div><div class="sq-hint">Lowest complexity &middot; 22 requirements</div></div>
         <div class="sq" onclick="selSAQ(this,'SAQ-B')"><div class="sq-type">SAQ-B</div><div class="sq-desc">Imprint-only or standalone dial-out terminals. No electronic cardholder data storage.</div><div class="sq-hint">41 requirements</div></div>
@@ -346,10 +346,10 @@
       </div>
       <div class="sec-label" style="margin-top:8px;">Your Locations</div>
       <div id="loc-list"></div>
-      <button class="btn-add" onclick="addLoc()">＋ Add Another Location</button>
+      <button class="btn-add" onclick="addLoc()">ï¼‹ Add Another Location</button>
       <div class="btn-row">
-        <button class="btn-back" onclick="prevStep()">← Back</button>
-        <button class="btn-next" onclick="nextStep()">Continue →</button>
+        <button class="btn-back" onclick="prevStep()">â† Back</button>
+        <button class="btn-next" onclick="nextStep()">Continue â†’</button>
       </div>
     </div>
 
@@ -358,12 +358,12 @@
       <div class="ey">Step 5 of 6</div>
       <h1 class="ph">Invite your <em>team.</em></h1>
       <p class="ps">Add team members and they'll receive a secure email invitation the moment your account goes live. You can always add more from the Contacts page.</p>
-      <div class="invite-note">📧 Invitations are sent automatically on account activation. Each person receives a secure setup link to create their own password and complete their profile.</div>
+      <div class="invite-note">ðŸ“§ Invitations are sent automatically on account activation. Each person receives a secure setup link to create their own password and complete their profile.</div>
       <div id="team-list"></div>
-      <button class="btn-add" onclick="addTeam()">＋ Add Team Member</button>
+      <button class="btn-add" onclick="addTeam()">ï¼‹ Add Team Member</button>
       <div class="btn-row">
-        <button class="btn-back" onclick="prevStep()">← Back</button>
-        <button class="btn-next" onclick="nextStep()">Continue →</button>
+        <button class="btn-back" onclick="prevStep()">â† Back</button>
+        <button class="btn-next" onclick="nextStep()">Continue â†’</button>
         <button class="btn-skip" onclick="nextStep()">Skip for now</button>
       </div>
     </div>
@@ -384,8 +384,8 @@
       </div>
 
       <div class="stripe-box">
-        <h4>💳 Payment  -  Secured by Stripe</h4>
-        <div class="sec-note"><span>🔒</span> 256-bit SSL encryption. Card data is processed directly by Stripe and never touches our servers.</div>
+        <h4>ðŸ’³ Payment  -  Secured by Stripe</h4>
+        <div class="sec-note"><span>ðŸ”’</span> 256-bit SSL encryption. Card data is processed directly by Stripe and never touches our servers.</div>
         <div class="fg"><label>Name on Card</label><input type="text" id="p-name" placeholder="Sandra Kowalski"/></div>
         <!-- In production: mount Stripe Elements here with stripe.elements() -->
         <div class="sf"><span>Card number</span><span style="opacity:0.4;"> -  -  -  -   -  -  -  -   -  -  -  -   -  -  -  - </span></div>
@@ -393,7 +393,7 @@
           <div class="sf"><span>Expiry</span><span style="opacity:0.4;">MM / YY</span></div>
           <div class="sf"><span>CVC</span><span style="opacity:0.4;"> -  -  - </span></div>
         </div>
-        <div style="font-size:0.68rem;color:#94a3b8;margin-top:8px;">⚙ Developer note: replace mocked card fields above with <code>stripe.elements()</code> card mount in production.</div>
+        <div style="font-size:0.68rem;color:#94a3b8;margin-top:8px;">âš™ Developer note: replace mocked card fields above with <code>stripe.elements()</code> card mount in production.</div>
       </div>
       <div class="fg"><label>Billing Address</label><input type="text" id="p-addr" placeholder="123 Main St, City, State, ZIP"/></div>
       <div class="tc">
@@ -402,8 +402,8 @@
       </div>
       <div class="btn-row" style="flex-direction:column;align-items:flex-start;gap:10px;">
         <div>
-          <button class="btn-back" onclick="prevStep()">← Back</button>
-          <button class="btn-next" id="btn-activate" onclick="activate()">🔒 Save Card &amp; Start Setup</button>
+          <button class="btn-back" onclick="prevStep()">â† Back</button>
+          <button class="btn-next" id="btn-activate" onclick="activate()">ðŸ”’ Save Card &amp; Start Setup</button>
         </div>
         <div style="font-size:0.71rem;color:#94a3b8;">Powered by Stripe. Your card is saved securely but <strong>not charged until you go live</strong>. Cancel anytime after your minimum commitment period with 30 days written notice.</div>
       </div>
@@ -411,16 +411,16 @@
 
     <!-- SUCCESS -->
     <div class="success-wrap" id="success-wrap">
-      <div class="success-icon">✓</div>
+      <div class="success-icon">âœ“</div>
       <h2>Setup complete!</h2>
       <p>Your PCINexus account is configured and your team invitations are on their way. Explore the platform at your own pace  -  your card won't be charged until you decide to go live.</p>
       <div class="sn-grid">
-        <div class="sn-card"><div class="sn-icon">🧙</div><h4>Run the SAQ Wizard</h4><p>Confirm your SAQ type and see your full requirement list in 2 minutes.</p></div>
-        <div class="sn-card"><div class="sn-icon">📁</div><h4>Upload First Evidence</h4><p>Start with your firewall config or AV scan report  -  AI reviews it instantly.</p></div>
-        <div class="sn-card"><div class="sn-icon">🔌</div><h4>Connect an Integration</h4><p>Hook up Microsoft Defender or pfSense  -  both free, both take 5 minutes.</p></div>
-        <div class="sn-card"><div class="sn-icon">💬</div><h4>Ask the AI</h4><p>Ask any PCI DSS question in plain English. Your compliance guide is always on.</p></div>
+        <div class="sn-card"><div class="sn-icon">ðŸ§™</div><h4>Run the SAQ Wizard</h4><p>Confirm your SAQ type and see your full requirement list in 2 minutes.</p></div>
+        <div class="sn-card"><div class="sn-icon">ðŸ“</div><h4>Upload First Evidence</h4><p>Start with your firewall config or AV scan report  -  AI reviews it instantly.</p></div>
+        <div class="sn-card"><div class="sn-icon">ðŸ”Œ</div><h4>Connect an Integration</h4><p>Hook up Microsoft Defender or pfSense  -  both free, both take 5 minutes.</p></div>
+        <div class="sn-card"><div class="sn-icon">ðŸ’¬</div><h4>Ask the AI</h4><p>Ask any PCI DSS question in plain English. Your compliance guide is always on.</p></div>
       </div>
-      <button class="btn-next" style="margin-top:32px;" onclick="window.location.href='https://pci-nexus.vercel.app/register'">Explore My Dashboard →</button>
+      <button class="btn-next" style="margin-top:32px;" onclick="window.location.href='https://pci-nexus.vercel.app/register'">Explore My Dashboard â†’</button>
       <p style="font-size:0.75rem;color:#94a3b8;margin-top:12px;">When you're ready to go live, click <strong>Activate Plan</strong> inside the dashboard. Your 6-month compliance clock starts then.</p>
     </div>
 
@@ -447,7 +447,7 @@ function renderNav(){
   const el=document.getElementById('steps-nav');
   el.innerHTML=STEPS.map((s,i)=>{
     const state=i<cur?'done':i===cur?'active':'future';
-    const num=i<cur?'✓':(i+1);
+    const num=i<cur?'âœ“':(i+1);
     return`<div class="si ${state}"><div class="sn">${num}</div><div><div class="st">${s.t}</div><div class="sd">${s.d}</div></div></div>${i<STEPS.length-1?'<div class="sc"></div>':''}`;
   }).join('');
   document.getElementById('prog-fill').style.width=(cur/(STEPS.length-1)*100)+'%';
@@ -477,7 +477,7 @@ function selPlan(p){
   document.getElementById('ps-plan').textContent=d.name;
   document.getElementById('ps-mo').textContent=d.mo?`$${d.mo}/mo`:'Custom';
   document.getElementById('ps-term').textContent=d.tl;
-  document.getElementById('ps-today').textContent=d.total?`$${d.total.toLocaleString()} (${d.term} × $${d.mo})`:'Contact us';
+  document.getElementById('ps-today').textContent=d.total?`$${d.total.toLocaleString()} (${d.term} Ã— $${d.mo})`:'Contact us';
   document.getElementById('ps-after').textContent=d.mo?`$${d.mo}/mo, cancel with 30 days notice`:'Annual custom';
   document.getElementById('ps-total').textContent=d.total?`$${d.total.toLocaleString()}`:'Custom';
   const amt=d.total?`$${d.total.toLocaleString()}`:'custom amount';
@@ -495,7 +495,7 @@ function renderLocs(){
   const l=document.getElementById('loc-list');
   l.innerHTML='';
   for(let i=0;i<locN;i++){
-    l.innerHTML+=`<div class="loc-row"><input type="text" placeholder="Location name (e.g. Downtown  -  Main St.)" id="ln-${i}"/><input type="text" placeholder="City, State" id="lc-${i}"/>${i>0?`<button class="btn-rm" onclick="rmLoc(${i})">✕</button>`:'<div style="width:30px;"></div>'}</div>`;
+    l.innerHTML+=`<div class="loc-row"><input type="text" placeholder="Location name (e.g. Downtown  -  Main St.)" id="ln-${i}"/><input type="text" placeholder="City, State" id="lc-${i}"/>${i>0?`<button class="btn-rm" onclick="rmLoc(${i})">âœ•</button>`:'<div style="width:30px;"></div>'}</div>`;
   }
 }
 function addLoc(){locN++;renderLocs();}
@@ -511,7 +511,7 @@ function renderTeam(){
   const l=document.getElementById('team-list');
   l.innerHTML='';
   for(let i=0;i<teamN;i++){
-    l.innerHTML+=`<div class="team-row"><input type="text" placeholder="Full name" id="tn-${i}"/><input type="email" placeholder="Email" id="te-${i}"/><select id="tr-${i}"><option value="" disabled selected>Role</option><option>L2 Manager</option><option>L3 Location Manager</option><option>L4 Staff</option></select><button class="btn-rm" onclick="rmTeam(${i})">✕</button></div>`;
+    l.innerHTML+=`<div class="team-row"><input type="text" placeholder="Full name" id="tn-${i}"/><input type="email" placeholder="Email" id="te-${i}"/><select id="tr-${i}"><option value="" disabled selected>Role</option><option>L2 Manager</option><option>L3 Location Manager</option><option>L4 Staff</option></select><button class="btn-rm" onclick="rmTeam(${i})">âœ•</button></div>`;
   }
 }
 function addTeam(){teamN++;renderTeam();}
@@ -533,7 +533,7 @@ function chkPw(v){
     {w:'25%', bg:'#ef4444',    m:'Weak  -  add uppercase letters, numbers & symbols'},
     {w:'50%', bg:'#f59e0b',    m:'Fair  -  add a symbol or increase length'},
     {w:'75%', bg:'#3b82f6',    m:'Good  -  one more character type will make it strong'},
-    {w:'100%',bg:'#10b981',    m:'Strong password ✓'},
+    {w:'100%',bg:'#10b981',    m:'Strong password âœ“'},
   ];
   bar.style.width=cfg[s].w; bar.style.background=cfg[s].bg; hint.textContent=cfg[s].m;
 }
@@ -541,7 +541,7 @@ function chkPw(v){
 function activate(){
   if(!document.getElementById('p-terms').checked){alert('Please agree to the Terms of Service to continue.');return;}
   const btn=document.getElementById('btn-activate');
-  btn.textContent='⏳ Processing payment...'; btn.disabled=true;
+  btn.textContent='â³ Processing payment...'; btn.disabled=true;
   setTimeout(()=>{
     document.querySelectorAll('.step-panel').forEach(p=>p.classList.remove('active'));
     document.getElementById('success-wrap').classList.add('visible');
