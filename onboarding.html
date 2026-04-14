@@ -85,7 +85,7 @@
   .pc-total{font-size:0.72rem;font-weight:700;color:var(--teal2);margin-top:5px;}
   .pc-feats{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:5px;}
   .pc-feats li{font-size:0.73rem;color:#64748b;display:flex;align-items:flex-start;gap:5px;line-height:1.35;}
-  .pc-feats li::before{content:'âœ“';color:var(--teal2);font-weight:700;font-size:0.68rem;flex-shrink:0;margin-top:1px;}
+  .pc-feats li::before{content:'✓';color:var(--teal2);font-weight:700;font-size:0.68rem;flex-shrink:0;margin-top:1px;}
 
   /* SAQ */
   .saq-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;}
@@ -253,7 +253,7 @@
         </div>
       </div>
       <div class="btn-row">
-        <button class="btn-next" id="btn-p0" onclick="nextStep()" disabled>Continue â†’</button>
+        <button class="btn-next" id="btn-p0" onclick="nextStep()" disabled>Continue →</button>
       </div>
     </div>
 
@@ -282,7 +282,7 @@
       </div>
       <div class="btn-row">
         <button class="btn-back" onclick="prevStep()">â† Back</button>
-        <button class="btn-next" onclick="nextStep()">Continue â†’</button>
+        <button class="btn-next" onclick="nextStep()">Continue →</button>
       </div>
     </div>
 
@@ -323,7 +323,7 @@
       </div>
       <div class="btn-row">
         <button class="btn-back" onclick="prevStep()">â† Back</button>
-        <button class="btn-next" onclick="nextStep()">Continue â†’</button>
+        <button class="btn-next" onclick="nextStep()">Continue →</button>
       </div>
     </div>
 
@@ -349,7 +349,7 @@
       <button class="btn-add" onclick="addLoc()">ï¼‹ Add Another Location</button>
       <div class="btn-row">
         <button class="btn-back" onclick="prevStep()">â† Back</button>
-        <button class="btn-next" onclick="nextStep()">Continue â†’</button>
+        <button class="btn-next" onclick="nextStep()">Continue →</button>
       </div>
     </div>
 
@@ -363,7 +363,7 @@
       <button class="btn-add" onclick="addTeam()">ï¼‹ Add Team Member</button>
       <div class="btn-row">
         <button class="btn-back" onclick="prevStep()">â† Back</button>
-        <button class="btn-next" onclick="nextStep()">Continue â†’</button>
+        <button class="btn-next" onclick="nextStep()">Continue →</button>
         <button class="btn-skip" onclick="nextStep()">Skip for now</button>
       </div>
     </div>
@@ -411,7 +411,7 @@
 
     <!-- SUCCESS -->
     <div class="success-wrap" id="success-wrap">
-      <div class="success-icon">âœ“</div>
+      <div class="success-icon">✓</div>
       <h2>Setup complete!</h2>
       <p>Your PCINexus account is configured and your team invitations are on their way. Explore the platform at your own pace  -  your card won't be charged until you decide to go live.</p>
       <div class="sn-grid">
@@ -420,7 +420,7 @@
         <div class="sn-card"><div class="sn-icon">ðŸ”Œ</div><h4>Connect an Integration</h4><p>Hook up Microsoft Defender or pfSense  -  both free, both take 5 minutes.</p></div>
         <div class="sn-card"><div class="sn-icon">ðŸ’¬</div><h4>Ask the AI</h4><p>Ask any PCI DSS question in plain English. Your compliance guide is always on.</p></div>
       </div>
-      <button class="btn-next" style="margin-top:32px;" onclick="window.location.href='https://pci-nexus.vercel.app/register'">Explore My Dashboard â†’</button>
+      <button class="btn-next" style="margin-top:32px;" onclick="window.location.href='https://pci-nexus.vercel.app/register'">Explore My Dashboard →</button>
       <p style="font-size:0.75rem;color:#94a3b8;margin-top:12px;">When you're ready to go live, click <strong>Activate Plan</strong> inside the dashboard. Your 6-month compliance clock starts then.</p>
     </div>
 
@@ -447,7 +447,7 @@ function renderNav(){
   const el=document.getElementById('steps-nav');
   el.innerHTML=STEPS.map((s,i)=>{
     const state=i<cur?'done':i===cur?'active':'future';
-    const num=i<cur?'âœ“':(i+1);
+    const num=i<cur?'✓':(i+1);
     return`<div class="si ${state}"><div class="sn">${num}</div><div><div class="st">${s.t}</div><div class="sd">${s.d}</div></div></div>${i<STEPS.length-1?'<div class="sc"></div>':''}`;
   }).join('');
   document.getElementById('prog-fill').style.width=(cur/(STEPS.length-1)*100)+'%';
@@ -533,7 +533,7 @@ function chkPw(v){
     {w:'25%', bg:'#ef4444',    m:'Weak  -  add uppercase letters, numbers & symbols'},
     {w:'50%', bg:'#f59e0b',    m:'Fair  -  add a symbol or increase length'},
     {w:'75%', bg:'#3b82f6',    m:'Good  -  one more character type will make it strong'},
-    {w:'100%',bg:'#10b981',    m:'Strong password âœ“'},
+    {w:'100%',bg:'#10b981',    m:'Strong password ✓'},
   ];
   bar.style.width=cfg[s].w; bar.style.background=cfg[s].bg; hint.textContent=cfg[s].m;
 }

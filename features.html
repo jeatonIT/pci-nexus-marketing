@@ -31,7 +31,7 @@
   html { scroll-behavior: smooth; }
   body { font-family: 'DM Sans', sans-serif; background: #f8fafc; color: #1e293b; overflow-x: hidden; }
 
-  /* â”€â”€ NAV â”€â”€ */
+  /* ── NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
@@ -50,7 +50,7 @@
   .nav-cta { background: var(--grad-b); color: #fff !important; padding: 7px 18px; border-radius: 8px; font-weight: 600 !important; font-size: 0.75rem !important; letter-spacing: 0.03em; transition: opacity 0.2s !important; }
   .nav-cta:hover { opacity: 0.88; }
 
-  /* â”€â”€ PAGE HERO â”€â”€ */
+  /* ── PAGE HERO ── */
   .page-hero {
     background: var(--grad);
     padding: 130px 24px 80px;
@@ -116,7 +116,7 @@
   }
   .btn-secondary:hover { background: rgba(255,255,255,0.13); }
 
-  /* â”€â”€ PILLAR NAV â”€â”€ */
+  /* ── PILLAR NAV ── */
   .pillar-nav {
     background: #fff;
     border-bottom: 1px solid #e2e8f0;
@@ -137,7 +137,7 @@
   .pillar-tab:hover { color: var(--navy); }
   .pillar-tab.active { color: var(--blue); border-bottom-color: var(--blue); }
 
-  /* â”€â”€ SHARED SECTION â”€â”€ */
+  /* ── SHARED SECTION ── */
   .feature-section { padding: 100px 24px; }
   .feature-section:nth-child(even) { background: #f1f5f9; }
   .feature-section:nth-child(odd) { background: #fff; }
@@ -314,7 +314,7 @@
   .cost-includes { list-style: none; display: flex; flex-direction: column; gap: 8px; }
   .cost-includes li { font-size: 0.78rem; color: rgba(255,255,255,0.4); display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
   .cost-card.highlight .cost-includes li { color: rgba(255,255,255,0.7); }
-  .cost-includes li::before { content: 'âœ“'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+  .cost-includes li::before { content: '✓'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
 
   .cost-footnote {
     margin-top: 40px; text-align: center;
@@ -410,7 +410,7 @@
   <p>Six purpose-built pillars that take you from your first SAQ to a year-round compliance operation. No consultant required. No enterprise budget needed.</p>
   <div class="hero-ctas">
     <a href="https://pci-nexus.vercel.app/Demo" target="_blank" class="btn-primary">âœ¦ Try the Live Demo</a>
-    <a href="onboarding.html" class="btn-secondary">Start Free Setup â†’</a>
+    <a href="onboarding.html" class="btn-secondary">Start Free Setup →</a>
   </div>
 </section>
 
@@ -442,12 +442,12 @@
         <h3>Every deadline. Every requirement. One calendar.</h3>
         <p>Between quarterly scans, annual pen tests, daily log reviews, and recurring training obligations, a small business has dozens of active PCI DSS deadlines running simultaneously. Miss one and your compliance status is in jeopardy. PCINexus surfaces all of them in a single view  -  with alerts before they lapse.</p>
         <ul class="feature-list">
-          <li><span class="check">âœ“</span><span><strong>Quarterly ASV scan tracking</strong>  -  Req 11.3. Expiry date tracked, renewal alert at 60 days.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Annual penetration test scheduling</strong>  -  Req 11.4. Assigned to owner, tracked through completion.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Certificate &amp; document expiry alerts</strong>  -  SSL certs, vendor attestations, and policy documents flagged before they lapse.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Annual security awareness training</strong>  -  Req 12.6. Completion tracked per employee across all locations.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Daily log review obligations</strong>  -  Req 10.7. Dashboard reminder and evidence log to prove ongoing compliance.</span></li>
-          <li><span class="check">âœ“</span><span><strong>60-day cycle rollover prompt</strong>  -  Start your next compliance year before the current one expires.</span></li>
+          <li><span class="check">✓</span><span><strong>Quarterly ASV scan tracking</strong>  -  Req 11.3. Expiry date tracked, renewal alert at 60 days.</span></li>
+          <li><span class="check">✓</span><span><strong>Annual penetration test scheduling</strong>  -  Req 11.4. Assigned to owner, tracked through completion.</span></li>
+          <li><span class="check">✓</span><span><strong>Certificate &amp; document expiry alerts</strong>  -  SSL certs, vendor attestations, and policy documents flagged before they lapse.</span></li>
+          <li><span class="check">✓</span><span><strong>Annual security awareness training</strong>  -  Req 12.6. Completion tracked per employee across all locations.</span></li>
+          <li><span class="check">✓</span><span><strong>Daily log review obligations</strong>  -  Req 10.7. Dashboard reminder and evidence log to prove ongoing compliance.</span></li>
+          <li><span class="check">✓</span><span><strong>60-day cycle rollover prompt</strong>  -  Start your next compliance year before the current one expires.</span></li>
         </ul>
       </div>
       <div class="reveal" style="transition-delay:0.1s;">
@@ -504,12 +504,12 @@
         <h3>Compliance gaps don't close themselves.</h3>
         <p>A QSA or an internal review will surface findings  -  requirements that aren't fully met, evidence that doesn't satisfy the standard, or controls that need to be implemented. Without a structured tracker, those findings get written down somewhere and forgotten. PCINexus turns every finding into an assigned, tracked, accountable work item.</p>
         <ul class="feature-list">
-          <li><span class="check">âœ“</span><span><strong>Finding creation &amp; classification</strong>  -  severity levels, affected requirement, affected location.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Owner assignment</strong>  -  each finding routed to the responsible person. No more ambiguity about who owns what.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Remediation status tracking</strong>  -  Open, In Progress, Resolved, Accepted Risk. Full audit trail of every status change.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Due date management</strong>  -  deadlines set, tracked, and escalated if missed.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Evidence attachment</strong>  -  resolution documentation uploaded directly to the finding record.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Executive summary view</strong>  -  L1 and L2 users see open findings count, severity breakdown, and overdue items across all locations at a glance.</span></li>
+          <li><span class="check">✓</span><span><strong>Finding creation &amp; classification</strong>  -  severity levels, affected requirement, affected location.</span></li>
+          <li><span class="check">✓</span><span><strong>Owner assignment</strong>  -  each finding routed to the responsible person. No more ambiguity about who owns what.</span></li>
+          <li><span class="check">✓</span><span><strong>Remediation status tracking</strong>  -  Open, In Progress, Resolved, Accepted Risk. Full audit trail of every status change.</span></li>
+          <li><span class="check">✓</span><span><strong>Due date management</strong>  -  deadlines set, tracked, and escalated if missed.</span></li>
+          <li><span class="check">✓</span><span><strong>Evidence attachment</strong>  -  resolution documentation uploaded directly to the finding record.</span></li>
+          <li><span class="check">✓</span><span><strong>Executive summary view</strong>  -  L1 and L2 users see open findings count, severity breakdown, and overdue items across all locations at a glance.</span></li>
         </ul>
       </div>
       <div class="reveal" style="transition-delay:0.1s;">
@@ -567,7 +567,7 @@
       <p style="font-size:0.92rem;color:#1e293b;line-height:1.65;max-width:800px;"><strong>PCI DSS does not require expensive tools  -  it requires effective controls.</strong> Every integration in PCINexus was selected because it satisfies a specific PCI DSS requirement at the lowest possible cost. Open-source and free tools are always recommended first. Mid-market and enterprise tools are listed for organizations that already have them  -  never pushed as the default.</p>
     </div>
 
-    <!-- PULL â†’ REVIEW â†’ APPROVE WORKFLOW -->
+    <!-- PULL → REVIEW → APPROVE WORKFLOW -->
     <div class="reveal" style="margin-top:40px; display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
       <div style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px;text-align:center;">
         <div style="font-size:1.8rem;margin-bottom:10px;">ðŸ”Œ</div>
@@ -580,7 +580,7 @@
         <p style="font-size:0.78rem;color:#64748b;line-height:1.55;">Every data pull is presented for human review  -  mapped to its specific PCI DSS requirement with a plain-English summary of what was found.</p>
       </div>
       <div style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px;text-align:center;">
-        <div style="font-size:1.8rem;margin-bottom:10px;">âœ…</div>
+        <div style="font-size:1.8rem;margin-bottom:10px;">✅</div>
         <div style="font-weight:800;color:var(--navy);font-size:0.9rem;margin-bottom:6px;">3  -  Approve</div>
         <p style="font-size:0.78rem;color:#64748b;line-height:1.55;">Only after explicit approval does data enter your compliance record. Nothing is auto-accepted. Your evidence trail stays clean and auditable.</p>
       </div>
@@ -810,12 +810,12 @@
         <h3>Your AD is your compliance evidence. We make it usable.</h3>
         <p>Requirements 7 and 8 of PCI DSS v4.0.1 require demonstrating that access to cardholder data is restricted, that accounts are managed, that passwords meet policy, and that stale accounts are removed. Most businesses have this data in their Active Directory  -  but no way to pull it into a compliance record systematically. PCINexus does exactly that.</p>
         <ul class="feature-list">
-          <li><span class="check">âœ“</span><span><strong>User account sync</strong>  -  active, disabled, and locked accounts pulled with full attribute data. Req 8.2.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Access group mapping</strong>  -  OU structure and group memberships documented for Req 7 access control evidence.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Stale account detection</strong>  -  accounts inactive for 90+ days flagged automatically. Req 8.2.6.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Password policy review</strong>  -  your current policy pulled and compared against PCI DSS v4.0.1 requirements. Req 8.3.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Service account inventory</strong>  -  non-human accounts documented and reviewed. Req 8.2.2.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Process owner approval</strong>  -  every AD import requires explicit approval before the data enters your compliance record.</span></li>
+          <li><span class="check">✓</span><span><strong>User account sync</strong>  -  active, disabled, and locked accounts pulled with full attribute data. Req 8.2.</span></li>
+          <li><span class="check">✓</span><span><strong>Access group mapping</strong>  -  OU structure and group memberships documented for Req 7 access control evidence.</span></li>
+          <li><span class="check">✓</span><span><strong>Stale account detection</strong>  -  accounts inactive for 90+ days flagged automatically. Req 8.2.6.</span></li>
+          <li><span class="check">✓</span><span><strong>Password policy review</strong>  -  your current policy pulled and compared against PCI DSS v4.0.1 requirements. Req 8.3.</span></li>
+          <li><span class="check">✓</span><span><strong>Service account inventory</strong>  -  non-human accounts documented and reviewed. Req 8.2.2.</span></li>
+          <li><span class="check">✓</span><span><strong>Process owner approval</strong>  -  every AD import requires explicit approval before the data enters your compliance record.</span></li>
         </ul>
       </div>
       <div class="reveal" style="transition-delay:0.1s;">
@@ -872,12 +872,12 @@
         <h3>Stop guessing whether your evidence is good enough.</h3>
         <p>The two most common compliance problems for small businesses are (1) not knowing what evidence an auditor actually needs, and (2) submitting documents that don't satisfy the requirement. Both are expensive problems. The AI Evidence Review engine addresses both  -  instantly, on every upload, before you submit anything.</p>
         <ul class="feature-list">
-          <li><span class="check">âœ“</span><span><strong>AI Evidence Review</strong>  -  upload any document and receive an instant PASS / FAIL / NEEDS REVIEW verdict with a plain-English explanation mapped to the specific PCI DSS v4.0.1 requirement.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Remediation recommendations</strong>  -  when evidence fails, the AI explains exactly what's missing and how to fix it.</span></li>
-          <li><span class="check">âœ“</span><span><strong>AI Compliance Chat</strong>  -  ask any PCI DSS question in plain English. The assistant is locked exclusively to PCI DSS v4.0.1, so answers are always accurate and requirement-specific.</span></li>
-          <li><span class="check">âœ“</span><span><strong>No hallucination risk</strong>  -  the chat assistant cannot wander into other standards or make up requirements. Scoped by design.</span></li>
-          <li><span class="check">âœ“</span><span><strong>24/7 availability</strong>  -  compliance questions don't wait for business hours. Neither does your AI assistant.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Powered by Anthropic Claude</strong>  -  the same AI that powers enterprise compliance tools, available to every PCINexus subscriber at every pricing tier.</span></li>
+          <li><span class="check">✓</span><span><strong>AI Evidence Review</strong>  -  upload any document and receive an instant PASS / FAIL / NEEDS REVIEW verdict with a plain-English explanation mapped to the specific PCI DSS v4.0.1 requirement.</span></li>
+          <li><span class="check">✓</span><span><strong>Remediation recommendations</strong>  -  when evidence fails, the AI explains exactly what's missing and how to fix it.</span></li>
+          <li><span class="check">✓</span><span><strong>AI Compliance Chat</strong>  -  ask any PCI DSS question in plain English. The assistant is locked exclusively to PCI DSS v4.0.1, so answers are always accurate and requirement-specific.</span></li>
+          <li><span class="check">✓</span><span><strong>No hallucination risk</strong>  -  the chat assistant cannot wander into other standards or make up requirements. Scoped by design.</span></li>
+          <li><span class="check">✓</span><span><strong>24/7 availability</strong>  -  compliance questions don't wait for business hours. Neither does your AI assistant.</span></li>
+          <li><span class="check">✓</span><span><strong>Powered by Anthropic Claude</strong>  -  the same AI that powers enterprise compliance tools, available to every PCINexus subscriber at every pricing tier.</span></li>
         </ul>
       </div>
       <div class="reveal" style="transition-delay:0.1s;">
@@ -986,7 +986,7 @@
   <p>The full platform is running live. Walk through a real compliance workflow for a multi-location restaurant group  -  no login required.</p>
   <div class="cta-band-btns">
     <a href="https://pci-nexus.vercel.app/Demo" target="_blank" class="btn-primary">âœ¦ Try the Live Demo</a>
-    <a href="onboarding.html" style="background:transparent;border:1.5px solid #e2e8f0;color:#334155;padding:13px 24px;border-radius:12px;font-size:0.88rem;font-weight:600;font-family:'DM Sans',sans-serif;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#1E6FD9';this.style.color='#1E6FD9'" onmouseout="this.style.borderColor='#e2e8f0';this.style.color='#334155'">Start Free Setup â†’</a>
+    <a href="onboarding.html" style="background:transparent;border:1.5px solid #e2e8f0;color:#334155;padding:13px 24px;border-radius:12px;font-size:0.88rem;font-weight:600;font-family:'DM Sans',sans-serif;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#1E6FD9';this.style.color='#1E6FD9'" onmouseout="this.style.borderColor='#e2e8f0';this.style.color='#334155'">Start Free Setup →</a>
   </div>
 </section>
 
@@ -1039,7 +1039,7 @@
   .nav-cta { background: var(--grad-b); color: #fff !important; padding: 7px 18px; border-radius: 8px; font-weight: 600 !important; font-size: 0.75rem !important; letter-spacing: 0.03em; transition: opacity 0.2s !important; }
   .nav-cta:hover { opacity: 0.88; }
 
-  /* â”€â”€ PAGE HERO â”€â”€ */
+  /* ── PAGE HERO ── */
   .page-hero {
     background: var(--grad);
     padding: 130px 24px 80px;
@@ -1105,7 +1105,7 @@
   }
   .btn-secondary:hover { background: rgba(255,255,255,0.13); }
 
-  /* â”€â”€ PILLAR NAV â”€â”€ */
+  /* ── PILLAR NAV ── */
   .pillar-nav {
     background: #fff;
     border-bottom: 1px solid #e2e8f0;
@@ -1126,7 +1126,7 @@
   .pillar-tab:hover { color: var(--navy); }
   .pillar-tab.active { color: var(--blue); border-bottom-color: var(--blue); }
 
-  /* â”€â”€ SHARED SECTION â”€â”€ */
+  /* ── SHARED SECTION ── */
   .feature-section { padding: 100px 24px; }
   .feature-section:nth-child(even) { background: #f1f5f9; }
   .feature-section:nth-child(odd) { background: #fff; }
@@ -1303,7 +1303,7 @@
   .cost-includes { list-style: none; display: flex; flex-direction: column; gap: 8px; }
   .cost-includes li { font-size: 0.78rem; color: rgba(255,255,255,0.4); display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
   .cost-card.highlight .cost-includes li { color: rgba(255,255,255,0.7); }
-  .cost-includes li::before { content: 'âœ“'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+  .cost-includes li::before { content: '✓'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
 
   .cost-footnote {
     margin-top: 40px; text-align: center;
@@ -1399,7 +1399,7 @@
   <p>Six purpose-built pillars that take you from your first SAQ to a year-round compliance operation. No consultant required. No enterprise budget needed.</p>
   <div class="hero-ctas">
     <a href="https://pci-nexus.vercel.app/Demo" target="_blank" class="btn-primary">âœ¦ Try the Live Demo</a>
-    <a href="onboarding.html" class="btn-secondary">Start Free Setup â†’</a>
+    <a href="onboarding.html" class="btn-secondary">Start Free Setup →</a>
   </div>
 </section>
 
@@ -1431,12 +1431,12 @@
         <h3>Every deadline. Every requirement. One calendar.</h3>
         <p>Between quarterly scans, annual pen tests, daily log reviews, and recurring training obligations, a small business has dozens of active PCI DSS deadlines running simultaneously. Miss one and your compliance status is in jeopardy. PCINexus surfaces all of them in a single view  -  with alerts before they lapse.</p>
         <ul class="feature-list">
-          <li><span class="check">âœ“</span><span><strong>Quarterly ASV scan tracking</strong>  -  Req 11.3. Expiry date tracked, renewal alert at 60 days.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Annual penetration test scheduling</strong>  -  Req 11.4. Assigned to owner, tracked through completion.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Certificate &amp; document expiry alerts</strong>  -  SSL certs, vendor attestations, and policy documents flagged before they lapse.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Annual security awareness training</strong>  -  Req 12.6. Completion tracked per employee across all locations.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Daily log review obligations</strong>  -  Req 10.7. Dashboard reminder and evidence log to prove ongoing compliance.</span></li>
-          <li><span class="check">âœ“</span><span><strong>60-day cycle rollover prompt</strong>  -  Start your next compliance year before the current one expires.</span></li>
+          <li><span class="check">✓</span><span><strong>Quarterly ASV scan tracking</strong>  -  Req 11.3. Expiry date tracked, renewal alert at 60 days.</span></li>
+          <li><span class="check">✓</span><span><strong>Annual penetration test scheduling</strong>  -  Req 11.4. Assigned to owner, tracked through completion.</span></li>
+          <li><span class="check">✓</span><span><strong>Certificate &amp; document expiry alerts</strong>  -  SSL certs, vendor attestations, and policy documents flagged before they lapse.</span></li>
+          <li><span class="check">✓</span><span><strong>Annual security awareness training</strong>  -  Req 12.6. Completion tracked per employee across all locations.</span></li>
+          <li><span class="check">✓</span><span><strong>Daily log review obligations</strong>  -  Req 10.7. Dashboard reminder and evidence log to prove ongoing compliance.</span></li>
+          <li><span class="check">✓</span><span><strong>60-day cycle rollover prompt</strong>  -  Start your next compliance year before the current one expires.</span></li>
         </ul>
       </div>
       <div class="reveal" style="transition-delay:0.1s;">
@@ -1493,12 +1493,12 @@
         <h3>Compliance gaps don't close themselves.</h3>
         <p>A QSA or an internal review will surface findings  -  requirements that aren't fully met, evidence that doesn't satisfy the standard, or controls that need to be implemented. Without a structured tracker, those findings get written down somewhere and forgotten. PCINexus turns every finding into an assigned, tracked, accountable work item.</p>
         <ul class="feature-list">
-          <li><span class="check">âœ“</span><span><strong>Finding creation &amp; classification</strong>  -  severity levels, affected requirement, affected location.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Owner assignment</strong>  -  each finding routed to the responsible person. No more ambiguity about who owns what.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Remediation status tracking</strong>  -  Open, In Progress, Resolved, Accepted Risk. Full audit trail of every status change.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Due date management</strong>  -  deadlines set, tracked, and escalated if missed.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Evidence attachment</strong>  -  resolution documentation uploaded directly to the finding record.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Executive summary view</strong>  -  L1 and L2 users see open findings count, severity breakdown, and overdue items across all locations at a glance.</span></li>
+          <li><span class="check">✓</span><span><strong>Finding creation &amp; classification</strong>  -  severity levels, affected requirement, affected location.</span></li>
+          <li><span class="check">✓</span><span><strong>Owner assignment</strong>  -  each finding routed to the responsible person. No more ambiguity about who owns what.</span></li>
+          <li><span class="check">✓</span><span><strong>Remediation status tracking</strong>  -  Open, In Progress, Resolved, Accepted Risk. Full audit trail of every status change.</span></li>
+          <li><span class="check">✓</span><span><strong>Due date management</strong>  -  deadlines set, tracked, and escalated if missed.</span></li>
+          <li><span class="check">✓</span><span><strong>Evidence attachment</strong>  -  resolution documentation uploaded directly to the finding record.</span></li>
+          <li><span class="check">✓</span><span><strong>Executive summary view</strong>  -  L1 and L2 users see open findings count, severity breakdown, and overdue items across all locations at a glance.</span></li>
         </ul>
       </div>
       <div class="reveal" style="transition-delay:0.1s;">
@@ -1556,7 +1556,7 @@
       <p style="font-size:0.92rem;color:#1e293b;line-height:1.65;max-width:800px;"><strong>PCI DSS does not require expensive tools  -  it requires effective controls.</strong> Every integration in PCINexus was selected because it satisfies a specific PCI DSS requirement at the lowest possible cost. Open-source and free tools are always recommended first. Mid-market and enterprise tools are listed for organizations that already have them  -  never pushed as the default.</p>
     </div>
 
-    <!-- PULL â†’ REVIEW â†’ APPROVE WORKFLOW -->
+    <!-- PULL → REVIEW → APPROVE WORKFLOW -->
     <div class="reveal" style="margin-top:40px; display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
       <div style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px;text-align:center;">
         <div style="font-size:1.8rem;margin-bottom:10px;">ðŸ”Œ</div>
@@ -1569,7 +1569,7 @@
         <p style="font-size:0.78rem;color:#64748b;line-height:1.55;">Every data pull is presented for human review  -  mapped to its specific PCI DSS requirement with a plain-English summary of what was found.</p>
       </div>
       <div style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px;text-align:center;">
-        <div style="font-size:1.8rem;margin-bottom:10px;">âœ…</div>
+        <div style="font-size:1.8rem;margin-bottom:10px;">✅</div>
         <div style="font-weight:800;color:var(--navy);font-size:0.9rem;margin-bottom:6px;">3  -  Approve</div>
         <p style="font-size:0.78rem;color:#64748b;line-height:1.55;">Only after explicit approval does data enter your compliance record. Nothing is auto-accepted. Your evidence trail stays clean and auditable.</p>
       </div>
@@ -1799,12 +1799,12 @@
         <h3>Your AD is your compliance evidence. We make it usable.</h3>
         <p>Requirements 7 and 8 of PCI DSS v4.0.1 require demonstrating that access to cardholder data is restricted, that accounts are managed, that passwords meet policy, and that stale accounts are removed. Most businesses have this data in their Active Directory  -  but no way to pull it into a compliance record systematically. PCINexus does exactly that.</p>
         <ul class="feature-list">
-          <li><span class="check">âœ“</span><span><strong>User account sync</strong>  -  active, disabled, and locked accounts pulled with full attribute data. Req 8.2.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Access group mapping</strong>  -  OU structure and group memberships documented for Req 7 access control evidence.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Stale account detection</strong>  -  accounts inactive for 90+ days flagged automatically. Req 8.2.6.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Password policy review</strong>  -  your current policy pulled and compared against PCI DSS v4.0.1 requirements. Req 8.3.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Service account inventory</strong>  -  non-human accounts documented and reviewed. Req 8.2.2.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Process owner approval</strong>  -  every AD import requires explicit approval before the data enters your compliance record.</span></li>
+          <li><span class="check">✓</span><span><strong>User account sync</strong>  -  active, disabled, and locked accounts pulled with full attribute data. Req 8.2.</span></li>
+          <li><span class="check">✓</span><span><strong>Access group mapping</strong>  -  OU structure and group memberships documented for Req 7 access control evidence.</span></li>
+          <li><span class="check">✓</span><span><strong>Stale account detection</strong>  -  accounts inactive for 90+ days flagged automatically. Req 8.2.6.</span></li>
+          <li><span class="check">✓</span><span><strong>Password policy review</strong>  -  your current policy pulled and compared against PCI DSS v4.0.1 requirements. Req 8.3.</span></li>
+          <li><span class="check">✓</span><span><strong>Service account inventory</strong>  -  non-human accounts documented and reviewed. Req 8.2.2.</span></li>
+          <li><span class="check">✓</span><span><strong>Process owner approval</strong>  -  every AD import requires explicit approval before the data enters your compliance record.</span></li>
         </ul>
       </div>
       <div class="reveal" style="transition-delay:0.1s;">
@@ -1861,12 +1861,12 @@
         <h3>Stop guessing whether your evidence is good enough.</h3>
         <p>The two most common compliance problems for small businesses are (1) not knowing what evidence an auditor actually needs, and (2) submitting documents that don't satisfy the requirement. Both are expensive problems. The AI Evidence Review engine addresses both  -  instantly, on every upload, before you submit anything.</p>
         <ul class="feature-list">
-          <li><span class="check">âœ“</span><span><strong>AI Evidence Review</strong>  -  upload any document and receive an instant PASS / FAIL / NEEDS REVIEW verdict with a plain-English explanation mapped to the specific PCI DSS v4.0.1 requirement.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Remediation recommendations</strong>  -  when evidence fails, the AI explains exactly what's missing and how to fix it.</span></li>
-          <li><span class="check">âœ“</span><span><strong>AI Compliance Chat</strong>  -  ask any PCI DSS question in plain English. The assistant is locked exclusively to PCI DSS v4.0.1, so answers are always accurate and requirement-specific.</span></li>
-          <li><span class="check">âœ“</span><span><strong>No hallucination risk</strong>  -  the chat assistant cannot wander into other standards or make up requirements. Scoped by design.</span></li>
-          <li><span class="check">âœ“</span><span><strong>24/7 availability</strong>  -  compliance questions don't wait for business hours. Neither does your AI assistant.</span></li>
-          <li><span class="check">âœ“</span><span><strong>Powered by Anthropic Claude</strong>  -  the same AI that powers enterprise compliance tools, available to every PCINexus subscriber at every pricing tier.</span></li>
+          <li><span class="check">✓</span><span><strong>AI Evidence Review</strong>  -  upload any document and receive an instant PASS / FAIL / NEEDS REVIEW verdict with a plain-English explanation mapped to the specific PCI DSS v4.0.1 requirement.</span></li>
+          <li><span class="check">✓</span><span><strong>Remediation recommendations</strong>  -  when evidence fails, the AI explains exactly what's missing and how to fix it.</span></li>
+          <li><span class="check">✓</span><span><strong>AI Compliance Chat</strong>  -  ask any PCI DSS question in plain English. The assistant is locked exclusively to PCI DSS v4.0.1, so answers are always accurate and requirement-specific.</span></li>
+          <li><span class="check">✓</span><span><strong>No hallucination risk</strong>  -  the chat assistant cannot wander into other standards or make up requirements. Scoped by design.</span></li>
+          <li><span class="check">✓</span><span><strong>24/7 availability</strong>  -  compliance questions don't wait for business hours. Neither does your AI assistant.</span></li>
+          <li><span class="check">✓</span><span><strong>Powered by Anthropic Claude</strong>  -  the same AI that powers enterprise compliance tools, available to every PCINexus subscriber at every pricing tier.</span></li>
         </ul>
       </div>
       <div class="reveal" style="transition-delay:0.1s;">
@@ -1975,7 +1975,7 @@
   <p>The full platform is running live. Walk through a real compliance workflow for a multi-location restaurant group  -  no login required.</p>
   <div class="cta-band-btns">
     <a href="https://pci-nexus.vercel.app/Demo" target="_blank" class="btn-primary">âœ¦ Try the Live Demo</a>
-    <a href="onboarding.html" style="background:transparent;border:1.5px solid #e2e8f0;color:#334155;padding:13px 24px;border-radius:12px;font-size:0.88rem;font-weight:600;font-family:'DM Sans',sans-serif;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#1E6FD9';this.style.color='#1E6FD9'" onmouseout="this.style.borderColor='#e2e8f0';this.style.color='#334155'">Start Free Setup â†’</a>
+    <a href="onboarding.html" style="background:transparent;border:1.5px solid #e2e8f0;color:#334155;padding:13px 24px;border-radius:12px;font-size:0.88rem;font-weight:600;font-family:'DM Sans',sans-serif;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#1E6FD9';this.style.color='#1E6FD9'" onmouseout="this.style.borderColor='#e2e8f0';this.style.color='#334155'">Start Free Setup →</a>
   </div>
 </section>
 
