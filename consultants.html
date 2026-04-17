@@ -288,7 +288,7 @@
   .reveal.visible { opacity: 1; transform: none; }
 
   @media (max-width: 768px) {
-    nav { padding: 0 20px; }
+    nav { padding: 0 40px 0 24px; }
     .hero, .how-section, .pricing-section, .surcharge-section,
     .compare-section, .roi-section, .cta-section { padding-left: 20px; padding-right: 20px; }
     .compare-grid { grid-template-columns: 1fr; }
@@ -738,4 +738,9 @@
     const mode = isAnnual ? 'annual' : 'monthly';
     const suffix = isAnnual ? '<span>/mo, billed annually</span>' : '<span>/mo</span>';
     document.getElementById('price-starter').innerHTML = prices.starter[mode] + suffix;
-    document.getElementById('price-pro').innerHTML     =
+    document.getElementById('price-pro').innerHTML     =prices.pro[mode] + suffix;
+    document.getElementById('price-elite').innerHTML    = prices.elite[mode] + suffix;
+  }
+</script>
+</body>
+</html>
