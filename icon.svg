@@ -1,26 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 160" width="480" height="160">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160">
   <defs>
-
-    <!-- Shield gradient - blue -->
     <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#2E7FE8"/>
       <stop offset="50%" stop-color="#1A5EC4"/>
       <stop offset="100%" stop-color="#0D3A8A"/>
     </linearGradient>
-
-    <!-- Shield inner highlight -->
-    <linearGradient id="shieldInner" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#4A9AFF" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#0D3A8A" stop-opacity="0"/>
-    </linearGradient>
-
-    <!-- Shield stroke gradient -->
-    <linearGradient id="shieldStroke" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#5BB3FF"/>
-      <stop offset="100%" stop-color="#1A5EC4"/>
-    </linearGradient>
-
-    <!-- Spark core glow -->
     <radialGradient id="sparkCore" cx="50%" cy="50%" r="50%">
       <stop offset="0%"  stop-color="#FFFFFF"/>
       <stop offset="15%" stop-color="#FFE8A0"/>
@@ -28,15 +12,11 @@
       <stop offset="60%" stop-color="#DD2222" stop-opacity="0.8"/>
       <stop offset="100%" stop-color="#AA0000" stop-opacity="0"/>
     </radialGradient>
-
-    <!-- Outer glow -->
     <radialGradient id="sparkGlow" cx="50%" cy="50%" r="50%">
       <stop offset="0%"  stop-color="#FF6600" stop-opacity="0.5"/>
       <stop offset="60%" stop-color="#CC1111" stop-opacity="0.2"/>
       <stop offset="100%" stop-color="#880000" stop-opacity="0"/>
     </radialGradient>
-
-    <!-- Horizontal beam gradient -->
     <linearGradient id="beamH" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%"   stop-color="#FF4400" stop-opacity="0"/>
       <stop offset="40%"  stop-color="#FF6600" stop-opacity="0.9"/>
@@ -44,8 +24,6 @@
       <stop offset="60%"  stop-color="#FF6600" stop-opacity="0.9"/>
       <stop offset="100%" stop-color="#FF4400" stop-opacity="0"/>
     </linearGradient>
-
-    <!-- Vertical beam gradient -->
     <linearGradient id="beamV" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%"   stop-color="#FF4400" stop-opacity="0"/>
       <stop offset="40%"  stop-color="#FF6600" stop-opacity="0.8"/>
@@ -53,96 +31,34 @@
       <stop offset="60%"  stop-color="#FF6600" stop-opacity="0.8"/>
       <stop offset="100%" stop-color="#FF4400" stop-opacity="0"/>
     </linearGradient>
-
-    <!-- Diagonal beam -->
-    <linearGradient id="beamD1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%"   stop-color="#FF5500" stop-opacity="0"/>
-      <stop offset="45%"  stop-color="#FF7700" stop-opacity="0.7"/>
-      <stop offset="55%"  stop-color="#FF7700" stop-opacity="0.7"/>
-      <stop offset="100%" stop-color="#FF5500" stop-opacity="0"/>
-    </linearGradient>
-
     <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur stdDeviation="3" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-
-    <!-- Very subtle warm glow for Nexus - barely perceptible -->
-    <filter id="textGlow" x="-5%" y="-5%" width="110%" height="110%">
-      <feGaussianBlur stdDeviation="0.4" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-
   </defs>
 
-  <!-- ── Shield ─────────────────────────────────────────────────────────── -->
   <!-- Shield body -->
-  <path d="M80 18 L130 34 L130 78 C130 108 106 128 80 138 C54 128 30 108 30 78 L30 34 Z"
+  <path d="M80 12 L140 32 L140 82 C140 118 112 140 80 152 C48 140 20 118 20 82 L20 32 Z"
         fill="url(#shieldGrad)" opacity="0.95"/>
-
-  <!-- Shield inner highlight layer -->
-  <path d="M80 22 L126 37 L126 78 C126 106 103 125 80 134 C57 125 34 106 34 78 L34 37 Z"
-        fill="url(#shieldInner)"/>
-
   <!-- Shield outline -->
-  <path d="M80 18 L130 34 L130 78 C130 108 106 128 80 138 C54 128 30 108 30 78 L30 34 Z"
-        fill="none" stroke="url(#shieldStroke)" stroke-width="2" opacity="0.9"/>
+  <path d="M80 12 L140 32 L140 82 C140 118 112 140 80 152 C48 140 20 118 20 82 L20 32 Z"
+        fill="none" stroke="#5BB3FF" stroke-width="2.5" opacity="0.9"/>
 
-  <!-- Shield inner border -->
-  <path d="M80 24 L124 39 L124 78 C124 104 103 123 80 132 C57 123 36 104 36 78 L36 39 Z"
-        fill="none" stroke="#5BB3FF" stroke-width="0.8" opacity="0.4"/>
-
-  <!-- ── Spark / burst ───────────────────────────────────────────────────── -->
   <!-- Outer glow -->
-  <ellipse cx="80" cy="78" rx="28" ry="28" fill="url(#sparkGlow)" filter="url(#glow)"/>
+  <ellipse cx="80" cy="82" rx="32" ry="32" fill="url(#sparkGlow)" filter="url(#glow)"/>
 
   <!-- Horizontal beam -->
-  <rect x="20" y="74.5" width="120" height="7" rx="3.5" fill="url(#beamH)" filter="url(#glow)"/>
-
+  <rect x="18" y="77" width="124" height="10" rx="5" fill="url(#beamH)" filter="url(#glow)"/>
   <!-- Vertical beam -->
-  <rect x="76.5" y="48" width="7" height="60" rx="3.5" fill="url(#beamV)" filter="url(#glow)"/>
+  <rect x="75" y="42" width="10" height="80" rx="5" fill="url(#beamV)" filter="url(#glow)"/>
 
   <!-- Diagonal beams -->
-  <line x1="52" y1="52" x2="108" y2="104" stroke="#FF6600" stroke-width="3" stroke-linecap="round" opacity="0.5" filter="url(#glow)"/>
-  <line x1="108" y1="52" x2="52" y2="104" stroke="#FF6600" stroke-width="3" stroke-linecap="round" opacity="0.5" filter="url(#glow)"/>
+  <line x1="48" y1="54" x2="112" y2="110" stroke="#FF6600" stroke-width="4" stroke-linecap="round" opacity="0.5" filter="url(#glow)"/>
+  <line x1="112" y1="54" x2="48" y2="110" stroke="#FF6600" stroke-width="4" stroke-linecap="round" opacity="0.5" filter="url(#glow)"/>
 
   <!-- Core spark -->
-  <circle cx="80" cy="78" r="14" fill="url(#sparkCore)" filter="url(#glow)"/>
-
+  <circle cx="80" cy="82" r="18" fill="url(#sparkCore)" filter="url(#glow)"/>
   <!-- Bright center -->
-  <circle cx="80" cy="78" r="4" fill="#FFFFFF" opacity="0.95"/>
-  <circle cx="80" cy="78" r="2" fill="#FFFBE0"/>
-
-  <!-- ── Text ───────────────────────────────────────────────────────────── -->
-  <!-- PCI- in off-white (visible on both dark and light backgrounds) -->
-  <text x="152" y="90"
-        font-family="'Arial Black', 'Arial Bold', Arial, sans-serif"
-        font-weight="900"
-        font-size="54"
-        fill="#E8EEF8"
-        letter-spacing="-1">PCI-</text>
-
-  <!-- Nexus in red — crisp, no blur -->
-  <text x="272" y="90"
-        font-family="'Arial Black', 'Arial Bold', Arial, sans-serif"
-        font-weight="900"
-        font-size="54"
-        fill="#CC2222"
-        letter-spacing="-1">Nexus</text>
-
-  <!-- Tagline — both lines aligned to x=152 (same as PCI-) -->
-  <text x="152" y="113"
-        font-family="Arial, sans-serif"
-        font-weight="400"
-        font-size="15"
-        fill="#8899BB"
-        letter-spacing="0.3">An AI-Powered PCI-DSS</text>
-
-  <text x="152" y="132"
-        font-family="Arial, sans-serif"
-        font-weight="400"
-        font-size="15"
-        fill="#8899BB"
-        letter-spacing="0.3">Compliance Platform.</text>
-
+  <circle cx="80" cy="82" r="5" fill="#FFFFFF" opacity="0.95"/>
+  <circle cx="80" cy="82" r="2.5" fill="#FFFBE0"/>
 </svg>
