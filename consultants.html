@@ -742,5 +742,36 @@
     document.getElementById('price-elite').innerHTML    = prices.elite[mode] + suffix;
   }
 </script>
+
+<script>
+(async function(){
+  try{
+    const res = await fetch('https://pci-nexus.vercel.app/api/pricing');
+    if(!res.ok) return;
+    const plans = await res.json();
+    if(!Array.isArray(plans)||!plans.length) return;
+
+    // Map plan names to element IDs
+    const MAP = {
+      'starter':   'price-starter',
+      'consultant':'price-starter',
+      'growth':    'price-growth',
+      'pro':       'price-pro',
+      'elite':     'price-elite',
+      'enterprise':'price-enterprise',
+    };
+
+    plans.forEach(plan=>{
+      const key = (plan.name||'').toLowerCase().replace(/[^a-z]/g,'');
+      const elId = MAP[key];
+      if(!elId) return;
+      const el = document.getElementById(elId);
+      if(!el) return;
+      const mo = plan.price_monthly ? '$'+plan.price_monthly : null;
+      if(mo) el.innerHTML = mo + '<span>/mo</span>';
+    });
+  }catch(e){}
+})();
+</script>
 </body>
 </html>

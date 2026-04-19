@@ -415,7 +415,7 @@
             </div>
           </div>
           <div class="pcinexus-cta-block">
-            <div class="pcinexus-price">$125 <span>/month</span></div>
+            <div class="pcinexus-price" id="price-starter">$125 <span>/month</span></div>
             <p style="font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.5;">Starter plan &middot; 6-month compliance cycle &middot; No technical team required &middot; Free setup period  -  pay only when you go live.</p>
             <a href="onboarding.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--grad-b);color:#fff;padding:13px 24px;border-radius:12px;font-size:0.85rem;font-weight:700;text-decoration:none;transition:opacity 0.2s;box-shadow:0 4px 20px rgba(30,111,217,0.4);">Start Free Setup →</a>
             <a href="https://pci-nexus.vercel.app/Demo" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.85);padding:12px 24px;border-radius:12px;font-size:0.85rem;font-weight:600;text-decoration:none;transition:background 0.2s;">✦ Live Demo</a>
@@ -539,7 +539,7 @@
           </tr>
           <tr>
             <td class="row-label">Starting price per month</td>
-            <td class="pci-col" style="text-align:center;font-weight:700;color:var(--teal2);">$125 / mo</td>
+            <td class="pci-col" style="text-align:center;font-weight:700;color:var(--teal2);" id="price-starter-table">$125 / mo</td>
             <td style="text-align:center;color:#94a3b8;">$499+ / mo</td>
             <td style="text-align:center;color:#94a3b8;">$499+ / mo</td>
             <td style="text-align:center;color:#94a3b8;">$499+ / mo</td>
@@ -633,6 +633,37 @@
     });
   }, { threshold: 0.1 });
   revealEls.forEach(el => observer.observe(el));
+</script>
+
+<script>
+(async function(){
+  try{
+    const res = await fetch('https://pci-nexus.vercel.app/api/pricing');
+    if(!res.ok) return;
+    const plans = await res.json();
+    if(!Array.isArray(plans)||!plans.length) return;
+
+    // Map plan names to element IDs
+    const MAP = {
+      'starter':   'price-starter',
+      'consultant':'price-starter',
+      'growth':    'price-growth',
+      'pro':       'price-pro',
+      'elite':     'price-elite',
+      'enterprise':'price-enterprise',
+    };
+
+    plans.forEach(plan=>{
+      const key = (plan.name||'').toLowerCase().replace(/[^a-z]/g,'');
+      const elId = MAP[key];
+      if(!elId) return;
+      const el = document.getElementById(elId);
+      if(!el) return;
+      const mo = plan.price_monthly ? '$'+plan.price_monthly : null;
+      if(mo) el.innerHTML = mo + '<span>/mo</span>';
+    });
+  }catch(e){}
+})();
 </script>
 </body>
 </html>
