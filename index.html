@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GMBP33VGHF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-GMBP33VGHF');
-</script>
+<!-- Google Analytics loaded conditionally after cookie consent -->
 <meta charset="UTF-8"/>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgMTYwIiB3aWR0aD0iMTYwIiBoZWlnaHQ9IjE2MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNoaWVsZEdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMkU3RkU4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMUE1RUM0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEM0E4QSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0ic3BhcmtDb3JlIiBjeD0iNTAlIiBjeT0iNTAlIiByPSI1MCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiAgc3RvcC1jb2xvcj0iI0ZGRkZGRiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjE1JSIgc3RvcC1jb2xvcj0iI0ZGRThBMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjM1JSIgc3RvcC1jb2xvcj0iI0ZGODgwMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iI0REMjIyMiIgc3RvcC1vcGFjaXR5PSIwLjgiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjQUEwMDAwIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxwYXRoIGQ9Ik04MCAxMiBMMTQwIDMyIEwxNDAgODIgQzE0MCAxMTggMTEyIDE0MCA4MCAxNTIgQzQ4IDE0MCAyMCAxMTggMjAgODIgTDIwIDMyIFoiIGZpbGw9InVybCgjc2hpZWxkR3JhZCkiIG9wYWNpdHk9IjAuOTUiLz4KPC9zdmc+">
 <meta name="viewport" content="width=1100, initial-scale=1.0"/>
@@ -321,6 +314,45 @@ section{padding:100px 40px;max-width:1200px;margin:0 auto;}
   transition:border-color .2s,background .2s;
 }
 .btn-outline-white:hover{border-color:#fff;background:rgba(255,255,255,.1);}
+
+
+/* ── COOKIE CONSENT ── */
+#cookie-banner{
+  position:fixed;bottom:0;left:0;right:0;z-index:9999;
+  padding:20px 40px;
+  background:rgba(6,15,30,0.97);
+  backdrop-filter:blur(20px);
+  border-top:1px solid rgba(26,191,204,0.2);
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;flex-wrap:wrap;
+  transform:translateY(100%);
+  transition:transform .4s cubic-bezier(.4,0,.2,1);
+}
+#cookie-banner.visible{transform:translateY(0);}
+.cookie-text{flex:1;min-width:260px;}
+.cookie-title{font-size:.85rem;font-weight:700;color:#fff;margin-bottom:4px;}
+.cookie-desc{font-size:.78rem;color:rgba(148,197,210,.65);line-height:1.6;}
+.cookie-desc a{color:var(--teal);text-decoration:underline;}
+.cookie-actions{display:flex;gap:10px;flex-shrink:0;align-items:center;flex-wrap:wrap;}
+.cookie-btn-accept{
+  padding:10px 22px;border-radius:8px;font-size:.82rem;font-weight:700;
+  background:var(--grad-b);color:#fff;border:none;cursor:pointer;
+  transition:opacity .2s;
+}
+.cookie-btn-accept:hover{opacity:.88;}
+.cookie-btn-essential{
+  padding:10px 22px;border-radius:8px;font-size:.82rem;font-weight:600;
+  background:transparent;color:rgba(148,197,210,.6);
+  border:1px solid rgba(148,197,210,.2);cursor:pointer;
+  transition:border-color .2s,color .2s;
+}
+.cookie-btn-essential:hover{border-color:rgba(148,197,210,.5);color:rgba(148,197,210,.9);}
+.cookie-badge{
+  font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:3px 8px;border-radius:4px;
+  background:rgba(26,191,204,.12);color:var(--teal);
+  border:1px solid rgba(26,191,204,.2);white-space:nowrap;
+}
 
 /* ── FOOTER ── */
 footer{
@@ -654,6 +686,71 @@ footer{
   <div class="footer-copy">© 2026 PCI-Nexus · J.Eaton Consulting LLC · PCI DSS v4.0.1</div>
 </footer>
 </div>
+
+
+<!-- ── COOKIE CONSENT BANNER ── -->
+<div id="cookie-banner" role="dialog" aria-label="Cookie consent" aria-live="polite">
+  <div class="cookie-text">
+    <div class="cookie-title">🍪 We use cookies to improve your experience</div>
+    <div class="cookie-desc">
+      PCI-Nexus uses essential cookies to keep the site working and analytics cookies (Google Analytics)
+      to understand how visitors use our platform so we can improve it.
+      By clicking <strong>"Accept All"</strong> you consent to analytics tracking.
+      <strong>"Essential Only"</strong> limits cookies to those strictly necessary for the site to function.
+      See our <a href="/privacy.html">Privacy Policy</a> for details.
+      <br/><span style="font-size:.7rem;color:rgba(148,197,210,.4);margin-top:4px;display:inline-block;">
+        GDPR · CCPA · PCI DSS compliant data handling
+      </span>
+    </div>
+  </div>
+  <div class="cookie-actions">
+    <span class="cookie-badge">Your choice is saved</span>
+    <button id="cookie-essential" class="cookie-btn-essential">Essential Only</button>
+    <button id="cookie-accept-all" class="cookie-btn-accept">Accept All →</button>
+  </div>
+</div>
+
+
+<script>
+(function(){
+  const CONSENT_KEY='pcinexus_cookie_consent';
+  const GA_ID='G-GMBP33VGHF';
+
+  function loadGA(){
+    if(window._gaLoaded)return;
+    window._gaLoaded=true;
+    var s=document.createElement('script');
+    s.async=true;
+    s.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag=gtag;
+    gtag('js',new Date());
+    gtag('config',GA_ID);
+  }
+
+  function setConsent(type){
+    localStorage.setItem(CONSENT_KEY,type);
+    document.getElementById('cookie-banner').classList.remove('visible');
+    if(type==='all') loadGA();
+  }
+
+  window.addEventListener('DOMContentLoaded',function(){
+    var existing=localStorage.getItem(CONSENT_KEY);
+    if(existing){
+      if(existing==='all') loadGA();
+      return;
+    }
+    setTimeout(function(){
+      var b=document.getElementById('cookie-banner');
+      if(b) b.classList.add('visible');
+    },1500);
+    document.getElementById('cookie-accept-all').addEventListener('click',function(){setConsent('all');});
+    document.getElementById('cookie-essential').addEventListener('click',function(){setConsent('essential');});
+  });
+})();
+</script>
 
 </body>
 </html>
