@@ -148,7 +148,7 @@ section{padding:100px 40px;max-width:1200px;margin:0 auto;}
 .for-partners-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:32px;
 }
-@media(max-width:780px){.for-partners-grid{grid-template-columns:1fr;}}
+@media(max-width:780px){.for-partners-grid{grid-template-columns:1fr;} .choose-path-row{grid-template-columns:1fr!important;}}
 
 .partner-card{
   padding:32px;border-radius:20px;
@@ -473,43 +473,35 @@ footer{
       </ul>
     </div>
 
-    <!-- Unified CTA spanning both partner cards -->
-    <div class="fade-up" style="grid-column:1/-1;display:flex;flex-direction:column;align-items:center;gap:14px;padding:32px 24px 8px;border-top:1px solid rgba(255,255,255,0.08);margin-top:8px;">
-      <p style="color:rgba(255,255,255,0.5);font-size:0.82rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;margin:0;">Whether you&#39;re a QSA, MSP, or IT consultant — start here</p>
-      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;">
+    <!-- Choose Your Path — two-column CTA row -->
+    <div class="fade-up choose-path-row" style="grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px;border-top:1px solid rgba(255,255,255,0.08);padding-top:28px;">
+
+      <!-- Left: Consultants / QSAs / MSPs -->
+      <div style="background:linear-gradient(135deg,rgba(30,111,217,0.12),rgba(14,165,176,0.08));border:1.5px solid rgba(30,111,217,0.3);border-radius:16px;padding:28px 32px;display:flex;flex-direction:column;gap:12px;">
+        <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#1ABFCC;">QSA Firms · MSPs · IT Consultants</div>
+        <div style="font-size:1.15rem;font-weight:800;color:#fff;line-height:1.3;">Manage compliance<br/>for your clients</div>
+        <div style="font-size:0.82rem;color:rgba(255,255,255,0.55);line-height:1.6;">Free starter plan · Up to 5 clients · No credit card required</div>
         <a href="https://pci-nexus.vercel.app/PCIDemo?type=consultant-trial"
-           style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#1E6FD9,#0EA5B0);color:#fff;padding:16px 32px;border-radius:12px;font-size:0.95rem;font-weight:800;text-decoration:none;box-shadow:0 4px 24px rgba(30,111,217,0.45);transition:transform 0.15s,box-shadow 0.15s;white-space:nowrap;"
-           onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 32px rgba(30,111,217,0.6)'"
-           onmouseout="this.style.transform='';this.style.boxShadow='0 4px 24px rgba(30,111,217,0.45)'">
+           style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#1E6FD9,#0EA5B0);color:#fff;padding:14px 24px;border-radius:10px;font-size:0.9rem;font-weight:800;text-decoration:none;box-shadow:0 4px 20px rgba(30,111,217,0.4);transition:transform 0.15s,box-shadow 0.15s;margin-top:4px;"
+           onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(30,111,217,0.55)'"
+           onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(30,111,217,0.4)'">
           Start Your Free Evaluation →
         </a>
-        <a href="https://pci-nexus.vercel.app/PCIDemo?type=merchant&amp;entered=1&amp;onboarded=1&amp;saq=saq-d-merchant&amp;mode=consultant&amp;p=consultant"
-           target="_blank"
-           style="display:inline-flex;align-items:center;gap:10px;background:transparent;color:rgba(255,255,255,0.75);padding:15px 28px;border-radius:12px;font-size:0.88rem;font-weight:700;text-decoration:none;border:1.5px solid rgba(255,255,255,0.2);transition:all 0.15s;white-space:nowrap;"
-           onmouseover="this.style.borderColor='rgba(26,191,204,0.6)';this.style.color='#1ABFCC'"
-           onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='rgba(255,255,255,0.75)'">
-          View Live Demo First
+      </div>
+
+      <!-- Right: Self-Serve Merchants -->
+      <div style="background:rgba(255,255,255,0.03);border:1.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:28px 32px;display:flex;flex-direction:column;gap:12px;">
+        <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);">Also Available</div>
+        <div style="font-size:1.15rem;font-weight:800;color:#fff;line-height:1.3;">Self-Serve<br/>Merchants</div>
+        <div style="font-size:0.82rem;color:rgba(255,255,255,0.55);line-height:1.6;">Handle PCI compliance independently · 90-day free trial · Plans from $49/mo</div>
+        <a href="https://pci-nexus.vercel.app/PCIDemo?type=merchant"
+           style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:rgba(255,255,255,0.8);padding:13px 24px;border-radius:10px;font-size:0.9rem;font-weight:700;text-decoration:none;border:1.5px solid rgba(255,255,255,0.2);transition:all 0.15s;margin-top:4px;"
+           onmouseover="this.style.borderColor='rgba(26,191,204,0.5)';this.style.color='#1ABFCC'"
+           onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='rgba(255,255,255,0.8)'">
+          Try the Live Demo →
         </a>
       </div>
-      <p style="color:rgba(255,255,255,0.3);font-size:0.76rem;margin:0;">Free to start · No credit card required · You choose your practitioner type during setup</p>
-    </div>
 
-    <!-- Merchant — secondary -->
-    <div class="merchant-card fade-up">
-      <div style="flex:1;min-width:260px;">
-        <div class="merchant-badge">Also Available</div>
-        <div class="partner-title" style="font-size:1.2rem;">Self-Serve Merchants</div>
-        <div class="partner-desc" style="margin-bottom:0;">Small businesses who want to handle PCI compliance independently — without hiring a consultant — are welcome. The SAQ Wizard determines your SAQ type in minutes, AI guides you through every requirement, and your completed SAQ is ready to download when you're done.</div>
-      </div>
-      <div style="flex:1;min-width:260px;">
-        <ul class="partner-bullets">
-          <li>SAQ Wizard identifies your correct SAQ type automatically</li>
-          <li>Plain-English guidance on every requirement — no jargon</li>
-          <li>90-day free trial — build your complete program before you pay</li>
-          <li>Plans starting at $49/month — less than one hour of consultant time</li>
-        </ul>
-        <a href="https://pci-nexus.vercel.app/Demo?type=merchant" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:20px;padding:10px 20px;border-radius:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:.82rem;font-weight:600;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(255,255,255,.14)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">Try the Live Demo →</a>
-      </div>
     </div>
   </div>
 </section>
