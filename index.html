@@ -148,7 +148,7 @@ section{padding:100px 40px;max-width:1200px;margin:0 auto;}
 .for-partners-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:32px;
 }
-@media(max-width:780px){.for-partners-grid{grid-template-columns:1fr;} .choose-path-row{grid-template-columns:1fr!important;}}
+@media(max-width:780px){.for-partners-grid{grid-template-columns:1fr;} .choose-path-row{grid-template-columns:1fr!important;} .two-box-grid{grid-template-columns:1fr!important;}}
 
 .partner-card{
   padding:32px;border-radius:20px;
@@ -442,67 +442,48 @@ footer{
   <h2 class="section-title fade-up">Built for the Professionals<br/>Who Protect Payment Data.</h2>
   <p class="section-sub fade-up">PCI-Nexus is a channel-first platform. The primary customers are the consultants, assessors, and service providers who manage PCI compliance on behalf of merchants — not merchants themselves.</p>
 
-  <div class="for-partners-grid">
-    <!-- QSA Firms -->
-    <div class="partner-card fade-up">
-      <div class="partner-icon">🏛</div>
-      <div class="partner-type">Primary Audience</div>
-      <div class="partner-title">QSA Firms &amp; Assessors</div>
-      <div class="partner-desc">Use PCI-Nexus as your client-facing assessment platform and back-office data repository. Deliver professional-grade compliance programs without building your own tooling.</div>
-      <ul class="partner-bullets">
-        <li>Multi-client dashboard — manage all assessments from one login</li>
-        <li>AI evidence review reduces manual testing time per client</li>
-        <li>QSA export packages — AOC, SAQ PDFs, evidence bundles</li>
-        <li>Full SAQ D Service Provider support with SP-only controls flagged</li>
-        <li>White-label your client portal with your firm's branding</li>
+  <div class="two-box-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:48px;">
+
+    <!-- BOX 1: Professionals -->
+    <div class="fade-up" style="background:linear-gradient(145deg,rgba(30,111,217,0.1),rgba(14,165,176,0.06));border:1.5px solid rgba(30,111,217,0.3);border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:0;">
+      <div style="font-size:0.68rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#1ABFCC;margin-bottom:10px;">QSA Firms &bull; MSPs &bull; IT Consultants &bull; ASVs</div>
+      <div style="font-size:1.35rem;font-weight:900;color:#fff;line-height:1.25;margin-bottom:14px;">Managing compliance<br/>for your clients</div>
+      <div style="font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.65;margin-bottom:20px;">Use PCI-Nexus as your back-office compliance platform. One dashboard for all your clients, white-label ready, with AI-powered evidence review and QSA-ready export packages.</div>
+      <ul style="list-style:none;padding:0;margin:0 0 28px;display:flex;flex-direction:column;gap:10px;">
+        <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:rgba(255,255,255,0.8);"><span style="color:#1ABFCC;font-weight:700;flex-shrink:0;">&#10003;</span>Multi-client dashboard — manage all clients from one login</li>
+        <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:rgba(255,255,255,0.8);"><span style="color:#1ABFCC;font-weight:700;flex-shrink:0;">&#10003;</span>AI evidence review — reduce manual testing time per client</li>
+        <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:rgba(255,255,255,0.8);"><span style="color:#1ABFCC;font-weight:700;flex-shrink:0;">&#10003;</span>QSA export packages — AOC, SAQ PDFs, evidence bundles</li>
+        <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:rgba(255,255,255,0.8);"><span style="color:#1ABFCC;font-weight:700;flex-shrink:0;">&#10003;</span>White-label your client portal with your firm&rsquo;s branding</li>
+        <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:rgba(255,255,255,0.8);"><span style="color:#1ABFCC;font-weight:700;flex-shrink:0;">&#10003;</span>Free starter plan — up to 5 clients, no credit card required</li>
       </ul>
+      <a href="https://pci-nexus.vercel.app/PCIDemo?type=consultant-trial"
+         style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#1E6FD9,#0EA5B0);color:#fff;padding:15px 28px;border-radius:12px;font-size:0.92rem;font-weight:800;text-decoration:none;box-shadow:0 4px 20px rgba(30,111,217,0.4);transition:transform 0.15s,box-shadow 0.15s;margin-top:auto;"
+         onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(30,111,217,0.6)'"
+         onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(30,111,217,0.4)'">
+        Start Your Free Evaluation &rarr;
+      </a>
     </div>
 
-    <!-- MSPs & IT Consultants -->
-    <div class="partner-card fade-up">
-      <div class="partner-icon">🖥</div>
-      <div class="partner-type">Primary Audience</div>
-      <div class="partner-title">MSPs &amp; IT Consultants</div>
-      <div class="partner-desc">Add PCI DSS compliance as a billable managed service. PCI-Nexus gives you the platform infrastructure to deliver compliance programs without becoming a PCI expert overnight.</div>
-      <ul class="partner-bullets">
-        <li>Onboard merchant clients in under 10 minutes</li>
-        <li>Role-based access — assign your clients' staff to their requirements</li>
-        <li>Compliance calendar with automated deadline reminders</li>
-        <li>AI-guided evidence collection — clients know exactly what to upload</li>
-        <li>One MSP account = recurring revenue from every merchant client</li>
+    <!-- BOX 2: Self-Serve Merchants -->
+    <div class="fade-up" style="background:linear-gradient(145deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02));border:1.5px solid rgba(255,255,255,0.12);border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:0;transition-delay:0.1s;">
+      <div style="font-size:0.68rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:10px;">Self-Serve &bull; No Consultant Needed</div>
+      <div style="font-size:1.35rem;font-weight:900;color:#fff;line-height:1.25;margin-bottom:14px;">Handling compliance<br/>on your own</div>
+      <div style="font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.65;margin-bottom:20px;">Small businesses that want to manage PCI DSS compliance without hiring a consultant. The SAQ Wizard guides you through every requirement — no PCI expertise required.</div>
+      <ul style="list-style:none;padding:0;margin:0 0 28px;display:flex;flex-direction:column;gap:10px;">
+        <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:rgba(255,255,255,0.8);"><span style="color:rgba(255,255,255,0.4);font-weight:700;flex-shrink:0;">&#10003;</span>SAQ Wizard identifies your correct SAQ type automatically</li>
+        <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:rgba(255,255,255,0.8);"><span style="color:rgba(255,255,255,0.4);font-weight:700;flex-shrink:0;">&#10003;</span>Plain-English guidance on every requirement — no jargon</li>
+        <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:rgba(255,255,255,0.8);"><span style="color:rgba(255,255,255,0.4);font-weight:700;flex-shrink:0;">&#10003;</span>AI-guided evidence collection — know exactly what to upload</li>
+        <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:rgba(255,255,255,0.8);"><span style="color:rgba(255,255,255,0.4);font-weight:700;flex-shrink:0;">&#10003;</span>90-day free trial — complete your program before you pay</li>
+        <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:rgba(255,255,255,0.8);"><span style="color:rgba(255,255,255,0.4);font-weight:700;flex-shrink:0;">&#10003;</span>Plans from $49/month — less than one hour of consultant time</li>
       </ul>
+      <a href="https://pci-nexus.vercel.app/PCIDemo?type=merchant"
+         style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:rgba(255,255,255,0.85);padding:14px 28px;border-radius:12px;font-size:0.92rem;font-weight:700;text-decoration:none;border:1.5px solid rgba(255,255,255,0.22);transition:all 0.15s;margin-top:auto;"
+         onmouseover="this.style.borderColor='rgba(26,191,204,0.5)';this.style.color='#1ABFCC'"
+         onmouseout="this.style.borderColor='rgba(255,255,255,0.22)';this.style.color='rgba(255,255,255,0.85)'">
+        Try the Live Demo &rarr;
+      </a>
     </div>
 
-    <!-- Choose Your Path — two-column CTA row -->
-    <div class="fade-up choose-path-row" style="grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px;border-top:1px solid rgba(255,255,255,0.08);padding-top:28px;">
-
-      <!-- Left: Consultants / QSAs / MSPs -->
-      <div style="background:linear-gradient(135deg,rgba(30,111,217,0.12),rgba(14,165,176,0.08));border:1.5px solid rgba(30,111,217,0.3);border-radius:16px;padding:28px 32px;display:flex;flex-direction:column;gap:12px;">
-        <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#1ABFCC;">QSA Firms · MSPs · IT Consultants</div>
-        <div style="font-size:1.15rem;font-weight:800;color:#fff;line-height:1.3;">Manage compliance<br/>for your clients</div>
-        <div style="font-size:0.82rem;color:rgba(255,255,255,0.55);line-height:1.6;">Free starter plan · Up to 5 clients · No credit card required</div>
-        <a href="https://pci-nexus.vercel.app/PCIDemo?type=consultant-trial"
-           style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#1E6FD9,#0EA5B0);color:#fff;padding:14px 24px;border-radius:10px;font-size:0.9rem;font-weight:800;text-decoration:none;box-shadow:0 4px 20px rgba(30,111,217,0.4);transition:transform 0.15s,box-shadow 0.15s;margin-top:4px;"
-           onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(30,111,217,0.55)'"
-           onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(30,111,217,0.4)'">
-          Start Your Free Evaluation →
-        </a>
-      </div>
-
-      <!-- Right: Self-Serve Merchants -->
-      <div style="background:rgba(255,255,255,0.03);border:1.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:28px 32px;display:flex;flex-direction:column;gap:12px;">
-        <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);">Also Available</div>
-        <div style="font-size:1.15rem;font-weight:800;color:#fff;line-height:1.3;">Self-Serve<br/>Merchants</div>
-        <div style="font-size:0.82rem;color:rgba(255,255,255,0.55);line-height:1.6;">Handle PCI compliance independently · 90-day free trial · Plans from $49/mo</div>
-        <a href="https://pci-nexus.vercel.app/PCIDemo?type=merchant"
-           style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:rgba(255,255,255,0.8);padding:13px 24px;border-radius:10px;font-size:0.9rem;font-weight:700;text-decoration:none;border:1.5px solid rgba(255,255,255,0.2);transition:all 0.15s;margin-top:4px;"
-           onmouseover="this.style.borderColor='rgba(26,191,204,0.5)';this.style.color='#1ABFCC'"
-           onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='rgba(255,255,255,0.8)'">
-          Try the Live Demo →
-        </a>
-      </div>
-
-    </div>
   </div>
 </section>
 </div>
