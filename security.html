@@ -1,976 +1,441 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PCI DSS Cybersecurity Requirements | PCI-Nexus</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GMBP33VGHF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GMBP33VGHF');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Security — PCI-Nexus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:  #0F2447;
+  --navy2: #162E5A;
+  --blue:  #1E6FD9;
+  --teal:  #1ABFCC;
+  --teal2: #0EA5B0;
+  --white: #ffffff;
+  --slate: #94a3b8;
+  --grad:  linear-gradient(135deg,#0F2447 0%,#162E5A 55%,#0A7985 100%);
+  --grad-b:linear-gradient(135deg,#1E6FD9,#0EA5B0);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:#060f1e;color:#e2e8f0;overflow-x:hidden;}
 
-  :root {
-    --navy: #0f2447;
-    --navy-light: #1a3a6b;
-    --teal: #0ea5b0;
-    --teal-light: #1abfcc;
-    --text: #1e293b;
-    --text-muted: #64748b;
-    --text-light: #94a3b8;
-    --border: #e2e8f0;
-    --bg: #f8fafc;
-    --white: #ffffff;
-    --req-blue: #1e6fd9;
-  }
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.5;}}
+@keyframes shimmer{0%{background-position:-200% 0;}100%{background-position:200% 0;}}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
 
-  body {
-    font-family: 'Inter', -apple-system, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.5;
-  }
+.fade-up{opacity:0;animation:fadeUp .7s ease forwards;}
+.fade-up-1{animation-delay:.1s;}
+.fade-up-2{animation-delay:.25s;}
+.fade-up-3{animation-delay:.4s;}
+.fade-up-4{animation-delay:.55s;}
+.fade-up-5{animation-delay:.7s;}
 
-  /* ── NAV (matching existing site) ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center;
-    padding: 0 40px 0 24px; height: 90px;
-    background: rgba(15,36,71,0.94);
-    backdrop-filter: blur(16px);
-  }
-  .nav-links { display: flex; align-items: center; flex: 1; justify-content: space-evenly; margin-left: 32px; }
-  .nav-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; white-space: nowrap; }
-  .nav-links a:hover { color: #fff; }
-  .nav-links a.active { color: #1ABFCC; font-weight: 500; font-size: 0.78rem; }
-  .nav-cta { background: linear-gradient(135deg,#1E6FD9,#0EA5B0); color: #fff !important; padding: 7px 18px; border-radius: 8px; font-weight: 600 !important; font-size: 0.75rem !important; white-space: nowrap; }
-  .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
-  .nav-logo { display:flex; align-items:center; text-decoration:none; flex-shrink:0; }
-  .nav-logo img { display:block; }
-  nav a {
-    color: rgba(255,255,255,0.7);
-    text-decoration: none;
-    font-size: 0.875rem;
-    font-weight: 500;
-    transition: color 0.15s;
-    white-space: nowrap;
-  }
-  nav a:hover { color: #fff; }
-  nav a.active { color: var(--teal-light); font-weight: 500; font-size: 0.875rem; }
-  nav a.cta {
-    color: var(--teal-light);
-    font-weight: 700;
-    border-right: 1px solid rgba(255,255,255,0.12);
-    padding-right: 2.5rem;
-  }
-  nav .live-demo {
-    background: linear-gradient(135deg, #1e6fd9, #0ea5b0);
-    color: #fff !important;
-    padding: 0.4rem 1rem;
-    border-radius: 0.5rem;
-    font-weight: 700;
-    font-size: 0.8rem;
-    transition: opacity 0.15s;
-  }
-  nav .live-demo:hover { opacity: 0.9; }
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;height:64px;
+  background:rgba(6,15,30,.92);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(26,191,204,.12);
+}
+.nav-logo{
+  font-family:'DM Serif Display',serif;
+  font-size:1.25rem;color:#fff;text-decoration:none;letter-spacing:-.5px;
+}
+.nav-logo span{color:var(--teal);}
+.nav-links{display:flex;align-items:center;gap:32px;}
+.nav-links a{
+  font-size:.82rem;font-weight:500;color:rgba(148,197,210,.75);
+  text-decoration:none;letter-spacing:.02em;transition:color .2s;
+}
+.nav-links a:hover{color:var(--teal);}
+.nav-cta{
+  padding:8px 20px;border-radius:8px;font-size:.82rem;font-weight:700;
+  background:var(--grad-b);color:#fff;text-decoration:none;
+  transition:opacity .2s;white-space:nowrap;
+}
+.nav-cta:hover{opacity:.88;}
 
-  /* ── HERO ── */
-  .hero {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, #0a4f58 100%);
-    padding: 6rem 2rem 3rem;
-    text-align: center;
-  }
-  .hero h1 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: #fff;
-    letter-spacing: -0.03em;
-    margin-bottom: 1rem;
-  }
-  .hero h1 span { color: var(--teal-light); }
-  .hero p {
-    color: rgba(255,255,255,0.6);
-    font-size: 1.05rem;
-    max-width: 640px;
-    margin: 0 auto 1.5rem;
-    line-height: 1.7;
-  }
-  .hero-note {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 2rem;
-    padding: 0.4rem 1rem;
-    color: rgba(255,255,255,0.5);
-    font-size: 0.78rem;
-  }
-  .hero-note strong { color: var(--teal-light); }
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  padding:120px 40px 80px;max-width:1200px;margin:0 auto;
+  position:relative;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 14px;border-radius:100px;
+  border:1px solid rgba(26,191,204,.25);
+  background:rgba(26,191,204,.07);
+  font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:28px;
+}
+.hero-eyebrow .dot{
+  width:7px;height:7px;border-radius:50%;
+  background:#4ade80;animation:pulse 2s infinite;flex-shrink:0;
+}
+.hero h1{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(2.8rem,5vw,4.5rem);
+  line-height:1.08;color:#fff;
+  max-width:860px;margin-bottom:24px;
+  letter-spacing:-.03em;
+}
+.hero h1 em{font-style:normal;color:var(--teal);}
+.hero-sub{
+  font-size:1.05rem;line-height:1.7;
+  color:rgba(148,197,210,.8);
+  max-width:620px;margin-bottom:40px;
+}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:64px;}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 32px;border-radius:12px;font-size:1rem;font-weight:700;
+  background:var(--grad-b);color:#fff;text-decoration:none;
+  box-shadow:0 0 40px rgba(14,165,176,.3);
+  transition:transform .2s,box-shadow .2s;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 60px rgba(14,165,176,.45);}
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 28px;border-radius:12px;font-size:1rem;font-weight:600;
+  background:rgba(255,255,255,.06);color:#fff;text-decoration:none;
+  border:1px solid rgba(255,255,255,.12);
+  transition:background .2s,border-color .2s;
+}
+.btn-secondary:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);}
 
-  /* ── GRID ── */
-  .grid-section {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 3rem 2rem 5rem;
-  }
-  .grid-section h2 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.5rem;
-    text-align: center;
-  }
-  .grid-section p.sub {
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 2.5rem;
-  }
-  .cards-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.25rem;
-  }
-  @media (max-width: 1100px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 640px)  { .cards-grid { grid-template-columns: 1fr; } }
+/* Hero stat strip */
+.hero-stats{
+  display:flex;gap:48px;flex-wrap:wrap;
+  padding-top:40px;border-top:1px solid rgba(255,255,255,.07);
+}
+.stat{}
+.stat-num{
+  font-family:'DM Serif Display',serif;font-size:2rem;color:#fff;
+  background:var(--grad-b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.stat-label{font-size:.78rem;color:rgba(148,197,210,.6);margin-top:2px;letter-spacing:.03em;}
 
-  /* ── CARD ── */
-  .card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 1rem;
-    overflow: hidden;
-    transition: box-shadow 0.2s, transform 0.15s;
-    cursor: pointer;
-  }
-  .card:hover { box-shadow: 0 4px 24px rgba(15,36,71,0.10); transform: translateY(-2px); }
-  .card.open { box-shadow: 0 8px 32px rgba(15,36,71,0.14); transform: none; }
+/* ── SECTION SCAFFOLD ── */
+section{padding:100px 40px;max-width:1200px;margin:0 auto;}
+.section-eyebrow{
+  font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:12px;
+}
+.section-title{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(2rem,3.5vw,3rem);
+  color:#fff;line-height:1.15;letter-spacing:-.02em;
+  margin-bottom:16px;
+}
+.section-sub{
+  font-size:1rem;color:rgba(148,197,210,.75);
+  max-width:580px;line-height:1.7;margin-bottom:56px;
+}
 
-  .card-header {
-    padding: 1.5rem 1.5rem 1.25rem;
-    position: relative;
-  }
-  .req-label {
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--req-blue);
-    margin-bottom: 0.5rem;
-  }
-  .card-header h3 {
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 0.75rem;
-    line-height: 1.35;
-  }
-  .card-header p {
-    font-size: 0.84rem;
-    color: var(--text-muted);
-    line-height: 1.65;
-    margin-bottom: 1rem;
-  }
-  .tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 0.3rem 0.65rem;
-    border-radius: 2rem;
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    background: var(--bg);
-  }
-  .expand-btn {
-    position: absolute;
-    top: 1.25rem;
-    right: 1.25rem;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    transition: all 0.2s;
-    flex-shrink: 0;
-  }
-  .card.open .expand-btn {
-    background: linear-gradient(135deg, #1e6fd9, #0ea5b0);
-    border-color: transparent;
-    color: #fff;
-    transform: rotate(45deg);
-  }
+/* ── FOR PARTNERS SECTION ── */
+.for-partners-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:32px;
+}
+@media(max-width:780px){.for-partners-grid{grid-template-columns:1fr;} .choose-path-row{grid-template-columns:1fr!important;} .two-box-grid{grid-template-columns:1fr!important;}}
 
-  /* ── EXPANDED PANEL ── */
-  .card-expanded {
-    display: none;
-    border-top: 1px solid var(--border);
-    background: #f8fafc;
-  }
-  .card.open .card-expanded { display: block; }
+.partner-card{
+  padding:32px;border-radius:20px;
+  border:1px solid rgba(30,111,217,.2);
+  background:linear-gradient(135deg,rgba(30,111,217,.08),rgba(14,165,176,.04));
+  position:relative;overflow:hidden;
+  transition:border-color .3s,transform .3s;
+}
+.partner-card:hover{border-color:rgba(26,191,204,.4);transform:translateY(-4px);}
+.partner-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--grad-b);opacity:.6;
+}
+.partner-icon{font-size:2.2rem;margin-bottom:16px;}
+.partner-type{
+  font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:8px;
+}
+.partner-title{
+  font-family:'DM Serif Display',serif;font-size:1.4rem;color:#fff;
+  margin-bottom:12px;line-height:1.2;
+}
+.partner-desc{font-size:.88rem;color:rgba(148,197,210,.75);line-height:1.7;margin-bottom:20px;}
+.partner-bullets{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.partner-bullets li{
+  font-size:.82rem;color:rgba(148,197,210,.85);
+  display:flex;align-items:flex-start;gap:8px;line-height:1.5;
+}
+.partner-bullets li::before{
+  content:'✓';color:var(--teal);font-weight:700;flex-shrink:0;margin-top:1px;
+}
+.partner-cta{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:24px;padding:10px 20px;border-radius:8px;
+  background:var(--grad-b);color:#fff;font-size:.82rem;font-weight:700;
+  text-decoration:none;transition:opacity .2s;
+}
+.partner-cta:hover{opacity:.85;}
 
-  .expanded-inner { padding: 1.25rem 1.5rem 1.5rem; }
+/* Merchant card — secondary styling */
+.merchant-card{
+  padding:32px;border-radius:20px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.03);
+  position:relative;overflow:hidden;grid-column:1/-1;
+  display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap;
+  transition:border-color .3s;
+}
+.merchant-card:hover{border-color:rgba(255,255,255,.15);}
+.merchant-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,rgba(255,255,255,.1),rgba(255,255,255,.25),rgba(255,255,255,.1));
+}
+.merchant-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:4px 10px;border-radius:100px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+  font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(148,197,210,.6);margin-bottom:10px;
+}
 
-  .purpose-box {
-    background: #eff6ff;
-    border: 1px solid #bfdbfe;
-    border-radius: 0.75rem;
-    padding: 0.875rem 1rem;
-    margin-bottom: 1rem;
-  }
-  .purpose-box .label {
-    font-size: 0.68rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #1e6fd9;
-    margin-bottom: 0.35rem;
-  }
-  .purpose-box p { font-size: 0.8rem; color: #1e40af; line-height: 1.6; }
+/* ── DIFFERENTIATORS ── */
+.diff-grid{display:flex;flex-direction:column;gap:20px;}
+.diff-card{
+  display:flex;gap:24px;align-items:flex-start;
+  padding:28px 32px;border-radius:20px;
+  border:1px solid transparent;
+  transition:border-color .3s,background .3s;
+  position:relative;overflow:hidden;
+}
+.diff-card:hover{border-color:rgba(26,191,204,.2);}
+.diff-num{
+  font-family:'DM Mono',monospace;
+  font-size:.72rem;font-weight:500;letter-spacing:.08em;
+  padding:4px 10px;border-radius:100px;
+  flex-shrink:0;margin-top:3px;
+}
+.diff-body{}
+.diff-title{
+  font-family:'DM Serif Display',serif;font-size:1.25rem;color:#fff;
+  margin-bottom:8px;line-height:1.25;
+}
+.diff-desc{font-size:.9rem;color:rgba(148,197,210,.8);line-height:1.7;}
+.diff-desc strong{color:#fff;font-weight:600;}
 
-  .sub-reqs-label {
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-muted);
-    margin-bottom: 0.5rem;
-  }
-  .sub-req {
-    border: 1px solid var(--border);
-    border-radius: 0.625rem;
-    margin-bottom: 0.5rem;
-    background: var(--white);
-    overflow: hidden;
-  }
-  .sub-req-header {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.625rem;
-    padding: 0.625rem 0.875rem;
-    cursor: pointer;
-    transition: background 0.12s;
-  }
-  .sub-req-header:hover { background: #f8fafc; }
-  .sub-id {
-    font-size: 0.72rem;
-    font-weight: 700;
-    padding: 0.2rem 0.45rem;
-    border-radius: 0.375rem;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-  .sub-id.compliant   { background: #d1fae5; color: #065f46; }
-  .sub-id.partial     { background: #fef3c7; color: #92400e; }
-  .sub-id.noncompliant{ background: #fee2e2; color: #991b1b; }
-  .sub-title { font-size: 0.8rem; font-weight: 600; color: var(--text); line-height: 1.4; flex: 1; }
-  .sub-summary { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem; line-height: 1.5; }
-  .sub-arrow { font-size: 0.7rem; color: var(--text-light); flex-shrink: 0; transition: transform 0.15s; margin-top: 2px; }
-  .sub-req.open .sub-arrow { transform: rotate(90deg); }
+/* Color variants */
+.diff-1{background:linear-gradient(135deg,rgba(30,111,217,.1),rgba(14,165,176,.04));border-color:rgba(30,111,217,.2);}
+.diff-1 .diff-num{background:rgba(30,111,217,.2);color:#60a5fa;}
+.diff-2{background:linear-gradient(135deg,rgba(14,165,176,.1),rgba(5,150,105,.04));border-color:rgba(14,165,176,.2);}
+.diff-2 .diff-num{background:rgba(14,165,176,.2);color:#2dd4bf;}
+.diff-3{background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(99,102,241,.04));border-color:rgba(124,58,237,.2);}
+.diff-3 .diff-num{background:rgba(124,58,237,.2);color:#a78bfa;}
+.diff-4{background:linear-gradient(135deg,rgba(245,158,11,.1),rgba(239,68,68,.04));border-color:rgba(245,158,11,.2);}
+.diff-4 .diff-num{background:rgba(245,158,11,.2);color:#fbbf24;}
+.diff-5{background:linear-gradient(135deg,rgba(5,150,105,.1),rgba(16,185,129,.04));border-color:rgba(5,150,105,.2);}
+.diff-5 .diff-num{background:rgba(5,150,105,.2);color:#34d399;}
 
-  .controls-list {
-    display: none;
-    padding: 0 0.875rem 0.625rem 0.875rem;
-    border-top: 1px solid #f1f5f9;
-    background: #fafafa;
-  }
-  .sub-req.open .controls-list { display: block; }
-  .control-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.5rem;
-    padding: 0.4rem 0;
-    border-bottom: 1px solid #f1f5f9;
-  }
-  .control-item:last-child { border-bottom: none; }
-  .ctrl-id {
-    font-size: 0.68rem;
-    font-weight: 700;
-    padding: 0.15rem 0.4rem;
-    border-radius: 0.3rem;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .ctrl-id.compliant   { background: #ecfdf5; color: #059669; }
-  .ctrl-id.partial     { background: #fffbeb; color: #d97706; }
-  .ctrl-id.noncompliant{ background: #fef2f2; color: #dc2626; }
-  .ctrl-text { font-size: 0.76rem; color: var(--text-muted); line-height: 1.5; flex: 1; }
-  .badge-new { font-size: 0.62rem; font-weight: 700; padding: 0.1rem 0.4rem; border-radius: 2rem; background: #f3e8ff; color: #7c3aed; border: 1px solid #ddd6fe; flex-shrink: 0; margin-top: 2px; }
+/* ── FEATURES GRID ── */
+.features-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+}
+@media(max-width:900px){.features-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.features-grid{grid-template-columns:1fr;}}
 
-  .saq-note {
-    background: #fffbeb;
-    border: 1px solid #fcd34d;
-    border-radius: 0.625rem;
-    padding: 0.75rem;
-    margin-top: 0.875rem;
-  }
-  .saq-note .label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #92400e; margin-bottom: 0.25rem; }
-  .saq-note p { font-size: 0.76rem; color: #78350f; line-height: 1.55; }
+.feature-card{
+  padding:24px;border-radius:16px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+  transition:border-color .3s,background .3s,transform .3s;
+}
+.feature-card:hover{
+  border-color:rgba(26,191,204,.25);
+  background:rgba(26,191,204,.05);
+  transform:translateY(-3px);
+}
+.feature-icon{font-size:1.6rem;margin-bottom:14px;}
+.feature-title{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:6px;}
+.feature-desc{font-size:.82rem;color:rgba(148,197,210,.7);line-height:1.6;}
 
-  .go-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: #fff;
-    background: linear-gradient(135deg, #1e6fd9, #0ea5b0);
-    text-decoration: none;
-    transition: opacity 0.15s;
-    border: none;
-    cursor: pointer;
-  }
-  .go-btn:hover { opacity: 0.88; }
+/* ── PRICING PREVIEW ── */
+.pricing-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+  padding:40px;border-radius:24px;
+  background:linear-gradient(135deg,rgba(15,36,71,.8),rgba(22,46,90,.6));
+  border:1px solid rgba(30,111,217,.2);
+}
+@media(max-width:900px){.pricing-strip{grid-template-columns:repeat(2,1fr);}}
 
-  /* ── FOOTER CTA ── */
-  .footer-cta {
-    background: linear-gradient(135deg, var(--navy), var(--navy-light));
-    text-align: center;
-    padding: 4rem 2rem;
-  }
-  .footer-cta h2 { font-size: 1.75rem; font-weight: 800; color: #fff; margin-bottom: 0.75rem; }
-  .footer-cta p { color: rgba(255,255,255,0.6); margin-bottom: 1.5rem; }
-  .footer-cta .btn {
-    display: inline-block;
-    padding: 0.75rem 2rem;
-    border-radius: 0.75rem;
-    font-weight: 700;
-    color: #fff;
-    background: linear-gradient(135deg, #1e6fd9, #0ea5b0);
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: opacity 0.15s;
-  }
-  .footer-cta .btn:hover { opacity: 0.9; }
+.price-tier{text-align:center;padding:20px 12px;}
+.price-tier-name{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
+.price-amount{font-family:'DM Serif Display',serif;font-size:2rem;color:#fff;line-height:1;}
+.price-per{font-size:.75rem;color:rgba(148,197,210,.5);margin-top:4px;}
+.price-desc{font-size:.78rem;color:rgba(148,197,210,.65);margin-top:8px;line-height:1.5;}
+
+/* ── TRIAL BANNER ── */
+.trial-banner{
+  padding:64px 56px;border-radius:28px;
+  background:var(--grad-b);
+  position:relative;overflow:hidden;text-align:center;
+}
+.trial-banner::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.trial-eyebrow{
+  font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.7);margin-bottom:16px;
+}
+.trial-title{
+  font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);
+  color:#fff;margin-bottom:16px;line-height:1.2;letter-spacing:-.02em;
+}
+.trial-sub{font-size:1rem;color:rgba(255,255,255,.8);margin-bottom:36px;max-width:560px;margin-left:auto;margin-right:auto;}
+.trial-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.btn-white{
+  padding:14px 32px;border-radius:12px;font-size:.95rem;font-weight:700;
+  background:#fff;color:var(--navy);text-decoration:none;
+  transition:transform .2s,box-shadow .2s;
+}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.25);}
+.btn-outline-white{
+  padding:14px 28px;border-radius:12px;font-size:.95rem;font-weight:600;
+  border:2px solid rgba(255,255,255,.5);color:#fff;text-decoration:none;
+  transition:border-color .2s,background .2s;
+}
+.btn-outline-white:hover{border-color:#fff;background:rgba(255,255,255,.1);}
+
+
+/* ── COOKIE CONSENT ── */
+#cookie-banner{
+  position:fixed;bottom:0;left:0;right:0;z-index:9999;
+  padding:20px 40px;
+  background:rgba(6,15,30,0.97);
+  backdrop-filter:blur(20px);
+  border-top:1px solid rgba(26,191,204,0.2);
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;flex-wrap:wrap;
+  transform:translateY(100%);
+  transition:transform .4s cubic-bezier(.4,0,.2,1);
+}
+#cookie-banner.visible{transform:translateY(0);}
+.cookie-text{flex:1;min-width:260px;}
+.cookie-title{font-size:.85rem;font-weight:700;color:#fff;margin-bottom:4px;}
+.cookie-desc{font-size:.78rem;color:rgba(148,197,210,.65);line-height:1.6;}
+.cookie-desc a{color:var(--teal);text-decoration:underline;}
+.cookie-actions{display:flex;gap:10px;flex-shrink:0;align-items:center;flex-wrap:wrap;}
+.cookie-btn-accept{
+  padding:10px 22px;border-radius:8px;font-size:.82rem;font-weight:700;
+  background:var(--grad-b);color:#fff;border:none;cursor:pointer;
+  transition:opacity .2s;
+}
+.cookie-btn-accept:hover{opacity:.88;}
+.cookie-btn-essential{
+  padding:10px 22px;border-radius:8px;font-size:.82rem;font-weight:600;
+  background:transparent;color:rgba(148,197,210,.6);
+  border:1px solid rgba(148,197,210,.2);cursor:pointer;
+  transition:border-color .2s,color .2s;
+}
+.cookie-btn-essential:hover{border-color:rgba(148,197,210,.5);color:rgba(148,197,210,.9);}
+.cookie-badge{
+  font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:3px 8px;border-radius:4px;
+  background:rgba(26,191,204,.12);color:var(--teal);
+  border:1px solid rgba(26,191,204,.2);white-space:nowrap;
+}
+
+/* ── FOOTER ── */
+footer{
+  border-top:1px solid rgba(255,255,255,.06);
+  padding:48px 40px;max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;
+}
+.footer-logo{font-family:'DM Serif Display',serif;font-size:1.1rem;color:#fff;}
+.footer-logo span{color:var(--teal);}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap;}
+.footer-links a{font-size:.82rem;color:rgba(148,197,210,.5);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--teal);}
+.footer-copy{font-size:.78rem;color:rgba(148,197,210,.35);}
+
+/* ── FULL-WIDTH WRAPPER ── */
+.section-wrapper{background:#060f1e;}
+.section-wrapper-alt{background:rgba(15,36,71,.3);}
+
+/* ── DIVIDER ── */
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(26,191,204,.2),transparent);max-width:1200px;margin:0 auto;}
+</style>
+<style>
+.page-hero{padding:80px 24px 60px;max-width:860px;margin:0 auto;}
+.page-hero h1{font-size:2.4rem;font-weight:900;color:#fff;margin-bottom:12px;line-height:1.2;}
+.page-hero .sub{font-size:1rem;color:rgba(148,197,210,0.8);margin-bottom:32px;line-height:1.65;}
+.page-body{padding:0 24px 80px;max-width:860px;margin:0 auto;color:rgba(148,197,210,0.85);line-height:1.75;font-size:0.9rem;}
 </style>
 </head>
 <body>
-
-<!-- NAV -->
+<div class="site-wrapper">
 <nav>
-  <a href="index.html" class="nav-logo"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0ODAgMTYwIiB3aWR0aD0iNDgwIiBoZWlnaHQ9IjE2MCI+CiAgPGRlZnM+CgogICAgPCEtLSBTaGllbGQgZ3JhZGllbnQgLSBibHVlIC0tPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJzaGllbGRHcmFkIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzJFN0ZFOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iIzFBNUVDNCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwRDNBOEEiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CgogICAgPCEtLSBTaGllbGQgaW5uZXIgaGlnaGxpZ2h0IC0tPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJzaGllbGRJbm5lciIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM0QTlBRkYiIHN0b3Atb3BhY2l0eT0iMC42Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEM0E4QSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgoKICAgIDwhLS0gU2hpZWxkIHN0cm9rZSBncmFkaWVudCAtLT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic2hpZWxkU3Ryb2tlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzVCQjNGRiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxQTVFQzQiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CgogICAgPCEtLSBTcGFyayBjb3JlIGdsb3cgLS0+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9InNwYXJrQ29yZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNTAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgIHN0b3AtY29sb3I9IiNGRkZGRkYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxNSUiIHN0b3AtY29sb3I9IiNGRkU4QTAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIzNSUiIHN0b3AtY29sb3I9IiNGRjg4MDAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI2MCUiIHN0b3AtY29sb3I9IiNERDIyMjIiIHN0b3Atb3BhY2l0eT0iMC44Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0FBMDAwMCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgoKICAgIDwhLS0gT3V0ZXIgZ2xvdyAtLT4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0ic3BhcmtHbG93IiBjeD0iNTAlIiBjeT0iNTAlIiByPSI1MCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiAgc3RvcC1jb2xvcj0iI0ZGNjYwMCIgc3RvcC1vcGFjaXR5PSIwLjUiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI2MCUiIHN0b3AtY29sb3I9IiNDQzExMTEiIHN0b3Atb3BhY2l0eT0iMC4yIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzg4MDAwMCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgoKICAgIDwhLS0gSG9yaXpvbnRhbCBiZWFtIGdyYWRpZW50IC0tPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJiZWFtSCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiAgIHN0b3AtY29sb3I9IiNGRjQ0MDAiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjQwJSIgIHN0b3AtY29sb3I9IiNGRjY2MDAiIHN0b3Atb3BhY2l0eT0iMC45Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiAgc3RvcC1jb2xvcj0iI0ZGQ0M0NCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiAgc3RvcC1jb2xvcj0iI0ZGNjYwMCIgc3RvcC1vcGFjaXR5PSIwLjkiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjRkY0NDAwIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CgogICAgPCEtLSBWZXJ0aWNhbCBiZWFtIGdyYWRpZW50IC0tPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJiZWFtViIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiAgIHN0b3AtY29sb3I9IiNGRjQ0MDAiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjQwJSIgIHN0b3AtY29sb3I9IiNGRjY2MDAiIHN0b3Atb3BhY2l0eT0iMC44Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiAgc3RvcC1jb2xvcj0iI0ZGQ0M0NCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNjAlIiAgc3RvcC1jb2xvcj0iI0ZGNjYwMCIgc3RvcC1vcGFjaXR5PSIwLjgiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjRkY0NDAwIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CgogICAgPCEtLSBEaWFnb25hbCBiZWFtIC0tPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJiZWFtRDEiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiAgIHN0b3AtY29sb3I9IiNGRjU1MDAiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjQ1JSIgIHN0b3AtY29sb3I9IiNGRjc3MDAiIHN0b3Atb3BhY2l0eT0iMC43Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTUlIiAgc3RvcC1jb2xvcj0iI0ZGNzcwMCIgc3RvcC1vcGFjaXR5PSIwLjciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjRkY1NTAwIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CgogICAgPGZpbHRlciBpZD0iZ2xvdyIgeD0iLTUwJSIgeT0iLTUwJSIgd2lkdGg9IjIwMCUiIGhlaWdodD0iMjAwJSI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjMiIHJlc3VsdD0iYmx1ciIvPgogICAgICA8ZmVNZXJnZT48ZmVNZXJnZU5vZGUgaW49ImJsdXIiLz48ZmVNZXJnZU5vZGUgaW49IlNvdXJjZUdyYXBoaWMiLz48L2ZlTWVyZ2U+CiAgICA8L2ZpbHRlcj4KCiAgICA8IS0tIFZlcnkgc3VidGxlIHdhcm0gZ2xvdyBmb3IgTmV4dXMgLSBiYXJlbHkgcGVyY2VwdGlibGUgLS0+CiAgICA8ZmlsdGVyIGlkPSJ0ZXh0R2xvdyIgeD0iLTUlIiB5PSItNSUiIHdpZHRoPSIxMTAlIiBoZWlnaHQ9IjExMCUiPgogICAgICA8ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIwLjQiIHJlc3VsdD0iYmx1ciIvPgogICAgICA8ZmVNZXJnZT48ZmVNZXJnZU5vZGUgaW49ImJsdXIiLz48ZmVNZXJnZU5vZGUgaW49IlNvdXJjZUdyYXBoaWMiLz48L2ZlTWVyZ2U+CiAgICA8L2ZpbHRlcj4KCiAgPC9kZWZzPgoKICA8IS0tIOKUgOKUgCBTaGllbGQg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSAIC0tPgogIDwhLS0gU2hpZWxkIGJvZHkgLS0+CiAgPHBhdGggZD0iTTgwIDE4IEwxMzAgMzQgTDEzMCA3OCBDMTMwIDEwOCAxMDYgMTI4IDgwIDEzOCBDNTQgMTI4IDMwIDEwOCAzMCA3OCBMMzAgMzQgWiIKICAgICAgICBmaWxsPSJ1cmwoI3NoaWVsZEdyYWQpIiBvcGFjaXR5PSIwLjk1Ii8+CgogIDwhLS0gU2hpZWxkIGlubmVyIGhpZ2hsaWdodCBsYXllciAtLT4KICA8cGF0aCBkPSJNODAgMjIgTDEyNiAzNyBMMTI2IDc4IEMxMjYgMTA2IDEwMyAxMjUgODAgMTM0IEM1NyAxMjUgMzQgMTA2IDM0IDc4IEwzNCAzNyBaIgogICAgICAgIGZpbGw9InVybCgjc2hpZWxkSW5uZXIpIi8+CgogIDwhLS0gU2hpZWxkIG91dGxpbmUgLS0+CiAgPHBhdGggZD0iTTgwIDE4IEwxMzAgMzQgTDEzMCA3OCBDMTMwIDEwOCAxMDYgMTI4IDgwIDEzOCBDNTQgMTI4IDMwIDEwOCAzMCA3OCBMMzAgMzQgWiIKICAgICAgICBmaWxsPSJub25lIiBzdHJva2U9InVybCgjc2hpZWxkU3Ryb2tlKSIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIwLjkiLz4KCiAgPCEtLSBTaGllbGQgaW5uZXIgYm9yZGVyIC0tPgogIDxwYXRoIGQ9Ik04MCAyNCBMMTI0IDM5IEwxMjQgNzggQzEyNCAxMDQgMTAzIDEyMyA4MCAxMzIgQzU3IDEyMyAzNiAxMDQgMzYgNzggTDM2IDM5IFoiCiAgICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNUJCM0ZGIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC40Ii8+CgogIDwhLS0g4pSA4pSAIFNwYXJrIC8gYnVyc3Qg4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSAIC0tPgogIDwhLS0gT3V0ZXIgZ2xvdyAtLT4KICA8ZWxsaXBzZSBjeD0iODAiIGN5PSI3OCIgcng9IjI4IiByeT0iMjgiIGZpbGw9InVybCgjc3BhcmtHbG93KSIgZmlsdGVyPSJ1cmwoI2dsb3cpIi8+CgogIDwhLS0gSG9yaXpvbnRhbCBiZWFtIC0tPgogIDxyZWN0IHg9IjIwIiB5PSI3NC41IiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjciIHJ4PSIzLjUiIGZpbGw9InVybCgjYmVhbUgpIiBmaWx0ZXI9InVybCgjZ2xvdykiLz4KCiAgPCEtLSBWZXJ0aWNhbCBiZWFtIC0tPgogIDxyZWN0IHg9Ijc2LjUiIHk9IjQ4IiB3aWR0aD0iNyIgaGVpZ2h0PSI2MCIgcng9IjMuNSIgZmlsbD0idXJsKCNiZWFtVikiIGZpbHRlcj0idXJsKCNnbG93KSIvPgoKICA8IS0tIERpYWdvbmFsIGJlYW1zIC0tPgogIDxsaW5lIHgxPSI1MiIgeTE9IjUyIiB4Mj0iMTA4IiB5Mj0iMTA0IiBzdHJva2U9IiNGRjY2MDAiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjUiIGZpbHRlcj0idXJsKCNnbG93KSIvPgogIDxsaW5lIHgxPSIxMDgiIHkxPSI1MiIgeDI9IjUyIiB5Mj0iMTA0IiBzdHJva2U9IiNGRjY2MDAiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjUiIGZpbHRlcj0idXJsKCNnbG93KSIvPgoKICA8IS0tIENvcmUgc3BhcmsgLS0+CiAgPGNpcmNsZSBjeD0iODAiIGN5PSI3OCIgcj0iMTQiIGZpbGw9InVybCgjc3BhcmtDb3JlKSIgZmlsdGVyPSJ1cmwoI2dsb3cpIi8+CgogIDwhLS0gQnJpZ2h0IGNlbnRlciAtLT4KICA8Y2lyY2xlIGN4PSI4MCIgY3k9Ijc4IiByPSI0IiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjk1Ii8+CiAgPGNpcmNsZSBjeD0iODAiIGN5PSI3OCIgcj0iMiIgZmlsbD0iI0ZGRkJFMCIvPgoKICA8IS0tIOKUgOKUgCBUZXh0IOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgCAtLT4KICA8IS0tIFBDSS0gaW4gb2ZmLXdoaXRlICh2aXNpYmxlIG9uIGJvdGggZGFyayBhbmQgbGlnaHQgYmFja2dyb3VuZHMpIC0tPgogIDx0ZXh0IHg9IjE1MiIgeT0iOTAiCiAgICAgICAgZm9udC1mYW1pbHk9IidBcmlhbCBCbGFjaycsICdBcmlhbCBCb2xkJywgQXJpYWwsIHNhbnMtc2VyaWYiCiAgICAgICAgZm9udC13ZWlnaHQ9IjkwMCIKICAgICAgICBmb250LXNpemU9IjU0IgogICAgICAgIGZpbGw9IiNFOEVFRjgiCiAgICAgICAgbGV0dGVyLXNwYWNpbmc9Ii0xIj5QQ0ktPC90ZXh0PgoKICA8IS0tIE5leHVzIGluIHJlZCDigJQgY3Jpc3AsIG5vIGJsdXIgLS0+CiAgPHRleHQgeD0iMjcyIiB5PSI5MCIKICAgICAgICBmb250LWZhbWlseT0iJ0FyaWFsIEJsYWNrJywgJ0FyaWFsIEJvbGQnLCBBcmlhbCwgc2Fucy1zZXJpZiIKICAgICAgICBmb250LXdlaWdodD0iOTAwIgogICAgICAgIGZvbnQtc2l6ZT0iNTQiCiAgICAgICAgZmlsbD0iI0NDMjIyMiIKICAgICAgICBsZXR0ZXItc3BhY2luZz0iLTEiPk5leHVzPC90ZXh0PgoKICA8IS0tIFRhZ2xpbmUg4oCUIGJvdGggbGluZXMgYWxpZ25lZCB0byB4PTE1MiAoc2FtZSBhcyBQQ0ktKSAtLT4KICA8dGV4dCB4PSIxNTIiIHk9IjExMyIKICAgICAgICBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiCiAgICAgICAgZm9udC13ZWlnaHQ9IjQwMCIKICAgICAgICBmb250LXNpemU9IjE1IgogICAgICAgIGZpbGw9IiM4ODk5QkIiCiAgICAgICAgbGV0dGVyLXNwYWNpbmc9IjAuMyI+QW4gQUktUG93ZXJlZCBQQ0ktRFNTPC90ZXh0PgoKICA8dGV4dCB4PSIxNTIiIHk9IjEzMiIKICAgICAgICBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiCiAgICAgICAgZm9udC13ZWlnaHQ9IjQwMCIKICAgICAgICBmb250LXNpemU9IjE1IgogICAgICAgIGZpbGw9IiM4ODk5QkIiCiAgICAgICAgbGV0dGVyLXNwYWNpbmc9IjAuMyI+Q29tcGxpYW5jZSBQbGF0Zm9ybS48L3RleHQ+Cgo8L3N2Zz4K" alt="PCI-Nexus" style="height:80px;width:auto;display:block;"></a>
+  <a class="nav-logo" href="/">PCI<span>Nexus</span></a>
   <div class="nav-links">
-    <a href="features.html">Features</a>
-    <a href="security.html" class="active">Cybersecurity</a>
-    <a href="consultants.html">For Consultants</a>
-    <a href="index.html#who">Who It&#39;s For</a>
-    <a href="index.html#pricing">Pricing</a>
-    <a href="comparison.html" style="color:#1ABFCC;font-weight:700;">vs. Vanta &amp; Drata →</a>
-    <a href="https://pci-nexus.vercel.app/Demo" target="_blank">Live Demo</a>
-    <a href="https://pci-nexus.vercel.app/login" style="color:rgba(255,255,255,0.75);font-size:0.82rem;font-weight:600;padding:7px 14px;border:1px solid rgba(255,255,255,0.22);border-radius:8px;text-decoration:none;white-space:nowrap;">Sign In</a>
-    <a href="onboarding.html" class="nav-cta">Start Free Setup →</a>
+    <a href="/features.html">Features</a>
+    <a href="/consultants.html">For Consultants</a>
+    <a href="/security.html">Security</a>
+    <a href="/comparison.html">Compare</a>
+    <a href="/about.html">About</a>
+    <a href="mailto:jeaton@pcinexus.com">Contact</a>
+    <a href="/tos.html" style="font-size:0.8rem;opacity:0.7;">ToS</a>
+    <a href="/privacy.html" style="font-size:0.8rem;opacity:0.7;">Privacy</a>
+    <a href="https://pci-nexus.vercel.app/Demo" target="_blank" class="nav-cta">Try Live Demo →</a>
   </div>
 </nav>
-
-<!-- HERO -->
-<div class="hero">
-  <h1>PCI DSS <span>Cybersecurity</span> Requirements</h1>
-  <p>All 12 requirement areas of PCI DSS v4.0.1 — explained in plain English. Click any card to expand the full sub-requirements and individual controls.</p>
-  <div class="hero-note">
-    <strong>Reference guide</strong> · Applies to all merchants regardless of SAQ type · v4.0.1 current as of 2025
+<section style="padding-top:40px;">
+  <div class="page-hero">
+    <div style="font-size:0.72rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#1ABFCC;margin-bottom:12px;">PCI-Nexus</div>
+    <h1>Platform Security</h1>
+    <div class="sub">Built to meet the same standards we help you achieve</div>
   </div>
-</div>
-
-<!-- GRID -->
-<div class="grid-section">
-  <h2>The 12 PCI DSS Requirement Areas</h2>
-  <p class="sub">Click any requirement to expand sub-requirements and controls. Use this to understand your full compliance scope.</p>
-
-  <div class="cards-grid" id="cardsGrid"></div>
-</div>
-
-<!-- FOOTER CTA -->
-<div class="footer-cta">
-  <h2>Ready to manage all 12 requirements in one place?</h2>
-  <p>PCI-Nexus maps every control to your specific SAQ type so you only see what applies to your business.</p>
-  <a href="/Demo" class="btn">Start Free Trial →</a>
-</div>
-
-<script>
-// ── DATA ─────────────────────────────────────────────────────────────────────
-const REQUIREMENTS = [
-  {
-    id: 1,
-    tag: "NETWORK SECURITY",
-    tagIcon: "🌐",
-    title: "Network Security Controls",
-    desc: "Firewall management, network segmentation, and documented traffic rules. Prevents unauthorized access to every system in your environment — not just card data.",
-    purpose: "Your firewall is the first line of defense. Without network controls, any device on a public network can reach your payment systems. Attackers actively scan for unprotected networks.",
-    saqNote: "Required for all SAQ types. SAQ-A: applies to any web server delivering a payment page. SAQ-B: simplified — terminal is isolated by default.",
-    subReqs: [
-      { id: "1.1", title: "Define roles and responsibilities for network security controls", summary: "Document who is responsible for managing and maintaining all network controls.", status: "compliant", controls: [
-        { id: "1.1.1", title: "All security policies and operational procedures are documented, in use, and known to all affected parties", status: "compliant" },
-        { id: "1.1.2", title: "Roles and responsibilities for performing activities are documented, assigned, and understood", status: "compliant" },
-      ]},
-      { id: "1.2", title: "Network security controls are configured and maintained", summary: "Configure all network devices to restrict traffic to only what is necessary for business operations.", status: "compliant", controls: [
-        { id: "1.2.1", title: "Configuration standards are defined, implemented, and maintained for all network security controls", status: "compliant" },
-        { id: "1.2.2", title: "All changes to network connections and configurations are approved and managed per the change-control process", status: "compliant" },
-        { id: "1.2.3", title: "An accurate network diagram is maintained showing all connections to the CDE including any wireless networks", status: "compliant", new: true },
-        { id: "1.2.4", title: "An accurate data-flow diagram is maintained showing all account data flows across systems and networks", status: "compliant", new: true },
-        { id: "1.2.5", title: "All services, protocols, and ports allowed are identified, approved, and have a defined business need", status: "compliant" },
-        { id: "1.2.6", title: "Security features are defined and implemented for all services, protocols, and ports in use", status: "compliant", new: true },
-        { id: "1.2.7", title: "Configurations of NSCs are reviewed at least once every six months to confirm they remain relevant", status: "compliant" },
-        { id: "1.2.8", title: "Configuration files for NSCs are secured from unauthorized access and kept consistent with active configurations", status: "compliant", new: true },
-      ]},
-      { id: "1.3", title: "Network access to and from the CDE is restricted", summary: "Restrict all inbound and outbound traffic to only what is explicitly necessary for the CDE.", status: "compliant", controls: [
-        { id: "1.3.1", title: "Inbound traffic to the CDE is restricted to only that which is necessary", status: "compliant" },
-        { id: "1.3.2", title: "Outbound traffic from the CDE is restricted to only that which is necessary", status: "compliant" },
-        { id: "1.3.3", title: "NSCs are installed between wireless networks and the CDE regardless of whether the wireless is part of the CDE", status: "compliant" },
-      ]},
-      { id: "1.4", title: "Network connections between trusted and untrusted networks are controlled", summary: "Any connection between your CDE and other networks must pass through an NSC.", status: "compliant", controls: [
-        { id: "1.4.1", title: "NSCs are implemented between trusted and untrusted networks", status: "compliant" },
-        { id: "1.4.2", title: "Inbound traffic from untrusted to trusted networks is restricted to communications that are necessary", status: "compliant" },
-        { id: "1.4.3", title: "Anti-spoofing measures are implemented to detect and block forged source IP addresses", status: "compliant" },
-        { id: "1.4.4", title: "System components that store cardholder data are not directly accessible from untrusted networks", status: "compliant" },
-        { id: "1.4.5", title: "The disclosure of internal IP addresses and routing information is limited to only authorized parties", status: "compliant" },
-      ]},
-      { id: "1.5", title: "Risks from computing devices connecting to both untrusted and CDE networks are mitigated", summary: "Devices that connect to both the internet and CDE need controls to prevent bridging.", status: "compliant", controls: [
-        { id: "1.5.1", title: "Security controls are implemented on any computing device that can connect to both untrusted networks and the CDE", status: "compliant", new: true },
-      ]},
-    ]
-  },
-  {
-    id: 2,
-    tag: "HARDENING",
-    tagIcon: "🔒",
-    title: "Secure System Configurations",
-    desc: "Default credentials removed, unnecessary services disabled, hardened configurations documented. Eliminates the easiest attack vector for every device on your network.",
-    purpose: "Vendor defaults are publicly known. Every system shipped with defaults in place is a trivial target. Attackers run automated tools specifically looking for default credentials and unnecessary services.",
-    saqNote: "Applies to all in-scope systems. SAQ P2PE: very limited scope — only terminal hardening per the P2PE Instruction Manual (PIM).",
-    subReqs: [
-      { id: "2.1", title: "Define roles and responsibilities for configuration management", summary: "Assign clear ownership for maintaining secure configurations across all system components.", status: "compliant", controls: [
-        { id: "2.1.1", title: "All security policies and operational procedures are documented, in use, and known to all affected parties", status: "compliant" },
-        { id: "2.1.2", title: "Roles and responsibilities for performing activities are documented, assigned, and understood", status: "compliant" },
-      ]},
-      { id: "2.2", title: "System components are configured and managed securely", summary: "Change all vendor defaults, disable unnecessary services, and document hardening standards for every system type.", status: "compliant", controls: [
-        { id: "2.2.1", title: "Configuration standards are developed, implemented, and maintained for all system components", status: "compliant" },
-        { id: "2.2.2", title: "Vendor default accounts are managed — either disabled or have passwords changed before deployment", status: "compliant" },
-        { id: "2.2.3", title: "Primary functions with differing security levels are managed on separate system components or hardened to the higher level", status: "compliant" },
-        { id: "2.2.4", title: "Only necessary services, protocols, daemons, and functions are enabled, and all unnecessary functionality is removed", status: "compliant" },
-        { id: "2.2.5", title: "If insecure services, protocols, or daemons are present, business need is documented and additional security features implemented", status: "compliant" },
-        { id: "2.2.6", title: "System security parameters are configured to prevent misuse", status: "compliant" },
-        { id: "2.2.7", title: "All non-console administrative access is encrypted using strong cryptography", status: "compliant" },
-      ]},
-      { id: "2.3", title: "Wireless environments are configured and managed securely", summary: "All wireless connections to or from the CDE require hardening — no default SSIDs, strong encryption, no rogue APs.", status: "compliant", controls: [
-        { id: "2.3.1", title: "For wireless environments connected to the CDE, all wireless vendor defaults are changed at installation", status: "compliant" },
-        { id: "2.3.2", title: "For wireless environments connected to the CDE, wireless encryption keys are changed when personnel with key knowledge leave", status: "compliant", new: true },
-      ]},
-    ]
-  },
-  {
-    id: 3,
-    tag: "DATA SECURITY",
-    tagIcon: "🔐",
-    title: "Data Protection at Rest",
-    desc: "Encryption and tokenization of sensitive data at rest. Protects your business from the consequences of a breach — encrypted data that's stolen is worthless to an attacker.",
-    purpose: "If an attacker can't read stored card data, they can't monetize a breach. Most breaches involve stored data that should never have been kept. Minimize storage, protect what you must keep.",
-    saqNote: "SAQ A, B, P2PE: Req 3 applies only to paper records — no electronic CHD storage. SAQ C, D: full requirement applies including encryption and key management.",
-    subReqs: [
-      { id: "3.1", title: "Define roles and responsibilities for protecting stored account data", summary: "Assign accountability for all data storage decisions and protection controls.", status: "compliant", controls: [
-        { id: "3.1.1", title: "All security policies are documented, in use, and known", status: "compliant" },
-        { id: "3.1.2", title: "Roles and responsibilities are documented, assigned, and understood", status: "compliant" },
-      ]},
-      { id: "3.2", title: "Storage of account data is kept to a minimum", summary: "Only store what you absolutely need. Define retention periods and delete data that is no longer needed.", status: "compliant", controls: [
-        { id: "3.2.1", title: "Account data storage is minimized through data retention and disposal policies and processes that include at least one defined retention period and processes to securely delete data when no longer needed", status: "compliant" },
-      ]},
-      { id: "3.3", title: "Sensitive authentication data (SAD) is not retained after authorization", summary: "Never store CVV/CVC, PIN blocks, or full magnetic stripe data after the transaction is authorized.", status: "compliant", controls: [
-        { id: "3.3.1", title: "SAD is not retained after authorization, even if encrypted — all sensitive authentication data received is rendered unrecoverable upon completion of the authorization process", status: "compliant" },
-        { id: "3.3.2", title: "SAD that is stored electronically prior to completion of authorization is encrypted using strong cryptography", status: "compliant", new: true },
-      ]},
-      { id: "3.4", title: "Primary Account Number (PAN) is secured wherever it is stored", summary: "PAN must be masked on displays, encrypted in storage, or tokenized. Never stored in plaintext.", status: "compliant", controls: [
-        { id: "3.4.1", title: "PAN is masked when displayed — the first six and last four digits are the maximum number displayed", status: "compliant" },
-        { id: "3.4.2", title: "When used in remote-access technologies, technical controls prevent copying and/or relocating of PAN", status: "compliant", new: true },
-      ]},
-      { id: "3.5", title: "PAN is secured with cryptography wherever it is transmitted", summary: "Any transmission of PAN — including within the CDE — must use strong cryptography.", status: "compliant", controls: [
-        { id: "3.5.1", title: "PAN is secured with strong cryptography wherever it is stored", status: "compliant" },
-      ]},
-      { id: "3.6", title: "Cryptographic keys used to protect stored account data are secured", summary: "Encryption is only as strong as key management. Keys must be protected, rotated, and managed with dual control.", status: "partial", controls: [
-        { id: "3.6.1", title: "Procedures are defined and implemented for protecting cryptographic keys including key generation, distribution, storage, access, retirement, and destruction", status: "partial" },
-        { id: "3.6.1.1", title: "A documented description of the cryptographic architecture is maintained", status: "partial", new: true },
-        { id: "3.6.1.2", title: "Secret and private keys used to protect stored account data are stored in one of specific secure forms", status: "partial" },
-        { id: "3.6.1.3", title: "Access to cleartext cryptographic key components is restricted to the fewest number of custodians necessary", status: "compliant" },
-        { id: "3.6.1.4", title: "Cryptographic keys are stored in the fewest possible locations", status: "compliant" },
-      ]},
-      { id: "3.7", title: "Where cryptography is used to protect stored account data, key management policies are implemented", summary: "Formal key management lifecycle covering generation, distribution, storage, rotation, and retirement.", status: "partial", controls: [
-        { id: "3.7.1", title: "Key-management policies and procedures specify processes to protect keys throughout their lifecycle", status: "partial" },
-        { id: "3.7.2", title: "Key-management policies and procedures include key-distribution policies and procedures", status: "compliant" },
-        { id: "3.7.3", title: "Key-management policies and procedures include cryptographic key storage procedures", status: "compliant" },
-        { id: "3.7.4", title: "Key management policies include procedures to retire, replace, or destroy keys", status: "partial" },
-        { id: "3.7.5", title: "Key management policies include procedures for retiring or replacing keys as deemed necessary", status: "partial" },
-        { id: "3.7.6", title: "Where manual cleartext cryptographic key-management operations are performed, policies require management using split knowledge and dual control", status: "compliant" },
-        { id: "3.7.7", title: "Key management policies include procedures to prevent unauthorized substitution of cryptographic keys", status: "compliant" },
-        { id: "3.7.8", title: "Key management policies include procedures for retiring or replacing keys as deemed necessary and when integrity has been weakened", status: "partial" },
-        { id: "3.7.9", title: "Where key management is performed by a service provider, the provider attests to customers that it will notify them upon change of a cryptographic architecture key", status: "compliant", new: true },
-      ]},
-    ]
-  },
-  {
-    id: 4,
-    tag: "ENCRYPTION",
-    tagIcon: "🔒",
-    title: "Data Protection in Transit",
-    desc: "TLS encryption for all data transmission. Prevents interception of sensitive data in transit across your network or over the internet.",
-    purpose: "Unencrypted PANs traveling over public networks can be intercepted by anyone with packet-sniffing tools. A single capture of card data in transit can compromise thousands of accounts.",
-    saqNote: "Universal requirement. P2PE merchants: terminals encrypt at swipe — verify your P2PE solution is on the PCI SSC validated list.",
-    subReqs: [
-      { id: "4.1", title: "Define roles and responsibilities for protecting PAN in transmission", summary: "Assign accountability for all encryption controls and transmission security procedures.", status: "compliant", controls: [
-        { id: "4.1.1", title: "All security policies are documented, in use, and known", status: "compliant" },
-        { id: "4.1.2", title: "Roles and responsibilities are documented, assigned, and understood", status: "compliant" },
-      ]},
-      { id: "4.2", title: "PAN is protected with strong cryptography during transmission over open, public networks", summary: "Use TLS 1.2+ for all transmission of cardholder data. Never send PANs over email, chat, or unencrypted channels.", status: "compliant", controls: [
-        { id: "4.2.1", title: "Strong cryptography is used to safeguard PAN during transmission over open, public networks — only trusted keys/certificates are accepted", status: "compliant" },
-        { id: "4.2.1.1", title: "An inventory of the entity's trusted keys and certificates used to protect PAN during transmission is maintained", status: "compliant", new: true },
-        { id: "4.2.1.2", title: "Wireless networks transmitting PAN or connected to the CDE use industry best practices to implement strong cryptography for authentication and transmission", status: "compliant" },
-        { id: "4.2.2", title: "PAN is secured with strong cryptography whenever it is sent via end-user messaging technologies", status: "compliant" },
-      ]},
-    ]
-  },
-  {
-    id: 5,
-    tag: "ENDPOINT SECURITY",
-    tagIcon: "🛡",
-    title: "Anti-Malware Protection",
-    desc: "Active antivirus, anti-ransomware, and endpoint protection on every system. Documented status, current definitions, and threat detection history — for every location.",
-    purpose: "Malware — ransomware, spyware, keyloggers — can capture card data as it's being processed. All CDE systems must be protected even if you believe they're not directly exposed.",
-    saqNote: "Required for all in-scope systems. Req 5.4 (anti-phishing) was best practice until March 31 2025 — now fully required.",
-    subReqs: [
-      { id: "5.1", title: "Define roles and responsibilities for anti-malware protection", summary: "Assign accountability for malware protection deployment and maintenance.", status: "compliant", controls: [
-        { id: "5.1.1", title: "All security policies are documented, in use, and known", status: "compliant" },
-        { id: "5.1.2", title: "Roles and responsibilities are documented, assigned, and understood", status: "compliant" },
-      ]},
-      { id: "5.2", title: "Malware is prevented, detected, and addressed", summary: "Deploy anti-malware covering all types — not just viruses. Includes ransomware, spyware, adware, and rootkits.", status: "compliant", controls: [
-        { id: "5.2.1", title: "An anti-malware solution is deployed on all system components, except where the entity has documented evidence that those system components are not at risk", status: "compliant" },
-        { id: "5.2.2", title: "The deployed anti-malware solution detects all known types of malware and addresses phishing, spyware, adware, and ransomware", status: "compliant" },
-        { id: "5.2.3", title: "System components not covered by anti-malware are evaluated periodically to confirm that they continue to not require anti-malware", status: "compliant" },
-        { id: "5.2.3.1", title: "The frequency of periodic evaluations of system components is defined in the entity's targeted risk analysis", status: "compliant", new: true },
-      ]},
-      { id: "5.3", title: "Anti-malware mechanisms and processes are active, maintained, and monitored", summary: "Anti-malware must run continuously, update automatically, and be monitored for detection events.", status: "compliant", controls: [
-        { id: "5.3.1", title: "The anti-malware solution is kept current via automatic updates", status: "compliant" },
-        { id: "5.3.2", title: "The anti-malware solution performs periodic scans and active or real-time scans", status: "compliant" },
-        { id: "5.3.2.1", title: "Periodic malware scans and active/real-time scans are performed per targeted risk analysis", status: "compliant", new: true },
-        { id: "5.3.3", title: "For removable electronic media, anti-malware scans are performed when it is inserted, connected, or logically mounted", status: "compliant" },
-        { id: "5.3.4", title: "Audit logs for the anti-malware solution are enabled and retained per Requirement 10.5.1", status: "compliant" },
-        { id: "5.3.5", title: "Anti-malware mechanisms cannot be disabled or altered by users unless specifically documented and authorized", status: "compliant" },
-      ]},
-      { id: "5.4", title: "Anti-phishing mechanisms protect users against phishing attacks", summary: "Technical controls to detect and block phishing emails targeting personnel with CDE access.", status: "compliant", controls: [
-        { id: "5.4.1", title: "Processes and automated mechanisms are in place to detect and protect personnel against phishing attacks", status: "compliant", new: true },
-      ]},
-    ]
-  },
-  {
-    id: 6,
-    tag: "VULNERABILITY MGMT",
-    tagIcon: "🔍",
-    title: "Secure Software & Systems",
-    desc: "Vulnerability scanning, patch management cadence, and secure development practices. Closes the gaps attackers look for first — unpatched systems and known CVEs.",
-    purpose: "Unpatched software is the #1 attack vector. Attackers actively scan for known CVEs within hours of publication. If you haven't patched, you're exposed — often exploited before you even know the patch exists.",
-    saqNote: "SAQ A: Reqs 6.4.3 and 11.6.1 apply to the web server delivering the payment page. SAQ P2PE: minimal scope — not applicable beyond terminal.",
-    subReqs: [
-      { id: "6.1", title: "Define roles and responsibilities for security vulnerabilities management", summary: "Assign clear ownership for the patching process, vulnerability identification, and developer security.", status: "compliant", controls: [
-        { id: "6.1.1", title: "All security policies are documented, in use, and known", status: "compliant" },
-        { id: "6.1.2", title: "Roles and responsibilities are documented, assigned, and understood", status: "compliant" },
-      ]},
-      { id: "6.2", title: "Bespoke and custom software are developed securely", summary: "All custom code must follow secure development practices and be reviewed for vulnerabilities.", status: "compliant", controls: [
-        { id: "6.2.1", title: "Bespoke and custom software are developed securely using an industry-accepted software development methodology", status: "compliant" },
-        { id: "6.2.2", title: "Software development personnel working on bespoke and custom software are trained at least once every 12 months", status: "compliant" },
-        { id: "6.2.3", title: "Bespoke and custom software is reviewed prior to being released to production or customers", status: "compliant" },
-        { id: "6.2.3.1", title: "If manual code reviews are performed for bespoke and custom software, code is reviewed by individuals other than the originating code author", status: "compliant" },
-        { id: "6.2.4", title: "Software engineering techniques or methods are defined and in use to prevent or mitigate common software attacks and vulnerabilities", status: "compliant", new: true },
-      ]},
-      { id: "6.3", title: "Security vulnerabilities are identified and addressed", summary: "Critical patches applied within 30 days. All other security patches on a documented risk-based schedule.", status: "partial", controls: [
-        { id: "6.3.1", title: "Security vulnerabilities are identified and managed using a risk-ranking process based on industry best practices", status: "compliant" },
-        { id: "6.3.2", title: "An inventory of bespoke and custom software is maintained to facilitate vulnerability and patch management", status: "partial", new: true },
-        { id: "6.3.3", title: "All system components are protected from known vulnerabilities by installing applicable security patches/updates", status: "partial" },
-      ]},
-      { id: "6.4", title: "Public-facing web applications are protected against attacks", summary: "WAF, vulnerability assessments, and for e-commerce: script inventory and tamper detection.", status: "noncompliant", controls: [
-        { id: "6.4.1", title: "For public-facing web applications, new threats and vulnerabilities are addressed on an ongoing basis via a review process", status: "noncompliant" },
-        { id: "6.4.2", title: "For public-facing web applications, an automated technical solution that continually detects and prevents web-based attacks is deployed", status: "noncompliant" },
-        { id: "6.4.3", title: "All payment page scripts that are loaded and executed in the consumer's browser are managed", status: "noncompliant", new: true },
-      ]},
-      { id: "6.5", title: "Changes to all system components are managed securely", summary: "All changes go through a formal change control process with testing and rollback procedures.", status: "compliant", controls: [
-        { id: "6.5.1", title: "Changes to all system components in the production environment are made according to established procedures", status: "compliant" },
-        { id: "6.5.2", title: "Upon completion of a significant change, all applicable requirements are confirmed to be in place on all new or changed systems", status: "compliant" },
-        { id: "6.5.3", title: "Pre-production environments are separated from production environments, and the separation is enforced with access controls", status: "compliant" },
-        { id: "6.5.4", title: "Roles and functions are separated between production and pre-production environments to provide accountability", status: "compliant" },
-        { id: "6.5.5", title: "Live PANs are not used in pre-production environments except where the environment is included in the QSA's scope", status: "compliant" },
-        { id: "6.5.6", title: "Test data and test accounts are removed from system components before the system goes into production", status: "compliant" },
-      ]},
-    ]
-  },
-  {
-    id: 7,
-    tag: "ACCESS CONTROL",
-    tagIcon: "🔑",
-    title: "Restrict Access by Role",
-    desc: "Least-privilege access controls — employees can only access systems relevant to their job. Limits the blast radius of any compromised account or insider threat.",
-    purpose: "Not everyone needs access to cardholder data. Restricting access to the minimum required per job function reduces risk from compromised credentials, insider threats, and accidental exposure.",
-    saqNote: "Universal requirement. For small merchants: a document listing who has access to POS systems and why satisfies this for basic SAQ types.",
-    subReqs: [
-      { id: "7.1", title: "Define roles and responsibilities for access control to system components and data", summary: "Assign accountability for the access control process including reviews and provisioning.", status: "compliant", controls: [
-        { id: "7.1.1", title: "All security policies are documented, in use, and known", status: "compliant" },
-        { id: "7.1.2", title: "Roles and responsibilities are documented, assigned, and understood", status: "compliant" },
-      ]},
-      { id: "7.2", title: "Access to system components and data is appropriately defined and assigned based on need to know", summary: "Default deny-all. Grant only minimum access required. Document all access rights by role.", status: "compliant", controls: [
-        { id: "7.2.1", title: "An access control model is defined and includes granting of access based on need to know, least privilege, and separation of duties", status: "compliant" },
-        { id: "7.2.2", title: "Access is assigned to users, including privileged users, based on job classification and function", status: "compliant" },
-        { id: "7.2.3", title: "Required privileges are approved by authorized personnel prior to assignment", status: "compliant" },
-        { id: "7.2.4", title: "All user accounts and related access privileges, including third-party/vendor accounts, are reviewed at least once every six months", status: "compliant", new: true },
-        { id: "7.2.5", title: "All application and system accounts and related access privileges are assigned and managed based on the least privilege necessary", status: "compliant", new: true },
-        { id: "7.2.5.1", title: "All access by application and system accounts and related privileges are reviewed periodically", status: "compliant", new: true },
-        { id: "7.2.6", title: "All user access to query repositories of stored cardholder data is restricted through application access control mechanisms", status: "compliant", new: true },
-      ]},
-      { id: "7.3", title: "Access to system components and data is managed via an access control system", summary: "Use a formal access control system to enforce and audit all access decisions.", status: "compliant", controls: [
-        { id: "7.3.1", title: "An access control system is in place that restricts access based on a user's need to know, and is set to deny-all unless specifically allowed", status: "compliant" },
-        { id: "7.3.2", title: "The access control system is configured to enforce permissions assigned to individuals, applications, and systems based on job classification and function", status: "compliant" },
-        { id: "7.3.3", title: "The access control system is updated when personnel leave to immediately remove access", status: "compliant" },
-      ]},
-    ]
-  },
-  {
-    id: 8,
-    tag: "IDENTITY SECURITY",
-    tagIcon: "👤",
-    title: "Identity & Authentication",
-    desc: "MFA on all CDE access, strong password policies, account lifecycle management, stale account removal. Identity is the #1 attack vector in modern breaches — this requirement addresses it directly.",
-    purpose: "Shared accounts eliminate accountability. Weak passwords are guessed in seconds. Without MFA, a single phished credential can compromise your entire CDE. Req 8 is where most breaches begin.",
-    saqNote: "MFA (Req 8.4.2) is now mandatory for all non-consumer access to CDE systems — this is the biggest change in v4.0. No exceptions without a compensating control.",
-    subReqs: [
-      { id: "8.1", title: "Define roles and responsibilities for identification and authentication", summary: "Assign accountability for account management, password policies, and authentication infrastructure.", status: "partial", controls: [
-        { id: "8.1.1", title: "All security policies are documented, in use, and known", status: "compliant" },
-        { id: "8.1.2", title: "Roles and responsibilities are documented, assigned, and understood", status: "compliant" },
-      ]},
-      { id: "8.2", title: "User identification and related accounts are strictly managed", summary: "Every user gets a unique ID. Shared accounts are prohibited. Inactive accounts disabled within 90 days.", status: "noncompliant", controls: [
-        { id: "8.2.1", title: "All users are assigned a unique ID before allowing them to access system components or cardholder data", status: "compliant" },
-        { id: "8.2.2", title: "Group, shared, or generic accounts, or other shared authentication credentials are only used when necessary on an exception basis", status: "noncompliant" },
-        { id: "8.2.3", title: "Additional requirement for service providers only", status: "compliant" },
-        { id: "8.2.4", title: "Addition, deletion, and modification of user IDs, authentication factors, and other identifier objects are managed", status: "compliant" },
-        { id: "8.2.5", title: "Access for terminated users is immediately revoked", status: "compliant" },
-        { id: "8.2.6", title: "Inactive user accounts are removed or disabled within 90 days of inactivity", status: "noncompliant" },
-        { id: "8.2.7", title: "Accounts used by third parties to access, support, or maintain system components are managed per Req 8.2.5", status: "compliant" },
-        { id: "8.2.8", title: "If a user session has been idle for more than 15 minutes, the user is required to re-authenticate to re-activate the terminal or session", status: "partial" },
-      ]},
-      { id: "8.3", title: "User authentication for users and administrators is established and managed", summary: "Strong passwords (12+ characters), lockout after 10 failures, and secure password change processes.", status: "partial", controls: [
-        { id: "8.3.1", title: "All user passwords/passphrases for user-interactive access use a minimum length of 12 characters (or IF the system does not support 12 characters, a minimum length of eight characters)", status: "partial", new: true },
-        { id: "8.3.2", title: "Strong cryptography is used to render all authentication factors unreadable during transmission and storage on all system components", status: "compliant" },
-        { id: "8.3.4", title: "Invalid authentication attempts are limited by locking out the user ID after not more than 10 attempts", status: "partial" },
-        { id: "8.3.5", title: "If passwords/passphrases are used as authentication factors to meet Requirement 8.3.1, they do not match or contain the name of the individual", status: "compliant" },
-        { id: "8.3.6", title: "If passwords/passphrases are used as authentication factors, they meet a minimum length of at least 12 characters", status: "partial", new: true },
-        { id: "8.3.9", title: "If passwords/passphrases are used as authentication factors, they are changed at least once every 12 months or upon suspicion of compromise", status: "compliant" },
-        { id: "8.3.10", title: "Additional guidance for service providers only", status: "compliant" },
-        { id: "8.3.11", title: "Where authentication factors such as physical or logical security tokens, smart cards, or certificates are used, the factors are assigned to an individual user", status: "compliant" },
-      ]},
-      { id: "8.4", title: "Multi-factor authentication is implemented to secure access into the CDE", summary: "MFA required for ALL access to the CDE — not just remote access. No exceptions without compensating controls.", status: "noncompliant", controls: [
-        { id: "8.4.1", title: "MFA is implemented for all non-console access into the CDE for personnel with administrative access", status: "noncompliant" },
-        { id: "8.4.2", title: "MFA is implemented for all access into the CDE", status: "noncompliant", new: true },
-        { id: "8.4.3", title: "MFA is implemented for all remote network access originating from outside the entity's network that could access or impact the CDE", status: "partial" },
-      ]},
-      { id: "8.5", title: "Multi-factor authentication systems are configured to prevent misuse", summary: "MFA must be implemented properly — no weak TOTP, SIM-swap vectors, or bypass mechanisms.", status: "partial", controls: [
-        { id: "8.5.1", title: "MFA systems are implemented as follows — individual factors must use at least two of the approved authentication factor types", status: "partial", new: true },
-      ]},
-      { id: "8.6", title: "Application and system account use is strictly managed", summary: "Service accounts, application credentials, and API keys must be inventoried, rotated, and managed.", status: "compliant", controls: [
-        { id: "8.6.1", title: "If accounts used by systems or applications can be used for interactive login, they are managed per the requirements of the account-management policy", status: "compliant", new: true },
-        { id: "8.6.2", title: "Passwords/passphrases for application and system accounts that can be used for interactive login are not hard-coded in scripts, config files, or bespoke custom software", status: "compliant", new: true },
-        { id: "8.6.3", title: "Passwords/passphrases for application and system accounts are protected against misuse", status: "compliant", new: true },
-      ]},
-    ]
-  },
-  {
-    id: 9,
-    tag: "PHYSICAL SECURITY",
-    tagIcon: "🏢",
-    title: "Physical Access Controls",
-    desc: "Documented physical access to servers, POS terminals, and network equipment. Often overlooked — physical access to hardware is frequently how breaches begin in retail environments.",
-    purpose: "Skimmers attached to payment terminals, stolen hard drives, and unshredded receipts are real attack vectors. Physical access to your CDE is just as dangerous as electronic access.",
-    saqNote: "SAQ B has significant Req 9 obligations around terminal management. SAQ P2PE: Req 9 is the primary focus — PIM compliance. SAQ A MOTO: Req 9 applies to paper receipts only.",
-    subReqs: [
-      { id: "9.1", title: "Define roles and responsibilities for physical access controls", summary: "Assign accountability for physical access management across all CDE locations.", status: "compliant", controls: [
-        { id: "9.1.1", title: "All security policies are documented, in use, and known", status: "compliant" },
-        { id: "9.1.2", title: "Roles and responsibilities are documented, assigned, and understood", status: "compliant" },
-      ]},
-      { id: "9.2", title: "Physical access controls manage entry into facilities and systems containing cardholder data", summary: "Access controls, video surveillance, and locked cages/racks for CDE systems.", status: "compliant", controls: [
-        { id: "9.2.1", title: "Appropriate facility entry controls are in place to restrict physical access to systems in the CDE", status: "compliant" },
-        { id: "9.2.1.1", title: "Individual physical access to sensitive areas within the CDE is monitored with video cameras and/or physical access-control mechanisms", status: "compliant", new: true },
-        { id: "9.2.2", title: "Physical and/or logical controls are implemented to restrict use of publicly accessible network jacks within the facility", status: "compliant" },
-        { id: "9.2.3", title: "Physical access to wireless access points, gateways, networking/communications hardware, and telecommunication lines is restricted", status: "compliant" },
-        { id: "9.2.4", title: "Access to consoles in sensitive areas is restricted via locking when not in use", status: "compliant" },
-      ]},
-      { id: "9.3", title: "Physical access for personnel and visitors is authorized and managed", summary: "Visitor badges, logs, and escorted access. Personnel badges clearly distinguish employees from visitors.", status: "compliant", controls: [
-        { id: "9.3.1", title: "Procedures are implemented for authorizing and managing physical access of personnel to the CDE", status: "compliant" },
-        { id: "9.3.1.1", title: "Access to the CDE is controlled with individual physical access-control mechanisms", status: "compliant", new: true },
-        { id: "9.3.2", title: "Procedures are implemented for authorizing and managing visitor access to the CDE — badges, logs, escort requirements", status: "compliant" },
-        { id: "9.3.3", title: "Visitor badges or identification are surrendered or deactivated upon departure", status: "compliant" },
-        { id: "9.3.4", title: "A visitor log is used to maintain a physical audit trail of visitor activity in the CDE and sensitive areas", status: "compliant" },
-      ]},
-      { id: "9.4", title: "Media with cardholder data is securely stored, accessed, distributed, and destroyed", summary: "All physical media — paper, drives, USBs — must be classified, secured, and destroyed when no longer needed.", status: "compliant", controls: [
-        { id: "9.4.1", title: "All media with cardholder data is physically secured", status: "compliant" },
-        { id: "9.4.1.1", title: "Offline media backups with cardholder data are stored in a secure location", status: "compliant" },
-        { id: "9.4.1.2", title: "The security of offline media backups with cardholder data is reviewed at least once every 12 months", status: "compliant", new: true },
-        { id: "9.4.2", title: "All media with cardholder data is classified in accordance with the sensitivity of the data", status: "compliant" },
-        { id: "9.4.3", title: "Media with cardholder data sent outside the facility is secured and logged", status: "compliant" },
-        { id: "9.4.4", title: "Management approves all media with cardholder data that is moved from a secured area — especially when distributed to individuals", status: "compliant" },
-        { id: "9.4.5", title: "Inventory logs of all electronic media with cardholder data are maintained", status: "compliant" },
-        { id: "9.4.5.1", title: "Inventories of electronic media with cardholder data are conducted at least once every 12 months", status: "compliant", new: true },
-        { id: "9.4.6", title: "Hard-copy materials with cardholder data are destroyed when no longer needed via cross-cut shredding, incineration, or pulping", status: "compliant" },
-        { id: "9.4.7", title: "Electronic media with cardholder data is destroyed when no longer needed via secure erase, degaussing, or physical destruction", status: "compliant" },
-      ]},
-      { id: "9.5", title: "Point-of-interaction (POI) devices are protected from tampering and unauthorized substitution", summary: "Maintain a terminal inventory, inspect devices periodically, and train staff to recognize skimmers.", status: "compliant", controls: [
-        { id: "9.5.1", title: "POI devices that capture payment card data via direct physical interaction with the payment card form factor are protected from tampering and unauthorized substitution", status: "compliant" },
-        { id: "9.5.1.1", title: "A list of POI devices is maintained, including make/model, location, and device serial number or other method of unique identification", status: "compliant" },
-        { id: "9.5.1.2", title: "POI device surfaces are periodically inspected to detect tampering and unauthorized substitution", status: "compliant" },
-        { id: "9.5.1.2.1", title: "The frequency of periodic POI device inspections and the type of inspections performed are defined in the entity's targeted risk analysis", status: "compliant", new: true },
-        { id: "9.5.1.3", title: "Training is provided to personnel in locations with POI devices to be aware of attempted tampering or replacement of POI devices", status: "compliant" },
-      ]},
-    ]
-  },
-  {
-    id: 10,
-    tag: "DETECTION",
-    tagIcon: "📡",
-    title: "Logging & Monitoring",
-    desc: "Centralized log management, daily log review, and alert-based monitoring across all systems. You cannot detect an incident — or prove you weren't breached — without this.",
-    purpose: "Logs are the primary forensic tool after a breach and daily evidence that controls are working. Without logging, you have no way to detect unauthorized access or prove compliance to a QSA.",
-    saqNote: "Req 10.4.1.1 (automated log review mechanism) became mandatory March 31 2025. No exceptions — all merchants must have an automated mechanism for daily log analysis.",
-    subReqs: [
-      { id: "10.1", title: "Define roles and responsibilities for logging and monitoring", summary: "Assign accountability for log management, retention, and daily review processes.", status: "partial", controls: [
-        { id: "10.1.1", title: "All security policies are documented, in use, and known", status: "compliant" },
-        { id: "10.1.2", title: "Roles and responsibilities are documented, assigned, and understood", status: "partial" },
-      ]},
-      { id: "10.2", title: "Audit logs capture all individual user access to cardholder data and administrator actions", summary: "Log all critical events: logons, CHD access, privilege escalation, audit log modifications, and failures.", status: "partial", controls: [
-        { id: "10.2.1", title: "Audit logs are enabled and active for all system components", status: "partial" },
-        { id: "10.2.1.1", title: "Audit logs capture all individual user access to cardholder data", status: "partial" },
-        { id: "10.2.1.2", title: "Audit logs capture all actions taken by any individual with root or administrative privileges", status: "partial" },
-        { id: "10.2.1.3", title: "Audit logs capture access to all audit logs", status: "partial" },
-        { id: "10.2.1.4", title: "Audit logs capture invalid logical access attempts", status: "partial" },
-        { id: "10.2.1.5", title: "Audit logs capture use of and changes to identification and authentication mechanisms", status: "partial" },
-        { id: "10.2.1.6", title: "Audit logs capture initialization, stopping, or pausing of audit logs", status: "partial" },
-        { id: "10.2.1.7", title: "Audit logs capture creation and deletion of system-level objects", status: "partial" },
-        { id: "10.2.2", title: "Audit logs record sufficient detail to determine what events occurred, who, when, where, and which component", status: "partial" },
-      ]},
-      { id: "10.3", title: "Audit logs are protected from destruction and unauthorized modifications", summary: "Logs must be write-protected, centralized, and tamper-evident. Any modification must be detectable.", status: "partial", controls: [
-        { id: "10.3.1", title: "Read access to audit logs is limited to those with a job-related need", status: "compliant" },
-        { id: "10.3.2", title: "Audit log files are protected to prevent modifications by individuals", status: "partial" },
-        { id: "10.3.3", title: "Audit log files are promptly backed up to a centralized log server or media that is difficult to modify", status: "partial" },
-        { id: "10.3.4", title: "File-integrity monitoring or change-detection mechanisms are used on audit logs to ensure existing log data cannot be changed without generating alerts", status: "partial" },
-      ]},
-      { id: "10.4", title: "Audit logs are reviewed to identify anomalies or suspicious activity", summary: "Daily review of critical events required. Automated mechanism mandatory since March 31 2025.", status: "partial", controls: [
-        { id: "10.4.1", title: "The following audit logs are reviewed at least once daily: all security events, logs of all system components in the CDE, logs of all critical system components", status: "partial" },
-        { id: "10.4.1.1", title: "Automated mechanisms are used to perform audit log reviews", status: "partial", new: true },
-        { id: "10.4.2", title: "Logs of all other system components are reviewed periodically", status: "partial" },
-        { id: "10.4.2.1", title: "The frequency of periodic log reviews for all other system components is defined in the entity's targeted risk analysis", status: "partial", new: true },
-        { id: "10.4.3", title: "Exceptions and anomalies identified during the review process are addressed", status: "partial" },
-      ]},
-      { id: "10.5", title: "Audit log history is retained and available for analysis", summary: "12 months total retention — 3 months immediately available for analysis. 9 months may be archived.", status: "partial", controls: [
-        { id: "10.5.1", title: "Retain audit log history for at least 12 months, with at least the most recent three months available for immediate analysis", status: "partial" },
-      ]},
-      { id: "10.6", title: "Time synchronization mechanisms support consistent time settings", summary: "NTP synchronization across all in-scope systems. Critical for correlating log events.", status: "partial", controls: [
-        { id: "10.6.1", title: "System clocks and time are synchronized using time-synchronization technology", status: "partial" },
-        { id: "10.6.2", title: "Systems are configured to the correct and consistent time using NTP or equivalent technology with authoritative time sources", status: "partial" },
-        { id: "10.6.3", title: "Time synchronization settings and data are protected", status: "partial" },
-      ]},
-      { id: "10.7", title: "Failures of critical security controls are detected, reported, and responded to promptly", summary: "Critical security control failures must generate alerts and be tracked to resolution.", status: "partial", controls: [
-        { id: "10.7.1", title: "Additional requirement for service providers only", status: "compliant" },
-        { id: "10.7.2", title: "Failures of critical security controls are detected, alerted, and addressed promptly, including — but not limited to — NSC failures, IDS/IPS failures, FIM failures, and anti-malware failures", status: "partial", new: true },
-      ]},
-    ]
-  },
-  {
-    id: 11,
-    tag: "THREAT DETECTION",
-    tagIcon: "🎯",
-    title: "Security Testing",
-    desc: "Quarterly vulnerability scans, annual penetration tests, intrusion detection, and file integrity monitoring. Continuous testing finds what attackers would find — before they do.",
-    purpose: "Static controls degrade over time. New vulnerabilities emerge daily. Regular testing verifies that controls are actually working — not just documented. A QSA will ask for scan results, not just policies.",
-    saqNote: "External ASV scans CANNOT be replaced by PCI-Nexus or any other internal tool — must be performed by a PCI SSC Approved Scanning Vendor. Internal scans can be self-performed.",
-    subReqs: [
-      { id: "11.1", title: "Define roles and responsibilities for security testing", summary: "Assign accountability for all vulnerability scanning, penetration testing, and wireless monitoring programs.", status: "noncompliant", controls: [
-        { id: "11.1.1", title: "All security policies are documented, in use, and known", status: "noncompliant" },
-        { id: "11.1.2", title: "Roles and responsibilities are documented, assigned, and understood", status: "noncompliant" },
-      ]},
-      { id: "11.2", title: "Wireless access points are managed and unauthorized APs are identified and addressed", summary: "Scan for rogue wireless access points quarterly. Unauthorized APs must be identified and disabled.", status: "noncompliant", controls: [
-        { id: "11.2.1", title: "Authorized and unauthorized wireless access points are managed", status: "noncompliant" },
-        { id: "11.2.2", title: "An inventory of authorized wireless access points is maintained, including a documented business justification", status: "noncompliant", new: true },
-      ]},
-      { id: "11.3", title: "External and internal vulnerabilities are regularly identified, prioritized, and addressed", summary: "Quarterly internal AND external scans. High findings remediated and rescanned before closing.", status: "noncompliant", controls: [
-        { id: "11.3.1", title: "Internal vulnerability scans are performed via qualified personnel at least once every three months and when significant changes occur", status: "noncompliant" },
-        { id: "11.3.1.1", title: "All other applicable vulnerabilities (those not ranked as high-risk or critical) are managed", status: "noncompliant", new: true },
-        { id: "11.3.1.2", title: "Internal vulnerability scans are performed via authenticated scanning", status: "noncompliant", new: true },
-        { id: "11.3.1.3", title: "Internal vulnerability scans are performed after significant changes", status: "noncompliant" },
-        { id: "11.3.2", title: "External vulnerability scans are performed by a PCI SSC Approved Scanning Vendor (ASV) at least once every three months", status: "noncompliant" },
-        { id: "11.3.2.1", title: "External vulnerability scans are performed after significant changes", status: "noncompliant" },
-      ]},
-      { id: "11.4", title: "External and internal penetration testing is regularly performed", summary: "Annual pen test of network and application layers. All findings remediated and verified with retest.", status: "noncompliant", controls: [
-        { id: "11.4.1", title: "A penetration testing methodology is defined, documented, and implemented", status: "noncompliant" },
-        { id: "11.4.2", title: "Internal penetration testing is performed at least annually and after any significant infrastructure or application upgrade or change", status: "noncompliant" },
-        { id: "11.4.3", title: "External penetration testing is performed at least annually and after any significant infrastructure or application upgrade or change", status: "noncompliant" },
-        { id: "11.4.4", title: "Exploitable vulnerabilities and security weaknesses found during penetration testing are corrected and penetration testing is repeated", status: "noncompliant" },
-        { id: "11.4.5", title: "If segmentation is used to isolate the CDE from other networks, penetration tests are performed on segmentation controls at least once every 12 months", status: "noncompliant" },
-        { id: "11.4.6", title: "Additional requirement for service providers only", status: "compliant" },
-        { id: "11.4.7", title: "Additional requirement for multi-tenant service providers only", status: "compliant" },
-      ]},
-      { id: "11.5", title: "Network intrusions and unexpected file changes are detected and responded to", summary: "IDS/IPS on network perimeter and file integrity monitoring on all CDE systems.", status: "noncompliant", controls: [
-        { id: "11.5.1", title: "Intrusion-detection and/or intrusion-prevention techniques are used to detect and/or prevent intrusions into the network", status: "noncompliant" },
-        { id: "11.5.1.1", title: "Intrusion-detection and/or intrusion-prevention techniques detect and alert on/prevent covert malware communication channels", status: "noncompliant", new: true },
-        { id: "11.5.2", title: "A change-detection mechanism (for example, file-integrity monitoring tools) is deployed to alert personnel to unauthorized modification of critical files", status: "noncompliant" },
-      ]},
-      { id: "11.6", title: "Unauthorized changes on payment pages are detected and responded to", summary: "For e-commerce: detect script tampering and HTTP header changes on payment pages within 7 days.", status: "noncompliant", controls: [
-        { id: "11.6.1", title: "A change- and tamper-detection mechanism is deployed to alert personnel to unauthorized modification — including indicators of compromise — to the HTTP headers and the contents of payment pages as received by the consumer browser", status: "noncompliant", new: true },
-      ]},
-    ]
-  },
-  {
-    id: 12,
-    tag: "GOVERNANCE & IR",
-    tagIcon: "📋",
-    title: "Security Policies & Governance",
-    desc: "Written security policy, annual risk assessment, vendor risk management, security awareness training, and a documented incident response plan. The governance layer that ties everything together.",
-    purpose: "Without written policies and trained staff, every technical control is undermined by human behavior. Governance is what ensures compliance persists through staff turnover, system changes, and audit cycles.",
-    saqNote: "Req 12 applies to ALL SAQ types — no simplification exists. Policies and procedures are required regardless of how small the business is.",
-    subReqs: [
-      { id: "12.1", title: "An information security policy is established, published, maintained, and disseminated", summary: "Written policy approved by management, reviewed annually, communicated to all personnel.", status: "compliant", controls: [
-        { id: "12.1.1", title: "An overall information security policy is established, published, maintained, and disseminated to all relevant personnel", status: "compliant" },
-        { id: "12.1.2", title: "The information security policy is reviewed at least once every 12 months and updated to reflect changes to business objectives or the risk environment", status: "compliant" },
-        { id: "12.1.3", title: "The information security policy clearly defines information security roles and responsibilities for all personnel", status: "compliant" },
-        { id: "12.1.4", title: "Responsibility for information security is formally assigned to a CISO or other information security knowledgeable member of executive management", status: "compliant", new: true },
-      ]},
-      { id: "12.2", title: "Acceptable use policies for end-user technologies are defined and implemented", summary: "Document what employees can and cannot do with systems that could access cardholder data.", status: "compliant", controls: [
-        { id: "12.2.1", title: "Acceptable use policies for end-user technologies are documented and implemented, including explicit approval by authorized parties, acceptable uses of the technology, and a list of company-approved products", status: "compliant" },
-      ]},
-      { id: "12.3", title: "Risks to the cardholder data environment are formally identified, evaluated, and managed", summary: "Annual risk assessment process. All risks must be formally documented and remediation tracked.", status: "compliant", controls: [
-        { id: "12.3.1", title: "Each PCI DSS requirement that provides flexibility for how frequently it is performed is completed per an entity-defined targeted risk analysis", status: "compliant", new: true },
-        { id: "12.3.2", title: "A targeted risk analysis is performed for each PCI DSS requirement that the entity meets with the customized approach", status: "compliant", new: true },
-        { id: "12.3.3", title: "All cryptographic cipher suites and protocols in use are documented and reviewed at least once every 12 months", status: "compliant", new: true },
-        { id: "12.3.4", title: "Hardware and software technologies are reviewed at least once every 12 months to confirm they continue to receive security fixes from vendors", status: "compliant", new: true },
-      ]},
-      { id: "12.4", title: "PCI DSS compliance is managed throughout the year", summary: "For service providers: quarterly compliance reviews. For all: maintain compliance between assessments.", status: "compliant", controls: [
-        { id: "12.4.1", title: "Additional requirement for service providers only", status: "compliant" },
-        { id: "12.4.2", title: "Additional requirement for service providers only", status: "compliant" },
-      ]},
-      { id: "12.5", title: "PCI DSS scope is documented and validated at least annually", summary: "Formal scope validation annually and after significant changes. Document all in-scope systems.", status: "compliant", controls: [
-        { id: "12.5.1", title: "An inventory of system components that are in scope for PCI DSS, including a description of function/use, is maintained and kept current", status: "compliant" },
-        { id: "12.5.2", title: "PCI DSS scope is documented and confirmed by the entity at least once every 12 months and upon significant change to the in-scope environment", status: "compliant", new: true },
-        { id: "12.5.2.1", title: "Additional requirement for service providers only", status: "compliant" },
-        { id: "12.5.3", title: "Additional requirement for service providers only", status: "compliant" },
-      ]},
-      { id: "12.6", title: "Security awareness education is an ongoing process", summary: "Security awareness training at hire and annually for all personnel. Must cover current threats.", status: "compliant", controls: [
-        { id: "12.6.1", title: "A formal security awareness program is implemented to make all personnel aware of the entity's information security policy and procedures", status: "compliant" },
-        { id: "12.6.2", title: "The security awareness program is reviewed at least once every 12 months and updated to account for any new threats and vulnerabilities", status: "compliant", new: true },
-        { id: "12.6.3", title: "Personnel receive security awareness training upon hire and at least once every 12 months", status: "compliant" },
-        { id: "12.6.3.1", title: "Security awareness training includes awareness of threats and vulnerabilities that could impact the security of the CDE", status: "compliant", new: true },
-        { id: "12.6.3.2", title: "Security awareness training includes awareness about the acceptable use policy for end-user technologies", status: "compliant", new: true },
-      ]},
-      { id: "12.7", title: "Personnel are screened to reduce risks from insider threats", summary: "Background checks for personnel with access to the CDE.", status: "compliant", controls: [
-        { id: "12.7.1", title: "Potential personnel who will have access to the CDE are screened, within the constraints of local laws, prior to hire to minimize the risk of attacks from internal sources", status: "compliant" },
-      ]},
-      { id: "12.8", title: "Risks from third-party service providers with access to cardholder data are managed", summary: "Maintain a list of all TPSPs, conduct annual reviews of their PCI DSS compliance status.", status: "compliant", controls: [
-        { id: "12.8.1", title: "A list of all third-party service providers (TPSPs) with which account data is shared or that could affect the security of account data is maintained", status: "compliant" },
-        { id: "12.8.2", title: "Written agreements with all TPSPs are maintained that include an acknowledgment that the TPSPs are responsible for the security of account data they possess", status: "compliant" },
-        { id: "12.8.3", title: "An established process is implemented for engaging TPSPs, including proper due diligence prior to engagement", status: "compliant" },
-        { id: "12.8.4", title: "A program is implemented to monitor TPSPs' PCI DSS compliance status at least once every 12 months", status: "compliant" },
-        { id: "12.8.5", title: "Information is maintained about which PCI DSS requirements are managed by each TPSP and which are managed by the entity", status: "compliant" },
-      ]},
-      { id: "12.9", title: "Third-party service providers support their customers' PCI DSS compliance", summary: "TPSPs must provide written acknowledgment of their PCI DSS responsibilities to customers.", status: "compliant", controls: [
-        { id: "12.9.1", title: "TPSPs acknowledge in writing that they are responsible for the security of account data the TPSP possesses or otherwise stores, processes, or transmits on behalf of the entity", status: "compliant" },
-        { id: "12.9.2", title: "TPSPs support their customers' requests for information to meet Req 12.8.4 and 12.8.5", status: "compliant", new: true },
-      ]},
-      { id: "12.10", title: "Suspected and confirmed security incidents are responded to immediately", summary: "Documented incident response plan tested annually. Must cover card brand notification requirements.", status: "compliant", controls: [
-        { id: "12.10.1", title: "An incident response plan exists and is ready to be activated in the event of a system breach", status: "compliant" },
-        { id: "12.10.2", title: "At least once every 12 months, the security incident response plan is tested", status: "compliant" },
-        { id: "12.10.3", title: "Specific personnel are designated to be available on a 24/7 basis to respond to suspected or confirmed security incidents", status: "compliant" },
-        { id: "12.10.4", title: "Personnel responsible for responding to suspected and confirmed security incidents are appropriately and regularly trained on their incident response responsibilities", status: "compliant" },
-        { id: "12.10.4.1", title: "The frequency of periodic training for incident response personnel is defined in the entity's targeted risk analysis", status: "compliant", new: true },
-        { id: "12.10.5", title: "The security incident response plan includes monitoring and responding to alerts from security monitoring systems", status: "compliant" },
-        { id: "12.10.6", title: "The security incident response plan is modified and evolved according to lessons learned and to incorporate industry developments", status: "compliant" },
-        { id: "12.10.7", title: "Incident response procedures are in place, to be initiated upon the detection of stored PAN anywhere it is not expected", status: "compliant", new: true },
-      ]},
-    ]
-  },
-];
-
-// ── RENDER ────────────────────────────────────────────────────────────────────
-const grid = document.getElementById('cardsGrid');
-
-REQUIREMENTS.forEach(req => {
-  const card = document.createElement('div');
-  card.className = 'card';
-  card.innerHTML = `
-    <div class="card-header">
-      <button class="expand-btn" aria-label="Expand requirement ${req.id}">+</button>
-      <div class="req-label">REQUIREMENT ${req.id}</div>
-      <h3>${req.title}</h3>
-      <p>${req.desc}</p>
-      <span class="tag">${req.tagIcon} ${req.tag}</span>
-    </div>
-    <div class="card-expanded">
-      <div class="expanded-inner">
-        <div class="purpose-box">
-          <div class="label">WHY THIS REQUIREMENT EXISTS</div>
-          <p>${req.purpose}</p>
+  <div class="page-body">
+    <p>PCI-Nexus is built with security at every layer — from database row-level security to encrypted evidence storage and MFA-enforced access.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:28px;">
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:20px;"><div style="color:#1ABFCC;font-weight:700;margin-bottom:8px;">🔒 Encryption at Rest & in Transit</div><div style="font-size:0.85rem;color:rgba(148,197,210,0.8);">All data encrypted with AES-256. All communications over TLS 1.3.</div></div>
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:20px;"><div style="color:#1ABFCC;font-weight:700;margin-bottom:8px;">🧱 Row-Level Security</div><div style="font-size:0.85rem;color:rgba(148,197,210,0.8);">26 database tables with enforced row-level security — tenants cannot access each other's data.</div></div>
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:20px;"><div style="color:#1ABFCC;font-weight:700;margin-bottom:8px;">🔑 MFA Enforced</div><div style="font-size:0.85rem;color:rgba(148,197,210,0.8);">Multi-factor authentication required for all users on first login and for all administrative access.</div></div>
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:20px;"><div style="color:#1ABFCC;font-weight:700;margin-bottom:8px;">📋 Audit Logging</div><div style="font-size:0.85rem;color:rgba(148,197,210,0.8);">Every action logged with user, timestamp, and IP. Immutable audit trail for compliance evidence.</div></div>
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:20px;"><div style="color:#1ABFCC;font-weight:700;margin-bottom:8px;">🏗️ Hosted on Vercel + Supabase</div><div style="font-size:0.85rem;color:rgba(148,197,210,0.8);">SOC 2 Type II certified infrastructure with automatic scaling and 99.9% uptime SLA.</div></div>
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:20px;"><div style="color:#1ABFCC;font-weight:700;margin-bottom:8px;">🔐 PIN-Protected Locations</div><div style="font-size:0.85rem;color:rgba(148,197,210,0.8);">Each client location is PIN-protected. No cross-contamination between client environments.</div></div>
         </div>
-        <div class="sub-reqs-label">SUB-REQUIREMENTS &amp; CONTROLS</div>
-        ${req.subReqs.map(sub => `
-          <div class="sub-req" data-open="false">
-            <div class="sub-req-header">
-              <span class="sub-id ${sub.status}">${sub.id}</span>
-              <div style="flex:1;min-width:0">
-                <div class="sub-title">${sub.title}</div>
-                ${sub.summary ? `<div class="sub-summary">${sub.summary}</div>` : ''}
-              </div>
-              ${sub.controls && sub.controls.length ? '<span class="sub-arrow">›</span>' : ''}
-            </div>
-            ${sub.controls && sub.controls.length ? `
-              <div class="controls-list">
-                ${sub.controls.map(ctrl => `
-                  <div class="control-item">
-                    <span class="ctrl-id ${ctrl.status}">${ctrl.id}</span>
-                    <span class="ctrl-text">${ctrl.title}</span>
-                    ${ctrl.new ? '<span class="badge-new">★ v4.0</span>' : ''}
-                  </div>
-                `).join('')}
-              </div>
-            ` : ''}
-          </div>
-        `).join('')}
-        <div class="saq-note">
-          <div class="label">SAQ APPLICABILITY</div>
-          <p>${req.saqNote}</p>
-        </div>
-        <a href="https://pci-nexus.vercel.app/Demo" class="go-btn">
-          Manage Req ${req.id} in PCI-Nexus →
-        </a>
-      </div>
-    </div>
-  `;
-  grid.appendChild(card);
-
-  // Toggle card open/close
-  const header = card.querySelector('.card-header');
-  header.addEventListener('click', () => {
-    const isOpen = card.classList.toggle('open');
-    card.querySelector('.expand-btn').textContent = isOpen ? '+' : '+';
-  });
-
-  // Toggle sub-req controls
-  card.querySelectorAll('.sub-req-header').forEach(sh => {
-    sh.addEventListener('click', e => {
-      e.stopPropagation();
-      const subReq = sh.closest('.sub-req');
-      if (!subReq.querySelector('.controls-list')) return;
-      subReq.classList.toggle('open');
-    });
-  });
-});
-</script>
+  </div>
+</section>
+<div class="divider"></div>
+<footer>
+  <div class="footer-logo">PCI<span>Nexus</span></div>
+  <div class="footer-links" style="font-size:0.88rem;">
+    <a href="/features.html">Features</a>
+    <a href="/consultants.html">For Consultants</a>
+    <a href="/security.html">Security</a>
+    <a href="/comparison.html">Compare</a>
+    <a href="https://pci-nexus.vercel.app/Demo" target="_blank">Live Demo</a>
+    <a href="/about.html">About</a>
+    <a href="mailto:jeaton@pcinexus.com">Contact</a>
+    <a href="/tos.html">Terms of Service</a>
+    <a href="/privacy.html">Privacy Policy</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 PCI-Nexus &middot; J.Eaton Consulting LLC &middot; PCI DSS v4.0.1</div>
+</footer>
+</div>
 </body>
 </html>
