@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics loaded conditionally after cookie consent -->
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Data Handling Policy &mdash; PCI-Nexus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --navy:  #0F2447;
+  --navy2: #162E5A;
+  --blue:  #1E6FD9;
+  --teal:  #1ABFCC;
+  --teal2: #0EA5B0;
+  --white: #ffffff;
+  --slate: #94a3b8;
+  --grad:  linear-gradient(135deg,#0F2447 0%,#162E5A 55%,#0A7985 100%);
+  --grad-b:linear-gradient(135deg,#1E6FD9,#0EA5B0);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:#060f1e;color:#e2e8f0;overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;height:64px;
+  background:rgba(6,15,30,.92);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(26,191,204,.12);
+}
+.nav-logo{
+  font-family:'DM Serif Display',serif;
+  font-size:1.5625rem;color:#fff;text-decoration:none;letter-spacing:-.5px;
+}
+.nav-logo span{color:var(--teal);}
+.nav-back{
+  font-size:.82rem;font-weight:500;color:rgba(148,197,210,.65);
+  text-decoration:none;transition:color .2s;
+}
+.nav-back:hover{color:var(--teal);}
+
+/* ── PAGE LAYOUT ── */
+.page-wrap{
+  max-width:780px;margin:0 auto;
+  padding:100px 40px 80px;
+}
+.page-label{
+  font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:14px;
+}
+.page-title{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(2rem,4vw,3rem);color:#fff;
+  line-height:1.1;letter-spacing:-.02em;margin-bottom:10px;
+}
+.page-effective{
+  font-size:.83rem;color:rgba(148,197,210,.5);margin-bottom:48px;
+  border-bottom:1px solid rgba(255,255,255,.06);padding-bottom:28px;
+}
+
+/* ── LEGAL PROSE ── */
+.legal-body{color:rgba(148,197,210,.85);line-height:1.8;font-size:.92rem;}
+.legal-body h2{
+  font-family:'DM Serif Display',serif;font-size:1.25rem;color:#fff;
+  margin-top:40px;margin-bottom:12px;line-height:1.2;
+}
+.legal-body p{margin-bottom:14px;}
+.legal-body a{color:var(--teal);text-decoration:underline;}
+.legal-body ul{margin:10px 0 14px 20px;}
+.legal-body ul li{margin-bottom:6px;}
+
+/* ── SUBPROCESSORS TABLE ── */
+.sp-table{
+  width:100%;border-collapse:collapse;margin:16px 0 20px;font-size:.85rem;
+}
+.sp-table th{
+  text-align:left;padding:10px 16px;
+  background:rgba(30,111,217,.12);
+  color:rgba(148,197,210,.8);font-weight:700;font-size:.72rem;
+  letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.08);
+}
+.sp-table td{
+  padding:10px 16px;color:rgba(148,197,210,.75);
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.sp-table tr:last-child td{border-bottom:none;}
+
+/* ── FOOTER ── */
+footer{
+  border-top:1px solid rgba(255,255,255,.06);
+  padding:36px 40px;max-width:780px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+}
+.footer-logo{font-family:'DM Serif Display',serif;font-size:1rem;color:#fff;}
+.footer-logo span{color:var(--teal);}
+.footer-copy{font-size:.78rem;color:rgba(148,197,210,.35);}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="/">PCI<span>Nexus</span></a>
+  <a class="nav-back" href="/">&larr; Back to Home</a>
+</nav>
+
+<div class="page-wrap">
+  <div class="page-label">Legal</div>
+  <h1 class="page-title">Data Handling Policy</h1>
+  <div class="page-effective">Effective: January 1, 2026 &nbsp;&middot;&nbsp; PCI-Nexus, operated by Joe Eaton &nbsp;&middot;&nbsp; 1350 Hemlock St., Napa, CA 94559</div>
+
+  <div class="legal-body">
+
+    <p>This Data Handling Policy describes how PCI-Nexus collects, stores, processes, and protects data in connection with the Service. This policy supplements our <a href="/privacy.html">Privacy Policy</a> and applies to all data processed through the platform, including data belonging to your client organizations.</p>
+
+    <h2>1. What Data We Collect</h2>
+    <p>PCI-Nexus collects and processes the following categories of data:</p>
+    <ul>
+      <li><strong>Organization information:</strong> Company name, address, industry, PCI merchant or service provider classification, SAQ type, and related compliance configuration data for each client organization in your portfolio</li>
+      <li><strong>User accounts:</strong> Name, email address, job title, role, and authentication credentials for each named user on the platform</li>
+      <li><strong>Uploaded evidence files:</strong> Documents, screenshots, configuration exports, scan reports, and other files uploaded to the platform for AI-assisted evidence review. These may include network diagrams, firewall configurations, vulnerability scan results, policy documents, and other technical artifacts</li>
+      <li><strong>Compliance records:</strong> SAQ responses, requirement status records, finding logs, remediation notes, compliance calendar entries, and generated documents (SAQs, AOCs, attestation packages)</li>
+      <li><strong>Audit logs:</strong> Timestamped records of all user actions within the platform, including logins, data modifications, evidence uploads, and document generation events</li>
+    </ul>
+    <p>We do not intentionally collect or store actual payment card numbers, PINs, cardholder data, or other sensitive authentication data. You should not upload files containing live cardholder data to the platform.</p>
+
+    <h2>2. How Data Is Stored</h2>
+    <p>All data stored in PCI-Nexus is protected with the following controls:</p>
+    <ul>
+      <li><strong>Encryption at rest:</strong> All stored data, including evidence files and compliance records, is encrypted using AES-256 encryption</li>
+      <li><strong>Encryption in transit:</strong> All data transmitted between your browser and our servers is encrypted using TLS 1.2 or higher. We enforce HTTPS on all endpoints</li>
+      <li><strong>Infrastructure:</strong> PCI-Nexus is hosted on SOC 2 Type 2 certified cloud infrastructure. Our infrastructure providers maintain their own independent security certifications</li>
+      <li><strong>Client isolation:</strong> Each client organization in your portfolio is maintained in a fully isolated data environment. Cross-client data access is prevented at the database and application layers. Each client organization is further protected by a 4-digit PIN that prevents access without explicit authorization</li>
+      <li><strong>Access controls:</strong> Role-based access controls (RBAC) restrict data access within the platform to authorized users only. Administrative access to production systems is limited to authorized personnel and is logged</li>
+    </ul>
+
+    <h2>3. AI Processing</h2>
+    <p>PCI-Nexus uses Claude AI (operated by Anthropic) to analyze evidence files uploaded to the platform. When you upload an evidence file, the content of that file is sent to Anthropic&rsquo;s API for analysis against applicable PCI DSS requirements.</p>
+    <p>Key facts about our AI processing:</p>
+    <ul>
+      <li><strong>No training use:</strong> Your data is not used to train Anthropic&rsquo;s AI models. Anthropic processes the data solely to generate the analysis returned to PCI-Nexus</li>
+      <li><strong>Transient processing:</strong> Evidence file content sent to the AI API is processed in real time and is not retained by Anthropic beyond the duration of the API request</li>
+      <li><strong>Purpose limitation:</strong> AI processing is used only for evidence review, compliance chat, and related platform features. It is not used for advertising, profiling, or any purpose unrelated to the Service</li>
+      <li><strong>Human review:</strong> AI verdicts are advisory. Final compliance decisions remain with you and your qualified personnel</li>
+    </ul>
+
+    <h2>4. Data Retention</h2>
+    <p>We retain your data for as long as your account is active plus a 90-day post-cancellation period. During the 90-day retention window after cancellation, your data remains available for export. After 90 days, all data associated with your account and client organizations is permanently and irreversibly deleted from our systems and backups.</p>
+    <p>Audit logs are retained for a minimum of 12 months to support PCI DSS Requirement 10 compliance for organizations using the platform for their own compliance program.</p>
+
+    <h2>5. Data Deletion</h2>
+    <p>You may request deletion of specific data records or your entire account at any time by contacting us at <a href="mailto:jeatonit@outlook.com">jeatonit@outlook.com</a>. We will process verified deletion requests within 30 days. We will confirm completion of deletion in writing.</p>
+    <p>Note that deletion of certain records may affect the integrity of your compliance audit trail. We will advise you of any such implications before processing the deletion request.</p>
+
+    <h2>6. Subprocessors</h2>
+    <p>PCI-Nexus uses the following third-party subprocessors to deliver the Service:</p>
+
+    <table class="sp-table">
+      <thead>
+        <tr>
+          <th>Subprocessor</th>
+          <th>Purpose</th>
+          <th>Data Processed</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Anthropic (Claude AI)</td>
+          <td>AI evidence review and compliance chat</td>
+          <td>Evidence file contents, compliance queries</td>
+          <td>United States</td>
+        </tr>
+        <tr>
+          <td>Vercel</td>
+          <td>Web application hosting and delivery</td>
+          <td>Web traffic, session data</td>
+          <td>United States / Global CDN</td>
+        </tr>
+        <tr>
+          <td>Supabase</td>
+          <td>Database and authentication infrastructure</td>
+          <td>All platform data, user credentials</td>
+          <td>United States</td>
+        </tr>
+        <tr>
+          <td>Google Analytics</td>
+          <td>Marketing site analytics (with consent)</td>
+          <td>Anonymized page view and session data</td>
+          <td>United States</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>We will update this list when we add new subprocessors and will notify subscribers of material changes to our subprocessor arrangements.</p>
+
+    <h2>7. Data Breach Notification</h2>
+    <p>In the event of a security incident that results in unauthorized access to, disclosure of, or destruction of your data, we will notify you as required by applicable law. For incidents that meet the threshold for notification under CCPA, GDPR, or other applicable regulations, we will provide notification within the timeframe required by the applicable regulation, and in no event later than 72 hours after we become aware of the incident.</p>
+
+    <h2>8. Contact</h2>
+    <p>For questions about this Data Handling Policy or to make a data-related request, contact us at:</p>
+    <p>
+      <strong>PCI-Nexus</strong><br/>
+      Operated by Joe Eaton<br/>
+      1350 Hemlock St., Napa, CA 94559<br/>
+      <a href="mailto:jeatonit@outlook.com">jeatonit@outlook.com</a>
+    </p>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">PCI<span>Nexus</span></div>
+  <div class="footer-copy">&copy; 2026 PCI-Nexus. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

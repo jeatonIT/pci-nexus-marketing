@@ -5,8 +5,8 @@
 <meta charset="UTF-8"/>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgMTYwIiB3aWR0aD0iMTYwIiBoZWlnaHQ9IjE2MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNoaWVsZEdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMkU3RkU4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMUE1RUM0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEM0E4QSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0ic3BhcmtDb3JlIiBjeD0iNTAlIiBjeT0iNTAlIiByPSI1MCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiAgc3RvcC1jb2xvcj0iI0ZGRkZGRiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjE1JSIgc3RvcC1jb2xvcj0iI0ZGRThBMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjM1JSIgc3RvcC1jb2xvcj0iI0ZGODgwMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iI0REMjIyMiIgc3RvcC1vcGFjaXR5PSIwLjgiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjQUEwMDAwIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxwYXRoIGQ9Ik04MCAxMiBMMTQwIDMyIEwxNDAgODIgQzE0MCAxMTggMTEyIDE0MCA4MCAxNTIgQzQ4IDE0MCAyMCAxMTggMjAgODIgTDIwIDMyIFoiIGZpbGw9InVybCgjc2hpZWxkR3JhZCkiIG9wYWNpdHk9IjAuOTUiLz4KPC9zdmc+">
 <meta name="viewport" content="width=1100, initial-scale=1.0"/>
-<meta name="description" content="PCI-Nexus is the PCI DSS v4.0.1 compliance platform built for QSAs, MSPs, and IT consultants. Manage 15–50 merchant clients from one back-office. White-label ready. free for your first 5 locations."/>
-<title>PCI-Nexus — PCI DSS Compliance Platform for QSAs, MSPs &amp; IT Consultants</title>
+<meta name="description" content="PCI-Nexus is the PCI DSS v4.0.1 compliance platform built for QSAs, ISAs, MSPs, and IT consultants. Manage your entire client portfolio from one AI-powered platform. White-label ready."/>
+<title>PCI-Nexus — PCI DSS Compliance Platform for QSAs, ISAs, MSPs &amp; IT Consultants</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
@@ -95,9 +95,9 @@ nav{
 .hero-sub{
   font-size:1.05rem;line-height:1.7;
   color:rgba(148,197,210,.8);
-  max-width:620px;margin-bottom:40px;
+  max-width:680px;margin-bottom:40px;
 }
-.hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:64px;}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:48px;}
 .btn-primary{
   display:inline-flex;align-items:center;gap:8px;
   padding:14px 32px;border-radius:12px;font-size:1rem;font-weight:700;
@@ -115,17 +115,16 @@ nav{
 }
 .btn-secondary:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);}
 
-/* Hero stat strip */
-.hero-stats{
-  display:flex;gap:48px;flex-wrap:wrap;
-  padding-top:40px;border-top:1px solid rgba(255,255,255,.07);
+/* Trust badges */
+.trust-badges{
+  display:flex;gap:20px;flex-wrap:wrap;
+  padding-top:36px;border-top:1px solid rgba(255,255,255,.07);
 }
-.stat{}
-.stat-num{
-  font-family:'DM Serif Display',serif;font-size:2rem;color:#fff;
-  background:var(--grad-b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+.trust-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.8rem;color:rgba(148,197,210,.7);font-weight:500;
 }
-.stat-label{font-size:.78rem;color:rgba(148,197,210,.6);margin-top:2px;letter-spacing:.03em;}
+.trust-badge .check{color:#4ade80;font-weight:700;}
 
 /* ── SECTION SCAFFOLD ── */
 section{padding:100px 40px;max-width:1200px;margin:0 auto;}
@@ -144,107 +143,30 @@ section{padding:100px 40px;max-width:1200px;margin:0 auto;}
   max-width:580px;line-height:1.7;margin-bottom:56px;
 }
 
-/* ── FOR PARTNERS SECTION ── */
-.for-partners-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:32px;
+/* ── WHO IT'S FOR GRID ── */
+.audience-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
 }
-@media(max-width:780px){.for-partners-grid{grid-template-columns:1fr;} .choose-path-row{grid-template-columns:1fr!important;} .two-box-grid{grid-template-columns:1fr!important;}}
+@media(max-width:960px){.audience-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.audience-grid{grid-template-columns:1fr;}}
 
-.partner-card{
-  padding:32px;border-radius:20px;
+.audience-card{
+  padding:28px;border-radius:20px;
   border:1px solid rgba(30,111,217,.2);
   background:linear-gradient(135deg,rgba(30,111,217,.08),rgba(14,165,176,.04));
   position:relative;overflow:hidden;
   transition:border-color .3s,transform .3s;
 }
-.partner-card:hover{border-color:rgba(26,191,204,.4);transform:translateY(-4px);}
-.partner-card::before{
+.audience-card:hover{border-color:rgba(26,191,204,.4);transform:translateY(-4px);}
+.audience-card::before{
   content:'';position:absolute;top:0;left:0;right:0;height:2px;
   background:var(--grad-b);opacity:.6;
 }
-.partner-icon{font-size:2.2rem;margin-bottom:16px;}
-.partner-type{
-  font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--teal);margin-bottom:8px;
+.audience-card-title{
+  font-family:'DM Serif Display',serif;font-size:1.15rem;color:#fff;
+  margin-bottom:10px;line-height:1.25;
 }
-.partner-title{
-  font-family:'DM Serif Display',serif;font-size:1.4rem;color:#fff;
-  margin-bottom:12px;line-height:1.2;
-}
-.partner-desc{font-size:.88rem;color:rgba(148,197,210,.75);line-height:1.7;margin-bottom:20px;}
-.partner-bullets{list-style:none;display:flex;flex-direction:column;gap:8px;}
-.partner-bullets li{
-  font-size:.82rem;color:rgba(148,197,210,.85);
-  display:flex;align-items:flex-start;gap:8px;line-height:1.5;
-}
-.partner-bullets li::before{
-  content:'✓';color:var(--teal);font-weight:700;flex-shrink:0;margin-top:1px;
-}
-.partner-cta{
-  display:inline-flex;align-items:center;gap:6px;
-  margin-top:24px;padding:10px 20px;border-radius:8px;
-  background:var(--grad-b);color:#fff;font-size:.82rem;font-weight:700;
-  text-decoration:none;transition:opacity .2s;
-}
-.partner-cta:hover{opacity:.85;}
-
-/* Merchant card — secondary styling */
-.merchant-card{
-  padding:32px;border-radius:20px;
-  border:1px solid rgba(255,255,255,.08);
-  background:rgba(255,255,255,.03);
-  position:relative;overflow:hidden;grid-column:1/-1;
-  display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap;
-  transition:border-color .3s;
-}
-.merchant-card:hover{border-color:rgba(255,255,255,.15);}
-.merchant-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,rgba(255,255,255,.1),rgba(255,255,255,.25),rgba(255,255,255,.1));
-}
-.merchant-badge{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:4px 10px;border-radius:100px;
-  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
-  font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  color:rgba(148,197,210,.6);margin-bottom:10px;
-}
-
-/* ── DIFFERENTIATORS ── */
-.diff-grid{display:flex;flex-direction:column;gap:20px;}
-.diff-card{
-  display:flex;gap:24px;align-items:flex-start;
-  padding:28px 32px;border-radius:20px;
-  border:1px solid transparent;
-  transition:border-color .3s,background .3s;
-  position:relative;overflow:hidden;
-}
-.diff-card:hover{border-color:rgba(26,191,204,.2);}
-.diff-num{
-  font-family:'DM Mono',monospace;
-  font-size:.72rem;font-weight:500;letter-spacing:.08em;
-  padding:4px 10px;border-radius:100px;
-  flex-shrink:0;margin-top:3px;
-}
-.diff-body{}
-.diff-title{
-  font-family:'DM Serif Display',serif;font-size:1.25rem;color:#fff;
-  margin-bottom:8px;line-height:1.25;
-}
-.diff-desc{font-size:.9rem;color:rgba(148,197,210,.8);line-height:1.7;}
-.diff-desc strong{color:#fff;font-weight:600;}
-
-/* Color variants */
-.diff-1{background:linear-gradient(135deg,rgba(30,111,217,.1),rgba(14,165,176,.04));border-color:rgba(30,111,217,.2);}
-.diff-1 .diff-num{background:rgba(30,111,217,.2);color:#60a5fa;}
-.diff-2{background:linear-gradient(135deg,rgba(14,165,176,.1),rgba(5,150,105,.04));border-color:rgba(14,165,176,.2);}
-.diff-2 .diff-num{background:rgba(14,165,176,.2);color:#2dd4bf;}
-.diff-3{background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(99,102,241,.04));border-color:rgba(124,58,237,.2);}
-.diff-3 .diff-num{background:rgba(124,58,237,.2);color:#a78bfa;}
-.diff-4{background:linear-gradient(135deg,rgba(245,158,11,.1),rgba(239,68,68,.04));border-color:rgba(245,158,11,.2);}
-.diff-4 .diff-num{background:rgba(245,158,11,.2);color:#fbbf24;}
-.diff-5{background:linear-gradient(135deg,rgba(5,150,105,.1),rgba(16,185,129,.04));border-color:rgba(5,150,105,.2);}
-.diff-5 .diff-num{background:rgba(5,150,105,.2);color:#34d399;}
+.audience-card-desc{font-size:.86rem;color:rgba(148,197,210,.8);line-height:1.7;}
 
 /* ── FEATURES GRID ── */
 .features-grid{
@@ -267,20 +189,67 @@ section{padding:100px 40px;max-width:1200px;margin:0 auto;}
 .feature-title{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:6px;}
 .feature-desc{font-size:.82rem;color:rgba(148,197,210,.7);line-height:1.6;}
 
-/* ── PRICING PREVIEW ── */
-.pricing-strip{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
-  padding:40px;border-radius:24px;
+/* ── HOW IT WORKS ── */
+.steps-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+}
+@media(max-width:900px){.steps-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.steps-grid{grid-template-columns:1fr;}}
+
+.step-card{
+  padding:28px 24px;border-radius:16px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+  position:relative;
+}
+.step-num{
+  font-family:'DM Mono',monospace;
+  font-size:.72rem;font-weight:500;letter-spacing:.08em;
+  padding:4px 10px;border-radius:100px;
+  background:rgba(30,111,217,.2);color:#60a5fa;
+  display:inline-block;margin-bottom:16px;
+}
+.step-title{font-family:'DM Serif Display',serif;font-size:1.05rem;color:#fff;margin-bottom:8px;}
+.step-desc{font-size:.83rem;color:rgba(148,197,210,.75);line-height:1.65;}
+
+/* ── PRICING ── */
+.pricing-box{
+  padding:48px;border-radius:24px;
   background:linear-gradient(135deg,rgba(15,36,71,.8),rgba(22,46,90,.6));
   border:1px solid rgba(30,111,217,.2);
+  text-align:center;
 }
-@media(max-width:900px){.pricing-strip{grid-template-columns:repeat(2,1fr);}}
+.pricing-main{
+  font-family:'DM Serif Display',serif;font-size:3.5rem;color:#fff;
+  line-height:1;margin-bottom:8px;
+}
+.pricing-secondary{
+  font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--teal);
+  line-height:1;margin-bottom:16px;
+}
+.pricing-note{font-size:.9rem;color:rgba(148,197,210,.7);margin-bottom:8px;line-height:1.5;}
+.pricing-surcharge{font-size:.82rem;color:rgba(148,197,210,.5);margin-bottom:28px;}
 
-.price-tier{text-align:center;padding:20px 12px;}
-.price-tier-name{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
-.price-amount{font-family:'DM Serif Display',serif;font-size:2rem;color:#fff;line-height:1;}
-.price-per{font-size:.75rem;color:rgba(148,197,210,.5);margin-top:4px;}
-.price-desc{font-size:.78rem;color:rgba(148,197,210,.65);margin-top:8px;line-height:1.5;}
+/* ── TESTIMONIALS ── */
+.testimonials-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;
+}
+@media(max-width:700px){.testimonials-grid{grid-template-columns:1fr;}}
+
+.testimonial-card{
+  padding:28px 32px;border-radius:20px;
+  background:linear-gradient(135deg,rgba(30,111,217,.08),rgba(14,165,176,.04));
+  border:1px solid rgba(30,111,217,.18);
+}
+.testimonial-text{
+  font-size:.95rem;color:rgba(148,197,210,.9);line-height:1.75;
+  font-style:italic;margin-bottom:20px;
+}
+.testimonial-attribution{font-size:.78rem;color:rgba(148,197,210,.5);font-weight:600;letter-spacing:.04em;}
+.testimonial-illustrative{
+  font-size:.7rem;color:rgba(148,197,210,.35);
+  font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  margin-bottom:12px;
+}
 
 /* ── TRIAL BANNER ── */
 .trial-banner{
@@ -314,7 +283,6 @@ section{padding:100px 40px;max-width:1200px;margin:0 auto;}
   transition:border-color .2s,background .2s;
 }
 .btn-outline-white:hover{border-color:#fff;background:rgba(255,255,255,.1);}
-
 
 /* ── COOKIE CONSENT ── */
 #cookie-banner{
@@ -357,15 +325,27 @@ section{padding:100px 40px;max-width:1200px;margin:0 auto;}
 /* ── FOOTER ── */
 footer{
   border-top:1px solid rgba(255,255,255,.06);
-  padding:48px 40px;max-width:1200px;margin:0 auto;
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;
+  padding:56px 40px 40px;max-width:1200px;margin:0 auto;
 }
-.footer-logo{font-family:'DM Serif Display',serif;font-size:1.1rem;color:#fff;}
-.footer-logo span{color:var(--teal);}
-.footer-links{display:flex;gap:24px;flex-wrap:wrap;}
-.footer-links a{font-size:.82rem;color:rgba(148,197,210,.5);text-decoration:none;transition:color .2s;}
-.footer-links a:hover{color:var(--teal);}
-.footer-copy{font-size:.78rem;color:rgba(148,197,210,.35);}
+.footer-top{
+  display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;
+}
+@media(max-width:860px){.footer-top{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.footer-top{grid-template-columns:1fr;}}
+.footer-brand .footer-logo{font-family:'DM Serif Display',serif;font-size:1.3rem;color:#fff;margin-bottom:8px;}
+.footer-brand .footer-logo span{color:var(--teal);}
+.footer-brand address{font-size:.78rem;color:rgba(148,197,210,.5);line-height:1.7;font-style:normal;}
+.footer-brand a{color:var(--teal);text-decoration:none;}
+.footer-col-heading{font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(148,197,210,.4);margin-bottom:16px;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:10px;}
+.footer-col ul li a{font-size:.83rem;color:rgba(148,197,210,.55);text-decoration:none;transition:color .2s;}
+.footer-col ul li a:hover{color:var(--teal);}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.06);
+  padding-top:24px;
+  font-size:.78rem;color:rgba(148,197,210,.35);
+}
 
 /* ── FULL-WIDTH WRAPPER ── */
 .section-wrapper{background:#060f1e;}
@@ -386,10 +366,10 @@ footer{
     <a href="/security.html">Security</a>
     <a href="/comparison.html">Compare</a>
     <a href="/about.html">About</a>
-    <a href="mailto:jeaton@pcinexus.com">Contact</a>
+    <a href="mailto:jeatonit@outlook.com">Contact</a>
     <a href="/tos.html" style="font-size:0.8rem;opacity:0.7;">ToS</a>
     <a href="/privacy.html" style="font-size:0.8rem;opacity:0.7;">Privacy</a>
-    <a href="https://pci-nexus.vercel.app/PCIDemo" target="_blank" class="nav-cta">Try Live Demo →</a>
+    <a href="https://pci-nexus.vercel.app/PCIDemo" target="_blank" class="nav-cta">Start Free Evaluation &rarr;</a>
   </div>
 </nav>
 
@@ -398,70 +378,29 @@ footer{
 <section class="hero">
   <div class="hero-eyebrow fade-up fade-up-1">
     <span class="dot"></span>
-    PCI DSS v4.0.1 · Built on 22 Years of PCI DSS Experience · For Consultants &amp; Self-Serve Businesses
+    PCI DSS v4.0.1 &middot; AI-Powered &middot; Built for Security Professionals
   </div>
   <h1 class="fade-up fade-up-2">
-    Your Back-Office<br/>
-    <em>PCI Compliance Engine.</em><br/>
-    Built for the Channel.
+    The PCI DSS Compliance Platform<br/>
+    <em>Built for Security Professionals</em>
   </h1>
   <p class="hero-sub fade-up fade-up-3">
-    PCI-Nexus is the compliance management platform QSA firms, MSPs, and IT consultants use to run PCI DSS programs for their merchant clients — all from one back-office. Manage 15–50 clients, white-label your deliverables, and let AI do the evidence heavy lifting.
+    QSAs, ISAs, MSPs, and IT consultants use PCI-Nexus to manage PCI DSS v4.0.1 compliance for their entire client portfolio &mdash; from a single, AI-powered platform.
   </p>
-  <div class="fade-up fade-up-3" style="margin-top:8px;">
-    <div style="font-size:0.92rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:#1ABFCC;margin-bottom:6px;">Also Available — Self-Service for Small &amp; Mid-Size Businesses</div>
-    <p class="hero-sub" style="opacity:0.75;font-size:0.95em;margin:0;">
-      Ready to tackle PCI DSS compliance on your own — no consultant required. The SAQ Wizard identifies your compliance path, AI guides you through every requirement, and your completed SAQ is ready to submit when you're done.
-    </p>
+  <div class="hero-actions fade-up fade-up-4">
+    <a href="https://pci-nexus.vercel.app/PCIDemo" class="btn-primary">
+      Start Your Free Evaluation &rarr;
+    </a>
+    <a href="mailto:jeatonit@outlook.com" class="btn-secondary">
+      Schedule a Demo
+    </a>
   </div>
-  <div class="fade-up fade-up-4" style="display:flex;flex-direction:column;gap:16px;margin-top:28px;">
-
-    <!-- Consultants / QSAs / MSPs -->
-    <div style="display:flex;flex-direction:column;gap:6px;">
-      <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#1ABFCC;margin-bottom:2px;">For QSA Firms &bull; MSPs &bull; IT Consultants &bull; ASAs</div>
-      <!-- Consultant value props -->
-      <div style="display:flex;gap:24px;margin-bottom:10px;flex-wrap:wrap;">
-        <div><div style="font-size:1.5rem;font-weight:900;color:#1E6FD9;line-height:1;">15&ndash;50</div><div style="font-size:0.72rem;color:rgba(148,197,210,0.7);margin-top:2px;letter-spacing:0.02em;line-height:1.3;">Merchant locations<br/>per consultant account</div></div>
-        <div><div style="font-size:1.5rem;font-weight:900;color:#1E6FD9;line-height:1;">12</div><div style="font-size:0.72rem;color:rgba(148,197,210,0.7);margin-top:2px;letter-spacing:0.02em;line-height:1.3;">SAQ types<br/>supported</div></div>
-        <div><div style="font-size:1.5rem;font-weight:900;color:#1E6FD9;line-height:1;">$0</div><div style="font-size:0.72rem;color:rgba(148,197,210,0.7);margin-top:2px;letter-spacing:0.02em;line-height:1.3;">Free — first 5<br/>locations, forever</div></div>
-      </div>
-      <div style="display:flex;flex-wrap:wrap;gap:10px;">
-        <a href="https://pci-nexus.vercel.app/setup" class="btn-primary" style="white-space:nowrap;">
-          Start Free — First 5 Locations &rarr;
-        </a>
-        <a href="https://pci-nexus.vercel.app/PCIDemo?type=merchant&entered=1&onboarded=1&saq=saq-d-merchant&mode=consultant&p=consultant" target="_blank" class="btn-secondary" style="white-space:nowrap;">
-          View Consultant Demo
-        </a>
-        <a href="https://pci-nexus.vercel.app/PCIDemo?type=consultant-trial&ready=1" class="btn-secondary" style="white-space:nowrap;opacity:0.7;">
-          I&rsquo;m Ready &mdash; Sign Me Up &rarr;
-        </a>
-      </div>
-    </div>
-
-    <!-- Self-Serve SMB -->
-    <div style="display:flex;flex-direction:column;gap:6px;">
-      <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#1ABFCC;margin-bottom:2px;">For Small &amp; Mid-Size Businesses</div>
-      <!-- Merchant value props -->
-      <div style="display:flex;gap:24px;margin-bottom:10px;flex-wrap:wrap;">
-        <div><div style="font-size:1.5rem;font-weight:900;color:#1E6FD9;line-height:1;">60</div><div style="font-size:0.72rem;color:rgba(148,197,210,0.7);margin-top:2px;letter-spacing:0.02em;line-height:1.3;">Day free trial —<br/>no credit card required</div></div>
-        <div><div style="font-size:1.5rem;font-weight:900;color:#1E6FD9;line-height:1;">12</div><div style="font-size:0.72rem;color:rgba(148,197,210,0.7);margin-top:2px;letter-spacing:0.02em;line-height:1.3;">SAQ types<br/>supported</div></div>
-        <div><div style="font-size:1.5rem;font-weight:900;color:#1E6FD9;line-height:1;">$49</div><div style="font-size:0.72rem;color:rgba(148,197,210,0.7);margin-top:2px;letter-spacing:0.02em;line-height:1.3;">Starting price per<br/>month after trial</div></div>
-      </div>
-      <div style="display:flex;flex-wrap:wrap;gap:10px;">
-        <a href="https://pci-nexus.vercel.app/setup" class="btn-primary" style="white-space:nowrap;background:rgba(255,255,255,0.12);border:1.5px solid rgba(255,255,255,0.25);">
-          Start Your Free 60-Day Trial &rarr;
-        </a>
-        <a href="https://pci-nexus.vercel.app/PCIDemo?type=merchant&entered=1&onboarded=1&saq=saq-d-merchant&p=dashboard" target="_blank" class="btn-secondary" style="white-space:nowrap;">
-          View Merchant Demo
-        </a>
-        <a href="https://pci-nexus.vercel.app/PCIDemo?type=merchant&ready=1" class="btn-secondary" style="white-space:nowrap;opacity:0.7;">
-          I&rsquo;m Ready &mdash; Sign Me Up &rarr;
-        </a>
-      </div>
-    </div>
-
+  <div class="trust-badges fade-up fade-up-5">
+    <span class="trust-badge"><span class="check">&#10003;</span> PCI DSS v4.0.1 Compliant Platform</span>
+    <span class="trust-badge"><span class="check">&#10003;</span> SOC 2 Type 2 Infrastructure</span>
+    <span class="trust-badge"><span class="check">&#10003;</span> AI-Powered Evidence Review</span>
+    <span class="trust-badge"><span class="check">&#10003;</span> White-Label Ready</span>
   </div>
-
 </section>
 </div>
 
@@ -470,192 +409,74 @@ footer{
 <!-- ── WHO IT'S FOR ── -->
 <div class="section-wrapper-alt">
 <section>
-  <p class="section-eyebrow fade-up">Who PCI-Nexus Is For</p>
-  <h2 class="section-title fade-up">Built for the Professionals<br/>Who Protect Payment Data.</h2>
-  <p class="section-sub fade-up">PCI-Nexus is a channel-first platform. The primary customers are the consultants, assessors, and service providers who manage PCI compliance on behalf of merchants — not merchants themselves.</p>
+  <p class="section-eyebrow fade-up">Who It&rsquo;s For</p>
+  <h2 class="section-title fade-up">Built for the Professionals<br/>Who Drive Compliance</h2>
+  <p class="section-sub fade-up">PCI-Nexus is a channel-first platform designed for the consultants, assessors, and service providers who manage PCI DSS programs at scale.</p>
 
-  <div class="two-box-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:48px;">
-
-    <!-- BOX 1: Professionals -->
-    <div class="fade-up" style="background:linear-gradient(145deg,rgba(30,111,217,0.1),rgba(14,165,176,0.06));border:1.5px solid rgba(30,111,217,0.3);border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:0;">
-      <div style="font-size:0.68rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#1ABFCC;margin-bottom:10px;">QSA Firms &bull; MSPs &bull; IT Consultants &bull; ASAs</div>
-      <div style="font-size:1.35rem;font-weight:900;color:#fff;line-height:1.25;margin-bottom:14px;">Managing compliance<br/>for your locations</div>
-      <div style="font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.65;margin-bottom:20px;">Use PCI-Nexus as your back-office compliance platform. <strong>Free for your first 5 locations</strong> — no credit card, no time limit. Normal plan pricing applies when you grow beyond 5 locations.</div>
-      <ul style="list-style:none;padding:0;margin:0 0 28px;display:flex;flex-direction:column;gap:10px;">
-        <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:rgba(255,255,255,0.8);"><span style="color:#1ABFCC;font-weight:700;flex-shrink:0;">&#10003;</span>Multi-location dashboard — manage all locations from one login</li>
-        <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:rgba(255,255,255,0.8);"><span style="color:#1ABFCC;font-weight:700;flex-shrink:0;">&#10003;</span>AI evidence review — reduce manual testing time per location</li>
-        <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:rgba(255,255,255,0.8);"><span style="color:#1ABFCC;font-weight:700;flex-shrink:0;">&#10003;</span>QSA export packages — AOC, SAQ PDFs, evidence bundles</li>
-        <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:rgba(255,255,255,0.8);"><span style="color:#1ABFCC;font-weight:700;flex-shrink:0;">&#10003;</span>White-label your location portal with your firm&rsquo;s branding</li>
-        <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:rgba(255,255,255,0.8);"><span style="color:#1ABFCC;font-weight:700;flex-shrink:0;">&#10003;</span>Free for your first 5 locations — no credit card, no time limit</li>
-        <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:rgba(255,255,255,0.8);"><span style="color:#1ABFCC;font-weight:700;flex-shrink:0;">&#10003;</span>Each location is protected by a unique PIN — prevents cross-contamination between location environments</li>
-      </ul>
-      <div style="display:flex;flex-direction:column;gap:10px;margin-top:auto;">
-        <a href="https://pci-nexus.vercel.app/setup"
-           style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#1E6FD9,#0EA5B0);color:#fff;padding:14px 24px;border-radius:12px;font-size:0.9rem;font-weight:800;text-decoration:none;box-shadow:0 4px 20px rgba(30,111,217,0.4);transition:transform 0.15s,box-shadow 0.15s;"
-           onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(30,111,217,0.6)'"
-           onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(30,111,217,0.4)'">
-          Start Free — First 5 Locations on Us &rarr;
-        </a>
-        <a href="https://pci-nexus.vercel.app/PCIDemo?type=merchant&entered=1&onboarded=1&saq=saq-d-merchant&mode=consultant&p=consultant" target="_blank"
-           style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:rgba(255,255,255,0.75);padding:12px 24px;border-radius:12px;font-size:0.87rem;font-weight:700;text-decoration:none;border:1.5px solid rgba(255,255,255,0.18);transition:all 0.15s;"
-           onmouseover="this.style.borderColor='rgba(26,191,204,0.5)';this.style.color='#1ABFCC'"
-           onmouseout="this.style.borderColor='rgba(255,255,255,0.18)';this.style.color='rgba(255,255,255,0.75)'">
-          Try the Live Demo &rarr;
-        </a>
-        <a href="https://pci-nexus.vercel.app/PCIDemo?type=consultant-trial&ready=1"
-           style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.45);padding:10px 24px;border-radius:12px;font-size:0.82rem;font-weight:700;text-decoration:none;border:1px solid rgba(255,255,255,0.1);transition:all 0.15s;"
-           onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.color='rgba(255,255,255,0.8)'"
-           onmouseout="this.style.background='rgba(255,255,255,0.05)';this.style.color='rgba(255,255,255,0.45)'">
-          I&rsquo;m Ready &mdash; Sign Me Up &rarr;
-        </a>
-      </div>
+  <div class="audience-grid">
+    <div class="audience-card fade-up">
+      <div class="audience-card-title">QSAs &mdash; Qualified Security Assessors</div>
+      <div class="audience-card-desc">Manage your assessment workload across multiple clients. AI pre-reviews evidence so you focus on judgment, not document sorting. Generate AOCs and ROC-ready reports directly from the platform.</div>
     </div>
-
-    <!-- BOX 2: Self-Serve Merchants -->
-    <div class="fade-up" style="background:linear-gradient(145deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02));border:1.5px solid rgba(255,255,255,0.12);border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:0;transition-delay:0.1s;">
-      <div style="font-size:0.68rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:10px;">Self-Serve &bull; No Consultant Needed</div>
-      <div style="font-size:1.35rem;font-weight:900;color:#fff;line-height:1.25;margin-bottom:14px;">Handling compliance<br/>on your own</div>
-      <div style="font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.65;margin-bottom:20px;">Small businesses that want to manage PCI DSS compliance without hiring a consultant. The SAQ Wizard guides you through every requirement — no PCI expertise required.</div>
-      <ul style="list-style:none;padding:0;margin:0 0 28px;display:flex;flex-direction:column;gap:10px;">
-        <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:rgba(255,255,255,0.8);"><span style="color:rgba(255,255,255,0.4);font-weight:700;flex-shrink:0;">&#10003;</span>SAQ Wizard identifies your correct SAQ type automatically</li>
-        <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:rgba(255,255,255,0.8);"><span style="color:rgba(255,255,255,0.4);font-weight:700;flex-shrink:0;">&#10003;</span>Plain-English guidance on every requirement — no jargon</li>
-        <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:rgba(255,255,255,0.8);"><span style="color:rgba(255,255,255,0.4);font-weight:700;flex-shrink:0;">&#10003;</span>AI-guided evidence collection — know exactly what to upload</li>
-        <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:rgba(255,255,255,0.8);"><span style="color:rgba(255,255,255,0.4);font-weight:700;flex-shrink:0;">&#10003;</span>60-day free trial — complete your program before you pay</li>
-        <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;color:rgba(255,255,255,0.8);"><span style="color:rgba(255,255,255,0.4);font-weight:700;flex-shrink:0;">&#10003;</span>Plans from $49/month — less than one hour of consultant time</li>
-      </ul>
-      <div style="display:flex;flex-direction:column;gap:10px;margin-top:auto;">
-        <a href="https://pci-nexus.vercel.app/setup"
-           style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05));color:#fff;padding:14px 24px;border-radius:12px;font-size:0.9rem;font-weight:800;text-decoration:none;border:1.5px solid rgba(255,255,255,0.2);transition:all 0.15s;"
-           onmouseover="this.style.background='rgba(255,255,255,0.18)';this.style.borderColor='rgba(255,255,255,0.35)'"
-           onmouseout="this.style.background='linear-gradient(135deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05))';this.style.borderColor='rgba(255,255,255,0.2)'">
-          Start your free 60-day trial &rarr;
-        </a>
-        <a href="https://pci-nexus.vercel.app/PCIDemo?type=merchant&entered=1&onboarded=1&saq=saq-d-merchant&p=dashboard" target="_blank"
-           style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:rgba(255,255,255,0.6);padding:12px 24px;border-radius:12px;font-size:0.87rem;font-weight:700;text-decoration:none;border:1.5px solid rgba(255,255,255,0.12);transition:all 0.15s;"
-           onmouseover="this.style.borderColor='rgba(26,191,204,0.4)';this.style.color='#1ABFCC'"
-           onmouseout="this.style.borderColor='rgba(255,255,255,0.12)';this.style.color='rgba(255,255,255,0.6)'">
-          Try the Live Demo &rarr;
-        </a>
-        <a href="https://pci-nexus.vercel.app/PCIDemo?type=merchant&ready=1"
-           style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:rgba(255,255,255,0.03);color:rgba(255,255,255,0.35);padding:10px 24px;border-radius:12px;font-size:0.82rem;font-weight:700;text-decoration:none;border:1px solid rgba(255,255,255,0.08);transition:all 0.15s;"
-           onmouseover="this.style.background='rgba(255,255,255,0.08)';this.style.color='rgba(255,255,255,0.7)'"
-           onmouseout="this.style.background='rgba(255,255,255,0.03)';this.style.color='rgba(255,255,255,0.35)'">
-          I&rsquo;m Ready &mdash; Sign Me Up &rarr;
-        </a>
-      </div>
+    <div class="audience-card fade-up">
+      <div class="audience-card-title">ISAs &mdash; Internal Security Assessors</div>
+      <div class="audience-card-desc">Run your organization&rsquo;s PCI program with professional-grade tools. Track requirements, collect evidence, manage findings, and prepare for your annual assessment &mdash; all in one place.</div>
     </div>
-
+    <div class="audience-card fade-up">
+      <div class="audience-card-title">MSPs &mdash; Managed Service Providers</div>
+      <div class="audience-card-desc">Add recurring PCI compliance revenue to your managed services offering. White-label PCI-Nexus under your brand and manage your entire client portfolio from one console.</div>
+    </div>
+    <div class="audience-card fade-up">
+      <div class="audience-card-title">IT Consultants</div>
+      <div class="audience-card-desc">Stop managing PCI compliance in spreadsheets. PCI-Nexus gives you a professional platform to deliver compliance services at scale &mdash; with AI doing the heavy lifting on evidence review.</div>
+    </div>
+    <div class="audience-card fade-up" style="grid-column:span 2;">
+      <div class="audience-card-title">VARs &amp; Systems Integrators</div>
+      <div class="audience-card-desc">Bundle PCI DSS compliance management into your solution stack. PCI-Nexus integrates with the tools your clients already use &mdash; Qualys, CrowdStrike, Splunk, and more.</div>
+    </div>
   </div>
 </section>
 </div>
 
 <div class="divider"></div>
 
-<!-- ── 5 DIFFERENTIATORS ── -->
+<!-- ── KEY FEATURES ── -->
 <div class="section-wrapper">
 <section>
-  <p class="section-eyebrow fade-up">Why PCI-Nexus</p>
-  <h2 class="section-title fade-up">5 Reasons We're Different<br/>From Every Competitor.</h2>
-  <p class="section-sub fade-up">Not different in a marketing-copy way. Different in ways that matter to the professionals who stake their reputation on PCI DSS compliance.</p>
-
-  <div class="diff-grid">
-    <div class="diff-card diff-1 fade-up">
-      <div class="diff-num">#1</div>
-      <div class="diff-body">
-        <div class="diff-title">🏗️ Built on 22 Years of Real-World PCI DSS Implementation Experience</div>
-        <div class="diff-desc">Every guidance tip, evidence suggestion, and SAQ nuance in this platform reflects 22 years of hands-on PCI DSS implementation experience — working directly with Level 3 and Level 4 merchants across retail, hospitality, and food service. Our competitors hired engineers. <strong>We built this platform because we lived the problem.</strong> No other tool at any price point can make that claim.</div>
-      </div>
-    </div>
-
-    <div class="diff-card diff-2 fade-up">
-      <div class="diff-num">#2</div>
-      <div class="diff-body">
-        <div class="diff-title">🤖 AI Evidence Review That Actually Works</div>
-        <div class="diff-desc">Most compliance tools store files. PCI-Nexus uses Claude Vision + OCR to read document content and render an instant pass/fail verdict against each specific sub-requirement — with the reason. One firewall config export <strong>maps to Req 1, Req 6, and Req 11 simultaneously. No manual tagging. No guesswork.</strong></div>
-      </div>
-    </div>
-
-    <div class="diff-card diff-3 fade-up">
-      <div class="diff-num">#3</div>
-      <div class="diff-body">
-        <div class="diff-title">🏢 Built for the Channel — And Accessible to Every Merchant</div>
-        <div class="diff-desc">PCI-Nexus was designed from the ground up as a back-office platform for QSA firms, MSPs, and IT consultants managing PCI DSS compliance across multiple merchant locations — with multi-client dashboards, white-label capability, and QSA export packages built in. <strong>But every feature that makes it powerful for consultants also makes it approachable for merchants doing it themselves.</strong> Whether you manage 50 clients or just need to get your own SAQ done, PCI-Nexus meets you where you are.</div>
-      </div>
-    </div>
-
-    <div class="diff-card diff-4 fade-up">
-      <div class="diff-num">#4</div>
-      <div class="diff-body">
-        <div class="diff-title">📋 All 12 SAQ Types — Including Full SAQ D Service Provider</div>
-        <div class="diff-desc">Most competitors support 3–4 SAQ types. PCI-Nexus supports all 12 — including the full SAQ D for Service Providers, the most complex assessment in the PCI ecosystem — with forms matching the official PCI SSC documents exactly, SP-only controls flagged, and Appendix A1/A2 support. <strong>Your competitors don't even attempt SAQ D Service Provider.</strong></div>
-      </div>
-    </div>
-
-    <div class="diff-card diff-5 fade-up">
-      <div class="diff-num">#5</div>
-      <div class="diff-body">
-        <div class="diff-title">🎯 60-Day Free Trial — Complete the Program Before You Pay</div>
-        <div class="diff-desc">Merchants build their complete compliance program, collect all evidence, and complete their SAQ — entirely free for 60 days. They pay only when they download and submit. <strong>Zero risk, maximum value delivered upfront. That level of confidence in a product is earned, not claimed.</strong></div>
-      </div>
-    </div>
-  </div>
-</section>
-</div>
-
-<div class="divider"></div>
-
-<!-- ── PLATFORM FEATURES ── -->
-<div class="section-wrapper-alt">
-<section>
   <p class="section-eyebrow fade-up">Platform Capabilities</p>
-  <h2 class="section-title fade-up">Everything Your Practice Needs<br/>to Deliver PCI Compliance.</h2>
-  <p class="section-sub fade-up">From initial SAQ determination through evidence collection, findings management, and final AOC generation — PCI-Nexus covers the full compliance lifecycle.</p>
+  <h2 class="section-title fade-up">Everything Your Practice Needs</h2>
+  <p class="section-sub fade-up">From initial SAQ determination through evidence collection, findings management, and final AOC generation &mdash; PCI-Nexus covers the full compliance lifecycle.</p>
 
   <div class="features-grid">
     <div class="feature-card fade-up">
-      <div class="feature-icon">🤖</div>
+      <div class="feature-icon">&#129302;</div>
       <div class="feature-title">AI Evidence Review</div>
-      <div class="feature-desc">Claude Vision + OCR reads uploaded documents and renders pass/fail verdicts against specific sub-requirements. One document, multiple requirements — automatically.</div>
+      <div class="feature-desc">Every uploaded file is analyzed by Claude AI against all applicable PCI DSS requirements &mdash; cross-mapping evidence to every sub-requirement it satisfies.</div>
     </div>
     <div class="feature-card fade-up">
-      <div class="feature-icon">📋</div>
-      <div class="feature-title">All 12 SAQ Types</div>
-      <div class="feature-desc">SAQ A through SAQ D Service Provider. Every form mirrors the official PCI SSC document exactly. SP-only controls flagged throughout.</div>
+      <div class="feature-icon">&#128203;</div>
+      <div class="feature-title">All SAQ Types Supported</div>
+      <div class="feature-desc">SAQ A, A-EP, B, B-IP, C-VT, C, D (Merchant), D (Service Provider), P2PE, and MPoC. The right controls, for the right client, automatically.</div>
     </div>
     <div class="feature-card fade-up">
-      <div class="feature-icon">🏢</div>
-      <div class="feature-title">Multi-Client Dashboard</div>
-      <div class="feature-desc">Manage all your merchant clients from a single login. See compliance status, upcoming deadlines, and open findings across your entire portfolio at a glance.</div>
+      <div class="feature-icon">&#128101;</div>
+      <div class="feature-title">Multi-Client Portfolio Management</div>
+      <div class="feature-desc">Manage unlimited client organizations from a single consultant dashboard. Each client is fully siloed with role-based access and 4-digit PIN protection.</div>
     </div>
     <div class="feature-card fade-up">
-      <div class="feature-icon">👥</div>
-      <div class="feature-title">Role-Based Access</div>
-      <div class="feature-desc">Assign requirements to specific personnel. Full Active Directory, Azure AD, Okta, SAML, and LDAP integration. Org structure imports automatically.</div>
+      <div class="feature-icon">&#127991;</div>
+      <div class="feature-title">White-Label Ready</div>
+      <div class="feature-desc">Apply your firm&rsquo;s branding to generated documents &mdash; PCI Program Charters, SAQs, AOCs, and all reports go out under your name.</div>
     </div>
     <div class="feature-card fade-up">
-      <div class="feature-icon">📅</div>
+      <div class="feature-icon">&#128197;</div>
       <div class="feature-title">Compliance Calendar</div>
-      <div class="feature-desc">Automated deadline tracking with email reminders. ASV scan schedules, SAQ due dates, penetration testing cycles — nothing falls through the cracks.</div>
+      <div class="feature-desc">Never miss a deadline. Automated tracking of ASV scan schedules, pen test windows, policy reviews, and SAQ submission dates &mdash; with email reminders.</div>
     </div>
     <div class="feature-card fade-up">
-      <div class="feature-icon">📊</div>
-      <div class="feature-title">Reports &amp; AOC Export</div>
-      <div class="feature-desc">Generate SAQ PDFs, AOC documents, evidence packages, and QSA export bundles. All output conforms to PCI SSC v4.0.1 specifications.</div>
-    </div>
-    <div class="feature-card fade-up">
-      <div class="feature-icon">🔍</div>
-      <div class="feature-title">Findings &amp; Remediation</div>
-      <div class="feature-desc">Document gaps, assign owners, track remediation steps. Each finding links directly to its requirement with guided remediation workflows.</div>
-    </div>
-    <div class="feature-card fade-up">
-      <div class="feature-icon">💬</div>
-      <div class="feature-title">Compliance Chat (AI)</div>
-      <div class="feature-desc">24/7 plain-English guidance on any PCI DSS requirement. Answers specific questions about your environment — not generic documentation summaries.</div>
-    </div>
-    <div class="feature-card fade-up">
-      <div class="feature-icon">🔒</div>
-      <div class="feature-title">Audit Log &amp; Immutable Logs</div>
-      <div class="feature-desc">Every action timestamped and tamper-proof. Supports log server integration. Meets PCI DSS Req 10.2.1 audit trail requirements out of the box.</div>
+      <div class="feature-icon">&#128202;</div>
+      <div class="feature-title">TPSP Register &amp; System Inventory</div>
+      <div class="feature-desc">Built-in Third-Party Service Provider tracking (Req 12.8) and hardware/software inventory (Req 6.3.2 + 12.5.1) &mdash; PCI DSS done right.</div>
     </div>
   </div>
 </section>
@@ -663,65 +484,98 @@ footer{
 
 <div class="divider"></div>
 
-<!-- ── PRICING PREVIEW ── -->
+<!-- ── HOW IT WORKS ── -->
+<div class="section-wrapper-alt">
+<section>
+  <p class="section-eyebrow fade-up">How It Works</p>
+  <h2 class="section-title fade-up">One Platform. Your Entire Practice.</h2>
+  <p class="section-sub fade-up">Four steps from onboarding a new client to generating their completed SAQ and AOC package.</p>
+
+  <div class="steps-grid">
+    <div class="step-card fade-up">
+      <div class="step-num">STEP 1</div>
+      <div class="step-title">Onboard Your Clients</div>
+      <div class="step-desc">Add client organizations in minutes. Configure their SAQ type, locations, users, and compliance calendar. Assign role-based access to their team.</div>
+    </div>
+    <div class="step-card fade-up">
+      <div class="step-num">STEP 2</div>
+      <div class="step-title">Collect &amp; AI-Review Evidence</div>
+      <div class="step-desc">Clients upload evidence. AI instantly reviews each file against all applicable requirements, maps it to sub-requirements, and flags gaps.</div>
+    </div>
+    <div class="step-card fade-up">
+      <div class="step-num">STEP 3</div>
+      <div class="step-title">Manage Findings &amp; Remediation</div>
+      <div class="step-desc">Every gap becomes a tracked finding with an owner, due date, and remediation steps. Kanban board view keeps your whole team aligned.</div>
+    </div>
+    <div class="step-card fade-up">
+      <div class="step-num">STEP 4</div>
+      <div class="step-title">Generate &amp; Submit</div>
+      <div class="step-desc">One click generates a completed SAQ, AOC, and Attestation package &mdash; ready for your signature and client submission to their acquiring bank.</div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="divider"></div>
+
+<!-- ── PRICING ── -->
 <div class="section-wrapper">
 <section>
   <p class="section-eyebrow fade-up">Pricing</p>
-  <h2 class="section-title fade-up">Transparent Pricing.<br/>No QSA Fee Surprises.</h2>
-  <p class="section-sub fade-up">Plans built for consultants managing multiple clients and merchants managing independently. Annual billing saves 20%.</p>
-  <div class="fade-up" style="display:inline-flex;align-items:center;gap:10px;margin-top:12px;padding:12px 20px;background:rgba(26,191,204,0.1);border:1.5px solid rgba(26,191,204,0.35);border-radius:12px;">
-    <span style="font-size:1.1rem;">🎁</span>
-    <span style="font-size:0.88rem;color:#1ABFCC;font-weight:700;">QSA Firms, MSPs &amp; IT Consultants — <span style="color:#fff;">Free for your first 5 locations.</span> No credit card. No time limit. Standard plan pricing applies when you grow beyond 5.</span>
-  </div>
+  <h2 class="section-title fade-up">Simple, Usage-Based Pricing</h2>
+  <p class="section-sub fade-up">Pay for what you use. No per-client seat fees.</p>
 
-  <div class="pricing-strip fade-up">
-    <div class="price-tier">
-      <div class="price-tier-name">Starter</div>
-      <div class="price-amount">$49</div>
-      <div class="price-per">/month · SAQ A &amp; B</div>
-      <div class="price-desc">Single location, lower-complexity SAQ types</div>
-    </div>
-    <div class="price-tier">
-      <div class="price-tier-name">Professional</div>
-      <div class="price-amount">$85</div>
-      <div class="price-per">/month · SAQ C &amp; C-VT</div>
-      <div class="price-desc">POS-connected merchants, full feature set</div>
-    </div>
-    <div class="price-tier">
-      <div class="price-tier-name">Enterprise</div>
-      <div class="price-amount">$125</div>
-      <div class="price-per">/month · SAQ D Merchant</div>
-      <div class="price-desc">Full-scope merchants, all 12 requirements</div>
-    </div>
-    <div class="price-tier">
-      <div class="price-tier-name">Service Provider</div>
-      <div class="price-amount">$175</div>
-      <div class="price-per">/month · SAQ D Service Provider</div>
-      <div class="price-desc">Full SP assessment, Appendix A1/A2 included</div>
-    </div>
+  <div class="pricing-box fade-up">
+    <div class="pricing-main">$15 <span style="font-size:1.2rem;color:rgba(148,197,210,.6);">/ location / month</span></div>
+    <div class="pricing-secondary">$8 <span style="font-size:1rem;color:rgba(148,197,210,.7);">/ user / month</span></div>
+    <div class="pricing-note">SAQ type surcharges apply based on assessment complexity.</div>
+    <div class="pricing-surcharge">Volume discounts available for MSPs managing 10+ client organizations. Contact us for enterprise pricing.</div>
+    <a href="mailto:jeatonit@outlook.com?subject=Pricing%20Inquiry" class="btn-primary" style="display:inline-flex;">
+      Talk to Us About Pricing &rarr;
+    </a>
   </div>
-
-  <p style="text-align:center;font-size:.82rem;color:rgba(148,197,210,.5);margin-top:20px;">
-    Consultant &amp; MSP volume pricing available · <a href="mailto:jeaton@pcinexus.com?subject=Consultant Pricing Inquiry" style="color:var(--teal);text-decoration:none;">Contact us for partner rates →</a>
-  </p>
 </section>
 </div>
 
 <div class="divider"></div>
 
-<!-- ── TRIAL CTA ── -->
+<!-- ── TESTIMONIALS ── -->
 <div class="section-wrapper-alt">
+<section>
+  <p class="section-eyebrow fade-up">Testimonials</p>
+  <h2 class="section-title fade-up">Trusted by Compliance Professionals</h2>
+  <p class="section-sub fade-up">What practitioners say about working with PCI-Nexus.</p>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card fade-up">
+      <div class="testimonial-illustrative">Illustrative</div>
+      <div class="testimonial-text">&ldquo;PCI-Nexus cut our assessment prep time in half. The AI evidence review catches things I used to spend hours checking manually.&rdquo;</div>
+      <div class="testimonial-attribution">QSA, Regional Security Practice</div>
+    </div>
+    <div class="testimonial-card fade-up">
+      <div class="testimonial-illustrative">Illustrative</div>
+      <div class="testimonial-text">&ldquo;We onboarded 12 restaurant clients in a single afternoon. The multi-location support and SAQ-C workflow is exactly what we needed.&rdquo;</div>
+      <div class="testimonial-attribution">IT Consultant, Hospitality Sector</div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="divider"></div>
+
+<!-- ── CTA BANNER ── -->
+<div class="section-wrapper">
 <section style="padding-top:80px;padding-bottom:80px;">
   <div class="trial-banner fade-up">
-    <div class="trial-eyebrow">For QSAs · MSPs · IT Consultants</div>
-    <div class="trial-title">Ready to Add PCI Compliance<br/>to Your Practice?</div>
-    <div class="trial-sub">Free for your first 5 locations — permanently. No credit card. No time limit. When you grow beyond 5 locations, standard plan pricing applies automatically with 7 days notice.</div>
+    <div class="trial-eyebrow">For QSAs &middot; ISAs &middot; MSPs &middot; IT Consultants</div>
+    <div class="trial-title">Ready to Modernize<br/>Your Compliance Practice?</div>
+    <div class="trial-sub">Start your free evaluation today. No credit card required. See how PCI-Nexus handles your complete client portfolio.</div>
     <div class="trial-actions">
       <a href="https://pci-nexus.vercel.app/PCIDemo" class="btn-white">
-        Start Free — First 5 Locations →
+        Start Your Free Evaluation &rarr;
       </a>
-      <a href="https://pci-nexus.vercel.app/PCIDemo" target="_blank" class="btn-outline-white">
-        Explore Live Demo
+      <a href="mailto:jeatonit@outlook.com" class="btn-outline-white">
+        Schedule a Demo
       </a>
     </div>
   </div>
@@ -731,19 +585,43 @@ footer{
 <!-- ── FOOTER ── -->
 <div class="section-wrapper">
 <footer>
-  <div class="footer-logo">PCI<span>Nexus</span></div>
-  <div class="footer-links" style="font-size:0.88rem;">
-    <a href="/features.html">Features</a>
-    <a href="/consultants.html">For Consultants</a>
-    <a href="/security.html">Security</a>
-    <a href="/comparison.html">Compare</a>
-    <a href="https://pci-nexus.vercel.app/PCIDemo" target="_blank">Live Demo</a>
-    <a href="/about.html">About</a>
-    <a href="mailto:jeaton@pcinexus.com">Contact</a>
-    <a href="/tos.html">Terms of Service</a>
-    <a href="/privacy.html">Privacy Policy</a>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">PCI<span>Nexus</span></div>
+      <address>
+        1350 Hemlock St.<br/>
+        Napa, CA 94559<br/>
+        <a href="mailto:jeatonit@outlook.com">jeatonit@outlook.com</a>
+      </address>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-heading">Product</div>
+      <ul>
+        <li><a href="/features.html">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="https://pci-nexus.vercel.app/PCIDemo" target="_blank">Demo</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-heading">Legal</div>
+      <ul>
+        <li><a href="/tos.html">Terms of Service</a></li>
+        <li><a href="/data-handling.html">Data Handling Policy</a></li>
+        <li><a href="/privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-heading">Contact</div>
+      <ul>
+        <li><a href="mailto:jeatonit@outlook.com">jeatonit@outlook.com</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/consultants.html">For Consultants</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="footer-copy">© 2026 PCI-Nexus · J.Eaton Consulting LLC · PCI DSS v4.0.1</div>
+  <div class="footer-bottom">
+    &copy; 2026 PCI-Nexus. All rights reserved.
+  </div>
 </footer>
 </div>
 
@@ -751,7 +629,7 @@ footer{
 <!-- ── COOKIE CONSENT BANNER ── -->
 <div id="cookie-banner" role="dialog" aria-label="Cookie consent" aria-live="polite">
   <div class="cookie-text">
-    <div class="cookie-title">🍪 We use cookies to improve your experience</div>
+    <div class="cookie-title">We use cookies to improve your experience</div>
     <div class="cookie-desc">
       PCI-Nexus uses essential cookies to keep the site working and analytics cookies (Google Analytics)
       to understand how visitors use our platform so we can improve it.
@@ -759,14 +637,14 @@ footer{
       <strong>"Essential Only"</strong> limits cookies to those strictly necessary for the site to function.
       See our <a href="/privacy.html">Privacy Policy</a> for details.
       <br/><span style="font-size:.7rem;color:rgba(148,197,210,.4);margin-top:4px;display:inline-block;">
-        GDPR · CCPA · PCI DSS compliant data handling
+        GDPR &middot; CCPA &middot; PCI DSS compliant data handling
       </span>
     </div>
   </div>
   <div class="cookie-actions">
     <span class="cookie-badge">Your choice is saved</span>
     <button id="cookie-essential" class="cookie-btn-essential">Essential Only</button>
-    <button id="cookie-accept-all" class="cookie-btn-accept">Accept All →</button>
+    <button id="cookie-accept-all" class="cookie-btn-accept">Accept All &rarr;</button>
   </div>
 </div>
 

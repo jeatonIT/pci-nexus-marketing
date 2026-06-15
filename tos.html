@@ -1,17 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GMBP33VGHF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-GMBP33VGHF');
-</script>
+<!-- Google Analytics loaded conditionally after cookie consent -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Terms of Service — PCI-Nexus</title>
+<title>Terms of Service &mdash; PCI-Nexus</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
@@ -30,20 +23,6 @@
 html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',sans-serif;background:#060f1e;color:#e2e8f0;overflow-x:hidden;}
 
-/* ── ANIMATIONS ── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
-@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.5;}}
-@keyframes shimmer{0%{background-position:-200% 0;}100%{background-position:200% 0;}}
-@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
-
-.fade-up{opacity:0;animation:fadeUp .7s ease forwards;}
-.fade-up-1{animation-delay:.1s;}
-.fade-up-2{animation-delay:.25s;}
-.fade-up-3{animation-delay:.4s;}
-.fade-up-4{animation-delay:.55s;}
-.fade-up-5{animation-delay:.7s;}
-
 /* ── NAV ── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
@@ -58,387 +37,148 @@ nav{
   font-size:1.5625rem;color:#fff;text-decoration:none;letter-spacing:-.5px;
 }
 .nav-logo span{color:var(--teal);}
-.nav-links{display:flex;align-items:center;gap:32px;}
-.nav-links a{
-  font-size:.82rem;font-weight:500;color:rgba(148,197,210,.75);
-  text-decoration:none;letter-spacing:.02em;transition:color .2s;
+.nav-back{
+  font-size:.82rem;font-weight:500;color:rgba(148,197,210,.65);
+  text-decoration:none;transition:color .2s;
 }
-.nav-links a:hover{color:var(--teal);}
-.nav-cta{
-  padding:8px 20px;border-radius:8px;font-size:.82rem;font-weight:700;
-  background:var(--grad-b);color:#fff;text-decoration:none;
-  transition:opacity .2s;white-space:nowrap;
-}
-.nav-cta:hover{opacity:.88;}
+.nav-back:hover{color:var(--teal);}
 
-/* ── HERO ── */
-.hero{
-  min-height:100vh;display:flex;flex-direction:column;justify-content:center;
-  padding:120px 40px 80px;max-width:1200px;margin:0 auto;
-  position:relative;
+/* ── PAGE LAYOUT ── */
+.page-wrap{
+  max-width:780px;margin:0 auto;
+  padding:100px 40px 80px;
 }
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:6px 14px;border-radius:100px;
-  border:1px solid rgba(26,191,204,.25);
-  background:rgba(26,191,204,.07);
-  font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--teal);margin-bottom:28px;
+.page-label{
+  font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:14px;
 }
-.hero-eyebrow .dot{
-  width:7px;height:7px;border-radius:50%;
-  background:#4ade80;animation:pulse 2s infinite;flex-shrink:0;
-}
-.hero h1{
+.page-title{
   font-family:'DM Serif Display',serif;
-  font-size:clamp(2.8rem,5vw,4.5rem);
-  line-height:1.08;color:#fff;
-  max-width:860px;margin-bottom:24px;
-  letter-spacing:-.03em;
+  font-size:clamp(2rem,4vw,3rem);color:#fff;
+  line-height:1.1;letter-spacing:-.02em;margin-bottom:10px;
 }
-.hero h1 em{font-style:normal;color:var(--teal);}
-.hero-sub{
-  font-size:1.05rem;line-height:1.7;
-  color:rgba(148,197,210,.8);
-  max-width:620px;margin-bottom:40px;
-}
-.hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:64px;}
-.btn-primary{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:14px 32px;border-radius:12px;font-size:1rem;font-weight:700;
-  background:var(--grad-b);color:#fff;text-decoration:none;
-  box-shadow:0 0 40px rgba(14,165,176,.3);
-  transition:transform .2s,box-shadow .2s;
-}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 60px rgba(14,165,176,.45);}
-.btn-secondary{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:14px 28px;border-radius:12px;font-size:1rem;font-weight:600;
-  background:rgba(255,255,255,.06);color:#fff;text-decoration:none;
-  border:1px solid rgba(255,255,255,.12);
-  transition:background .2s,border-color .2s;
-}
-.btn-secondary:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);}
-
-/* Hero stat strip */
-.hero-stats{
-  display:flex;gap:48px;flex-wrap:wrap;
-  padding-top:40px;border-top:1px solid rgba(255,255,255,.07);
-}
-.stat{}
-.stat-num{
-  font-family:'DM Serif Display',serif;font-size:2rem;color:#fff;
-  background:var(--grad-b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
-.stat-label{font-size:.78rem;color:rgba(148,197,210,.6);margin-top:2px;letter-spacing:.03em;}
-
-/* ── SECTION SCAFFOLD ── */
-section{padding:100px 40px;max-width:1200px;margin:0 auto;}
-.section-eyebrow{
-  font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--teal);margin-bottom:12px;
-}
-.section-title{
-  font-family:'DM Serif Display',serif;
-  font-size:clamp(2rem,3.5vw,3rem);
-  color:#fff;line-height:1.15;letter-spacing:-.02em;
-  margin-bottom:16px;
-}
-.section-sub{
-  font-size:1rem;color:rgba(148,197,210,.75);
-  max-width:580px;line-height:1.7;margin-bottom:56px;
+.page-effective{
+  font-size:.83rem;color:rgba(148,197,210,.5);margin-bottom:48px;
+  border-bottom:1px solid rgba(255,255,255,.06);padding-bottom:28px;
 }
 
-/* ── FOR PARTNERS SECTION ── */
-.for-partners-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:32px;
-}
-@media(max-width:780px){.for-partners-grid{grid-template-columns:1fr;} .choose-path-row{grid-template-columns:1fr!important;} .two-box-grid{grid-template-columns:1fr!important;}}
-
-.partner-card{
-  padding:32px;border-radius:20px;
-  border:1px solid rgba(30,111,217,.2);
-  background:linear-gradient(135deg,rgba(30,111,217,.08),rgba(14,165,176,.04));
-  position:relative;overflow:hidden;
-  transition:border-color .3s,transform .3s;
-}
-.partner-card:hover{border-color:rgba(26,191,204,.4);transform:translateY(-4px);}
-.partner-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:var(--grad-b);opacity:.6;
-}
-.partner-icon{font-size:2.2rem;margin-bottom:16px;}
-.partner-type{
-  font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--teal);margin-bottom:8px;
-}
-.partner-title{
-  font-family:'DM Serif Display',serif;font-size:1.4rem;color:#fff;
-  margin-bottom:12px;line-height:1.2;
-}
-.partner-desc{font-size:.88rem;color:rgba(148,197,210,.75);line-height:1.7;margin-bottom:20px;}
-.partner-bullets{list-style:none;display:flex;flex-direction:column;gap:8px;}
-.partner-bullets li{
-  font-size:.82rem;color:rgba(148,197,210,.85);
-  display:flex;align-items:flex-start;gap:8px;line-height:1.5;
-}
-.partner-bullets li::before{
-  content:'✓';color:var(--teal);font-weight:700;flex-shrink:0;margin-top:1px;
-}
-.partner-cta{
-  display:inline-flex;align-items:center;gap:6px;
-  margin-top:24px;padding:10px 20px;border-radius:8px;
-  background:var(--grad-b);color:#fff;font-size:.82rem;font-weight:700;
-  text-decoration:none;transition:opacity .2s;
-}
-.partner-cta:hover{opacity:.85;}
-
-/* Merchant card — secondary styling */
-.merchant-card{
-  padding:32px;border-radius:20px;
-  border:1px solid rgba(255,255,255,.08);
-  background:rgba(255,255,255,.03);
-  position:relative;overflow:hidden;grid-column:1/-1;
-  display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap;
-  transition:border-color .3s;
-}
-.merchant-card:hover{border-color:rgba(255,255,255,.15);}
-.merchant-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,rgba(255,255,255,.1),rgba(255,255,255,.25),rgba(255,255,255,.1));
-}
-.merchant-badge{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:4px 10px;border-radius:100px;
-  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
-  font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  color:rgba(148,197,210,.6);margin-bottom:10px;
-}
-
-/* ── DIFFERENTIATORS ── */
-.diff-grid{display:flex;flex-direction:column;gap:20px;}
-.diff-card{
-  display:flex;gap:24px;align-items:flex-start;
-  padding:28px 32px;border-radius:20px;
-  border:1px solid transparent;
-  transition:border-color .3s,background .3s;
-  position:relative;overflow:hidden;
-}
-.diff-card:hover{border-color:rgba(26,191,204,.2);}
-.diff-num{
-  font-family:'DM Mono',monospace;
-  font-size:.72rem;font-weight:500;letter-spacing:.08em;
-  padding:4px 10px;border-radius:100px;
-  flex-shrink:0;margin-top:3px;
-}
-.diff-body{}
-.diff-title{
+/* ── LEGAL PROSE ── */
+.legal-body{color:rgba(148,197,210,.85);line-height:1.8;font-size:.92rem;}
+.legal-body h2{
   font-family:'DM Serif Display',serif;font-size:1.25rem;color:#fff;
-  margin-bottom:8px;line-height:1.25;
+  margin-top:40px;margin-bottom:12px;line-height:1.2;
 }
-.diff-desc{font-size:.9rem;color:rgba(148,197,210,.8);line-height:1.7;}
-.diff-desc strong{color:#fff;font-weight:600;}
-
-/* Color variants */
-.diff-1{background:linear-gradient(135deg,rgba(30,111,217,.1),rgba(14,165,176,.04));border-color:rgba(30,111,217,.2);}
-.diff-1 .diff-num{background:rgba(30,111,217,.2);color:#60a5fa;}
-.diff-2{background:linear-gradient(135deg,rgba(14,165,176,.1),rgba(5,150,105,.04));border-color:rgba(14,165,176,.2);}
-.diff-2 .diff-num{background:rgba(14,165,176,.2);color:#2dd4bf;}
-.diff-3{background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(99,102,241,.04));border-color:rgba(124,58,237,.2);}
-.diff-3 .diff-num{background:rgba(124,58,237,.2);color:#a78bfa;}
-.diff-4{background:linear-gradient(135deg,rgba(245,158,11,.1),rgba(239,68,68,.04));border-color:rgba(245,158,11,.2);}
-.diff-4 .diff-num{background:rgba(245,158,11,.2);color:#fbbf24;}
-.diff-5{background:linear-gradient(135deg,rgba(5,150,105,.1),rgba(16,185,129,.04));border-color:rgba(5,150,105,.2);}
-.diff-5 .diff-num{background:rgba(5,150,105,.2);color:#34d399;}
-
-/* ── FEATURES GRID ── */
-.features-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
-}
-@media(max-width:900px){.features-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:560px){.features-grid{grid-template-columns:1fr;}}
-
-.feature-card{
-  padding:24px;border-radius:16px;
-  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
-  transition:border-color .3s,background .3s,transform .3s;
-}
-.feature-card:hover{
-  border-color:rgba(26,191,204,.25);
-  background:rgba(26,191,204,.05);
-  transform:translateY(-3px);
-}
-.feature-icon{font-size:1.6rem;margin-bottom:14px;}
-.feature-title{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:6px;}
-.feature-desc{font-size:.82rem;color:rgba(148,197,210,.7);line-height:1.6;}
-
-/* ── PRICING PREVIEW ── */
-.pricing-strip{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
-  padding:40px;border-radius:24px;
-  background:linear-gradient(135deg,rgba(15,36,71,.8),rgba(22,46,90,.6));
-  border:1px solid rgba(30,111,217,.2);
-}
-@media(max-width:900px){.pricing-strip{grid-template-columns:repeat(2,1fr);}}
-
-.price-tier{text-align:center;padding:20px 12px;}
-.price-tier-name{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
-.price-amount{font-family:'DM Serif Display',serif;font-size:2rem;color:#fff;line-height:1;}
-.price-per{font-size:.75rem;color:rgba(148,197,210,.5);margin-top:4px;}
-.price-desc{font-size:.78rem;color:rgba(148,197,210,.65);margin-top:8px;line-height:1.5;}
-
-/* ── TRIAL BANNER ── */
-.trial-banner{
-  padding:64px 56px;border-radius:28px;
-  background:var(--grad-b);
-  position:relative;overflow:hidden;text-align:center;
-}
-.trial-banner::before{
-  content:'';position:absolute;inset:0;
-  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-.trial-eyebrow{
-  font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(255,255,255,.7);margin-bottom:16px;
-}
-.trial-title{
-  font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);
-  color:#fff;margin-bottom:16px;line-height:1.2;letter-spacing:-.02em;
-}
-.trial-sub{font-size:1rem;color:rgba(255,255,255,.8);margin-bottom:36px;max-width:560px;margin-left:auto;margin-right:auto;}
-.trial-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
-.btn-white{
-  padding:14px 32px;border-radius:12px;font-size:.95rem;font-weight:700;
-  background:#fff;color:var(--navy);text-decoration:none;
-  transition:transform .2s,box-shadow .2s;
-}
-.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.25);}
-.btn-outline-white{
-  padding:14px 28px;border-radius:12px;font-size:.95rem;font-weight:600;
-  border:2px solid rgba(255,255,255,.5);color:#fff;text-decoration:none;
-  transition:border-color .2s,background .2s;
-}
-.btn-outline-white:hover{border-color:#fff;background:rgba(255,255,255,.1);}
-
-
-/* ── COOKIE CONSENT ── */
-#cookie-banner{
-  position:fixed;bottom:0;left:0;right:0;z-index:9999;
-  padding:20px 40px;
-  background:rgba(6,15,30,0.97);
-  backdrop-filter:blur(20px);
-  border-top:1px solid rgba(26,191,204,0.2);
-  display:flex;align-items:center;justify-content:space-between;
-  gap:24px;flex-wrap:wrap;
-  transform:translateY(100%);
-  transition:transform .4s cubic-bezier(.4,0,.2,1);
-}
-#cookie-banner.visible{transform:translateY(0);}
-.cookie-text{flex:1;min-width:260px;}
-.cookie-title{font-size:.85rem;font-weight:700;color:#fff;margin-bottom:4px;}
-.cookie-desc{font-size:.78rem;color:rgba(148,197,210,.65);line-height:1.6;}
-.cookie-desc a{color:var(--teal);text-decoration:underline;}
-.cookie-actions{display:flex;gap:10px;flex-shrink:0;align-items:center;flex-wrap:wrap;}
-.cookie-btn-accept{
-  padding:10px 22px;border-radius:8px;font-size:.82rem;font-weight:700;
-  background:var(--grad-b);color:#fff;border:none;cursor:pointer;
-  transition:opacity .2s;
-}
-.cookie-btn-accept:hover{opacity:.88;}
-.cookie-btn-essential{
-  padding:10px 22px;border-radius:8px;font-size:.82rem;font-weight:600;
-  background:transparent;color:rgba(148,197,210,.6);
-  border:1px solid rgba(148,197,210,.2);cursor:pointer;
-  transition:border-color .2s,color .2s;
-}
-.cookie-btn-essential:hover{border-color:rgba(148,197,210,.5);color:rgba(148,197,210,.9);}
-.cookie-badge{
-  font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  padding:3px 8px;border-radius:4px;
-  background:rgba(26,191,204,.12);color:var(--teal);
-  border:1px solid rgba(26,191,204,.2);white-space:nowrap;
-}
+.legal-body p{margin-bottom:14px;}
+.legal-body a{color:var(--teal);text-decoration:underline;}
+.legal-body ul{margin:10px 0 14px 20px;}
+.legal-body ul li{margin-bottom:6px;}
 
 /* ── FOOTER ── */
 footer{
   border-top:1px solid rgba(255,255,255,.06);
-  padding:48px 40px;max-width:1200px;margin:0 auto;
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;
+  padding:36px 40px;max-width:780px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
 }
-.footer-logo{font-family:'DM Serif Display',serif;font-size:1.1rem;color:#fff;}
+.footer-logo{font-family:'DM Serif Display',serif;font-size:1rem;color:#fff;}
 .footer-logo span{color:var(--teal);}
-.footer-links{display:flex;gap:24px;flex-wrap:wrap;}
-.footer-links a{font-size:.82rem;color:rgba(148,197,210,.5);text-decoration:none;transition:color .2s;}
-.footer-links a:hover{color:var(--teal);}
 .footer-copy{font-size:.78rem;color:rgba(148,197,210,.35);}
-
-/* ── FULL-WIDTH WRAPPER ── */
-.section-wrapper{background:#060f1e;}
-.section-wrapper-alt{background:rgba(15,36,71,.3);}
-
-/* ── DIVIDER ── */
-.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(26,191,204,.2),transparent);max-width:1200px;margin:0 auto;}
-</style>
-<style>
-.page-hero{padding:80px 24px 60px;max-width:860px;margin:0 auto;}
-.page-hero h1{font-size:2.4rem;font-weight:900;color:#fff;margin-bottom:12px;line-height:1.2;}
-.page-hero .sub{font-size:1rem;color:rgba(148,197,210,0.8);margin-bottom:32px;line-height:1.65;}
-.page-body{padding:0 24px 80px;max-width:860px;margin:0 auto;color:rgba(148,197,210,0.85);line-height:1.75;font-size:0.9rem;}
 </style>
 </head>
 <body>
-<div class="site-wrapper">
+
+<!-- NAV -->
 <nav>
   <a class="nav-logo" href="/">PCI<span>Nexus</span></a>
-  <div class="nav-links">
-    <a href="/features.html">Features</a>
-    <a href="/consultants.html">For Consultants</a>
-    <a href="/security.html">Security</a>
-    <a href="/comparison.html">Compare</a>
-    <a href="/about.html">About</a>
-    <a href="mailto:jeaton@pcinexus.com">Contact</a>
-    <a href="/tos.html" style="font-size:0.8rem;opacity:0.7;">ToS</a>
-    <a href="/privacy.html" style="font-size:0.8rem;opacity:0.7;">Privacy</a>
-    <a href="https://pci-nexus.vercel.app/PCIDemo" target="_blank" class="nav-cta">Try Live Demo →</a>
-  </div>
+  <a class="nav-back" href="/">&larr; Back to Home</a>
 </nav>
-<section style="padding-top:40px;">
-  <div class="page-hero">
-    <div style="font-size:0.72rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#1ABFCC;margin-bottom:12px;">PCI-Nexus</div>
-    <h1>Terms of Service</h1>
-    <div class="sub">Last updated: May 2026</div>
+
+<div class="page-wrap">
+  <div class="page-label">Legal</div>
+  <h1 class="page-title">Terms of Service</h1>
+  <div class="page-effective">Effective: January 1, 2026 &nbsp;&middot;&nbsp; PCI-Nexus, operated by Joe Eaton &nbsp;&middot;&nbsp; 1350 Hemlock St., Napa, CA 94559</div>
+
+  <div class="legal-body">
+
+    <h2>1. Acceptance of Terms</h2>
+    <p>By accessing or using the PCI-Nexus platform (&ldquo;Service&rdquo;), you agree to be bound by these Terms of Service (&ldquo;Terms&rdquo;). If you do not agree to all of these Terms, do not use the Service. These Terms constitute a legally binding agreement between you (&ldquo;User&rdquo;) and PCI-Nexus, operated by Joe Eaton (&ldquo;Company,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;).</p>
+    <p>We reserve the right to modify these Terms at any time. We will provide notice of material changes via email or prominent notice within the Service. Your continued use of the Service after such notification constitutes your acceptance of the updated Terms.</p>
+
+    <h2>2. Description of Service</h2>
+    <p>PCI-Nexus is a software-as-a-service (SaaS) platform designed to assist qualified security assessors (QSAs), internal security assessors (ISAs), managed service providers (MSPs), IT consultants, and their client organizations with PCI DSS v4.0.1 compliance management. The Service includes tools for evidence collection and AI-assisted review, requirements tracking, findings management, compliance calendar management, document generation (SAQs, AOCs), multi-client portfolio management, and related compliance workflow automation.</p>
+    <p><strong>Compliance Disclaimer:</strong> Use of PCI-Nexus does not guarantee PCI DSS compliance or certification. The Service is a management and workflow tool. Final compliance validation requires a qualified QSA or ISA assessment where required by your acquiring bank or card brand rules. The Company makes no warranty that use of the Service will result in compliance with any specific regulatory requirement.</p>
+
+    <h2>3. User Accounts and Access</h2>
+    <p>You must create an account to use the Service. You agree to provide accurate, current, and complete information during registration and to maintain and update that information to keep it accurate. You are responsible for:</p>
+    <ul>
+      <li>Maintaining the confidentiality of your account credentials, including any PIN codes assigned to client organizations</li>
+      <li>All activity that occurs under your account</li>
+      <li>Notifying us immediately of any unauthorized access to or use of your account at <a href="mailto:jeatonit@outlook.com">jeatonit@outlook.com</a></li>
+    </ul>
+    <p>You may not share your account credentials with others outside your authorized organization. Each named user must have their own account. Role-based access controls within the Service are your responsibility to configure and maintain appropriately.</p>
+
+    <h2>4. Subscription and Billing</h2>
+    <p>Access to the Service is provided on a subscription basis. Current pricing is:</p>
+    <ul>
+      <li><strong>$15 per location per month</strong> for each client location under management</li>
+      <li><strong>$8 per user per month</strong> for each named user account</li>
+      <li><strong>SAQ type surcharges</strong> apply based on the complexity of the applicable SAQ type, as published on our pricing page</li>
+    </ul>
+    <p>Subscription fees are billed in advance on a monthly basis. You may cancel your subscription at any time through your account settings or by contacting us. Cancellation takes effect at the end of the current billing period. We do not provide refunds for partial billing periods or unused portions of a subscription term.</p>
+    <p>Volume discounts are available for MSPs managing 10 or more client organizations. Contact us at <a href="mailto:jeatonit@outlook.com">jeatonit@outlook.com</a> for enterprise pricing arrangements.</p>
+    <p>We reserve the right to modify pricing with at least 30 days written notice to your registered email address. Your continued use of the Service after the effective date of a price change constitutes acceptance of the new pricing.</p>
+
+    <h2>5. Data Privacy and Security</h2>
+    <p>Your use of the Service is also governed by our <a href="/privacy.html">Privacy Policy</a> and our <a href="/data-handling.html">Data Handling Policy</a>, which are incorporated into these Terms by reference. By using the Service, you consent to the data practices described in those documents.</p>
+    <p>You are responsible for ensuring that your use of the Service complies with all applicable data protection laws, including but not limited to the California Consumer Privacy Act (CCPA) and the European Union General Data Protection Regulation (GDPR), where applicable to your operations and the data of your clients.</p>
+
+    <h2>6. Intellectual Property</h2>
+    <p>The Service, including all software, content, designs, features, and functionality, is owned by the Company and is protected by United States and international copyright, trademark, patent, trade secret, and other intellectual property laws. These Terms do not grant you any right, title, or interest in the Service beyond the limited license to use it as described herein.</p>
+    <p>You retain ownership of all data, documents, and content you upload to the Service (&ldquo;User Content&rdquo;). By uploading User Content, you grant us a limited, non-exclusive license to process and store that content solely for the purpose of providing the Service to you. We do not use your User Content to train AI models or for any purpose beyond providing the Service.</p>
+
+    <h2>7. Prohibited Uses</h2>
+    <p>You agree not to use the Service to:</p>
+    <ul>
+      <li>Violate any applicable federal, state, local, or international law or regulation</li>
+      <li>Attempt to gain unauthorized access to any part of the Service or its related systems</li>
+      <li>Transmit any malicious code, viruses, or other harmful software</li>
+      <li>Scrape, crawl, or otherwise systematically extract data from the Service without our written permission</li>
+      <li>Impersonate any person or entity or misrepresent your affiliation with any person or entity</li>
+      <li>Interfere with or disrupt the integrity or performance of the Service</li>
+      <li>Use the Service to provide services to individuals or entities on U.S. sanctions lists</li>
+    </ul>
+
+    <h2>8. Termination</h2>
+    <p>We may terminate or suspend your account and access to the Service immediately, without prior notice or liability, if you breach these Terms. Upon termination, your right to use the Service ceases immediately.</p>
+    <p>You may terminate your account at any time by contacting us at <a href="mailto:jeatonit@outlook.com">jeatonit@outlook.com</a>. Upon termination, we will retain your data for 90 days after the cancellation effective date, after which it will be permanently deleted. You may request an export of your data prior to deletion.</p>
+
+    <h2>9. Disclaimer of Warranties</h2>
+    <p>THE SERVICE IS PROVIDED ON AN &ldquo;AS IS&rdquo; AND &ldquo;AS AVAILABLE&rdquo; BASIS WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, ERROR-FREE, OR COMPLETELY SECURE.</p>
+    <p>WE MAKE NO WARRANTY THAT THE SERVICE OR ITS OUTPUT WILL SATISFY ANY SPECIFIC PCI DSS REQUIREMENT OR RESULT IN A FINDING OF COMPLIANCE BY ANY ACQUIRING BANK, CARD BRAND, OR QUALIFIED SECURITY ASSESSOR.</p>
+
+    <h2>10. Limitation of Liability</h2>
+    <p>TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL THE COMPANY, ITS OFFICERS, DIRECTORS, EMPLOYEES, OR AGENTS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION LOSS OF PROFITS, LOSS OF DATA, LOSS OF GOODWILL, SERVICE INTERRUPTION, OR COMPUTER DAMAGE, ARISING OUT OF OR RELATED TO YOUR USE OF OR INABILITY TO USE THE SERVICE, EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+    <p>OUR TOTAL LIABILITY TO YOU FOR ALL CLAIMS ARISING FROM OR RELATING TO THESE TERMS OR THE SERVICE SHALL NOT EXCEED THE GREATER OF (A) THE AMOUNT YOU PAID US IN THE 12 MONTHS PRECEDING THE CLAIM OR (B) ONE HUNDRED DOLLARS ($100).</p>
+
+    <h2>11. Governing Law</h2>
+    <p>These Terms shall be governed by and construed in accordance with the laws of the State of California, without regard to its conflict of law principles. Any dispute arising out of or relating to these Terms or the Service shall be subject to the exclusive jurisdiction of the state and federal courts located in Napa County, California.</p>
+    <p>If any provision of these Terms is found to be unenforceable, that provision will be limited or eliminated to the minimum extent necessary so that the remaining Terms remain in full force and effect.</p>
+
+    <h2>12. Contact Information</h2>
+    <p>If you have any questions about these Terms of Service, please contact us:</p>
+    <p>
+      <strong>PCI-Nexus</strong><br/>
+      Operated by Joe Eaton<br/>
+      1350 Hemlock St., Napa, CA 94559<br/>
+      <a href="mailto:jeatonit@outlook.com">jeatonit@outlook.com</a>
+    </p>
+
   </div>
-  <div class="page-body">
-    <p>By accessing or using PCI-Nexus, you agree to be bound by these Terms of Service. If you do not agree to these terms, do not use the platform.</p>
-        <h3 style="margin-top:24px;font-size:1rem;font-weight:700;color:#fff;">1. Use of the Platform</h3>
-        <p style="margin-top:8px;">PCI-Nexus is provided for lawful compliance management purposes. You agree not to misuse the platform, attempt unauthorized access, or use it for any purpose that violates applicable law.</p>
-        <h3 style="margin-top:24px;font-size:1rem;font-weight:700;color:#fff;">2. Account Responsibility</h3>
-        <p style="margin-top:8px;">You are responsible for maintaining the security of your account credentials and for all activity that occurs under your account.</p>
-        <h3 style="margin-top:24px;font-size:1rem;font-weight:700;color:#fff;">3. Compliance Disclaimer</h3>
-        <p style="margin-top:8px;">PCI-Nexus is a compliance management tool. Use of this platform does not guarantee PCI DSS compliance or certification. Final compliance validation requires a qualified QSA or ISA assessment where required by your acquiring bank.</p>
-        <h3 style="margin-top:24px;font-size:1rem;font-weight:700;color:#fff;">4. Subscription and Billing</h3>
-        <p style="margin-top:8px;">Subscription fees are billed in advance. You may cancel at any time. Refunds are not provided for partial billing periods.</p>
-        <h3 style="margin-top:24px;font-size:1rem;font-weight:700;color:#fff;">5. Limitation of Liability</h3>
-        <p style="margin-top:8px;">PCI-Nexus and J.Eaton Consulting LLC shall not be liable for any indirect, incidental, or consequential damages arising from use of the platform.</p>
-        <p style="margin-top:24px;"><strong>Questions?</strong> <a href="mailto:jeaton@pcinexus.com" style="color:#1ABFCC;">jeaton@pcinexus.com</a></p>
-  </div>
-</section>
-<div class="divider"></div>
+</div>
+
 <footer>
   <div class="footer-logo">PCI<span>Nexus</span></div>
-  <div class="footer-links" style="font-size:0.88rem;">
-    <a href="/features.html">Features</a>
-    <a href="/consultants.html">For Consultants</a>
-    <a href="/security.html">Security</a>
-    <a href="/comparison.html">Compare</a>
-    <a href="https://pci-nexus.vercel.app/PCIDemo" target="_blank">Live Demo</a>
-    <a href="/about.html">About</a>
-    <a href="mailto:jeaton@pcinexus.com">Contact</a>
-    <a href="/tos.html">Terms of Service</a>
-    <a href="/privacy.html">Privacy Policy</a>
-  </div>
-  <div class="footer-copy">&copy; 2026 PCI-Nexus &middot; J.Eaton Consulting LLC &middot; PCI DSS v4.0.1</div>
+  <div class="footer-copy">&copy; 2026 PCI-Nexus. All rights reserved.</div>
 </footer>
-</div>
+
 </body>
 </html>

@@ -219,7 +219,7 @@
       <p class="ps">Setup is completely free  -  configure your organization, locations, and team at no cost. Your 6-month plan starts only when you decide to go live. PCI DSS requires recurring quarterly scans, daily log reviews, and annual training. You need sustained tooling, not a one-time fix.</p>
       <div class="plan-cards">
         <div class="pc" id="pc-starter" onclick="selPlan('starter')">
-          <div class="pc-tier">Starter</div>
+          <div class="pc-tier">Professional</div>
           <div class="pc-name">Single Location</div>
           <div class="pc-price">$49.95<span>/mo</span></div>
           <div class="pc-min">Free setup &middot; 6-month plan</div>
@@ -231,7 +231,7 @@
         </div>
         <div class="pc" id="pc-growth" onclick="selPlan('growth')">
           <div class="pc-pop">Most Popular</div>
-          <div class="pc-tier">Growth</div>
+          <div class="pc-tier">Professional</div>
           <div class="pc-name">Multi-Location</div>
           <div class="pc-price">$84.95<span>/mo</span></div>
           <div class="pc-min">Free setup &middot; 6-month plan</div>
@@ -431,7 +431,7 @@
 <script>
 let cur=0, plan=null, saq=null, locN=1, teamN=0;
 const STEPS=[
-  {t:"Choose Plan",      d:"Starter, Growth, or Enterprise"},
+  {t:"Choose Plan",      d:"Professional, Enterprise, or Custom"},
   {t:"Create Account",   d:"Admin login and profile"},
   {t:"Organization",     d:"Your company details"},
   {t:"Locations & SAQ",  d:"Sites and compliance type"},
@@ -439,8 +439,8 @@ const STEPS=[
   {t:"Payment",          d:"Activate your account"},
 ];
 const PLANS={
-  starter:   {name:"Starter  -  Single Location", mo:125, term:6,  total:750,   tl:"6 months"},
-  growth:    {name:"Growth  -  Multi-Location",   mo:249, term:6,  total:1494,  tl:"6 months"},
+  starter:   {name:"Professional  -  Single Location", mo:125, term:6,  total:750,   tl:"6 months"},
+  growth:    {name:"Professional  -  Multi-Location",  mo:249, term:6,  total:1494,  tl:"6 months"},
   enterprise:{name:"Enterprise  -  Unlimited",    mo:null,term:12, total:null,  tl:"12 months"},
 };
 
