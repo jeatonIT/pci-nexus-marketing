@@ -434,24 +434,30 @@ footer{
   </div>
 
   <!-- CTA buttons -->
-  <div class="hero-actions fade-up fade-up-5">
-    <a href="https://app.pcinexus.com/PCIDemo" class="btn-primary">
-      Start Free &mdash; No Credit Card Required &rarr;
-    </a>
-    <a href="mailto:jeatonit@outlook.com" class="btn-secondary">
-      Schedule a Demo
-    </a>
-  </div>
-
-  <div class="fade-up fade-up-5" style="margin-top:14px;">
-    <a href="https://pci-nexus.vercel.app/PCIDemo"
-      style="font-size:.85rem;color:rgba(148,197,210,.55);text-decoration:none;
-             display:inline-flex;align-items:center;gap:6px;
-             transition:color .2s;"
-      onmouseover="this.style.color='rgba(148,197,210,.9)'"
-      onmouseout="this.style.color='rgba(148,197,210,.55)'">
-      Already a member? &nbsp;<strong style="color:rgba(148,197,210,.75);">Log in &rarr;</strong>
-    </a>
+  <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:48px;" class="fade-up fade-up-5">
+    <div class="hero-actions" style="margin-bottom:0;">
+      <a href="https://app.pcinexus.com/PCIDemo" class="btn-primary">
+        Start Free &mdash; No Credit Card Required &rarr;
+      </a>
+      <a href="mailto:jeatonit@outlook.com" class="btn-secondary">
+        Schedule a Demo
+      </a>
+    </div>
+    <div>
+      <a href="https://pci-nexus.vercel.app/PCIDemo"
+        style="display:inline-flex;align-items:center;gap:8px;
+               padding:14px 32px;border-radius:12px;
+               font-size:1rem;font-weight:600;
+               background:rgba(255,255,255,.04);
+               color:rgba(148,197,210,.85);
+               text-decoration:none;
+               border:1px solid rgba(148,197,210,.2);
+               transition:background .2s,border-color .2s,color .2s;"
+        onmouseover="this.style.background='rgba(148,197,210,.08)';this.style.borderColor='rgba(148,197,210,.45)';this.style.color='rgba(148,197,210,1)'"
+        onmouseout="this.style.background='rgba(255,255,255,.04)';this.style.borderColor='rgba(148,197,210,.2)';this.style.color='rgba(148,197,210,.85)'">
+        &#x1F511; Already a member? Log In &rarr;
+      </a>
+    </div>
   </div>
 
   <!-- Social proof -->
