@@ -201,7 +201,7 @@
       <div style="display:flex;flex-direction:column;gap:12px;">
         <button class="btn-next" onclick="document.getElementById('prior-upload').style.display='block';this.style.display='none'">&starf; Yes &mdash; my client has a prior SAQ or ROC</button>
         <button class="btn-next" style="background:rgba(15,36,71,0.08);color:#0F2447;box-shadow:none;border:1.5px solid #e2e8f0;" onclick="goTo(1)">No &mdash; this is their first time</button>
-        <button class="btn-next" style="background:transparent;color:#1E6FD9;box-shadow:none;border:1.5px solid #1E6FD9;" onclick="window.location.href='https://pci-nexus.vercel.app/PCIDemo'">&#x1F441; Just show me the product &mdash; no client needed</button>
+        <button class="btn-next" style="background:transparent;color:#1E6FD9;box-shadow:none;border:1.5px solid #1E6FD9;" onclick="openGuestForm()">&#x1F441; Just show me the product &mdash; no client needed</button>
       </div>
       <div id="prior-upload" style="display:none;margin-top:20px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:20px;">
         <div style="font-size:0.75rem;font-weight:700;color:#1E6FD9;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;">Great &middot; we will import their data</div>
@@ -568,5 +568,289 @@ renderNav(); renderLocs();
   if(first){const el=document.getElementById('p-first');if(el)el.value=first;}
 })();
 </script>
+<!-- ── GUEST LEAD CAPTURE MODAL ── -->
+<div id="guest-modal" style="
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(15,36,71,0.6);backdrop-filter:blur(4px);
+  align-items:center;justify-content:center;padding:20px;
+">
+  <div style="
+    background:#fff;border-radius:20px;
+    padding:36px 40px;max-width:520px;width:100%;
+    box-shadow:0 24px 60px rgba(15,36,71,0.25);
+    position:relative;max-height:90vh;overflow-y:auto;
+  ">
+    <!-- Close -->
+    <button onclick="closeGuestForm()" style="
+      position:absolute;top:16px;right:16px;
+      background:none;border:none;font-size:20px;
+      color:#94a3b8;cursor:pointer;line-height:1;
+    ">&times;</button>
+
+    <!-- Header -->
+    <div style="margin-bottom:24px;">
+      <div style="font-size:0.7rem;font-weight:800;color:#1E6FD9;
+        text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">
+        Quick intro &mdash; then you're in
+      </div>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:1.6rem;
+        color:#0F2447;line-height:1.2;margin-bottom:6px;">
+        Tell us a little about yourself
+      </h2>
+      <p style="font-size:0.82rem;color:#64748b;line-height:1.55;">
+        Takes 30 seconds. No credit card. No commitment.
+        We'll send you a quick follow-up after your demo.
+      </p>
+    </div>
+
+    <!-- Form -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+      <div>
+        <label style="font-size:0.68rem;font-weight:700;color:#64748b;
+          text-transform:uppercase;letter-spacing:0.08em;
+          display:block;margin-bottom:4px;">First Name *</label>
+        <input id="gf-first" type="text" placeholder="Sandra"
+          style="width:100%;padding:10px 12px;border:1.5px solid #e2e8f0;
+          border-radius:9px;font-size:0.875rem;font-family:inherit;
+          outline:none;color:#1e293b;"
+          onfocus="this.style.borderColor='#1E6FD9'"
+          onblur="this.style.borderColor='#e2e8f0'"/>
+      </div>
+      <div>
+        <label style="font-size:0.68rem;font-weight:700;color:#64748b;
+          text-transform:uppercase;letter-spacing:0.08em;
+          display:block;margin-bottom:4px;">Last Name *</label>
+        <input id="gf-last" type="text" placeholder="Kowalski"
+          style="width:100%;padding:10px 12px;border:1.5px solid #e2e8f0;
+          border-radius:9px;font-size:0.875rem;font-family:inherit;
+          outline:none;color:#1e293b;"
+          onfocus="this.style.borderColor='#1E6FD9'"
+          onblur="this.style.borderColor='#e2e8f0'"/>
+      </div>
+    </div>
+
+    <div style="margin-bottom:14px;">
+      <label style="font-size:0.68rem;font-weight:700;color:#64748b;
+        text-transform:uppercase;letter-spacing:0.08em;
+        display:block;margin-bottom:4px;">Work Email *</label>
+      <input id="gf-email" type="email" placeholder="sandra@yourfirm.com"
+        style="width:100%;padding:10px 12px;border:1.5px solid #e2e8f0;
+        border-radius:9px;font-size:0.875rem;font-family:inherit;
+        outline:none;color:#1e293b;"
+        onfocus="this.style.borderColor='#1E6FD9'"
+        onblur="this.style.borderColor='#e2e8f0'"/>
+    </div>
+
+    <div style="margin-bottom:14px;">
+      <label style="font-size:0.68rem;font-weight:700;color:#64748b;
+        text-transform:uppercase;letter-spacing:0.08em;
+        display:block;margin-bottom:4px;">Company / Firm Name *</label>
+      <input id="gf-company" type="text" placeholder="Acme Security Consulting"
+        style="width:100%;padding:10px 12px;border:1.5px solid #e2e8f0;
+        border-radius:9px;font-size:0.875rem;font-family:inherit;
+        outline:none;color:#1e293b;"
+        onfocus="this.style.borderColor='#1E6FD9'"
+        onblur="this.style.borderColor='#e2e8f0'"/>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+      <div>
+        <label style="font-size:0.68rem;font-weight:700;color:#64748b;
+          text-transform:uppercase;letter-spacing:0.08em;
+          display:block;margin-bottom:4px;">Your Role *</label>
+        <select id="gf-role"
+          style="width:100%;padding:10px 12px;border:1.5px solid #e2e8f0;
+          border-radius:9px;font-size:0.875rem;font-family:inherit;
+          outline:none;color:#1e293b;background:#fff;"
+          onfocus="this.style.borderColor='#1E6FD9'"
+          onblur="this.style.borderColor='#e2e8f0'">
+          <option value="" disabled selected>Select...</option>
+          <option>QSA &mdash; Qualified Security Assessor</option>
+          <option>ISA &mdash; Internal Security Assessor</option>
+          <option>MSP &mdash; Managed Service Provider</option>
+          <option>IT Consultant</option>
+          <option>VAR / Systems Integrator</option>
+          <option>Business Owner / Merchant</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-size:0.68rem;font-weight:700;color:#64748b;
+          text-transform:uppercase;letter-spacing:0.08em;
+          display:block;margin-bottom:4px;">Clients You Manage *</label>
+        <select id="gf-clients"
+          style="width:100%;padding:10px 12px;border:1.5px solid #e2e8f0;
+          border-radius:9px;font-size:0.875rem;font-family:inherit;
+          outline:none;color:#1e293b;background:#fff;"
+          onfocus="this.style.borderColor='#1E6FD9'"
+          onblur="this.style.borderColor='#e2e8f0'">
+          <option value="" disabled selected>Select...</option>
+          <option>Just exploring</option>
+          <option>1 &mdash; 5 clients</option>
+          <option>6 &mdash; 20 clients</option>
+          <option>21 &mdash; 50 clients</option>
+          <option>50+ clients</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+      <div>
+        <label style="font-size:0.68rem;font-weight:700;color:#64748b;
+          text-transform:uppercase;letter-spacing:0.08em;
+          display:block;margin-bottom:4px;">Phone <span style="font-weight:400;color:#94a3b8;">(optional)</span></label>
+        <input id="gf-phone" type="tel" placeholder="(555) 555-0100"
+          style="width:100%;padding:10px 12px;border:1.5px solid #e2e8f0;
+          border-radius:9px;font-size:0.875rem;font-family:inherit;
+          outline:none;color:#1e293b;"
+          onfocus="this.style.borderColor='#1E6FD9'"
+          onblur="this.style.borderColor='#e2e8f0'"/>
+      </div>
+      <div>
+        <label style="font-size:0.68rem;font-weight:700;color:#64748b;
+          text-transform:uppercase;letter-spacing:0.08em;
+          display:block;margin-bottom:4px;">How did you hear about us? <span style="font-weight:400;color:#94a3b8;">(optional)</span></label>
+        <select id="gf-source"
+          style="width:100%;padding:10px 12px;border:1.5px solid #e2e8f0;
+          border-radius:9px;font-size:0.875rem;font-family:inherit;
+          outline:none;color:#1e293b;background:#fff;"
+          onfocus="this.style.borderColor='#1E6FD9'"
+          onblur="this.style.borderColor='#e2e8f0'">
+          <option value="" selected>Select...</option>
+          <option>Google / Search</option>
+          <option>LinkedIn</option>
+          <option>Referral from colleague</option>
+          <option>PCI SSC / Industry event</option>
+          <option>Social media</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Error -->
+    <div id="gf-error" style="display:none;padding:10px 14px;
+      background:#fef2f2;border:1px solid #fecaca;border-radius:8px;
+      font-size:0.8rem;color:#dc2626;margin-bottom:14px;">
+    </div>
+
+    <!-- Submit -->
+    <button onclick="submitGuestForm()"
+      id="gf-submit"
+      style="width:100%;padding:14px 20px;
+        background:linear-gradient(135deg,#1E6FD9,#0EA5B0);
+        color:#fff;border:none;border-radius:12px;
+        font-size:0.95rem;font-weight:800;
+        font-family:inherit;cursor:pointer;
+        box-shadow:0 4px 16px rgba(30,111,217,0.3);
+        transition:opacity 0.15s;">
+      Enter the Demo &rarr;
+    </button>
+    <p style="text-align:center;font-size:0.72rem;color:#94a3b8;
+      margin-top:10px;line-height:1.5;">
+      By continuing you agree to our
+      <a href="https://pcinexus.com/tos.html" style="color:#1E6FD9;">Terms</a> and
+      <a href="https://pcinexus.com/privacy.html" style="color:#1E6FD9;">Privacy Policy</a>.
+      We'll never share your information.
+    </p>
+  </div>
+</div>
+
+<script>
+function openGuestForm(){
+  const m=document.getElementById('guest-modal');
+  m.style.display='flex';
+  document.body.style.overflow='hidden';
+}
+function closeGuestForm(){
+  const m=document.getElementById('guest-modal');
+  m.style.display='none';
+  document.body.style.overflow='';
+}
+// Close on backdrop click
+document.getElementById('guest-modal').addEventListener('click',function(e){
+  if(e.target===this) closeGuestForm();
+});
+
+function submitGuestForm(){
+  const first=document.getElementById('gf-first').value.trim();
+  const last=document.getElementById('gf-last').value.trim();
+  const email=document.getElementById('gf-email').value.trim();
+  const company=document.getElementById('gf-company').value.trim();
+  const role=document.getElementById('gf-role').value;
+  const clients=document.getElementById('gf-clients').value;
+  const phone=document.getElementById('gf-phone').value.trim();
+  const source=document.getElementById('gf-source').value;
+  const err=document.getElementById('gf-error');
+
+  // Validate required fields
+  if(!first||!last){
+    err.textContent='Please enter your first and last name.';
+    err.style.display='block';return;
+  }
+  if(!email||!email.includes('@')){
+    err.textContent='Please enter a valid work email address.';
+    err.style.display='block';return;
+  }
+  if(!company){
+    err.textContent='Please enter your company or firm name.';
+    err.style.display='block';return;
+  }
+  if(!role){
+    err.textContent='Please select your role.';
+    err.style.display='block';return;
+  }
+  if(!clients){
+    err.textContent='Please select how many clients you manage.';
+    err.style.display='block';return;
+  }
+  err.style.display='none';
+
+  // Button loading state
+  const btn=document.getElementById('gf-submit');
+  btn.textContent='Loading demo...';
+  btn.disabled=true;
+  btn.style.opacity='0.7';
+
+  // Send lead data to our waitlist API (silent fail)
+  fetch('/api/waitlist',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      first,last,email,company,role,clients,phone,source,
+      type:'guest_demo',
+      ts:new Date().toISOString()
+    })
+  }).catch(()=>{});
+
+  // Also store locally as backup
+  try{
+    const leads=JSON.parse(localStorage.getItem('pcn_demo_leads')||'[]');
+    leads.push({first,last,email,company,role,clients,phone,source,
+      ts:new Date().toISOString()});
+    localStorage.setItem('pcn_demo_leads',JSON.stringify(leads));
+  }catch(e){}
+
+  // Fire GA event if available
+  if(window.gtag){
+    gtag('event','demo_lead_captured',{
+      event_category:'lead',
+      event_label:role,
+      value:clients
+    });
+  }
+
+  // Redirect to demo with pre-filled URL params
+  setTimeout(()=>{
+    const params=new URLSearchParams({
+      guest:'1',
+      name:first+' '+last,
+      email,company,role
+    });
+    window.location.href=
+      'https://pci-nexus.vercel.app/PCIDemo?'+params.toString();
+  },600);
+}
+</script>
+
 </body>
 </html>
