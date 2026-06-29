@@ -4,7 +4,7 @@
 <!-- Google Analytics loaded conditionally after cookie consent -->
 <meta charset="UTF-8"/>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgMTYwIiB3aWR0aD0iMTYwIiBoZWlnaHQ9IjE2MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNoaWVsZEdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMkU3RkU4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMUE1RUM0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEM0E4QSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0ic3BhcmtDb3JlIiBjeD0iNTAlIiBjeT0iNTAlIiByPSI1MCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiAgc3RvcC1jb2xvcj0iI0ZGRkZGRiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjE1JSIgc3RvcC1jb2xvcj0iI0ZGRThBMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjM1JSIgc3RvcC1jb2xvcj0iI0ZGODgwMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iI0REMjIyMiIgc3RvcC1vcGFjaXR5PSIwLjgiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjQUEwMDAwIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxwYXRoIGQ9Ik04MCAxMiBMMTQwIDMyIEwxNDAgODIgQzE0MCAxMTggMTEyIDE0MCA4MCAxNTIgQzQ4IDE0MCAyMCAxMTggMjAgODIgTDIwIDMyIFoiIGZpbGw9InVybCgjc2hpZWxkR3JhZCkiIG9wYWNpdHk9IjAuOTUiLz4KPC9zdmc+">
-<meta name="viewport" content="width=1100, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="description" content="PCI-Nexus is the PCI DSS v4.0.1 compliance platform built for QSAs, ISAs, MSPs, and IT consultants. Manage your entire client portfolio from one AI-powered platform. White-label ready."/>
 <title>PCI-Nexus — PCI DSS Compliance Platform for QSAs, ISAs, MSPs &amp; IT Consultants</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -127,7 +127,7 @@ nav{
 .trust-badge .check{color:#4ade80;font-weight:700;}
 
 /* ── SECTION SCAFFOLD ── */
-section{padding:100px 40px;max-width:1200px;margin:0 auto;}
+section{padding:100px 40px;max-width:1280px;margin:0 auto;}
 .section-eyebrow{
   font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
   color:var(--teal);margin-bottom:12px;
@@ -347,7 +347,59 @@ footer{
   font-size:.78rem;color:rgba(148,197,210,.35);
 }
 
-/* ── FULL-WIDTH WRAPPER ── */
+/* ── RESPONSIVE BREAKPOINTS ── */
+/* 1440px — large desktop (design target) */
+@media(min-width:1440px){
+  nav{padding:0 60px;}
+  .hero{padding:140px 60px 80px;max-width:1440px;}
+  section{max-width:1380px;padding:100px 60px;}
+  footer{max-width:1380px;padding:56px 60px 40px;}
+  .section-title{font-size:3rem;}
+}
+/* 1280px — standard laptop/desktop */
+@media(max-width:1280px){
+  nav{padding:0 32px;}
+  .hero{padding:120px 32px 80px;}
+  section{padding:80px 32px;}
+}
+/* 1024px — small desktop / large tablet landscape */
+@media(max-width:1024px){
+  .hero h1{font-size:clamp(2.4rem,4.5vw,3.5rem);}
+  .audience-grid{grid-template-columns:repeat(2,1fr);}
+  .features-grid{grid-template-columns:repeat(2,1fr);}
+  .steps-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-top{grid-template-columns:1fr 1fr;}
+}
+/* 768px — tablet portrait */
+@media(max-width:768px){
+  nav{padding:0 20px;}
+  .nav-links{gap:16px;}
+  .nav-links a{font-size:.75rem;}
+  .hero{padding:100px 20px 60px;}
+  section{padding:60px 20px;}
+  .hero h1{font-size:2.2rem;}
+  .hero-sub{font-size:.95rem;}
+  .btn-primary,.btn-secondary{padding:12px 20px;font-size:.9rem;}
+  .testimonials-grid{grid-template-columns:1fr;}
+  .trial-banner{padding:40px 28px;}
+  footer{padding:40px 20px 28px;}
+}
+/* 600px — large phone */
+@media(max-width:600px){
+  .nav-links a:not(.nav-cta){display:none;}
+  .hero h1{font-size:1.9rem;}
+  .audience-grid,.features-grid,.steps-grid{
+    grid-template-columns:1fr;
+  }
+  .audience-card[style*='grid-column:span 2']{
+    grid-column:span 1;
+  }
+  .hero-actions{flex-direction:column;}
+  .btn-primary,.btn-secondary{width:100%;justify-content:center;}
+  .trial-actions{flex-direction:column;align-items:stretch;}
+  .btn-white,.btn-outline-white{text-align:center;}
+}
+
 .section-wrapper{background:#060f1e;}
 .section-wrapper-alt{background:rgba(15,36,71,.3);}
 
