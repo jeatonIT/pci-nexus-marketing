@@ -11,383 +11,69 @@
 </script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>PCI-Nexus vs. Vanta & Drata — PCI DSS Comparison</title>
+<title>PCI-Nexus vs. Vanta &amp; Drata &mdash; PCI DSS Comparison</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-:root {
-  --navy:  #0F2447;
-  --navy2: #162E5A;
-  --blue:  #1E6FD9;
-  --teal:  #1ABFCC;
-  --teal2: #0EA5B0;
-  --white: #ffffff;
-  --slate: #94a3b8;
-  --grad:  linear-gradient(135deg,#0F2447 0%,#162E5A 55%,#0A7985 100%);
-  --grad-b:linear-gradient(135deg,#1E6FD9,#0EA5B0);
-}
+:root{--navy:#0F2447;--blue:#1E6FD9;--teal:#1ABFCC;--teal2:#0EA5B0;--grad-b:linear-gradient(135deg,#1E6FD9,#0EA5B0);}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',sans-serif;background:#060f1e;color:#e2e8f0;overflow-x:hidden;}
-
-/* ── ANIMATIONS ── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
-@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.5;}}
-@keyframes shimmer{0%{background-position:-200% 0;}100%{background-position:200% 0;}}
-@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
-
 .fade-up{opacity:0;animation:fadeUp .7s ease forwards;}
-.fade-up-1{animation-delay:.1s;}
-.fade-up-2{animation-delay:.25s;}
-.fade-up-3{animation-delay:.4s;}
-.fade-up-4{animation-delay:.55s;}
-.fade-up-5{animation-delay:.7s;}
+.fade-up-1{animation-delay:.1s;}.fade-up-2{animation-delay:.25s;}.fade-up-3{animation-delay:.4s;}
 
-/* ── NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 40px;height:64px;
-  background:rgba(6,15,30,.92);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid rgba(26,191,204,.12);
-}
-.nav-logo{
-  font-family:'DM Serif Display',serif;
-  font-size:1.5625rem;color:#fff;text-decoration:none;letter-spacing:-.5px;
-}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;
+  justify-content:space-between;padding:0 40px;height:62px;
+  background:rgba(6,15,30,.92);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(26,191,204,.12);}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:1.5625rem;color:#fff;text-decoration:none;letter-spacing:-.5px;}
 .nav-logo span{color:var(--teal);}
-.nav-links{display:flex;align-items:center;gap:32px;}
-.nav-links a{
-  font-size:.82rem;font-weight:500;color:rgba(148,197,210,.75);
-  text-decoration:none;letter-spacing:.02em;transition:color .2s;
-}
+.nav-links{display:flex;align-items:center;gap:28px;}
+.nav-links a{font-size:.80rem;font-weight:500;color:rgba(148,197,210,.75);text-decoration:none;letter-spacing:.02em;transition:color .2s;}
 .nav-links a:hover{color:var(--teal);}
-.nav-cta{
-  padding:8px 20px;border-radius:8px;font-size:.82rem;font-weight:700;
-  background:var(--grad-b);color:#fff;text-decoration:none;
-  transition:opacity .2s;white-space:nowrap;
-}
+.nav-cta{padding:8px 20px;border-radius:8px;font-size:.82rem;font-weight:700;background:var(--grad-b);color:#fff;text-decoration:none;transition:opacity .2s;white-space:nowrap;}
 .nav-cta:hover{opacity:.88;}
 
-/* ── HERO ── */
-.hero{
-  min-height:0;display:flex;flex-direction:column;justify-content:center;
-  padding:120px 40px 48px;max-width:1200px;margin:0 auto;
-  position:relative;
-}
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:6px 14px;border-radius:100px;
-  border:1px solid rgba(26,191,204,.25);
-  background:rgba(26,191,204,.07);
-  font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--teal);margin-bottom:28px;
-}
-.hero-eyebrow .dot{
-  width:7px;height:7px;border-radius:50%;
-  background:#4ade80;animation:pulse 2s infinite;flex-shrink:0;
-}
-.hero h1{
-  font-family:'DM Serif Display',serif;
-  font-size:clamp(2.8rem,5vw,4.5rem);
-  line-height:1.08;color:#fff;
-  max-width:860px;margin-bottom:24px;
-  letter-spacing:-.03em;
-}
-.hero h1 em{font-style:normal;color:var(--teal);}
-.hero-sub{
-  font-size:1.05rem;line-height:1.7;
-  color:rgba(148,197,210,.8);
-  max-width:620px;margin-bottom:40px;
-}
-.hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:64px;}
-.btn-primary{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:14px 32px;border-radius:12px;font-size:1rem;font-weight:700;
-  background:var(--grad-b);color:#fff;text-decoration:none;
-  box-shadow:0 0 40px rgba(14,165,176,.3);
-  transition:transform .2s,box-shadow .2s;
-}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 60px rgba(14,165,176,.45);}
-.btn-secondary{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:14px 28px;border-radius:12px;font-size:1rem;font-weight:600;
-  background:rgba(255,255,255,.06);color:#fff;text-decoration:none;
-  border:1px solid rgba(255,255,255,.12);
-  transition:background .2s,border-color .2s;
-}
-.btn-secondary:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);}
+/* PAGE HERO */
+.page-hero{padding:100px 40px 32px;max-width:960px;margin:0 auto;}
+.page-eyebrow{font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#1ABFCC;margin-bottom:12px;}
+.page-hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;color:#fff;margin-bottom:12px;line-height:1.15;}
+.page-hero .sub{font-size:1rem;color:rgba(148,197,210,0.8);margin-bottom:0;line-height:1.65;max-width:620px;}
 
-/* Hero stat strip */
-.hero-stats{
-  display:flex;gap:48px;flex-wrap:wrap;
-  padding-top:40px;border-top:1px solid rgba(255,255,255,.07);
-}
-.stat{}
-.stat-num{
-  font-family:'DM Serif Display',serif;font-size:2rem;color:#fff;
-  background:var(--grad-b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
-.stat-label{font-size:.78rem;color:rgba(148,197,210,.6);margin-top:2px;letter-spacing:.03em;}
+/* COMPARISON TABLE */
+.compare-wrap{padding:32px 40px 80px;max-width:960px;margin:0 auto;}
+.compare-table{width:100%;border-collapse:collapse;font-size:.88rem;}
+.compare-table thead tr{background:rgba(30,111,217,0.18);}
+.compare-table th{padding:14px 20px;font-weight:700;border-bottom:2px solid rgba(26,191,204,.3);}
+.compare-table th:first-child{text-align:left;color:#e2e8f0;}
+.compare-table th:not(:first-child){text-align:center;color:rgba(148,197,210,.9);}
+.compare-table th.col-pci{color:#1ABFCC;}
+.compare-table tbody tr{border-bottom:1px solid rgba(255,255,255,.06);transition:background .15s;}
+.compare-table tbody tr:nth-child(even){background:rgba(255,255,255,.02);}
+.compare-table tbody tr:hover{background:rgba(30,111,217,.08);}
+.compare-table td{padding:13px 20px;vertical-align:middle;}
+.compare-table td:first-child{color:rgba(255,255,255,.9);font-weight:500;}
+.compare-table td:not(:first-child){text-align:center;}
+.td-pci{color:#10b981;font-weight:700;}
+.td-alt{color:rgba(148,197,210,.55);}
 
-/* ── SECTION SCAFFOLD ── */
-section{padding:100px 40px;max-width:1200px;margin:0 auto;}
-.section-eyebrow{
-  font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--teal);margin-bottom:12px;
-}
-.section-title{
-  font-family:'DM Serif Display',serif;
-  font-size:clamp(2rem,3.5vw,3rem);
-  color:#fff;line-height:1.15;letter-spacing:-.02em;
-  margin-bottom:16px;
-}
-.section-sub{
-  font-size:1rem;color:rgba(148,197,210,.75);
-  max-width:580px;line-height:1.7;margin-bottom:56px;
-}
-
-/* ── FOR PARTNERS SECTION ── */
-.for-partners-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:32px;
-}
-@media(max-width:780px){.for-partners-grid{grid-template-columns:1fr;} .choose-path-row{grid-template-columns:1fr!important;} .two-box-grid{grid-template-columns:1fr!important;}}
-
-.partner-card{
-  padding:32px;border-radius:20px;
-  border:1px solid rgba(30,111,217,.2);
-  background:linear-gradient(135deg,rgba(30,111,217,.08),rgba(14,165,176,.04));
-  position:relative;overflow:hidden;
-  transition:border-color .3s,transform .3s;
-}
-.partner-card:hover{border-color:rgba(26,191,204,.4);transform:translateY(-4px);}
-.partner-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:var(--grad-b);opacity:.6;
-}
-.partner-icon{font-size:2.2rem;margin-bottom:16px;}
-.partner-type{
-  font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--teal);margin-bottom:8px;
-}
-.partner-title{
-  font-family:'DM Serif Display',serif;font-size:1.4rem;color:#fff;
-  margin-bottom:12px;line-height:1.2;
-}
-.partner-desc{font-size:.88rem;color:rgba(148,197,210,.75);line-height:1.7;margin-bottom:20px;}
-.partner-bullets{list-style:none;display:flex;flex-direction:column;gap:8px;}
-.partner-bullets li{
-  font-size:.82rem;color:rgba(148,197,210,.85);
-  display:flex;align-items:flex-start;gap:8px;line-height:1.5;
-}
-.partner-bullets li::before{
-  content:'✓';color:var(--teal);font-weight:700;flex-shrink:0;margin-top:1px;
-}
-.partner-cta{
-  display:inline-flex;align-items:center;gap:6px;
-  margin-top:24px;padding:10px 20px;border-radius:8px;
-  background:var(--grad-b);color:#fff;font-size:.82rem;font-weight:700;
-  text-decoration:none;transition:opacity .2s;
-}
-.partner-cta:hover{opacity:.85;}
-
-/* Merchant card — secondary styling */
-.merchant-card{
-  padding:32px;border-radius:20px;
-  border:1px solid rgba(255,255,255,.08);
-  background:rgba(255,255,255,.03);
-  position:relative;overflow:hidden;grid-column:1/-1;
-  display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap;
-  transition:border-color .3s;
-}
-.merchant-card:hover{border-color:rgba(255,255,255,.15);}
-.merchant-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,rgba(255,255,255,.1),rgba(255,255,255,.25),rgba(255,255,255,.1));
-}
-.merchant-badge{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:4px 10px;border-radius:100px;
-  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
-  font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  color:rgba(148,197,210,.6);margin-bottom:10px;
-}
-
-/* ── DIFFERENTIATORS ── */
-.diff-grid{display:flex;flex-direction:column;gap:20px;}
-.diff-card{
-  display:flex;gap:24px;align-items:flex-start;
-  padding:28px 32px;border-radius:20px;
-  border:1px solid transparent;
-  transition:border-color .3s,background .3s;
-  position:relative;overflow:hidden;
-}
-.diff-card:hover{border-color:rgba(26,191,204,.2);}
-.diff-num{
-  font-family:'DM Mono',monospace;
-  font-size:.72rem;font-weight:500;letter-spacing:.08em;
-  padding:4px 10px;border-radius:100px;
-  flex-shrink:0;margin-top:3px;
-}
-.diff-body{}
-.diff-title{
-  font-family:'DM Serif Display',serif;font-size:1.25rem;color:#fff;
-  margin-bottom:8px;line-height:1.25;
-}
-.diff-desc{font-size:.9rem;color:rgba(148,197,210,.8);line-height:1.7;}
-.diff-desc strong{color:#fff;font-weight:600;}
-
-/* Color variants */
-.diff-1{background:linear-gradient(135deg,rgba(30,111,217,.1),rgba(14,165,176,.04));border-color:rgba(30,111,217,.2);}
-.diff-1 .diff-num{background:rgba(30,111,217,.2);color:#60a5fa;}
-.diff-2{background:linear-gradient(135deg,rgba(14,165,176,.1),rgba(5,150,105,.04));border-color:rgba(14,165,176,.2);}
-.diff-2 .diff-num{background:rgba(14,165,176,.2);color:#2dd4bf;}
-.diff-3{background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(99,102,241,.04));border-color:rgba(124,58,237,.2);}
-.diff-3 .diff-num{background:rgba(124,58,237,.2);color:#a78bfa;}
-.diff-4{background:linear-gradient(135deg,rgba(245,158,11,.1),rgba(239,68,68,.04));border-color:rgba(245,158,11,.2);}
-.diff-4 .diff-num{background:rgba(245,158,11,.2);color:#fbbf24;}
-.diff-5{background:linear-gradient(135deg,rgba(5,150,105,.1),rgba(16,185,129,.04));border-color:rgba(5,150,105,.2);}
-.diff-5 .diff-num{background:rgba(5,150,105,.2);color:#34d399;}
-
-/* ── FEATURES GRID ── */
-.features-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
-}
-@media(max-width:900px){.features-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:560px){.features-grid{grid-template-columns:1fr;}}
-
-.feature-card{
-  padding:24px;border-radius:16px;
-  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
-  transition:border-color .3s,background .3s,transform .3s;
-}
-.feature-card:hover{
-  border-color:rgba(26,191,204,.25);
-  background:rgba(26,191,204,.05);
-  transform:translateY(-3px);
-}
-.feature-icon{font-size:1.6rem;margin-bottom:14px;}
-.feature-title{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:6px;}
-.feature-desc{font-size:.82rem;color:rgba(148,197,210,.7);line-height:1.6;}
-
-/* ── PRICING PREVIEW ── */
-.pricing-strip{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
-  padding:40px;border-radius:24px;
-  background:linear-gradient(135deg,rgba(15,36,71,.8),rgba(22,46,90,.6));
-  border:1px solid rgba(30,111,217,.2);
-}
-@media(max-width:900px){.pricing-strip{grid-template-columns:repeat(2,1fr);}}
-
-.price-tier{text-align:center;padding:20px 12px;}
-.price-tier-name{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
-.price-amount{font-family:'DM Serif Display',serif;font-size:2rem;color:#fff;line-height:1;}
-.price-per{font-size:.75rem;color:rgba(148,197,210,.5);margin-top:4px;}
-.price-desc{font-size:.78rem;color:rgba(148,197,210,.65);margin-top:8px;line-height:1.5;}
-
-/* ── TRIAL BANNER ── */
-.trial-banner{
-  padding:64px 56px;border-radius:28px;
-  background:var(--grad-b);
-  position:relative;overflow:hidden;text-align:center;
-}
-.trial-banner::before{
-  content:'';position:absolute;inset:0;
-  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-.trial-eyebrow{
-  font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(255,255,255,.7);margin-bottom:16px;
-}
-.trial-title{
-  font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);
-  color:#fff;margin-bottom:16px;line-height:1.2;letter-spacing:-.02em;
-}
-.trial-sub{font-size:1rem;color:rgba(255,255,255,.8);margin-bottom:36px;max-width:560px;margin-left:auto;margin-right:auto;}
-.trial-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
-.btn-white{
-  padding:14px 32px;border-radius:12px;font-size:.95rem;font-weight:700;
-  background:#fff;color:var(--navy);text-decoration:none;
-  transition:transform .2s,box-shadow .2s;
-}
-.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.25);}
-.btn-outline-white{
-  padding:14px 28px;border-radius:12px;font-size:.95rem;font-weight:600;
-  border:2px solid rgba(255,255,255,.5);color:#fff;text-decoration:none;
-  transition:border-color .2s,background .2s;
-}
-.btn-outline-white:hover{border-color:#fff;background:rgba(255,255,255,.1);}
-
-
-/* ── COOKIE CONSENT ── */
-#cookie-banner{
-  position:fixed;bottom:0;left:0;right:0;z-index:9999;
-  padding:20px 40px;
-  background:rgba(6,15,30,0.97);
-  backdrop-filter:blur(20px);
-  border-top:1px solid rgba(26,191,204,0.2);
-  display:flex;align-items:center;justify-content:space-between;
-  gap:24px;flex-wrap:wrap;
-  transform:translateY(100%);
-  transition:transform .4s cubic-bezier(.4,0,.2,1);
-}
-#cookie-banner.visible{transform:translateY(0);}
-.cookie-text{flex:1;min-width:260px;}
-.cookie-title{font-size:.85rem;font-weight:700;color:#fff;margin-bottom:4px;}
-.cookie-desc{font-size:.78rem;color:rgba(148,197,210,.65);line-height:1.6;}
-.cookie-desc a{color:var(--teal);text-decoration:underline;}
-.cookie-actions{display:flex;gap:10px;flex-shrink:0;align-items:center;flex-wrap:wrap;}
-.cookie-btn-accept{
-  padding:10px 22px;border-radius:8px;font-size:.82rem;font-weight:700;
-  background:var(--grad-b);color:#fff;border:none;cursor:pointer;
-  transition:opacity .2s;
-}
-.cookie-btn-accept:hover{opacity:.88;}
-.cookie-btn-essential{
-  padding:10px 22px;border-radius:8px;font-size:.82rem;font-weight:600;
-  background:transparent;color:rgba(148,197,210,.6);
-  border:1px solid rgba(148,197,210,.2);cursor:pointer;
-  transition:border-color .2s,color .2s;
-}
-.cookie-btn-essential:hover{border-color:rgba(148,197,210,.5);color:rgba(148,197,210,.9);}
-.cookie-badge{
-  font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  padding:3px 8px;border-radius:4px;
-  background:rgba(26,191,204,.12);color:var(--teal);
-  border:1px solid rgba(26,191,204,.2);white-space:nowrap;
-}
-
-/* ── FOOTER ── */
-footer{
-  border-top:1px solid rgba(255,255,255,.06);
-  padding:48px 40px;max-width:1200px;margin:0 auto;
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;
-}
+/* FOOTER */
+footer{border-top:1px solid rgba(255,255,255,.06);padding:48px 40px;max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
 .footer-logo{font-family:'DM Serif Display',serif;font-size:1.1rem;color:#fff;}
 .footer-logo span{color:var(--teal);}
 .footer-links{display:flex;gap:24px;flex-wrap:wrap;}
 .footer-links a{font-size:.82rem;color:rgba(148,197,210,.5);text-decoration:none;transition:color .2s;}
 .footer-links a:hover{color:var(--teal);}
 .footer-copy{font-size:.78rem;color:rgba(148,197,210,.35);}
-
-/* ── FULL-WIDTH WRAPPER ── */
-.section-wrapper{background:#060f1e;}
-.section-wrapper-alt{background:rgba(15,36,71,.3);}
-
-/* ── DIVIDER ── */
 .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(26,191,204,.2),transparent);max-width:1200px;margin:0 auto;}
-</style>
-<style>
-.page-hero{padding:80px 24px 60px;max-width:860px;margin:0 auto;}
-.page-hero h1{font-size:2.4rem;font-weight:900;color:#fff;margin-bottom:12px;line-height:1.2;}
-.page-hero .sub{font-size:1rem;color:rgba(148,197,210,0.8);margin-bottom:32px;line-height:1.65;}
-.page-body{padding:0 24px 80px;max-width:860px;margin:0 auto;color:rgba(148,197,210,0.85);line-height:1.75;font-size:0.9rem;}
 </style>
 </head>
 <body>
-<div class="site-wrapper">
+
 <nav>
   <a class="nav-logo" href="/">PCI<span>Nexus</span></a>
   <div class="nav-links">
@@ -399,52 +85,125 @@ footer{
     <a href="mailto:jeaton@pcinexus.com">Contact</a>
     <a href="/tos.html" style="font-size:0.8rem;opacity:0.7;">ToS</a>
     <a href="/privacy.html" style="font-size:0.8rem;opacity:0.7;">Privacy</a>
-    <a href="https://pci-nexus.vercel.app/PCIDemo" target="_blank" class="nav-cta">Try Live Demo →</a>
+    <a href="https://pci-nexus.vercel.app/PCIDemo" style="font-size:.82rem;font-weight:600;color:rgba(148,197,210,.8);text-decoration:none;padding:7px 18px;border-radius:8px;border:1px solid rgba(148,197,210,.25);transition:all .2s;white-space:nowrap;" onmouseover="this.style.color='#1ABFCC';this.style.borderColor='#1ABFCC'" onmouseout="this.style.color='rgba(148,197,210,.8)';this.style.borderColor='rgba(148,197,210,.25)'">Log In</a>
+    <a href="https://pci-nexus.vercel.app/PCIDemo" target="_blank" class="nav-cta">Try Live Demo &rarr;</a>
   </div>
 </nav>
-<section style="padding-top:40px;">
-  <div class="page-hero">
-    <div style="font-size:0.72rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#1ABFCC;margin-bottom:12px;">PCI-Nexus</div>
-    <h1>PCI-Nexus vs. The Alternatives</h1>
-    <div class="sub">Purpose-built for PCI DSS — not a generic GRC tool with a PCI module</div>
+
+<!-- HERO -->
+<div class="page-hero fade-up fade-up-1">
+  <div class="page-eyebrow">PCI-Nexus</div>
+  <h1>PCI-Nexus vs. The Alternatives</h1>
+  <p class="sub">Purpose-built for PCI DSS &mdash; not a generic GRC tool with a PCI module bolted on.</p>
+</div>
+
+<!-- COMPARISON TABLE -->
+<div class="compare-wrap fade-up fade-up-2">
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th style="width:38%;">Feature</th>
+        <th class="col-pci" style="width:21%;">PCI-Nexus</th>
+        <th style="width:20%;">Vanta</th>
+        <th style="width:21%;">Drata</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Built specifically for PCI DSS</td>
+        <td class="td-pci">&#x2705; Yes</td>
+        <td class="td-alt">&#x26A0;&#xFE0F; Multi-framework</td>
+        <td class="td-alt">&#x26A0;&#xFE0F; Multi-framework</td>
+      </tr>
+      <tr>
+        <td>All 12 SAQ types supported</td>
+        <td class="td-pci">&#x2705; All 12</td>
+        <td class="td-alt">&#x274C; Limited</td>
+        <td class="td-alt">&#x274C; Limited</td>
+      </tr>
+      <tr>
+        <td>AI-powered evidence review</td>
+        <td class="td-pci">&#x2705; Full document analysis</td>
+        <td class="td-alt">&#x26A0;&#xFE0F; Basic</td>
+        <td class="td-alt">&#x26A0;&#xFE0F; Basic</td>
+      </tr>
+      <tr>
+        <td>Free for consultants &amp; MSPs</td>
+        <td class="td-pci">&#x2705; Free to join</td>
+        <td class="td-alt">&#x274C; No</td>
+        <td class="td-alt">&#x274C; No</td>
+      </tr>
+      <tr>
+        <td>Multi-location client management</td>
+        <td class="td-pci">&#x2705; Built-in</td>
+        <td class="td-alt">&#x274C; Not designed for this</td>
+        <td class="td-alt">&#x274C; Not designed for this</td>
+      </tr>
+      <tr>
+        <td>White-label for MSPs &amp; consultants</td>
+        <td class="td-pci">&#x2705; Yes</td>
+        <td class="td-alt">&#x274C; No</td>
+        <td class="td-alt">&#x274C; No</td>
+      </tr>
+      <tr>
+        <td>QSA / ISA export package</td>
+        <td class="td-pci">&#x2705; One-click</td>
+        <td class="td-alt">&#x274C; Manual</td>
+        <td class="td-alt">&#x274C; Manual</td>
+      </tr>
+      <tr>
+        <td>Compliance calendar with auto-reminders</td>
+        <td class="td-pci">&#x2705; Built-in</td>
+        <td class="td-alt">&#x274C; No</td>
+        <td class="td-alt">&#x274C; No</td>
+      </tr>
+      <tr>
+        <td>TPSP register &amp; AOC tracking (Req 12.8)</td>
+        <td class="td-pci">&#x2705; Built-in</td>
+        <td class="td-alt">&#x274C; No</td>
+        <td class="td-alt">&#x274C; No</td>
+      </tr>
+      <tr>
+        <td>System inventory (Req 6.3.2 / 12.5.1)</td>
+        <td class="td-pci">&#x2705; Built-in</td>
+        <td class="td-alt">&#x274C; No</td>
+        <td class="td-alt">&#x274C; No</td>
+      </tr>
+      <tr>
+        <td>Immutable audit log (Req 10)</td>
+        <td class="td-pci">&#x2705; Yes &mdash; append-only</td>
+        <td class="td-alt">&#x26A0;&#xFE0F; Partial</td>
+        <td class="td-alt">&#x26A0;&#xFE0F; Partial</td>
+      </tr>
+      <tr>
+        <td>Starting price</td>
+        <td class="td-pci">&#x2705; Free to join</td>
+        <td class="td-alt">&#x274C; $7,500+/yr</td>
+        <td class="td-alt">&#x274C; $7,500+/yr</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Bottom CTA -->
+  <div style="margin-top:48px;text-align:center;padding:48px 40px;background:linear-gradient(135deg,rgba(30,111,217,.15),rgba(14,165,176,.08));border:1px solid rgba(30,111,217,.25);border-radius:20px;">
+    <div style="font-family:'DM Serif Display',serif;font-size:1.8rem;color:#fff;margin-bottom:12px;">
+      Purpose-Built. Free to Start.
+    </div>
+    <p style="color:rgba(148,197,210,.8);font-size:.95rem;max-width:520px;margin:0 auto 28px;line-height:1.65;">
+      PCI-Nexus does one thing and does it right &mdash; PCI DSS compliance for the consultants and assessors who live it every day.
+    </p>
+    <a href="https://pci-nexus.vercel.app/PCIDemo" target="_blank"
+      style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:12px;font-size:1rem;font-weight:700;background:linear-gradient(135deg,#1E6FD9,#0EA5B0);color:#fff;text-decoration:none;box-shadow:0 0 40px rgba(14,165,176,.3);">
+      Try the Live Demo &rarr;
+    </a>
   </div>
-  <div class="page-body">
-    <div style="overflow-x:auto;margin-top:24px;">
-        <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
-          <thead>
-            <tr style="background:rgba(30,111,217,0.2);">
-              <th style="padding:12px 16px;text-align:left;color:#1ABFCC;font-weight:700;border-bottom:1px solid rgba(255,255,255,0.1);">Feature</th>
-              <th style="padding:12px 16px;text-align:center;color:#1ABFCC;font-weight:700;border-bottom:1px solid rgba(255,255,255,0.1);">PCI-Nexus</th>
-              <th style="padding:12px 16px;text-align:center;color:rgba(148,197,210,0.6);font-weight:700;border-bottom:1px solid rgba(255,255,255,0.1);">Vanta</th>
-              <th style="padding:12px 16px;text-align:center;color:rgba(148,197,210,0.6);font-weight:700;border-bottom:1px solid rgba(255,255,255,0.1);">Drata</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${[
-              ["Built specifically for PCI DSS","✅ Yes","⚠️ Multi-framework","⚠️ Multi-framework"],
-              ["All 12 SAQ types supported","✅ All 12","❌ Limited","❌ Limited"],
-              ["AI evidence review","✅ Full doc analysis","⚠️ Basic","⚠️ Basic"],
-              ["Free tier for consultants","✅ First 5 locations free","❌ No","❌ No"],
-              ["Multi-location management","✅ Built-in","❌ Not designed for this","❌ Not designed for this"],
-              ["White-label for MSPs","✅ Yes","❌ No","❌ No"],
-              ["QSA/ISA export package","✅ One-click","❌ Manual","❌ Manual"],
-              ["Starting price","✅ Free / $49/mo","❌ $7,500+/yr","❌ $7,500+/yr"],
-            ].map(([feat,pci,vanta,drata])=>`
-              <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
-                <td style="padding:12px 16px;color:rgba(255,255,255,0.85);">${feat}</td>
-                <td style="padding:12px 16px;text-align:center;color:#10b981;font-weight:700;">${pci}</td>
-                <td style="padding:12px 16px;text-align:center;color:rgba(148,197,210,0.6);">${vanta}</td>
-                <td style="padding:12px 16px;text-align:center;color:rgba(148,197,210,0.6);">${drata}</td>
-              </tr>`).join('')}
-          </tbody>
-        </table>
-        </div>
-  </div>
-</section>
+</div>
+
 <div class="divider"></div>
+
 <footer>
   <div class="footer-logo">PCI<span>Nexus</span></div>
-  <div class="footer-links" style="font-size:0.88rem;">
+  <div class="footer-links">
     <a href="/features.html">Features</a>
     <a href="/consultants.html">For Consultants</a>
     <a href="/security.html">Security</a>
@@ -457,6 +216,6 @@ footer{
   </div>
   <div class="footer-copy">&copy; 2026 PCI-Nexus &middot; J.Eaton Consulting LLC &middot; PCI DSS v4.0.1</div>
 </footer>
-</div>
+
 </body>
 </html>
