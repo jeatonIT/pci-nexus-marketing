@@ -201,7 +201,7 @@
       <div style="display:flex;flex-direction:column;gap:12px;">
         <button class="btn-next" onclick="document.getElementById('prior-upload').style.display='block';this.style.display='none'">&starf; Yes &mdash; my client has a prior SAQ or ROC</button>
         <button class="btn-next" style="background:rgba(15,36,71,0.08);color:#0F2447;box-shadow:none;border:1.5px solid #e2e8f0;" onclick="goTo(1)">No &mdash; this is their first time</button>
-        <button class="btn-next" style="background:transparent;color:#1E6FD9;box-shadow:none;border:1.5px solid #1E6FD9;" onclick="openGuestForm()">&#x1F441; Just show me the product &mdash; no client needed</button>
+        <button id="btn-just-looking" class="btn-next" style="background:transparent;color:#1E6FD9;box-shadow:none;border:1.5px solid #1E6FD9;" onclick="openGuestForm()">&#x1F441; Just show me the product &mdash; no client needed</button>
       </div>
       <div id="prior-upload" style="display:none;margin-top:20px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:20px;">
         <div style="font-size:0.75rem;font-weight:700;color:#1E6FD9;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;">Great &middot; we will import their data</div>
