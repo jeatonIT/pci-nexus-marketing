@@ -839,15 +839,18 @@ function submitGuestForm(){
     });
   }
 
-  // Redirect to demo with pre-filled URL params
+  // Redirect to demo with pre-filled URL params.
+  // `demo=1` tells the app this is a guest walkthrough: it must auto-enter the
+  // demo persona and NEVER present a credential prompt to someone just looking.
   setTimeout(()=>{
     const params=new URLSearchParams({
       guest:'1',
+      demo:'1',
       name:first+' '+last,
       email,company,role
     });
     window.location.href=
-      'https://pci-nexus.vercel.app/PCIDemo?'+params.toString();
+      'https://app.pcinexus.com/PCIDemo?'+params.toString();
   },600);
 }
 </script>
