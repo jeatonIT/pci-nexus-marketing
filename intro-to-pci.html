@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Intro to PCI DSS · PCI-Nexus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F2447; --blue:#1E6FD9; --teal:#1ABFCC; --teal2:#0EA5B0;
+    --ink:#e2e8f0; --muted:#94a3b8; --faint:#64748b;
+    --grad:linear-gradient(135deg,#1E6FD9,#0EA5B0);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;height:100%;}
+  body{
+    font-family:'DM Sans',system-ui,sans-serif;
+    background:radial-gradient(1200px 700px at 50% -10%,#0b1a30 0%,#060f1e 60%);
+    color:var(--ink); min-height:100vh;
+    display:flex; align-items:center; justify-content:center; padding:32px 20px;
+  }
+  .deck{ width:100%; max-width:900px; }
+  .deck-top{ display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
+  .brand{ font-family:'DM Serif Display',serif; font-size:1.15rem; color:#fff; }
+  .brand span{ color:var(--teal); }
+  .eyebrow{ font-size:.7rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--teal);
+    background:rgba(26,191,204,.1); border:1px solid rgba(26,191,204,.28); border-radius:999px; padding:6px 12px; }
+  .dots{ display:flex; gap:7px; }
+  .dots button{ width:9px; height:9px; border-radius:50%; border:none; background:rgba(255,255,255,.18); cursor:pointer; padding:0; transition:all .25s; }
+  .dots button.on{ width:26px; border-radius:6px; background:var(--grad); }
+  .card{ position:relative; background:rgba(255,255,255,.035); border:1px solid rgba(255,255,255,.1);
+    border-radius:24px; padding:44px 46px 38px; min-height:440px; overflow:hidden;
+    box-shadow:0 24px 70px rgba(0,0,0,.35); }
+  .slide{ display:none; }
+  .slide.on{ display:grid; grid-template-columns:1fr minmax(0,260px); gap:34px; align-items:center; animation:fade .35s ease; }
+  @keyframes fade{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:none;} }
+  .num{ width:46px; height:46px; border-radius:14px; background:var(--grad); display:flex; align-items:center;
+    justify-content:center; font-weight:700; font-size:1.15rem; color:#fff; margin-bottom:20px;
+    box-shadow:0 6px 20px rgba(30,111,217,.4); }
+  .slide h2{ font-family:'DM Serif Display',serif; font-size:clamp(1.6rem,3.2vw,2.35rem); color:#fff;
+    line-height:1.15; letter-spacing:-.02em; margin:0 0 15px; }
+  .slide p{ font-size:1rem; line-height:1.7; color:var(--muted); margin:0 0 16px; }
+  .slide p strong{ color:#fff; font-weight:600; }
+  .pts{ display:flex; flex-direction:column; gap:10px; margin:2px 0 6px; }
+  .pt{ display:flex; align-items:flex-start; gap:11px; font-size:.93rem; color:var(--ink); line-height:1.5; }
+  .pt .tick{ width:21px; height:21px; border-radius:7px; background:rgba(26,191,204,.14); color:var(--teal);
+    display:flex; align-items:center; justify-content:center; font-size:.72rem; font-weight:800; flex-shrink:0; margin-top:1px; }
+  .kicker{ display:inline-block; margin-top:4px; font-size:.9rem; color:#cbd5e1; background:rgba(30,111,217,.12);
+    border-left:3px solid var(--blue); padding:10px 14px; border-radius:0 10px 10px 0; line-height:1.55; }
+  .cta{ display:inline-flex; align-items:center; gap:8px; margin-top:6px; padding:13px 28px; border-radius:12px;
+    background:var(--grad); color:#fff; text-decoration:none; font-weight:700; font-size:1rem;
+    box-shadow:0 6px 24px rgba(30,111,217,.35); }
+  .art{ display:flex; align-items:center; justify-content:center; }
+  .art svg{ width:100%; max-width:250px; height:auto; }
+  .nav{ display:flex; align-items:center; justify-content:space-between; margin-top:20px; }
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:11px 22px; border-radius:11px; cursor:pointer;
+    font-family:inherit; font-size:.92rem; font-weight:700; border:1px solid rgba(148,197,210,.25);
+    background:rgba(255,255,255,.04); color:rgba(148,197,210,.9); transition:all .2s; }
+  .btn:hover{ border-color:rgba(148,197,210,.5); color:#fff; background:rgba(148,197,210,.08); }
+  .btn[disabled]{ opacity:.35; cursor:default; }
+  .btn.primary{ background:var(--grad); color:#fff; border:none; box-shadow:0 6px 20px rgba(30,111,217,.35); }
+  .counter{ font-size:.8rem; color:var(--faint); font-weight:600; }
+  @media(max-width:660px){
+    .card{ padding:32px 24px 28px; }
+    .slide.on{ grid-template-columns:1fr; gap:12px; }
+    .art{ order:-1; } .art svg{ max-width:150px; }
+    .deck-top .eyebrow{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- shared gradient defs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="gGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1E6FD9"/><stop offset="1" stop-color="#0EA5B0"/></linearGradient>
+  <linearGradient id="gAmber" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f59e0b"/><stop offset="1" stop-color="#ef4444"/></linearGradient>
+</defs></svg>
+
+<div class="deck">
+
+  <div class="deck-top">
+    <div class="brand">PCI<span>Nexus</span></div>
+    <div class="eyebrow">A 2-Minute Intro to PCI DSS</div>
+    <div class="dots" id="dots"></div>
+  </div>
+
+  <div class="card">
+
+    <!-- 1 -->
+    <div class="slide on">
+      <div class="copy">
+        <div class="num">1</div>
+        <h2>What is PCI DSS?</h2>
+        <p>PCI DSS stands for the <strong>Payment Card Industry Data Security Standard</strong> &mdash; the security rulebook that every business accepting card payments is expected to follow.</p>
+        <p>The major card brands &mdash; Visa, Mastercard, American Express, Discover, and JCB &mdash; created it to keep cardholder data safe from theft and fraud.</p>
+        <span class="kicker">In one line: it&rsquo;s the standard that keeps your customers&rsquo; card data safe.</span>
+      </div>
+      <div class="art">
+        <svg viewBox="0 0 240 220">
+          <path d="M120 24 L188 46 L188 108 C188 152 158 182 120 198 C82 182 52 152 52 108 L52 46 Z" fill="url(#gGrad)" opacity="0.16" stroke="#1ABFCC" stroke-width="2" stroke-opacity="0.5"/>
+          <rect x="83" y="90" width="74" height="48" rx="8" fill="url(#gGrad)"/>
+          <rect x="83" y="102" width="74" height="10" fill="#0b1a30" opacity="0.5"/>
+          <rect x="93" y="122" width="26" height="6" rx="3" fill="#fff" opacity="0.8"/>
+          <circle cx="152" cy="132" r="15" fill="#0EA5B0" stroke="#060f1e" stroke-width="3"/>
+          <path d="M145 132 l5 5 l9 -10" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="slide">
+      <div class="copy">
+        <div class="num">2</div>
+        <h2>Does it apply to my business?</h2>
+        <p>If you accept, process, store, or transmit card payments in <strong>any</strong> way &mdash; a countertop terminal, an online checkout, orders over the phone &mdash; PCI DSS applies to you.</p>
+        <p>There&rsquo;s no business too small. A corner shop and a national retailer follow the <strong>same standard</strong>, scaled to how each one takes payments.</p>
+      </div>
+      <div class="art">
+        <svg viewBox="0 0 240 220">
+          <g stroke="#1ABFCC" stroke-width="2" stroke-opacity="0.35"><line x1="120" y1="107" x2="56" y2="52"/><line x1="120" y1="107" x2="184" y2="52"/><line x1="120" y1="107" x2="120" y2="182"/></g>
+          <rect x="94" y="90" width="52" height="34" rx="7" fill="url(#gGrad)"/>
+          <rect x="94" y="99" width="52" height="7" fill="#0b1a30" opacity="0.5"/>
+          <rect x="34" y="30" width="44" height="44" rx="11" fill="#0f2447" stroke="#1ABFCC" stroke-width="2" stroke-opacity="0.5"/>
+          <rect x="44" y="40" width="24" height="14" rx="2" fill="#1ABFCC" opacity="0.8"/><rect x="48" y="60" width="16" height="4" rx="2" fill="#94a3b8"/>
+          <rect x="162" y="30" width="44" height="44" rx="11" fill="#0f2447" stroke="#1ABFCC" stroke-width="2" stroke-opacity="0.5"/>
+          <circle cx="172" cy="42" r="2.5" fill="#94a3b8"/><circle cx="180" cy="42" r="2.5" fill="#94a3b8"/><rect x="170" y="50" width="28" height="16" rx="3" fill="#1E6FD9" opacity="0.6"/>
+          <rect x="102" y="160" width="36" height="48" rx="9" fill="#0f2447" stroke="#1ABFCC" stroke-width="2" stroke-opacity="0.5"/>
+          <rect x="109" y="168" width="22" height="26" rx="2" fill="#0EA5B0" opacity="0.55"/><circle cx="120" cy="201" r="2.5" fill="#94a3b8"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="slide">
+      <div class="copy">
+        <div class="num">3</div>
+        <h2>Why it matters</h2>
+        <p>A card-data breach is expensive and damaging &mdash; and compliance isn&rsquo;t optional: your bank and payment processor require it in your merchant agreement. The risks of ignoring it:</p>
+        <div class="pts">
+          <div class="pt"><span class="tick">&#10003;</span>Fines and penalties from the card brands</div>
+          <div class="pt"><span class="tick">&#10003;</span>Costly forensic investigation after a breach</div>
+          <div class="pt"><span class="tick">&#10003;</span>Higher card-processing fees</div>
+          <div class="pt"><span class="tick">&#10003;</span>Lost customer trust &mdash; the hardest to win back</div>
+          <div class="pt"><span class="tick">&#10003;</span>In serious cases, losing the ability to accept cards</div>
+        </div>
+      </div>
+      <div class="art">
+        <svg viewBox="0 0 240 220">
+          <g transform="rotate(-8 120 128)">
+            <rect x="66" y="104" width="108" height="66" rx="11" fill="url(#gGrad)" opacity="0.9"/>
+            <rect x="66" y="119" width="108" height="13" fill="#0b1a30" opacity="0.45"/>
+            <rect x="80" y="146" width="36" height="7" rx="3.5" fill="#fff" opacity="0.75"/>
+          </g>
+          <path d="M150 34 L184 94 L116 94 Z" fill="url(#gAmber)" stroke="#060f1e" stroke-width="4" stroke-linejoin="round"/>
+          <rect x="147.5" y="54" width="5" height="22" rx="2.5" fill="#fff"/><circle cx="150" cy="85" r="3" fill="#fff"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="slide">
+      <div class="copy">
+        <div class="num">4</div>
+        <h2>What it actually asks of you</h2>
+        <p>At its core, PCI DSS is <strong>12 requirements</strong> grouped under <strong>6 goals</strong>:</p>
+        <div class="pts">
+          <div class="pt"><span class="tick">&#10003;</span>Build and maintain a secure network</div>
+          <div class="pt"><span class="tick">&#10003;</span>Protect the card data you handle</div>
+          <div class="pt"><span class="tick">&#10003;</span>Keep software and systems patched</div>
+          <div class="pt"><span class="tick">&#10003;</span>Restrict who can access card data</div>
+          <div class="pt"><span class="tick">&#10003;</span>Monitor and test your systems</div>
+          <div class="pt"><span class="tick">&#10003;</span>Keep a written security policy</div>
+        </div>
+        <span class="kicker">Plain version: don&rsquo;t keep card data you don&rsquo;t need, lock down what you do, patch your software, control access, watch for problems, and write it down.</span>
+      </div>
+      <div class="art">
+        <svg viewBox="0 0 240 220">
+          <rect x="54" y="26" width="132" height="168" rx="15" fill="#0f2447" stroke="#1ABFCC" stroke-width="2" stroke-opacity="0.4"/>
+          <rect x="72" y="42" width="58" height="8" rx="4" fill="url(#gGrad)"/>
+          <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <g transform="translate(0,26)"><circle cx="80" cy="52" r="9" fill="rgba(26,191,204,.15)" stroke="#1ABFCC" stroke-width="1.5"/><path d="M75.5 52 l3 3 l6.5 -7" stroke="#1ABFCC" stroke-width="2"/><rect x="98" y="48" width="70" height="7" rx="3.5" fill="#334155" stroke="none"/></g>
+            <g transform="translate(0,50)"><circle cx="80" cy="52" r="9" fill="rgba(26,191,204,.15)" stroke="#1ABFCC" stroke-width="1.5"/><path d="M75.5 52 l3 3 l6.5 -7" stroke="#1ABFCC" stroke-width="2"/><rect x="98" y="48" width="70" height="7" rx="3.5" fill="#334155" stroke="none"/></g>
+            <g transform="translate(0,74)"><circle cx="80" cy="52" r="9" fill="rgba(26,191,204,.15)" stroke="#1ABFCC" stroke-width="1.5"/><path d="M75.5 52 l3 3 l6.5 -7" stroke="#1ABFCC" stroke-width="2"/><rect x="98" y="48" width="70" height="7" rx="3.5" fill="#334155" stroke="none"/></g>
+            <g transform="translate(0,98)"><circle cx="80" cy="52" r="9" fill="rgba(26,191,204,.15)" stroke="#1ABFCC" stroke-width="1.5"/><path d="M75.5 52 l3 3 l6.5 -7" stroke="#1ABFCC" stroke-width="2"/><rect x="98" y="48" width="70" height="7" rx="3.5" fill="#334155" stroke="none"/></g>
+            <g transform="translate(0,122)"><circle cx="80" cy="52" r="9" fill="rgba(26,191,204,.15)" stroke="#1ABFCC" stroke-width="1.5"/><path d="M75.5 52 l3 3 l6.5 -7" stroke="#1ABFCC" stroke-width="2"/><rect x="98" y="48" width="70" height="7" rx="3.5" fill="#334155" stroke="none"/></g>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="slide">
+      <div class="copy">
+        <div class="num">5</div>
+        <h2>How you prove it: the SAQ</h2>
+        <p>Most merchants show they&rsquo;re compliant by completing a <strong>Self-Assessment Questionnaire (SAQ)</strong> once a year.</p>
+        <p>Which SAQ you use depends on <strong>how you take payments</strong>. You answer the questions that apply to your setup, gather a little supporting evidence, and submit it to your bank.</p>
+        <span class="kicker">Picking the right SAQ means you only answer the questions that actually apply &mdash; often far fewer.</span>
+      </div>
+      <div class="art">
+        <svg viewBox="0 0 240 220">
+          <rect x="58" y="34" width="124" height="158" rx="15" fill="#0f2447" stroke="#1ABFCC" stroke-width="2" stroke-opacity="0.4"/>
+          <rect x="98" y="24" width="44" height="22" rx="7" fill="url(#gGrad)"/>
+          <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <g transform="translate(0,32)"><rect x="76" y="42" width="17" height="17" rx="4" fill="rgba(14,165,176,.2)" stroke="#0EA5B0" stroke-width="1.5"/><path d="M79.5 50.5 l3 3 l7 -8" stroke="#0EA5B0" stroke-width="2"/><rect x="101" y="46" width="60" height="7" rx="3.5" fill="#334155" stroke="none"/></g>
+            <g transform="translate(0,66)"><rect x="76" y="42" width="17" height="17" rx="4" fill="rgba(14,165,176,.2)" stroke="#0EA5B0" stroke-width="1.5"/><path d="M79.5 50.5 l3 3 l7 -8" stroke="#0EA5B0" stroke-width="2"/><rect x="101" y="46" width="60" height="7" rx="3.5" fill="#334155" stroke="none"/></g>
+            <g transform="translate(0,100)"><rect x="76" y="42" width="17" height="17" rx="4" fill="rgba(14,165,176,.2)" stroke="#0EA5B0" stroke-width="1.5"/><path d="M79.5 50.5 l3 3 l7 -8" stroke="#0EA5B0" stroke-width="2"/><rect x="101" y="46" width="48" height="7" rx="3.5" fill="#334155" stroke="none"/></g>
+            <g transform="translate(0,134)"><rect x="76" y="42" width="17" height="17" rx="4" fill="none" stroke="#475569" stroke-width="1.5"/><rect x="101" y="46" width="54" height="7" rx="3.5" fill="#1e293b" stroke="none"/></g>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="slide">
+      <div class="copy">
+        <div class="num">6</div>
+        <h2>PCI-Nexus makes it simple</h2>
+        <p>You don&rsquo;t have to figure this out alone. PCI-Nexus&rsquo;s <strong>AI compliance agent</strong> scopes the right SAQ for your business, tells you exactly what applies, reviews your evidence, drafts your policies, and keeps you on track for your annual deadline.</p>
+        <p>Guided step by step, in plain English &mdash; what used to take a consultant and weeks, done with you.</p>
+        <a class="cta" href="https://pci-nexus.vercel.app/PCIDemo">Get started free &rarr;</a>
+      </div>
+      <div class="art">
+        <svg viewBox="0 0 240 220">
+          <line x1="120" y1="42" x2="120" y2="60" stroke="#1ABFCC" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="120" cy="38" r="6" fill="#1ABFCC"/>
+          <rect x="72" y="60" width="96" height="82" rx="22" fill="url(#gGrad)"/>
+          <rect x="66" y="90" width="8" height="26" rx="4" fill="#0EA5B0"/><rect x="166" y="90" width="8" height="26" rx="4" fill="#0EA5B0"/>
+          <rect x="86" y="76" width="68" height="52" rx="13" fill="#0b1a30" opacity="0.72"/>
+          <circle cx="107" cy="100" r="7" fill="#1ABFCC"/><circle cx="133" cy="100" r="7" fill="#1ABFCC"/>
+          <path d="M105 116 q15 11 30 0" fill="none" stroke="#1ABFCC" stroke-width="3" stroke-linecap="round"/>
+          <path d="M150 150 l4 11 l11 4 l-11 4 l-4 11 l-4 -11 l-11 -4 l11 -4 z" fill="url(#gGrad)" stroke="#060f1e" stroke-width="2"/>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="nav">
+    <button class="btn" id="prev">&larr; Back</button>
+    <div class="counter"><span id="cur">1</span> / 6</div>
+    <button class="btn primary" id="next">Next &rarr;</button>
+  </div>
+
+</div>
+
+<script>
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var dotsWrap = document.getElementById('dots');
+  var prev = document.getElementById('prev'), next = document.getElementById('next'), cur = document.getElementById('cur');
+  var i = 0;
+  slides.forEach(function(_, n){ var d = document.createElement('button'); d.addEventListener('click', function(){ go(n); }); dotsWrap.appendChild(d); });
+  var dots = Array.prototype.slice.call(dotsWrap.children);
+  function render(){
+    slides.forEach(function(s, n){ s.classList.toggle('on', n === i); });
+    dots.forEach(function(d, n){ d.classList.toggle('on', n === i); });
+    cur.textContent = i + 1;
+    prev.disabled = i === 0;
+    next.textContent = i === slides.length - 1 ? 'Start over ↻' : 'Next →';
+  }
+  function go(n){ i = (n + slides.length) % slides.length; render(); }
+  next.addEventListener('click', function(){ i === slides.length - 1 ? go(0) : go(i + 1); });
+  prev.addEventListener('click', function(){ go(i - 1); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'ArrowRight') next.click(); if (e.key === 'ArrowLeft') prev.click(); });
+  render();
+</script>
+</body>
+</html>

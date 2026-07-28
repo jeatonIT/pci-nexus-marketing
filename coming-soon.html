@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="PCI-Nexus — The AI-powered PCI DSS v4.0.1 compliance platform for QSAs, ISAs, MSPs and IT consultants. Launching soon."/>
+<title>PCI-Nexus — Coming Soon</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgMTYwIiB3aWR0aD0iMTYwIiBoZWlnaHQ9IjE2MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNoaWVsZEdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMkU3RkU4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMUE1RUM0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEM0E4QSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHBhdGggZD0iTTgwIDEyIEwxNDAgMzIgTDE0MCA4MiBDMTQwIDExOCAxMTIgMTQwIDgwIDE1MiBDNDggMTQwIDIwIDExOCAyMCA4MiBMMjAgMzIgWiIgZmlsbD0idXJsKCNzaGllbGRHcmFkKSIgb3BhY2l0eT0iMC45NSIvPgo8L3N2Zz4=">
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --navy:#0F2447;
+  --blue:#1E6FD9;
+  --teal:#0EA5B0;
+  --white:#ffffff;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;overflow:hidden;}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:#060f1e;
+  color:#e2e8f0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  position:relative;
+  overflow:hidden;
+}
+
+/* ── Background grid ── */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(30,111,217,0.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(30,111,217,0.04) 1px,transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;
+}
+
+/* ── Glow orbs ── */
+.orb{
+  position:fixed;
+  border-radius:50%;
+  filter:blur(80px);
+  pointer-events:none;
+  animation:drift 12s ease-in-out infinite;
+}
+.orb-1{
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(30,111,217,0.18),transparent 70%);
+  top:-100px;left:-100px;
+  animation-delay:0s;
+}
+.orb-2{
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(14,165,176,0.14),transparent 70%);
+  bottom:-80px;right:-80px;
+  animation-delay:-6s;
+}
+@keyframes drift{
+  0%,100%{transform:translate(0,0);}
+  50%{transform:translate(30px,20px);}
+}
+
+/* ── Main card ── */
+.card{
+  position:relative;
+  z-index:10;
+  text-align:center;
+  max-width:640px;
+  padding:0 24px;
+  animation:fadeUp 0.9s ease both;
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(32px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ── Logo ── */
+.logo{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:48px;
+  animation:fadeUp 0.9s ease 0.1s both;
+}
+.logo-shield{
+  width:48px;height:48px;
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 24px rgba(30,111,217,0.4);
+}
+.logo-shield svg{width:26px;height:26px;fill:white;}
+.logo-text{
+  font-family:'DM Serif Display',serif;
+  font-size:26px;
+  color:white;
+  letter-spacing:-0.5px;
+}
+.logo-text span{
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+/* ── Badge ── */
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 14px;
+  border-radius:99px;
+  background:rgba(30,111,217,0.12);
+  border:1px solid rgba(30,111,217,0.3);
+  font-size:11px;
+  font-weight:700;
+  color:rgba(100,180,255,0.85);
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  margin-bottom:28px;
+  animation:fadeUp 0.9s ease 0.2s both;
+}
+.badge-dot{
+  width:6px;height:6px;
+  border-radius:50%;
+  background:#10B981;
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+
+/* ── Headline ── */
+h1{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(42px,8vw,72px);
+  line-height:1.05;
+  color:white;
+  margin-bottom:24px;
+  animation:fadeUp 0.9s ease 0.3s both;
+}
+h1 span{
+  background:linear-gradient(135deg,#60a5fa,var(--teal));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+/* ── Subhead ── */
+.sub{
+  font-size:18px;
+  font-weight:400;
+  line-height:1.65;
+  color:rgba(180,200,230,0.75);
+  max-width:520px;
+  margin:0 auto 48px;
+  animation:fadeUp 0.9s ease 0.4s both;
+}
+
+/* ── Email form ── */
+.form{
+  display:flex;
+  gap:0;
+  max-width:460px;
+  margin:0 auto 48px;
+  animation:fadeUp 0.9s ease 0.5s both;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 8px 32px rgba(0,0,0,0.3);
+}
+.form input{
+  flex:1;
+  padding:16px 20px;
+  border:1px solid rgba(255,255,255,0.1);
+  border-right:none;
+  border-radius:14px 0 0 14px;
+  background:rgba(255,255,255,0.06);
+  color:white;
+  font-family:'DM Sans',sans-serif;
+  font-size:15px;
+  outline:none;
+  transition:border-color 0.2s,background 0.2s;
+}
+.form input::placeholder{color:rgba(255,255,255,0.3);}
+.form input:focus{
+  border-color:rgba(30,111,217,0.5);
+  background:rgba(255,255,255,0.09);
+}
+.form button{
+  padding:16px 24px;
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  color:white;
+  font-family:'DM Sans',sans-serif;
+  font-size:14px;
+  font-weight:700;
+  border:none;
+  border-radius:0 14px 14px 0;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:opacity 0.2s,transform 0.1s;
+}
+.form button:hover{opacity:0.9;}
+.form button:active{transform:scale(0.98);}
+.success{
+  display:none;
+  padding:16px 24px;
+  background:rgba(16,185,129,0.12);
+  border:1px solid rgba(16,185,129,0.3);
+  border-radius:14px;
+  color:#6ee7b7;
+  font-size:14px;
+  font-weight:600;
+  max-width:460px;
+  margin:0 auto 48px;
+  animation:fadeUp 0.4s ease both;
+}
+
+/* ── Feature pills ── */
+.pills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  animation:fadeUp 0.9s ease 0.6s both;
+  margin-bottom:56px;
+}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:8px 14px;
+  border-radius:99px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  font-size:12px;
+  font-weight:600;
+  color:rgba(200,220,255,0.7);
+  transition:border-color 0.2s,background 0.2s;
+}
+.pill:hover{
+  border-color:rgba(30,111,217,0.4);
+  background:rgba(30,111,217,0.08);
+  color:rgba(200,220,255,0.95);
+}
+
+/* ── Footer ── */
+.footer{
+  font-size:12px;
+  color:rgba(255,255,255,0.2);
+  animation:fadeUp 0.9s ease 0.7s both;
+}
+.footer a{
+  color:rgba(100,160,255,0.5);
+  text-decoration:none;
+}
+.footer a:hover{color:rgba(100,160,255,0.8);}
+
+/* ── Mobile ── */
+@media(max-width:600px){
+  body{overflow:auto;}
+  html,body{height:auto;}
+  .card{padding:40px 20px;}
+  .form{flex-direction:column;border-radius:14px;}
+  .form input{border-right:1px solid rgba(255,255,255,0.1);border-bottom:none;border-radius:14px 14px 0 0;}
+  .form button{border-radius:0 0 14px 14px;padding:14px 20px;}
+}
+</style>
+</head>
+<body>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<div class="card">
+
+  <!-- Logo -->
+  <div class="logo">
+    <div class="logo-shield">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L3 6v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4z"/>
+      </svg>
+    </div>
+    <span class="logo-text">PCI<span>-Nexus</span></span>
+  </div>
+
+  <!-- Badge -->
+  <div class="badge">
+    <span class="badge-dot"></span>
+    Launching Soon
+  </div>
+
+  <!-- Headline -->
+  <h1>PCI DSS Compliance,<br><span>Reimagined.</span></h1>
+
+  <!-- Subheadline -->
+  <p class="sub">
+    The AI-powered compliance platform built for QSAs, ISAs, MSPs and IT consultants.
+    Manage your entire client portfolio — evidence, audits, SAQ generation, and more —
+    from one intelligent back office.
+  </p>
+
+  <!-- Email capture -->
+  <div class="form" id="form">
+    <input type="email" id="email" placeholder="your@email.com" autocomplete="email"/>
+    <button onclick="handleSubmit()">Notify Me</button>
+  </div>
+  <div class="success" id="success">
+    ✓ You're on the list — we'll be in touch.
+  </div>
+
+  <!-- Feature pills -->
+  <div class="pills">
+    <div class="pill">🤖 AI Evidence Review</div>
+    <div class="pill">📋 SAQ Auto-Generation</div>
+    <div class="pill">🔗 TPSP AOC Tracking</div>
+    <div class="pill">🖥 System Inventory</div>
+    <div class="pill">📅 Compliance Calendar</div>
+    <div class="pill">🔒 Audit Log · Req 10</div>
+    <div class="pill">🤖 AI Compliance Agent</div>
+    <div class="pill">✅ PCI DSS v4.0.1</div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    © 2026 PCI-Nexus LLC · California ·
+    <a href="mailto:jeaton@pcinexus.com">Contact</a> ·
+    <a href="/PCIDemo">View Demo</a>
+  </div>
+
+</div>
+
+<script>
+function handleSubmit(){
+  const email = document.getElementById('email').value.trim();
+  if(!email || !email.includes('@')){
+    document.getElementById('email').focus();
+    return;
+  }
+  // Store locally and show success
+  const existing = JSON.parse(localStorage.getItem('pcn_waitlist')||'[]');
+  existing.push({email, ts: new Date().toISOString()});
+  localStorage.setItem('pcn_waitlist', JSON.stringify(existing));
+
+  document.getElementById('form').style.display = 'none';
+  document.getElementById('success').style.display = 'block';
+
+  // POST to API if available
+  fetch('/api/waitlist', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({email})
+  }).catch(()=>{}); // silent fail — local storage is the fallback
+}
+
+document.getElementById('email').addEventListener('keydown', function(e){
+  if(e.key === 'Enter') handleSubmit();
+});
+</script>
+</body>
+</html>
