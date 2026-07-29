@@ -817,7 +817,7 @@ function submitGuestForm(){
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify({
       first,last,email,company,role,clients,phone,source,
-      type:'guest_demo',
+      type:(window.__pcnIntent==='consultant'?'consultant_demo':'guest_demo'),
       ts:new Date().toISOString()
     })
   }).catch(()=>{});
@@ -843,16 +843,27 @@ function submitGuestForm(){
   // `demo=1` tells the app this is a guest walkthrough: it must auto-enter the
   // demo persona and NEVER present a credential prompt to someone just looking.
   setTimeout(()=>{
-    const params=new URLSearchParams({
-      guest:'1',
-      demo:'1',
-      name:first+' '+last,
-      email,company,role
-    });
+    const consultant = window.__pcnIntent === 'consultant';
+    const params = consultant
+      ? new URLSearchParams({ p:'consultant', name:first+' '+last, email, company, role })
+      : new URLSearchParams({ guest:'1', demo:'1', name:first+' '+last, email, company, role });
     window.location.href=
       'https://app.pcinexus.com/PCIDemo?'+params.toString();
   },600);
 }
+
+// Consultant-demo lead gate: arriving from "See Consultant Demo" (?intent=consultant)
+// shows the lead box ONCE, then routes to the consultant login. Returning visitors
+// (already captured) skip the box and go straight to the consultant login.
+(function(){
+  var intent=new URLSearchParams(window.location.search).get('intent');
+  window.__pcnIntent=intent;
+  if(intent!=='consultant') return;
+  var seen=false;
+  try{ seen=(JSON.parse(localStorage.getItem('pcn_demo_leads')||'[]')).length>0; }catch(e){}
+  if(seen){ window.location.href='https://app.pcinexus.com/PCIDemo?p=consultant'; return; }
+  if(typeof openGuestForm==='function') openGuestForm();
+})();
 </script>
 
 </body>
