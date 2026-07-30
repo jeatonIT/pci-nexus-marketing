@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Saved Component — "Start Free Evaluation" Button</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  /* ── EXACT design tokens the button uses (from index.html :root) ── */
+  :root{
+    --blue:  #1E6FD9;
+    --teal2: #0EA5B0;
+    --grad-b: linear-gradient(135deg,#1E6FD9,#0EA5B0);
+  }
+
+  /* ── EXACT button class, copied verbatim from the site ── */
+  .nav-cta{
+    padding:8px 20px;border-radius:8px;font-size:.82rem;font-weight:700;
+    background:var(--grad-b);color:#fff;text-decoration:none;
+    transition:opacity .2s;white-space:nowrap;
+    font-family:'DM Sans',sans-serif;      /* inherited from body on the site */
+    display:inline-block;
+  }
+  .nav-cta:hover{opacity:.88;}
+
+  /* ── page chrome (documentation only — not part of the button) ── */
+  body{font-family:'DM Sans',sans-serif;background:#f8fafc;color:#0f172a;margin:0;padding:40px;line-height:1.6;}
+  h1{font-size:1.4rem;margin:0 0 4px;}
+  .sub{color:#64748b;font-size:.9rem;margin-bottom:32px;}
+  h2{font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#94a3b8;margin:28px 0 10px;}
+  .preview{background:#060f1e;border-radius:12px;padding:40px;display:flex;justify-content:center;border:1px solid #e2e8f0;}
+  pre{background:#0f172a;color:#e2e8f0;border-radius:10px;padding:16px 18px;overflow:auto;font-family:'DM Mono',monospace;font-size:.8rem;line-height:1.6;}
+  .note{background:#fff;border:1px solid #e2e8f0;border-left:3px solid var(--blue);border-radius:8px;padding:14px 18px;font-size:.88rem;color:#334155;}
+  code{font-family:'DM Mono',monospace;background:#eef2f7;padding:1px 5px;border-radius:4px;font-size:.85em;}
+</style>
+</head>
+<body>
+
+  <h1>"Start Free Evaluation" Button — saved for reuse</h1>
+  <div class="sub">Removed from the homepage nav on 2026-07-06. Everything needed to restore or reuse it is below.</div>
+
+  <h2>Live preview (exact styling)</h2>
+  <div class="preview">
+    <a href="https://app.pcinexus.com/PCIDemo" target="_blank" class="nav-cta">Start Free Evaluation &rarr;</a>
+  </div>
+
+  <h2>The markup (paste this back)</h2>
+  <pre>&lt;a href="https://app.pcinexus.com/PCIDemo" target="_blank" class="nav-cta"&gt;Start Free Evaluation &amp;rarr;&lt;/a&gt;</pre>
+
+  <h2>The CSS class it depends on</h2>
+  <pre>.nav-cta{
+  padding:8px 20px;border-radius:8px;font-size:.82rem;font-weight:700;
+  background:var(--grad-b);color:#fff;text-decoration:none;
+  transition:opacity .2s;white-space:nowrap;
+}
+.nav-cta:hover{opacity:.88;}</pre>
+
+  <h2>The design token it depends on</h2>
+  <pre>--grad-b: linear-gradient(135deg,#1E6FD9,#0EA5B0);   /* blue #1E6FD9 → teal #0EA5B0 */</pre>
+
+  <h2>Full spec (for rebuilding anywhere)</h2>
+  <pre>Text:        Start Free Evaluation →   (the arrow is the &amp;rarr; entity)
+Link:        https://app.pcinexus.com/PCIDemo   (opens in new tab)
+Font:        DM Sans, weight 700, size 0.82rem, white (#fff)
+Background:  linear-gradient(135deg, #1E6FD9, #0EA5B0)   (blue → teal, 135°)
+Shape:       border-radius 8px · padding 8px 20px · no wrap
+Hover:       opacity 0.88 (0.2s transition)</pre>
+
+  <h2>Where it lived (to restore it exactly)</h2>
+  <div class="note">
+    In <code>index.html</code>, inside <code>&lt;nav&gt;</code> → <code>.nav-links</code>, as the
+    <strong>last item</strong>, immediately after the "Log In" link. The <code>.nav-cta</code> class and the
+    <code>--grad-b</code> token are still present in the stylesheet, so pasting the one markup line back
+    restores the button fully. The same nav is copied across the other pages, so this line can be added to each
+    of their navs too if you want it site-wide.
+  </div>
+
+</body>
+</html>

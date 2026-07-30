@@ -609,7 +609,7 @@ renderNav(); renderLocs();
         <label style="font-size:0.68rem;font-weight:700;color:#64748b;
           text-transform:uppercase;letter-spacing:0.08em;
           display:block;margin-bottom:4px;">First Name *</label>
-        <input id="gf-first" type="text" placeholder="Sandra"
+        <input id="gf-first" type="text" placeholder="Alex"
           style="width:100%;padding:10px 12px;border:1.5px solid #e2e8f0;
           border-radius:9px;font-size:0.875rem;font-family:inherit;
           outline:none;color:#1e293b;"
@@ -620,7 +620,7 @@ renderNav(); renderLocs();
         <label style="font-size:0.68rem;font-weight:700;color:#64748b;
           text-transform:uppercase;letter-spacing:0.08em;
           display:block;margin-bottom:4px;">Last Name *</label>
-        <input id="gf-last" type="text" placeholder="Kowalski"
+        <input id="gf-last" type="text" placeholder="Rivera"
           style="width:100%;padding:10px 12px;border:1.5px solid #e2e8f0;
           border-radius:9px;font-size:0.875rem;font-family:inherit;
           outline:none;color:#1e293b;"
@@ -633,7 +633,7 @@ renderNav(); renderLocs();
       <label style="font-size:0.68rem;font-weight:700;color:#64748b;
         text-transform:uppercase;letter-spacing:0.08em;
         display:block;margin-bottom:4px;">Work Email *</label>
-      <input id="gf-email" type="email" placeholder="sandra@yourfirm.com"
+      <input id="gf-email" type="email" placeholder="alex@yourfirm.com"
         style="width:100%;padding:10px 12px;border:1.5px solid #e2e8f0;
         border-radius:9px;font-size:0.875rem;font-family:inherit;
         outline:none;color:#1e293b;"
@@ -858,6 +858,7 @@ function submitGuestForm(){
 (function(){
   var intent=new URLSearchParams(window.location.search).get('intent');
   window.__pcnIntent=intent;
+  if(intent==='guest'){ if(typeof openGuestForm==='function') openGuestForm(); return; }
   if(intent!=='consultant') return;
   var seen=false;
   try{ seen=(JSON.parse(localStorage.getItem('pcn_demo_leads')||'[]')).length>0; }catch(e){}
